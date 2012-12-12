@@ -6,3 +6,5 @@
 *.ear
 
 target/
+
+nb-configuration.xml

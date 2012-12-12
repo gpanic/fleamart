@@ -15,6 +15,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.primefaces</groupId>
+      <artifactId>primefaces</artifactId>
+      <version>3.2</version>
+    </dependency>
+    <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
       <version>6.0</version>
@@ -39,4 +44,12 @@
     </plugins>
     <finalName>fleamart-web</finalName>
   </build>
+  <repositories>
+    <repository>
+      <url>http://repository.primefaces.org/</url>
+      <id>primefaces</id>
+      <layout>default</layout>
+      <name>Repository for library PrimeFaces 3.2</name>
+    </repository>
+  </repositories>
 </project>
