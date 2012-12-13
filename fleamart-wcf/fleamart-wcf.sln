@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fleamart.Contracts", "Fleamart.Contracts\Fleamart.Contracts.csproj", "{DEAB2607-94A4-4A28-A8A1-192311BEC999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fleamart.Dal", "Fleamart.Dal\Fleamart.Dal.csproj", "{BBDC92F0-F076-40C1-8285-617EF53A20CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{95BE7D95-FB87-4053-BF28-DE06C6C3B016}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fleamart.TestClient", "Fleamart.TestClient\Fleamart.TestClient.csproj", "{88B973DF-1DEF-4997-9DE6-95B1C308961E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9647C03D-C19F-4343-A959-333945084C6F} = {9647C03D-C19F-4343-A959-333945084C6F}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fleamart.Service", "Fleamart.Service\Fleamart.Service.csproj", "{9647C03D-C19F-4343-A959-333945084C6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEAB2607-94A4-4A28-A8A1-192311BEC999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEAB2607-94A4-4A28-A8A1-192311BEC999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEAB2607-94A4-4A28-A8A1-192311BEC999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEAB2607-94A4-4A28-A8A1-192311BEC999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBDC92F0-F076-40C1-8285-617EF53A20CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBDC92F0-F076-40C1-8285-617EF53A20CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBDC92F0-F076-40C1-8285-617EF53A20CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBDC92F0-F076-40C1-8285-617EF53A20CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88B973DF-1DEF-4997-9DE6-95B1C308961E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88B973DF-1DEF-4997-9DE6-95B1C308961E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88B973DF-1DEF-4997-9DE6-95B1C308961E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88B973DF-1DEF-4997-9DE6-95B1C308961E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9647C03D-C19F-4343-A959-333945084C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9647C03D-C19F-4343-A959-333945084C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9647C03D-C19F-4343-A959-333945084C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9647C03D-C19F-4343-A959-333945084C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
