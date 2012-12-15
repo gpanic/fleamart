@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Fleamart.Contracts.Data
 {
-    class User
+    class KategorijaEF
     {
+        public int Id { get; set; }
+        public int Nadkategorija { get; set; }
+        public string Naziv { get; set; }
     }
 }
