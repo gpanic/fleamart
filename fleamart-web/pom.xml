@@ -20,6 +20,11 @@
       <version>3.4.2</version>
     </dependency>
     <dependency>
+      <groupId>org.primefaces.themes</groupId>
+      <artifactId>bootstrap</artifactId>
+      <version>1.0.8</version>
+    </dependency>
+    <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
       <version>6.0</version>
