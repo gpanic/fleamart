@@ -2,18 +2,19 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <title>My JSF Page</title>
     </h:head>
     <h:body>
-        <h1>Bean Test</h1>
-        <h:outputText value="HelloBean says: #{helloBean.hello}" />
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
-       
+        <h:form> 
+            Enter your name: <p:inputText value="#{bean.input}"/>
+            <p:commandButton value="Submit" update="nekaj" actionListener="#{bean.submit}" /><br/>       
+                <h:outputText id="nekaj" value="#{bean.output}"/>
+        </h:form>
     </h:body>
 </html>

@@ -15,34 +15,50 @@
 
         <h:body>
 
-            <p:layout fullPage="true">
+            <h:form id="form">
 
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Header
-                </p:layoutUnit>
+                <p:panel id="panel" header="New Person" style="margin-bottom:10px;">
+                    <p:messages id="messages" />
+                    <h:panelGrid columns="3">
+                        <h:outputLabel for="firstname" value="Firstname: *" />
+                        <p:inputText id="firstname" 
+                                     value="#{pprBean.firstname}" required="true" label="Firstname">
+                            <f:validateLength minimum="2" />
+                        </p:inputText>
+                        <p:message for="firstname" />
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
-                </p:layoutUnit>
+                        <h:outputLabel for="surname" value="Surname: *" />
+                        <p:inputText id="surname" 
+                                     value="#{pprBean.surname}" required="true" label="Surname"/>
+                        <p:message for="surname" />
+                    </h:panelGrid>
+                </p:panel>
 
-                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
-                    <p:menu>
-                        <p:submenu label="Resources">
-                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
-                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
-                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
-                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                <p:commandButton value="Ajax Submit" update="panel,display" id="ajax"
+                                 actionListener="#{pprBean.savePerson}" />
 
-                        </p:submenu>
+                <p:commandButton value="Non-Ajax Submit" actionListener="#{pprBean.savePerson}" 
+                                 ajax="false" />
 
-                    </p:menu>
-                </p:layoutUnit>
+                <p:commandButton value="With Icon" actionListener="#{pprBean.savePerson}" id="withIcon" 
+                                 update="panel,display" icon="ui-icon-disk" />
 
-                <p:layoutUnit position="center">
-                    Welcome to PrimeFaces
-                </p:layoutUnit>
+                <p:commandButton actionListener="#{pprBean.savePerson}" update="panel,display" id="iconOnly"
+                                 icon="ui-icon-disk" title="Icon Only"/>
 
-            </p:layout>
+                <p:commandButton value="Disabled" disabled="true" id="disabled" />
+
+                <p:panel id="display" header="Information" style="margin-top:10px;">
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Firstname: " />
+                        <h:outputText value="#{pprBean.firstname}" />
+
+                        <h:outputText value="Surname: " />
+                        <h:outputText value="#{pprBean.surname}" />
+                    </h:panelGrid>
+                </p:panel>
+
+            </h:form>
 
         </h:body>
 
