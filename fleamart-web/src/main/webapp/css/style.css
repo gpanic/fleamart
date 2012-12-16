@@ -1,8 +1,73 @@
 body {
-    margin: 0;
-    padding: 0;
-    padding-top: 60px;
-    padding-bottom: 40px;
-    font-size: 12px;
-    height: 100%;
+	margin: 0;
+	padding: 0;
+	padding-top: 60px;
+	padding-bottom: 40px;
+	font-size: 12px;
+	height: 100%;
+}
+
+.oglasi {
+	width: 80%;
+	margin-top: 30px;
+}
+
+.oglas {
+	width: 100%;
+	border: 2px solid #E3E3E3;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	margin-bottom: 20px;
+	display: inline-block;
+}
+
+.oglas .slika {
+	border: none;
+	margin: 20px;
+	width: 160px;
+	height: 120px;
+}
+
+.oglas .naslov {
+	border: none;
+	position: absolute;
+	margin-top: 20px;
+	width: 400px;
+	color: #005580;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.oglas .cena {
+	border: none;
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 420px;
+	width: 60px;
+	font-size: 13px;
+	font-weight: bold;
+	font-family: Arial;
+	color: red;
+}
+
+.oglas .opis {
+	border: none;
+	position: absolute;
+	margin-top: 50px;
+	width: 400px;
+	height: 100px;
+}
+
+.oglas .datum {
+	border: none;
+	position: absolute;
+	margin-left: 410px;
+	margin-top: 130px;
+	width: 60px;
+	font-style: italic;
+}
+
+.oglas img {
+	width: 140px;
 }
