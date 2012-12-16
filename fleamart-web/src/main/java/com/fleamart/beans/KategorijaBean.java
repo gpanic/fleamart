@@ -37,7 +37,6 @@ public class KategorijaBean {
 	public Map<String, String> getKategorije() {
 		return kategorije;
 	}
-
 	public void setKategorije(Map<String, String> kategorije) {
 		this.kategorije = kategorije;
 	}
