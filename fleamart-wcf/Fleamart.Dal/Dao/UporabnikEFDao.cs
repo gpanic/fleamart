@@ -105,5 +105,21 @@ namespace Fleamart.Dal.Dao
                 return list;
             }
         }
+
+        public Uporabnik Read(string username)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                UporabnikEF ef = db.Uporabniki.Where(u => u.Upime == username).FirstOrDefault();
+                if (ef != null)
+                {
+                    return Mapper.Map<UporabnikEF, Uporabnik>(ef);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
     }
 }
