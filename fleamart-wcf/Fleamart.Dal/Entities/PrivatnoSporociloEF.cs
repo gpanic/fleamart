@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Fleamart.Dal.Entities
 {
-    class PrivatnoSporociloEF
+    public class PrivatnoSporociloEF
     {
         public int Id { get; set; }
         public string Sporocilo { get; set; }

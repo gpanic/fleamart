@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 
 namespace Fleamart.Dal.Entities
 {
-    public class PonudbaEF
+    public class KomentarEF
     {
         public int Id { get; set; }
-        public double Znesek { get; set; }
+        public string Sporocilo { get; set; }
         public DateTime Cas { get; set; }
-        public UporabnikEF Uporabnik { get; set; }
+
+        public int AvtorId { get; set; }
+        public virtual UporabnikEF Avtor { get; set; }
+
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Fleamart.Dal.Entities
 {
-    class KategorijaKarticnegaSistemaEF
+    public class KategorijaKarticnegaSistemaEF
     {
         public int Id { get; set; }
         public string Naziv { get; set; }

@@ -47,7 +47,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao\UserDAO.cs" />
-    <Compile Include="Entities\UserEF.cs" />
+    <Compile Include="Entities\AvtomatskiPonudnikEF.cs" />
+    <Compile Include="Entities\KategorijaEF.cs" />
+    <Compile Include="Entities\KategorijaKarticnegaSistemaEF.cs" />
+    <Compile Include="Entities\KomentarEF.cs" />
+    <Compile Include="Entities\NarocenaKategorijaEF.cs" />
+    <Compile Include="Entities\NaslovEF.cs" />
+    <Compile Include="Entities\OcenaEF.cs" />
+    <Compile Include="Entities\OglasEF.cs" />
+    <Compile Include="Entities\PonudbaEF.cs" />
+    <Compile Include="Entities\KarticniSistemEF.cs" />
+    <Compile Include="Entities\PrivatnoSporociloEF.cs" />
+    <Compile Include="Entities\SeznamZeljaEF.cs" />
+    <Compile Include="Entities\UporabnikEF.cs" />
+    <Compile Include="FleamartContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

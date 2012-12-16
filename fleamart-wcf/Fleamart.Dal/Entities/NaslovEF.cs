@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fleamart.Contracts.Data
+namespace Fleamart.Dal.Entities
 {
-    class NaslovEF
+    public class NaslovEF
     {
         public int Id { get; set; }
         public string Ulica { get; set; }

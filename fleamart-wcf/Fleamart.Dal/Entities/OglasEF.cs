@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fleamart.Contracts.Data
+namespace Fleamart.Dal.Entities
 {
-    class OglasEF
+    public class OglasEF
     {
         public int Id { get; set; }
         public string Naslov { get; set; }
@@ -21,6 +21,16 @@ namespace Fleamart.Contracts.Data
         public DateTime CasSpremenjeno { get; set; }
         public int Status { get; set; }
 
-        public List<PonudbaEF>? Ponudbe { get; set; }
+        public List<PonudbaEF> Ponudbe { get; set; }
+
+        public int? StatusNakupa { get; set; }
+
+        public int? AvtorId { get; set; }
+        public virtual UporabnikEF Avtor { get; set; }
+
+        public int? KupecId { get; set; }
+        public virtual UporabnikEF Kupec { get; set; }
+
+        public List<KomentarEF> Komentarji { get; set; }
     }
 }
