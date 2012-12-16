@@ -1,4 +1,6 @@
-﻿using Fleamart.Dal;
+﻿using Fleamart.Contracts.Data;
+using Fleamart.Dal;
+using Fleamart.Dal.Dao;
 using System;
 using System.Collections.Generic;
 using System.Linq;

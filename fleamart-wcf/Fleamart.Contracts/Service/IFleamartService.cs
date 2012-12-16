@@ -12,5 +12,8 @@ namespace Fleamart.Contracts.Service
     {
         [OperationContract]
         string TestOperation();
+
+        [OperationContract]
+        bool LoginCheck(string upImeV, string passV);
     }
 }

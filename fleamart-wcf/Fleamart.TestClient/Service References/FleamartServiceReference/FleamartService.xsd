@@ -12,4 +12,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="LoginCheck">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="upImeV" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passV" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginCheckResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginCheckResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

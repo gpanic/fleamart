@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fleamart.Contracts.Data
 {
-    class Oglas
+    public class Oglas
     {
         public int Id { get; set; }
         public string Naslov { get; set; }

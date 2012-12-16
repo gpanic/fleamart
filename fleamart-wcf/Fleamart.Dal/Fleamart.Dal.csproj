@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.0\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -46,7 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dao\UserDAO.cs" />
+    <Compile Include="Dao\IDAO.cs" />
+    <Compile Include="Dao\UporabnikEFDao.cs" />
     <Compile Include="Entities\AvtomatskiPonudnikEF.cs" />
     <Compile Include="Entities\KategorijaEF.cs" />
     <Compile Include="Entities\KategorijaKarticnegaSistemaEF.cs" />
