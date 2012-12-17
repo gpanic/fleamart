@@ -44,23 +44,5 @@ namespace Fleamart.Service
             }
                         
         }
-
-
-        #region Kategorije
-        public List<Contracts.Data.Kategorija> VrniKategorije()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool DodajKategorijo(Contracts.Data.Kategorija k)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IzbrisiKategorijo(int id)
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
     }
 }

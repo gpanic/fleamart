@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 namespace Fleamart.Contracts.Service
 {
     [ServiceContract]
-    public interface IFleamartService
+    public interface IKategorijaService
     {
         [OperationContract]
-        string TestOperation();
+        List<Kategorija> VrniKategorije();
 
         [OperationContract]
-        bool LoginCheck(string upImeV, string passV);
+        bool DodajKategorijo(Kategorija k);
+
+        [OperationContract]
+        bool IzbrisiKategorijo(int id);
     }
 }
