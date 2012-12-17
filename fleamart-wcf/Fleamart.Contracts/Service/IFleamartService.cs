@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fleamart.Contracts.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -15,5 +16,17 @@ namespace Fleamart.Contracts.Service
 
         [OperationContract]
         bool LoginCheck(string upImeV, string passV);
+
+        #region Kategorije
+
+        [OperationContract]
+        List<Kategorija> VrniKategorije();
+
+        [OperationContract]
+        bool DodajKategorijo(Kategorija k);
+
+        [OperationContract]
+        bool IzbrisiKategorijo(int id);
+        #endregion
     }
 }

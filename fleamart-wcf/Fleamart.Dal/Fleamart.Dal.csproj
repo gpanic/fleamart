@@ -65,6 +65,11 @@
     <Compile Include="Entities\SeznamZeljaEF.cs" />
     <Compile Include="Entities\UporabnikEF.cs" />
     <Compile Include="FleamartContext.cs" />
+    <Compile Include="Migrations\FirstMigration.cs" />
+    <Compile Include="Migrations\FirstMigration.Designer.cs">
+      <DependentUpon>FirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,7 +78,11 @@
       <Name>Fleamart.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\FirstMigration.resx">
+      <DependentUpon>FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
