@@ -12,6 +12,8 @@ namespace Fleamart.Dal.Entities
         public int Id { get; set; }
         public double Znesek { get; set; }
         public DateTime Cas { get; set; }
-        public UporabnikEF Uporabnik { get; set; }
+
+        public int UporabnikId { get; set; }
+        public virtual UporabnikEF Uporabnik { get; set; }
     }
 }

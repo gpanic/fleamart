@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Dao\IDAO.cs" />
     <Compile Include="Dao\KategorijaEFDao.cs" />
+    <Compile Include="Dao\OglasEFDao.cs" />
     <Compile Include="Dao\UporabnikEFDao.cs" />
     <Compile Include="Entities\AvtomatskiPonudnikEF.cs" />
     <Compile Include="Entities\KategorijaEF.cs" />
