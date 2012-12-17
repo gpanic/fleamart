@@ -11,7 +11,7 @@ namespace Fleamart.Dal.Entities
     {
         public int Id { get; set; }
         public string Naslov { get; set; }
-        public bool Avkcija { get; set; }
+        public int Avkcija { get; set; }
         public double Cena { get; set; }
         public double? ZadnjaCenaAvkcija { get; set; }
         public string Opis { get; set; }

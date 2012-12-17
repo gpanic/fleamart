@@ -14,7 +14,7 @@ namespace Fleamart.Dal.Dao
     {
         public KategorijaEFDao()
         {
-            Mapper.CreateMap<KategorijaEF, KategorijaEF>();
+            Mapper.CreateMap<KategorijaEF, Kategorija>();
             Mapper.CreateMap<Kategorija, KategorijaEF>();
         }
 
@@ -78,7 +78,12 @@ namespace Fleamart.Dal.Dao
             using (FleamartContext db = new FleamartContext())
             {
                 List<KategorijaEF> kategorijeef = db.Kategorije.ToList();
-                List<Kategorija> kategorije = (kategorijeef != null) ? Mapper.Map<List<KategorijaEF>,List<Kategorija>>(kategorijeef) : null;
+                List<Kategorija> kategorije = new List<Kategorija>();
+
+                foreach (KategorijaEF kat in kategorijeef)
+                {
+                    kategorije.Add(Mapper.Map<KategorijaEF,Kategorija>(kat));
+                }
                 return kategorije;
             }
         }
