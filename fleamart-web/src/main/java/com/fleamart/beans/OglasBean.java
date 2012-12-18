@@ -27,8 +27,11 @@ public class OglasBean {
     }
 
     public OglasObj getOglas() {
-        if(oglas == null)
+        if(oglas == null){
             oglas = new OglasObj();
+            if(oglas.getSlike().size() == 0)
+                oglas.getSlike().add("");
+        }
         return oglas;
     }
 

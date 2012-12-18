@@ -20,5 +20,9 @@ namespace Fleamart.Contracts.Data
 
         [DataMember]
         public Uporabnik Uporabnik { get; set; }
+
+        [DataMember]
+        public Oglas Oglas { get; set; }
+
     }
 }

@@ -9,16 +9,9 @@ using System.Threading.Tasks;
 namespace Fleamart.Contracts.Service
 {
     [ServiceContract]
-    public interface IFleamartService
+    public interface IUporabnikService
     {
         [OperationContract]
-        string TestOperation();
-
-        [OperationContract]
-        bool LoginCheck(string upImeV, string passV);
-
-        [OperationContract]
-        bool placeBidOnItem(double znesek, int idUporabnika, int idOglas);
-
+        String registrirajUporabnika(Uporabnik uporabnik);
     }
 }

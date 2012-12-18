@@ -26,6 +26,12 @@ namespace Fleamart.TestClient.FleamartServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFleamartService/LoginCheck", ReplyAction="http://tempuri.org/IFleamartService/LoginCheckResponse")]
         System.Threading.Tasks.Task<bool> LoginCheckAsync(string upImeV, string passV);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFleamartService/placeBidOnItem", ReplyAction="http://tempuri.org/IFleamartService/placeBidOnItemResponse")]
+        bool placeBidOnItem(double znesek, int idUporabnika, int idOglas);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFleamartService/placeBidOnItem", ReplyAction="http://tempuri.org/IFleamartService/placeBidOnItemResponse")]
+        System.Threading.Tasks.Task<bool> placeBidOnItemAsync(double znesek, int idUporabnika, int idOglas);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +75,14 @@ namespace Fleamart.TestClient.FleamartServiceReference {
         
         public System.Threading.Tasks.Task<bool> LoginCheckAsync(string upImeV, string passV) {
             return base.Channel.LoginCheckAsync(upImeV, passV);
+        }
+        
+        public bool placeBidOnItem(double znesek, int idUporabnika, int idOglas) {
+            return base.Channel.placeBidOnItem(znesek, idUporabnika, idOglas);
+        }
+        
+        public System.Threading.Tasks.Task<bool> placeBidOnItemAsync(double znesek, int idUporabnika, int idOglas) {
+            return base.Channel.placeBidOnItemAsync(znesek, idUporabnika, idOglas);
         }
     }
 }

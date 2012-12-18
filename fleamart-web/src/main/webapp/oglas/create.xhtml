@@ -34,11 +34,13 @@
                         <h:message for="cena"/>
 
 <!--                        <ui:repeat value="#{oglasBean.oglas.slike}" var="slika" varStatus="status">            
-    <h:inputText value="#{slika[status.index]}" />
-</ui:repeat>
-<h:inputText value="#{myBean.newChoice}" />
-<h:commandButton value="Add" action="#{myBean.add}" />
-<h:commandButton value="Save" action="#{myBean.save}" />-->
+                            <h:inputText value="#{slika[status.index]}" />
+                        </ui:repeat>
+                        <h:column/>
+                        <h:column/>-->
+<!--                        <h:inputText value="#{myBean.newChoice}" />
+                        <h:commandButton value="Add" action="#{myBean.add}" />
+                        <h:commandButton value="Save" action="#{myBean.save}" />-->
                         <h:commandButton class="btn" actionListener="#{oglasBean.createOglas}" value="Dodaj oglas"/>
 
                     </h:panelGrid>
