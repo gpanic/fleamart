@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="/shared/layout.xhtml">
+		<ui:param name="title" value="Fleamart" />
+		<ui:define name="content">
+			<h1>Registracija</h1>
+			<h:panelGroup styleClass="registrac" layout="block">
+				<h:form>
+					<h:panelGrid columns="3">
+						<h:outputLabel value="Uporabniško ime" />
+						<h:inputText id="uime" value="#{regBean.uime}" required="true"
+							requiredMessage="Obvezno polje">
+						</h:inputText>
+						<h:message for="uime"></h:message>
+
+						<h:outputLabel value="Ime" />
+						<h:inputText id="ime" value="#{regBean.ime}" required="true"
+							requiredMessage="Obvezno polje">
+						</h:inputText>
+						<h:message for="ime"></h:message>
+
+						<h:outputLabel value="Priimek" />
+						<h:inputText id="priimek" value="#{regBean.priimek}" required="true"
+							requiredMessage="Obvezno polje">
+						</h:inputText>
+						<h:message for="priimek"></h:message>
+
+						<h:outputLabel value="Email" />
+						<h:inputText id="email" required="true" value="#{regBean.email}"
+							requiredMessage="Obvezno polje">
+						</h:inputText>
+						<h:message for="email"></h:message>
+
+						<h:outputLabel value="Geslo" />
+						<h:inputSecret id="geslo" required="true" value="#{regBean.geslo}"
+							requiredMessage="Obvezno polje">
+						</h:inputSecret>
+						<h:message for="geslo"></h:message>
+
+						<h:outputLabel value="Geslo (ponovno)" />
+						<h:inputSecret id="geslo2" required="true" value="#{regBean.geslo2}"
+							requiredMessage="Obvezno polje">
+						</h:inputSecret>
+						<h:message for="geslo2"></h:message>
+
+						<h:outputLabel value="Telefon" />
+						<h:inputText id="tel" required="true"
+							requiredMessage="Obvezno polje" value="#{regBean.telefon}" />
+						<h:message for="tel"></h:message>
+						
+						<h:outputLabel value="Ulica" />
+						<h:inputText id="ulica" required="true"
+							requiredMessage="Obvezno polje" value="#{regBean.ulica}" />
+						<h:message for="ulica"></h:message>
+						
+						<h:outputLabel value="Poštna številka" />
+						<h:inputText id="postnastev" required="true"
+							requiredMessage="Obvezno polje" value="#{regBean.postnastev}" />
+						<h:message for="postnastev"></h:message>
+						
+						<h:outputLabel value="Občina" />
+						<h:inputText id="obcina" required="true"
+							requiredMessage="Obvezno polje" value="#{regBean.obcina}" />
+						<h:message for="obcina"></h:message>
+						
+						<h:outputLabel value="Država" />
+						<h:inputText id="drzava" required="true"
+							requiredMessage="Obvezno polje" value="#{regBean.drzava}" />
+						<h:message for="drzava"></h:message>
+
+						<h:outputText value="" />
+						<h:commandButton value="Registracija" action="#{regBean.Registracija}">
+						</h:commandButton>
+						<h:outputText value="" />
+					</h:panelGrid>
+				</h:form>
+			</h:panelGroup>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
