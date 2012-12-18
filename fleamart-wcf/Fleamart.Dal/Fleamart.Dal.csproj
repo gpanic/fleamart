@@ -52,6 +52,7 @@
     <Compile Include="Dao\IDAO.cs" />
     <Compile Include="Dao\KategorijaEFDao.cs" />
     <Compile Include="Dao\OglasEFDao.cs" />
+    <Compile Include="Dao\PonudbaEFDao.cs" />
     <Compile Include="Dao\UporabnikEFDao.cs" />
     <Compile Include="Entities\AvtomatskiPonudnikEF.cs" />
     <Compile Include="Entities\KategorijaEF.cs" />
@@ -71,6 +72,10 @@
     <Compile Include="Migrations\201212180820545_InitialCreate.Designer.cs">
       <DependentUpon>201212180820545_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201212181446580_EditPonudba.cs" />
+    <Compile Include="Migrations\201212181446580_EditPonudba.Designer.cs">
+      <DependentUpon>201212181446580_EditPonudba.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,6 +92,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201212180820545_InitialCreate.resx">
       <DependentUpon>201212180820545_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201212181446580_EditPonudba.resx">
+      <DependentUpon>201212181446580_EditPonudba.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
