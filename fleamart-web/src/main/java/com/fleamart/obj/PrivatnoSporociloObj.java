@@ -4,10 +4,7 @@
  */
 package com.fleamart.obj;
 
-/**
- *
- * @author Dejan
- */
+
 class PrivatnoSporociloObj {
     
 }

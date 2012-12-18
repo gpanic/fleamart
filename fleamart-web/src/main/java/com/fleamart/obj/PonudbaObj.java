@@ -6,10 +6,7 @@ package com.fleamart.obj;
 
 import java.util.GregorianCalendar;
 
-/**
- *
- * @author Dejan
- */
+
 class PonudbaObj {
     
     private int id;
