@@ -29,7 +29,7 @@ namespace Fleamart.Dal.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Naslov = c.String(),
-                        Avkcija = c.Boolean(nullable: false),
+                        Avkcija = c.Int(nullable: false),
                         Cena = c.Double(nullable: false),
                         ZadnjaCenaAvkcija = c.Double(),
                         Opis = c.String(),
@@ -54,13 +54,13 @@ namespace Fleamart.Dal.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Znesek = c.Double(nullable: false),
                         Cas = c.DateTime(nullable: false),
-                        Uporabnik_Id = c.Int(),
+                        UporabnikId = c.Int(nullable: false),
                         OglasEF_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.UporabnikEFs", t => t.Uporabnik_Id)
+                .ForeignKey("dbo.UporabnikEFs", t => t.UporabnikId, cascadeDelete: true)
                 .ForeignKey("dbo.OglasEFs", t => t.OglasEF_Id)
-                .Index(t => t.Uporabnik_Id)
+                .Index(t => t.UporabnikId)
                 .Index(t => t.OglasEF_Id);
             
             CreateTable(
@@ -170,10 +170,12 @@ namespace Fleamart.Dal.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Nadkategorija = c.Int(nullable: false),
                         Naziv = c.String(),
+                        NadkategorijaId = c.Int(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.KategorijaEFs", t => t.NadkategorijaId)
+                .Index(t => t.NadkategorijaId);
             
             CreateTable(
                 "dbo.NarocenaKategorijaEFs",
@@ -209,6 +211,7 @@ namespace Fleamart.Dal.Migrations
             DropIndex("dbo.OcenaEFs", new[] { "OglasId" });
             DropIndex("dbo.NarocenaKategorijaEFs", new[] { "KategorijaId" });
             DropIndex("dbo.NarocenaKategorijaEFs", new[] { "UporabnikId" });
+            DropIndex("dbo.KategorijaEFs", new[] { "NadkategorijaId" });
             DropIndex("dbo.KarticniSistemEFs", new[] { "KategorijaId" });
             DropIndex("dbo.KarticniSistemEFs", new[] { "AvtorId" });
             DropIndex("dbo.KomentarEFs", new[] { "OglasEF_Id" });
@@ -218,7 +221,7 @@ namespace Fleamart.Dal.Migrations
             DropIndex("dbo.PrivatnoSporociloEFs", new[] { "Posiljatelj_Id" });
             DropIndex("dbo.UporabnikEFs", new[] { "NaslovId" });
             DropIndex("dbo.PonudbaEFs", new[] { "OglasEF_Id" });
-            DropIndex("dbo.PonudbaEFs", new[] { "Uporabnik_Id" });
+            DropIndex("dbo.PonudbaEFs", new[] { "UporabnikId" });
             DropIndex("dbo.OglasEFs", new[] { "KupecId" });
             DropIndex("dbo.OglasEFs", new[] { "AvtorId" });
             DropIndex("dbo.AvtomatskiPonudnikEFs", new[] { "UporabnikId" });
@@ -226,6 +229,7 @@ namespace Fleamart.Dal.Migrations
             DropForeignKey("dbo.OcenaEFs", "OglasId", "dbo.OglasEFs");
             DropForeignKey("dbo.NarocenaKategorijaEFs", "KategorijaId", "dbo.KategorijaEFs");
             DropForeignKey("dbo.NarocenaKategorijaEFs", "UporabnikId", "dbo.UporabnikEFs");
+            DropForeignKey("dbo.KategorijaEFs", "NadkategorijaId", "dbo.KategorijaEFs");
             DropForeignKey("dbo.KarticniSistemEFs", "KategorijaId", "dbo.KategorijaKarticnegaSistemaEFs");
             DropForeignKey("dbo.KarticniSistemEFs", "AvtorId", "dbo.UporabnikEFs");
             DropForeignKey("dbo.KomentarEFs", "OglasEF_Id", "dbo.OglasEFs");
@@ -235,7 +239,7 @@ namespace Fleamart.Dal.Migrations
             DropForeignKey("dbo.PrivatnoSporociloEFs", "Posiljatelj_Id", "dbo.UporabnikEFs");
             DropForeignKey("dbo.UporabnikEFs", "NaslovId", "dbo.NaslovEFs");
             DropForeignKey("dbo.PonudbaEFs", "OglasEF_Id", "dbo.OglasEFs");
-            DropForeignKey("dbo.PonudbaEFs", "Uporabnik_Id", "dbo.UporabnikEFs");
+            DropForeignKey("dbo.PonudbaEFs", "UporabnikId", "dbo.UporabnikEFs");
             DropForeignKey("dbo.OglasEFs", "KupecId", "dbo.UporabnikEFs");
             DropForeignKey("dbo.OglasEFs", "AvtorId", "dbo.UporabnikEFs");
             DropForeignKey("dbo.AvtomatskiPonudnikEFs", "UporabnikId", "dbo.UporabnikEFs");
