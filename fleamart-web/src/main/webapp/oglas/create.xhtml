@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Fleamart - Ustvari oglas</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/shared/layout.xhtml">
+            <ui:define name="content">
+                <h:form enctype="multipart/form-data">
+                    <h1>Ustvari oglas</h1>
+
+                    <h:panelGrid columns="2" cellpadding="5" width="100%">
+                        <h:outputLabel value="Naslov oglasa"/>
+                        <h:inputText styleClass="span8" id="naslov" value="#{oglasBean.oglas.naslov}" required="true"/>
+
+                        <h:outputText value="Opis izdelka"/>
+                        <h:inputTextarea styleClass="span8" rows="10" cols="50" value="#{oglasBean.oglas.opis}" required="true"/>
+
+                        <h:outputText value="Tip oglasa"/>
+                        <h:selectOneRadio id="avkcija" value="#{oglasBean.oglas.avkcija}" required="true">
+                            <f:selectItem itemLabel="Avkcija" itemValue="1"/>
+                            <f:selectItem itemLabel="Fiskna cena" itemValue="0"/>
+                        </h:selectOneRadio>
+
+                        <h:outputText value="Cena"/>
+                        <h:inputText id="cena" value="#{oglasBean.oglas.cena}" required="true">
+                            <f:validateRegex pattern="[\d.\d]"/>
+                        </h:inputText>
+                        <ui:repeat value="#{oglasBean.oglas.slike}" var="slika" varStatus="status">            
+                            <h:inputText value="#{slika[status.index]}" />
+                        </ui:repeat>
+<!--                        <h:inputText value="#{myBean.newChoice}" />
+                        <h:commandButton value="Add" action="#{myBean.add}" />
+                        <h:commandButton value="Save" action="#{myBean.save}" />-->
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

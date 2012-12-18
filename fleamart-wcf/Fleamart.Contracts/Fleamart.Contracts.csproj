@@ -46,6 +46,8 @@
     <Compile Include="Data\Naslov.cs" />
     <Compile Include="Data\Oglas.cs" />
     <Compile Include="Data\Ponudba.cs" />
+    <Compile Include="Data\PrivatnoSporocilo.cs" />
+    <Compile Include="Data\SeznamZelja.cs" />
     <Compile Include="Data\Uporabnik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\IFleamartService.cs" />

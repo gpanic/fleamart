@@ -11,7 +11,7 @@ namespace Fleamart.Dal.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201212170810275_InitialCreate"; }
+            get { return "201212180820545_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
