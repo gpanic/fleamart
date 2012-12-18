@@ -22,5 +22,9 @@ namespace Fleamart.Contracts.Data
         [DataMember]
         public int NadkategorijaId { get; set; }
 
+        public override string ToString()
+        {
+            return string.Format("Id: {0}, Naziv: {1}, Nadkategorija: {2}, NadkategorijaId: {3}", Id, Naziv, Nadkategorija, NadkategorijaId);
+        }
     }
 }

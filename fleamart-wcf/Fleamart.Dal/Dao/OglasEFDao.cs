@@ -25,6 +25,9 @@ namespace Fleamart.Dal.Dao
 
             Mapper.CreateMap<Uporabnik, UporabnikEF>();
             Mapper.CreateMap<UporabnikEF, Uporabnik>();
+
+            Mapper.CreateMap<Kategorija, KategorijaEF>();
+            Mapper.CreateMap<KategorijaEF, Kategorija>();
         }
 
         public bool Create(Oglas entity)
@@ -34,6 +37,8 @@ namespace Fleamart.Dal.Dao
                 if (entity != null)
                 {
                     OglasEF ef = Mapper.Map<Oglas, OglasEF>(entity);
+                    ef.Kategorija = null;
+                    ef.Avtor = null;
                     db.Oglasi.Add(ef);
                     db.SaveChanges();
                     return true;

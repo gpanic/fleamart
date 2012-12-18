@@ -67,15 +67,6 @@
     <Compile Include="Entities\SeznamZeljaEF.cs" />
     <Compile Include="Entities\UporabnikEF.cs" />
     <Compile Include="FleamartContext.cs" />
-    <Compile Include="Migrations\201212172255109_mig.cs" />
-    <Compile Include="Migrations\201212172255109_mig.Designer.cs">
-      <DependentUpon>201212172255109_mig.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\FirstMigration.cs" />
-    <Compile Include="Migrations\FirstMigration.Designer.cs">
-      <DependentUpon>FirstMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,16 +76,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201212172255109_mig.resx">
-      <DependentUpon>201212172255109_mig.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\FirstMigration.resx">
-      <DependentUpon>FirstMigration.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
