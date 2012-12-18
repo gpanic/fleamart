@@ -16,5 +16,9 @@ namespace Fleamart.Contracts.Service
 
         [OperationContract]
         bool LoginCheck(string upImeV, string passV);
+
+        [OperationContract]
+        bool placeBidOnItem(double znesek, int idUporabnika, int idOglas);
+
     }
 }
