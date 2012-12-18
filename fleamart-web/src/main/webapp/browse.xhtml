@@ -5,23 +5,38 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:metadata>
+	<f:viewParam name="kategorija" value="#{kat.queryKategorija}" />
+</f:metadata>
 <h:body>
 	<ui:composition template="/shared/layout.xhtml">
 		<ui:param name="title" value="Fleamart" />
 		<ui:define name="content">
 			<h1>Oglasi</h1>
-			<p>
+			<h:panelGroup layout="block" styleClass="iskanje">
 				<h:form>
-					<h:panelGrid border="0" columns="4">
-						<h:outputLabel value="Search" style="font-weight:bold" />
-						<h:inputText id="searchparam" value="#{kat.searchParam}" />
-						<h:selectOneMenu id="kategorija" value="#{kat.izbranaKategorija}">
-							<f:selectItems value="#{kat.kategorije}"></f:selectItems>
-						</h:selectOneMenu>
-						<h:commandButton value="Submit" />
-					</h:panelGrid>
+					<h:outputLabel value="Iskanje" style="font-weight:bold" />
+					<h:inputText id="searchparam" value="#{kat.searchParam}" />
+					<h:selectOneMenu id="kategorija" value="#{kat.izbranaKategorija}">
+						<f:selectItems value="#{kat.kategorije}"></f:selectItems>
+					</h:selectOneMenu>
+					<h:commandButton styleClass="btn" value="Išči" />
+					<div class="btn-group">
+						<button class="btn dropdown-toggle" data-toggle="dropdown"
+							href="#">
+							Kategorije <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+							<li><a href="#">Vse kategorije</a></li>
+							<ui:repeat var="kateg" value="#{kat.kategorije_names}">
+								<li><h:outputLink value="browse.xhtml?kategorija=#{kateg}">#{kateg}</h:outputLink></li>
+							</ui:repeat>
+						</ul>
+					</div>
 				</h:form>
-			</p>
+			</h:panelGroup>
+			<h:outputText value="#{kat.queryKategorija}" />
+			
 			<h:panelGroup styleClass="oglasi" layout="block">
 				<ui:repeat var="oglas" value="#{oglasBean.oglasi}">
 					<h:panelGroup styleClass="oglas" layout="block">
