@@ -18,6 +18,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+
 @ManagedBean(name = "oglasBean")
 @RequestScoped
 public class OglasBean {
@@ -81,11 +82,9 @@ public class OglasBean {
 
 
 //        ObjectFactory of = new ObjectFactory();
-
         Uporabnik up = new Uporabnik();
         up.setId(1);
 //        oglas.setAvtor(of.createUporabnik(up));
-
         OglasService client = new OglasService();
     }
 //

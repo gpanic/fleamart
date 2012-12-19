@@ -67,11 +67,7 @@
     <Compile Include="Entities\PrivatnoSporociloEF.cs" />
     <Compile Include="Entities\SeznamZeljaEF.cs" />
     <Compile Include="Entities\UporabnikEF.cs" />
-    <Compile Include="FleamartContext.cs" />
-    <Compile Include="Migrations\201212191013443_nekaj.cs" />
-    <Compile Include="Migrations\201212191013443_nekaj.Designer.cs">
-      <DependentUpon>201212191013443_nekaj.cs</DependentUpon>
-    </Compile>
+    <Compile Include="FleamartContext.cs" />  
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,11 +80,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201212191013443_nekaj.resx">
-      <DependentUpon>201212191013443_nekaj.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
