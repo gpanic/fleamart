@@ -1,5 +1,5 @@
 
-package com.fleamart.kategorija.ws;
+package com.fleamart.oglas.ws;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Kategorija", namespace = "http//www.fleamart.com/", propOrder = {
+@XmlType(name = "Kategorija", propOrder = {
     "id",
     "naziv"
 })

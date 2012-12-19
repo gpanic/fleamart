@@ -1,5 +1,5 @@
 
-package com.fleamart.kategorija.ws;
+package com.fleamart.oglas.ws;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +10,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ArrayOfKategorija complex type.
+ * <p>Java class for ArrayOfKomentar complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="ArrayOfKategorija">
+ * &lt;complexType name="ArrayOfKomentar">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Kategorija" type="{http//www.fleamart.com/}Kategorija" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Komentar" type="{http//www.fleamart.com/}Komentar" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,41 +29,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ArrayOfKategorija", namespace = "http//www.fleamart.com/", propOrder = {
-    "kategorija"
+@XmlType(name = "ArrayOfKomentar", propOrder = {
+    "komentar"
 })
-public class ArrayOfKategorija {
+public class ArrayOfKomentar {
 
-    @XmlElement(name = "Kategorija", nillable = true)
-    protected List<Kategorija> kategorija;
+    @XmlElement(name = "Komentar", nillable = true)
+    protected List<Komentar> komentar;
 
     /**
-     * Gets the value of the kategorija property.
+     * Gets the value of the komentar property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the kategorija property.
+     * This is why there is not a <CODE>set</CODE> method for the komentar property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getKategorija().add(newItem);
+     *    getKomentar().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Kategorija }
+     * {@link Komentar }
      * 
      * 
      */
-    public List<Kategorija> getKategorija() {
-        if (kategorija == null) {
-            kategorija = new ArrayList<Kategorija>();
+    public List<Komentar> getKomentar() {
+        if (komentar == null) {
+            komentar = new ArrayList<Komentar>();
         }
-        return this.kategorija;
+        return this.komentar;
     }
 
 }

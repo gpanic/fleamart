@@ -1,5 +1,5 @@
 
-package com.fleamart.kategorija.ws;
+package com.fleamart.oglas.ws;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="k" type="{http//www.fleamart.com/}Kategorija" minOccurs="0"/>
+ *         &lt;element name="o" type="{http//www.fleamart.com/}Oglas" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "k"
+    "o"
 })
-@XmlRootElement(name = "DodajKategorijo")
-public class DodajKategorijo {
+@XmlRootElement(name = "CreateOglas", namespace = "http://tempuri.org/")
+public class CreateOglas {
 
-    @XmlElementRef(name = "k", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
-    protected JAXBElement<Kategorija> k;
+    @XmlElementRef(name = "o", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    protected JAXBElement<Oglas> o;
 
     /**
-     * Gets the value of the k property.
+     * Gets the value of the o property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Kategorija }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Oglas }{@code >}
      *     
      */
-    public JAXBElement<Kategorija> getK() {
-        return k;
+    public JAXBElement<Oglas> getO() {
+        return o;
     }
 
     /**
-     * Sets the value of the k property.
+     * Sets the value of the o property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Kategorija }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Oglas }{@code >}
      *     
      */
-    public void setK(JAXBElement<Kategorija> value) {
-        this.k = value;
+    public void setO(JAXBElement<Oglas> value) {
+        this.o = value;
     }
 
 }

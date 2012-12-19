@@ -43,5 +43,9 @@ namespace Fleamart.Contracts.Data
         [DataMember]
         public List<SeznamZelja> SeznamZelja { get; set; }
 
+        public override string ToString()
+        {
+            return string.Format("Id: {0}, Vloga: {1}, Ime: {2}, Priimek: {3}, Email: {4}, Upime: {5}, Geslo: {6}, Telefon: {7}, Naslov: {8}, PrivatnaSporocila: {9}, SeznamZelja: {10}", Id, Vloga, Ime, Priimek, Email, Upime, Geslo, Telefon, Naslov, PrivatnaSporocila, SeznamZelja);
+        }
     }
 }
