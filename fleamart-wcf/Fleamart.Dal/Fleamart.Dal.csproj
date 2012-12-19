@@ -72,10 +72,6 @@
     <Compile Include="Migrations\201212180820545_InitialCreate.Designer.cs">
       <DependentUpon>201212180820545_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201212181446580_EditPonudba.cs" />
-    <Compile Include="Migrations\201212181446580_EditPonudba.Designer.cs">
-      <DependentUpon>201212181446580_EditPonudba.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -92,9 +88,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201212180820545_InitialCreate.resx">
       <DependentUpon>201212180820545_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201212181446580_EditPonudba.resx">
-      <DependentUpon>201212181446580_EditPonudba.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

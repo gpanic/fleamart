@@ -10,8 +10,5 @@ namespace Fleamart.Dal.Entities
     {
         public int Id { get; set; }
         public string Naziv { get; set; }
-
-        public int? NadkategorijaId { get; set; }
-        public virtual KategorijaEF Nadkategorija{ get; set; }
     }
 }
