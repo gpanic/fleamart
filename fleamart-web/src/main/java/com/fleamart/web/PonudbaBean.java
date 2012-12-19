@@ -3,7 +3,7 @@ package com.fleamart.web;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import com.fleamart.obj.Oglas;
+import com.fleamart.obj.OglasObj;
 
 @ManagedBean(name = "ponudbaBean")
 @RequestScoped
@@ -58,12 +58,12 @@ public class PonudbaBean
 				{
 					oglas.setCena(znesek);
 					return "oglas";
-					System.out.println("Ponudba poslana.");¸
+					System.out.println("Ponudba poslana.");ï¿½
 					
 				} else
 				{
 					return "oglas";
-					System.out.println("Ponudbe ni bilo mogoèe poslati.");
+					System.out.println("Ponudbe ni bilo mogoï¿½e poslati.");
 				}
 
 			} else

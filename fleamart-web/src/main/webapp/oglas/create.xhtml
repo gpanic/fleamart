@@ -10,24 +10,21 @@
     <h:body>
         <ui:composition template="/shared/layout.xhtml">
             <ui:define name="content">
-                
 
-        <script type="text/javascript">
-            $(function(){
-                alert("Hello world!");
+
+                <script type="text/javascript">
+                    $(function(){
+                        alert("Hello world!");
            
-                            $('#dodajoglas\\:kat1').click(function(){
-                               alert("$(this)"); 
-                            });
-            });
-        </script>
+                        $('#dodajoglas\\:kat1').click(function(){
+                            alert("$(this)"); 
+                        });
+                    });
+                </script>
                 <h:form id="dodajoglas">
                     <h1>Ustvari oglas</h1>
 
-                    Kategorija
-                    <h:selectOneListbox id="kat1" value="#{oglasBean.oglas.kategorija}" >
-                        <f:selectItems value="#{oglasBean.kategorije}" var="katego" itemValue="#{katego.id}" itemLabel="#{katego.naziv}"/>
-                    </h:selectOneListbox>
+
                     <table width="100%">
                         <tbody>
                             <tr>
@@ -36,9 +33,17 @@
                                 <td><h:message for="naslov"/></td>
                             </tr>
                             <tr>
-                                <td><h:outputText value="Opis izdelka"/></td>
+                                <td valign="top"><h:outputText value="Opis izdelka"/></td>
                                 <td><h:inputTextarea styleClass="span8" id="opis" rows="10" cols="50" value="#{oglasBean.oglas.opis}" requiredMessage="Obvezno polje" required="true"/></td>
                                 <td><h:message for="opis"/></td>
+                            </tr>
+                            <tr>
+                                <td valign="top"><h:outputLabel value="Kategorija"/></td>
+                                <td>
+                                    <h:selectOneListbox id="kat1" value="#{oglasBean.oglas.kategorija}" required="true"  requiredMessage="Obvezno polje">
+                                        <f:selectItems value="#{oglasBean.kategorije}" var="katego" itemValue="#{katego.id}" itemLabel="#{katego.naziv}"/>
+                                    </h:selectOneListbox>
+                                </td>
                             </tr>
                             <tr>
                                 <td><h:outputText value="Tip oglasa"/></td>

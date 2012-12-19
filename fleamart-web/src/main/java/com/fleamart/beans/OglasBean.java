@@ -24,9 +24,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class OglasBean {
 
     private List<Oglas> oglasi;
-    OglasObj oglas;
-    List<KategorijaObj> kategorije;
-    KategorijaObj kategorija;
+    private OglasObj oglas;
+    private List<KategorijaObj> kategorije;
+    private KategorijaObj kategorija;
 
     public OglasBean() {
     }
