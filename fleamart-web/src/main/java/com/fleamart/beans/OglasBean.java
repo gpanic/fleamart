@@ -18,7 +18,6 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-
 @ManagedBean(name = "oglasBean")
 @RequestScoped
 public class OglasBean {
@@ -29,6 +28,13 @@ public class OglasBean {
     private KategorijaObj kategorija;
 
     public OglasBean() {
+        oglas = new OglasObj();
+        if (oglas.getSlike().isEmpty()) {
+            oglas.getSlike().add("");
+            oglas.getSlike().add("");
+            oglas.getSlike().add("");
+        }
+        this.listKategorije();
     }
 
     public void listKategorije() {
@@ -42,15 +48,6 @@ public class OglasBean {
     }
 
     public OglasObj getOglas() {
-        if (oglas == null) {
-            oglas = new OglasObj();
-            if (oglas.getSlike().isEmpty()) {
-                oglas.getSlike().add("");
-                oglas.getSlike().add("");
-                oglas.getSlike().add("");
-            }
-            this.listKategorije();
-        }
         return oglas;
     }
 

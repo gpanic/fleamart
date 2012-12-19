@@ -28,38 +28,37 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _NaslovDrzava_QNAME = new QName("http//www.fleamart.com/", "Drzava");
-    private final static QName _NaslovUlica_QNAME = new QName("http//www.fleamart.com/", "Ulica");
-    private final static QName _NaslovObcina_QNAME = new QName("http//www.fleamart.com/", "Obcina");
+    private final static QName _RegistrirajUporabnikaResponseRegistrirajUporabnikaResult_QNAME = new QName("http://tempuri.org/", "registrirajUporabnikaResult");
     private final static QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
-    private final static QName _DateTime_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "dateTime");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
+    private final static QName _UnsignedByte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedByte");
+    private final static QName _DateTime_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "dateTime");
+    private final static QName _AnyType_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyType");
+    private final static QName _UnsignedInt_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedInt");
     private final static QName _QName_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "QName");
+    private final static QName _Int_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "int");
+    private final static QName _Uporabnik_QNAME = new QName("http//www.fleamart.com/", "Uporabnik");
     private final static QName _UnsignedShort_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedShort");
     private final static QName _Naslov_QNAME = new QName("http//www.fleamart.com/", "Naslov");
     private final static QName _SeznamZelja_QNAME = new QName("http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", "SeznamZelja");
     private final static QName _Float_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "float");
-    private final static QName _Long_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "long");
-    private final static QName _Short_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "short");
-    private final static QName _Base64Binary_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "base64Binary");
-    private final static QName _Byte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "byte");
-    private final static QName _ArrayOfPrivatnoSporocilo_QNAME = new QName("http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", "ArrayOfPrivatnoSporocilo");
-    private final static QName _Boolean_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "boolean");
-    private final static QName _UnsignedByte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedByte");
-    private final static QName _AnyType_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyType");
-    private final static QName _UnsignedInt_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedInt");
-    private final static QName _Int_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "int");
-    private final static QName _Uporabnik_QNAME = new QName("http//www.fleamart.com/", "Uporabnik");
     private final static QName _Decimal_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "decimal");
+    private final static QName _Long_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "long");
     private final static QName _Double_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "double");
     private final static QName _ArrayOfSeznamZelja_QNAME = new QName("http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", "ArrayOfSeznamZelja");
+    private final static QName _Short_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "short");
     private final static QName _Guid_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "guid");
+    private final static QName _Base64Binary_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "base64Binary");
     private final static QName _Duration_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "duration");
+    private final static QName _Byte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "byte");
     private final static QName _String_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "string");
+    private final static QName _ArrayOfPrivatnoSporocilo_QNAME = new QName("http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", "ArrayOfPrivatnoSporocilo");
     private final static QName _UnsignedLong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedLong");
+    private final static QName _Boolean_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "boolean");
     private final static QName _PrivatnoSporocilo_QNAME = new QName("http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", "PrivatnoSporocilo");
-    private final static QName _RegistrirajUporabnikaResponseRegistrirajUporabnikaResult_QNAME = new QName("http://tempuri.org/", "registrirajUporabnikaResult");
-    private final static QName _RegistrirajUporabnikaUporabnik_QNAME = new QName("http://tempuri.org/", "uporabnik");
+    private final static QName _NaslovDrzava_QNAME = new QName("http//www.fleamart.com/", "Drzava");
+    private final static QName _NaslovUlica_QNAME = new QName("http//www.fleamart.com/", "Ulica");
+    private final static QName _NaslovObcina_QNAME = new QName("http//www.fleamart.com/", "Obcina");
     private final static QName _UporabnikPrivatnaSporocila_QNAME = new QName("http//www.fleamart.com/", "PrivatnaSporocila");
     private final static QName _UporabnikIme_QNAME = new QName("http//www.fleamart.com/", "Ime");
     private final static QName _UporabnikEmail_QNAME = new QName("http//www.fleamart.com/", "Email");
@@ -68,12 +67,31 @@ public class ObjectFactory {
     private final static QName _UporabnikPriimek_QNAME = new QName("http//www.fleamart.com/", "Priimek");
     private final static QName _UporabnikUpime_QNAME = new QName("http//www.fleamart.com/", "Upime");
     private final static QName _UporabnikSeznamZelja_QNAME = new QName("http//www.fleamart.com/", "SeznamZelja");
+    private final static QName _RegistrirajUporabnikaUporabnik_QNAME = new QName("http://tempuri.org/", "uporabnik");
+    private final static QName _LoginCheckUpImeV_QNAME = new QName("http://tempuri.org/", "upImeV");
+    private final static QName _LoginCheckPassV_QNAME = new QName("http://tempuri.org/", "passV");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.fleamart.uporabnik.ws
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link LoginCheckResponse }
+     * 
+     */
+    public LoginCheckResponse createLoginCheckResponse() {
+        return new LoginCheckResponse();
+    }
+
+    /**
+     * Create an instance of {@link LoginCheck }
+     * 
+     */
+    public LoginCheck createLoginCheck() {
+        return new LoginCheck();
     }
 
     /**
@@ -98,6 +116,14 @@ public class ObjectFactory {
      */
     public RegistrirajUporabnikaResponse createRegistrirajUporabnikaResponse() {
         return new RegistrirajUporabnikaResponse();
+    }
+
+    /**
+     * Create an instance of {@link Naslov }
+     * 
+     */
+    public Naslov createNaslov() {
+        return new Naslov();
     }
 
     /**
@@ -133,38 +159,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Naslov }
-     * 
-     */
-    public Naslov createNaslov() {
-        return new Naslov();
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Drzava", scope = Naslov.class)
-    public JAXBElement<String> createNaslovDrzava(String value) {
-        return new JAXBElement<String>(_NaslovDrzava_QNAME, String.class, Naslov.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Ulica", scope = Naslov.class)
-    public JAXBElement<String> createNaslovUlica(String value) {
-        return new JAXBElement<String>(_NaslovUlica_QNAME, String.class, Naslov.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Obcina", scope = Naslov.class)
-    public JAXBElement<String> createNaslovObcina(String value) {
-        return new JAXBElement<String>(_NaslovObcina_QNAME, String.class, Naslov.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "registrirajUporabnikaResult", scope = RegistrirajUporabnikaResponse.class)
+    public JAXBElement<String> createRegistrirajUporabnikaResponseRegistrirajUporabnikaResult(String value) {
+        return new JAXBElement<String>(_RegistrirajUporabnikaResponseRegistrirajUporabnikaResult_QNAME, String.class, RegistrirajUporabnikaResponse.class, value);
     }
 
     /**
@@ -177,15 +177,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "dateTime")
-    public JAXBElement<XMLGregorianCalendar> createDateTime(XMLGregorianCalendar value) {
-        return new JAXBElement<XMLGregorianCalendar>(_DateTime_QNAME, XMLGregorianCalendar.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
      * 
      */
@@ -195,12 +186,66 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Short }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "unsignedByte")
+    public JAXBElement<Short> createUnsignedByte(Short value) {
+        return new JAXBElement<Short>(_UnsignedByte_QNAME, Short.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "dateTime")
+    public JAXBElement<XMLGregorianCalendar> createDateTime(XMLGregorianCalendar value) {
+        return new JAXBElement<XMLGregorianCalendar>(_DateTime_QNAME, XMLGregorianCalendar.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "anyType")
+    public JAXBElement<Object> createAnyType(Object value) {
+        return new JAXBElement<Object>(_AnyType_QNAME, Object.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "unsignedInt")
+    public JAXBElement<Long> createUnsignedInt(Long value) {
+        return new JAXBElement<Long>(_UnsignedInt_QNAME, Long.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "QName")
     public JAXBElement<QName> createQName(QName value) {
         return new JAXBElement<QName>(_QName_QNAME, QName.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "int")
+    public JAXBElement<Integer> createInt(Integer value) {
+        return new JAXBElement<Integer>(_Int_QNAME, Integer.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Uporabnik")
+    public JAXBElement<Uporabnik> createUporabnik(Uporabnik value) {
+        return new JAXBElement<Uporabnik>(_Uporabnik_QNAME, Uporabnik.class, null, value);
     }
 
     /**
@@ -240,111 +285,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "long")
-    public JAXBElement<Long> createLong(Long value) {
-        return new JAXBElement<Long>(_Long_QNAME, Long.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Short }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "short")
-    public JAXBElement<Short> createShort(Short value) {
-        return new JAXBElement<Short>(_Short_QNAME, Short.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link byte[]}{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "base64Binary")
-    public JAXBElement<byte[]> createBase64Binary(byte[] value) {
-        return new JAXBElement<byte[]>(_Base64Binary_QNAME, byte[].class, null, ((byte[]) value));
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Byte }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "byte")
-    public JAXBElement<Byte> createByte(Byte value) {
-        return new JAXBElement<Byte>(_Byte_QNAME, Byte.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfPrivatnoSporocilo }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", name = "ArrayOfPrivatnoSporocilo")
-    public JAXBElement<ArrayOfPrivatnoSporocilo> createArrayOfPrivatnoSporocilo(ArrayOfPrivatnoSporocilo value) {
-        return new JAXBElement<ArrayOfPrivatnoSporocilo>(_ArrayOfPrivatnoSporocilo_QNAME, ArrayOfPrivatnoSporocilo.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "boolean")
-    public JAXBElement<Boolean> createBoolean(Boolean value) {
-        return new JAXBElement<Boolean>(_Boolean_QNAME, Boolean.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Short }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "unsignedByte")
-    public JAXBElement<Short> createUnsignedByte(Short value) {
-        return new JAXBElement<Short>(_UnsignedByte_QNAME, Short.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "anyType")
-    public JAXBElement<Object> createAnyType(Object value) {
-        return new JAXBElement<Object>(_AnyType_QNAME, Object.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "unsignedInt")
-    public JAXBElement<Long> createUnsignedInt(Long value) {
-        return new JAXBElement<Long>(_UnsignedInt_QNAME, Long.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "int")
-    public JAXBElement<Integer> createInt(Integer value) {
-        return new JAXBElement<Integer>(_Int_QNAME, Integer.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Uporabnik")
-    public JAXBElement<Uporabnik> createUporabnik(Uporabnik value) {
-        return new JAXBElement<Uporabnik>(_Uporabnik_QNAME, Uporabnik.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "decimal")
     public JAXBElement<BigDecimal> createDecimal(BigDecimal value) {
         return new JAXBElement<BigDecimal>(_Decimal_QNAME, BigDecimal.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "long")
+    public JAXBElement<Long> createLong(Long value) {
+        return new JAXBElement<Long>(_Long_QNAME, Long.class, null, value);
     }
 
     /**
@@ -366,12 +321,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Short }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "short")
+    public JAXBElement<Short> createShort(Short value) {
+        return new JAXBElement<Short>(_Short_QNAME, Short.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "guid")
     public JAXBElement<String> createGuid(String value) {
         return new JAXBElement<String>(_Guid_QNAME, String.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link byte[]}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "base64Binary")
+    public JAXBElement<byte[]> createBase64Binary(byte[] value) {
+        return new JAXBElement<byte[]>(_Base64Binary_QNAME, byte[].class, null, ((byte[]) value));
     }
 
     /**
@@ -384,6 +357,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Byte }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "byte")
+    public JAXBElement<Byte> createByte(Byte value) {
+        return new JAXBElement<Byte>(_Byte_QNAME, Byte.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
@@ -393,12 +375,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfPrivatnoSporocilo }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", name = "ArrayOfPrivatnoSporocilo")
+    public JAXBElement<ArrayOfPrivatnoSporocilo> createArrayOfPrivatnoSporocilo(ArrayOfPrivatnoSporocilo value) {
+        return new JAXBElement<ArrayOfPrivatnoSporocilo>(_ArrayOfPrivatnoSporocilo_QNAME, ArrayOfPrivatnoSporocilo.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "unsignedLong")
     public JAXBElement<BigInteger> createUnsignedLong(BigInteger value) {
         return new JAXBElement<BigInteger>(_UnsignedLong_QNAME, BigInteger.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "boolean")
+    public JAXBElement<Boolean> createBoolean(Boolean value) {
+        return new JAXBElement<Boolean>(_Boolean_QNAME, Boolean.class, null, value);
     }
 
     /**
@@ -414,18 +414,27 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "registrirajUporabnikaResult", scope = RegistrirajUporabnikaResponse.class)
-    public JAXBElement<String> createRegistrirajUporabnikaResponseRegistrirajUporabnikaResult(String value) {
-        return new JAXBElement<String>(_RegistrirajUporabnikaResponseRegistrirajUporabnikaResult_QNAME, String.class, RegistrirajUporabnikaResponse.class, value);
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Drzava", scope = Naslov.class)
+    public JAXBElement<String> createNaslovDrzava(String value) {
+        return new JAXBElement<String>(_NaslovDrzava_QNAME, String.class, Naslov.class, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "uporabnik", scope = RegistrirajUporabnika.class)
-    public JAXBElement<Uporabnik> createRegistrirajUporabnikaUporabnik(Uporabnik value) {
-        return new JAXBElement<Uporabnik>(_RegistrirajUporabnikaUporabnik_QNAME, Uporabnik.class, RegistrirajUporabnika.class, value);
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Ulica", scope = Naslov.class)
+    public JAXBElement<String> createNaslovUlica(String value) {
+        return new JAXBElement<String>(_NaslovUlica_QNAME, String.class, Naslov.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Obcina", scope = Naslov.class)
+    public JAXBElement<String> createNaslovObcina(String value) {
+        return new JAXBElement<String>(_NaslovObcina_QNAME, String.class, Naslov.class, value);
     }
 
     /**
@@ -507,6 +516,33 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "SeznamZelja", scope = Uporabnik.class)
     public JAXBElement<ArrayOfSeznamZelja> createUporabnikSeznamZelja(ArrayOfSeznamZelja value) {
         return new JAXBElement<ArrayOfSeznamZelja>(_UporabnikSeznamZelja_QNAME, ArrayOfSeznamZelja.class, Uporabnik.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "uporabnik", scope = RegistrirajUporabnika.class)
+    public JAXBElement<Uporabnik> createRegistrirajUporabnikaUporabnik(Uporabnik value) {
+        return new JAXBElement<Uporabnik>(_RegistrirajUporabnikaUporabnik_QNAME, Uporabnik.class, RegistrirajUporabnika.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "upImeV", scope = LoginCheck.class)
+    public JAXBElement<String> createLoginCheckUpImeV(String value) {
+        return new JAXBElement<String>(_LoginCheckUpImeV_QNAME, String.class, LoginCheck.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "passV", scope = LoginCheck.class)
+    public JAXBElement<String> createLoginCheckPassV(String value) {
+        return new JAXBElement<String>(_LoginCheckPassV_QNAME, String.class, LoginCheck.class, value);
     }
 
 }

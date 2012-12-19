@@ -43,7 +43,7 @@ public class PonudbaBean
 		try
 		{
 			/*
-			com.fleamart.obj.Oglas oglas = new Oglas();
+			com.fleamart.obj.OglasObj oglas = new OglasObj();
 			double trenutnaCena = oglas.getCena();
 			if (znesek > trenutnaCena)
 			{
