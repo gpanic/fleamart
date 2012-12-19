@@ -15,12 +15,5 @@ namespace Fleamart.Contracts.Data
 
         [DataMember]
         public string Naziv { get; set; }
-
-        [DataMember]
-        public Kategorija Nadkategorija { get; set; }
-
-        [DataMember]
-        public int NadkategorijaId { get; set; }
-
     }
 }

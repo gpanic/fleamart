@@ -6,26 +6,32 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<h:head>
-    	<title>#{title}</title>
-    	<h:outputStylesheet name="bootstrap.min.css" library="css"/>
-    	<h:outputStylesheet name="style.css" library="css"/>
-    </h:head>
-	<h:body>
-		<h:panelGroup styleClass="container-fluid" layout="block">
-			<ui:insert name="menu-top">
-				<ui:include src="/shared/menu_top.xhtml"/>
+<h:head>
+	<title>#{title}</title>
+	<h:outputStylesheet name="bootstrap.min.css" library="css" />
+	<h:outputStylesheet name="style.css" library="css" />
+</h:head>
+<h:body>
+	<h:panelGroup styleClass="container-fluid" layout="block">
+		<ui:insert name="menu-top">
+			<ui:include src="/shared/menu_top.xhtml" />
+		</ui:insert>
+		<h:panelGroup styleClass="row-fluid" layout="block">
+			<ui:insert name="menu-left">
+				<ui:include src="/shared/menu_left.xhtml" />
 			</ui:insert>
-			<h:panelGroup styleClass="row-fluid" layout="block">
-				<ui:insert name="menu-left">
-					<ui:include src="/shared/menu_left.xhtml"/>
-				</ui:insert>
-				<h:panelGroup styleClass="span8" layout="block">
-					<ui:insert name="content"/>
-				</h:panelGroup>
+			<h:panelGroup styleClass="span8" layout="block">
+				<ui:insert name="content" />
 			</h:panelGroup>
 		</h:panelGroup>
-		<h:outputScript name="bootstrap.min.js" library="js"/>
-   		<script src="http://code.jquery.com/jquery-latest.js"></script>
-	</h:body>
+	</h:panelGroup>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<h:outputScript name="bootstrap.min.js" library="js" />
+	<h:outputScript name="bootstrap-dropdown.js" library="js" />
+	<script>
+		$(document).ready(function() {
+			$('.dropdown-toggle').dropdown();
+		});
+	</script>
+</h:body>
 </html>

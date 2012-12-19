@@ -29,6 +29,7 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
+    private final static QName _ArrayOfKategorija_QNAME = new QName("http//www.fleamart.com/", "ArrayOfKategorija");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
     private final static QName _UnsignedByte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedByte");
     private final static QName _DateTime_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "dateTime");
@@ -36,26 +37,23 @@ public class ObjectFactory {
     private final static QName _UnsignedInt_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedInt");
     private final static QName _Int_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "int");
     private final static QName _QName_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "QName");
+    private final static QName _Kategorija_QNAME = new QName("http//www.fleamart.com/", "Kategorija");
     private final static QName _UnsignedShort_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedShort");
     private final static QName _Float_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "float");
     private final static QName _Decimal_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "decimal");
-    private final static QName _Double_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "double");
     private final static QName _Long_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "long");
+    private final static QName _Double_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "double");
     private final static QName _Short_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "short");
     private final static QName _Guid_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "guid");
     private final static QName _Base64Binary_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "base64Binary");
     private final static QName _Duration_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "duration");
     private final static QName _Byte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "byte");
     private final static QName _String_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "string");
-    private final static QName _ArrayOfKategorija_QNAME = new QName("http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", "ArrayOfKategorija");
     private final static QName _UnsignedLong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedLong");
     private final static QName _Boolean_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "boolean");
-    private final static QName _Kategorija_QNAME = new QName("http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", "Kategorija");
-    private final static QName _KategorijaNaziv_QNAME = new QName("http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", "Naziv");
-    private final static QName _KategorijaNadkategorija_QNAME = new QName("http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", "Nadkategorija");
-    private final static QName _KategorijaNadkategorijaId_QNAME = new QName("http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", "NadkategorijaId");
     private final static QName _DodajKategorijoK_QNAME = new QName("http://tempuri.org/", "k");
     private final static QName _VrniKategorijeResponseVrniKategorijeResult_QNAME = new QName("http://tempuri.org/", "VrniKategorijeResult");
+    private final static QName _KategorijaNaziv_QNAME = new QName("http//www.fleamart.com/", "Naziv");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.fleamart.kategorija.ws
@@ -138,6 +136,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKategorija }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "ArrayOfKategorija")
+    public JAXBElement<ArrayOfKategorija> createArrayOfKategorija(ArrayOfKategorija value) {
+        return new JAXBElement<ArrayOfKategorija>(_ArrayOfKategorija_QNAME, ArrayOfKategorija.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
      * 
      */
@@ -201,6 +208,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Kategorija }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Kategorija")
+    public JAXBElement<Kategorija> createKategorija(Kategorija value) {
+        return new JAXBElement<Kategorija>(_Kategorija_QNAME, Kategorija.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
      * 
      */
@@ -228,21 +244,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Double }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "double")
-    public JAXBElement<Double> createDouble(Double value) {
-        return new JAXBElement<Double>(_Double_QNAME, Double.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "long")
     public JAXBElement<Long> createLong(Long value) {
         return new JAXBElement<Long>(_Long_QNAME, Long.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Double }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "double")
+    public JAXBElement<Double> createDouble(Double value) {
+        return new JAXBElement<Double>(_Double_QNAME, Double.class, null, value);
     }
 
     /**
@@ -300,15 +316,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKategorija }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", name = "ArrayOfKategorija")
-    public JAXBElement<ArrayOfKategorija> createArrayOfKategorija(ArrayOfKategorija value) {
-        return new JAXBElement<ArrayOfKategorija>(_ArrayOfKategorija_QNAME, ArrayOfKategorija.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
      * 
      */
@@ -330,42 +337,6 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Kategorija }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", name = "Kategorija")
-    public JAXBElement<Kategorija> createKategorija(Kategorija value) {
-        return new JAXBElement<Kategorija>(_Kategorija_QNAME, Kategorija.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", name = "Naziv", scope = Kategorija.class)
-    public JAXBElement<String> createKategorijaNaziv(String value) {
-        return new JAXBElement<String>(_KategorijaNaziv_QNAME, String.class, Kategorija.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Kategorija }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", name = "Nadkategorija", scope = Kategorija.class)
-    public JAXBElement<Kategorija> createKategorijaNadkategorija(Kategorija value) {
-        return new JAXBElement<Kategorija>(_KategorijaNadkategorija_QNAME, Kategorija.class, Kategorija.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", name = "NadkategorijaId", scope = Kategorija.class)
-    public JAXBElement<Integer> createKategorijaNadkategorijaId(Integer value) {
-        return new JAXBElement<Integer>(_KategorijaNadkategorijaId_QNAME, Integer.class, Kategorija.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Kategorija }{@code >}}
-     * 
-     */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "k", scope = DodajKategorijo.class)
     public JAXBElement<Kategorija> createDodajKategorijoK(Kategorija value) {
         return new JAXBElement<Kategorija>(_DodajKategorijoK_QNAME, Kategorija.class, DodajKategorijo.class, value);
@@ -378,6 +349,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "VrniKategorijeResult", scope = VrniKategorijeResponse.class)
     public JAXBElement<ArrayOfKategorija> createVrniKategorijeResponseVrniKategorijeResult(ArrayOfKategorija value) {
         return new JAXBElement<ArrayOfKategorija>(_VrniKategorijeResponseVrniKategorijeResult_QNAME, ArrayOfKategorija.class, VrniKategorijeResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Naziv", scope = Kategorija.class)
+    public JAXBElement<String> createKategorijaNaziv(String value) {
+        return new JAXBElement<String>(_KategorijaNaziv_QNAME, String.class, Kategorija.class, value);
     }
 
 }

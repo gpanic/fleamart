@@ -1,10 +1,9 @@
 
-package com.fleamart.kategorija.ws;
+package com.fleamart.oglas.ws;
 
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -19,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="k" type="{http//www.fleamart.com/}Kategorija" minOccurs="0"/>
+ *         &lt;element name="CreateOglasResult" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,36 +29,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "k"
+    "createOglasResult"
 })
-@XmlRootElement(name = "DodajKategorijo")
-public class DodajKategorijo {
+@XmlRootElement(name = "CreateOglasResponse", namespace = "http://tempuri.org/")
+public class CreateOglasResponse {
 
-    @XmlElementRef(name = "k", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
-    protected JAXBElement<Kategorija> k;
+    @XmlElement(name = "CreateOglasResult", namespace = "http://tempuri.org/")
+    protected Boolean createOglasResult;
 
     /**
-     * Gets the value of the k property.
+     * Gets the value of the createOglasResult property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Kategorija }{@code >}
+     *     {@link Boolean }
      *     
      */
-    public JAXBElement<Kategorija> getK() {
-        return k;
+    public Boolean isCreateOglasResult() {
+        return createOglasResult;
     }
 
     /**
-     * Sets the value of the k property.
+     * Sets the value of the createOglasResult property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Kategorija }{@code >}
+     *     {@link Boolean }
      *     
      */
-    public void setK(JAXBElement<Kategorija> value) {
-        this.k = value;
+    public void setCreateOglasResult(Boolean value) {
+        this.createOglasResult = value;
     }
 
 }
