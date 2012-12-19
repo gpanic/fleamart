@@ -12,35 +12,4 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="LoginCheck">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="upImeV" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="passV" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="LoginCheckResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="LoginCheckResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="placeBidOnItem">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="znesek" type="xs:double" />
-        <xs:element minOccurs="0" name="idUporabnika" type="xs:int" />
-        <xs:element minOccurs="0" name="idOglas" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="placeBidOnItemResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="placeBidOnItemResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
 </xs:schema>

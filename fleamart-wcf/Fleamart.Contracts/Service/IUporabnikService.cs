@@ -13,5 +13,9 @@ namespace Fleamart.Contracts.Service
     {
         [OperationContract]
         String registrirajUporabnika(Uporabnik uporabnik);
+
+        [OperationContract]
+        bool LoginCheck(string upImeV, string passV);
+
     }
 }
