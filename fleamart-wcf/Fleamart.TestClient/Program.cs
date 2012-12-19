@@ -29,7 +29,7 @@ namespace Fleamart.TestClient
                 Console.WriteLine("ni vpisan");
             }
 
-            /*
+            
             //test na zacetku
             string u1 = "metka";
             string p1 = "novak";
@@ -41,8 +41,8 @@ namespace Fleamart.TestClient
             else
             {
                 Console.WriteLine("ni enako");
-            }*/
-
+            }
+            */
             Console.ReadLine();
 
         }
