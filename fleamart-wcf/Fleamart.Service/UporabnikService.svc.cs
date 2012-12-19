@@ -23,29 +23,28 @@ namespace Fleamart.Service
             return udao.Create(uporabnik).ToString();
         }
 
-        public bool LoginCheck(string upImeV, string passV)
+        public int loginCheck(string upImeV, string passV)
         {
             try
             {
                 Fleamart.Contracts.Data.Uporabnik up = new Fleamart.Dal.Dao.UporabnikEFDao().Read(upImeV);
                 if (up == null)
                 {
-                    return false;
+                    return 0;
                 }
-
                 if (up.Geslo == passV)
                 {
-                    return true;
+                    return up.Id;
                 }
                 else
                 {
-                    return false;
+                    return 0;
                 }
             }
             catch (System.IO.IOException e)
             {
                 Console.WriteLine("Error " + e.Message);
-                return false;
+                return 0;
             }
 
         }

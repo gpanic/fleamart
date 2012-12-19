@@ -28,7 +28,6 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _RegistrirajUporabnikaResponseRegistrirajUporabnikaResult_QNAME = new QName("http://tempuri.org/", "registrirajUporabnikaResult");
     private final static QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
     private final static QName _UnsignedByte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedByte");
@@ -56,9 +55,13 @@ public class ObjectFactory {
     private final static QName _UnsignedLong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedLong");
     private final static QName _Boolean_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "boolean");
     private final static QName _PrivatnoSporocilo_QNAME = new QName("http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", "PrivatnoSporocilo");
+    private final static QName _RegistrirajUporabnikaUporabnik_QNAME = new QName("http://tempuri.org/", "uporabnik");
+    private final static QName _RegistrirajUporabnikaResponseRegistrirajUporabnikaResult_QNAME = new QName("http://tempuri.org/", "registrirajUporabnikaResult");
     private final static QName _NaslovDrzava_QNAME = new QName("http//www.fleamart.com/", "Drzava");
     private final static QName _NaslovUlica_QNAME = new QName("http//www.fleamart.com/", "Ulica");
     private final static QName _NaslovObcina_QNAME = new QName("http//www.fleamart.com/", "Obcina");
+    private final static QName _LoginCheckUpImeV_QNAME = new QName("http://tempuri.org/", "upImeV");
+    private final static QName _LoginCheckPassV_QNAME = new QName("http://tempuri.org/", "passV");
     private final static QName _UporabnikPrivatnaSporocila_QNAME = new QName("http//www.fleamart.com/", "PrivatnaSporocila");
     private final static QName _UporabnikIme_QNAME = new QName("http//www.fleamart.com/", "Ime");
     private final static QName _UporabnikEmail_QNAME = new QName("http//www.fleamart.com/", "Email");
@@ -67,31 +70,12 @@ public class ObjectFactory {
     private final static QName _UporabnikPriimek_QNAME = new QName("http//www.fleamart.com/", "Priimek");
     private final static QName _UporabnikUpime_QNAME = new QName("http//www.fleamart.com/", "Upime");
     private final static QName _UporabnikSeznamZelja_QNAME = new QName("http//www.fleamart.com/", "SeznamZelja");
-    private final static QName _RegistrirajUporabnikaUporabnik_QNAME = new QName("http://tempuri.org/", "uporabnik");
-    private final static QName _LoginCheckUpImeV_QNAME = new QName("http://tempuri.org/", "upImeV");
-    private final static QName _LoginCheckPassV_QNAME = new QName("http://tempuri.org/", "passV");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.fleamart.uporabnik.ws
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link LoginCheckResponse }
-     * 
-     */
-    public LoginCheckResponse createLoginCheckResponse() {
-        return new LoginCheckResponse();
-    }
-
-    /**
-     * Create an instance of {@link LoginCheck }
-     * 
-     */
-    public LoginCheck createLoginCheck() {
-        return new LoginCheck();
     }
 
     /**
@@ -116,6 +100,22 @@ public class ObjectFactory {
      */
     public RegistrirajUporabnikaResponse createRegistrirajUporabnikaResponse() {
         return new RegistrirajUporabnikaResponse();
+    }
+
+    /**
+     * Create an instance of {@link LoginCheckResponse }
+     * 
+     */
+    public LoginCheckResponse createLoginCheckResponse() {
+        return new LoginCheckResponse();
+    }
+
+    /**
+     * Create an instance of {@link LoginCheck }
+     * 
+     */
+    public LoginCheck createLoginCheck() {
+        return new LoginCheck();
     }
 
     /**
@@ -156,15 +156,6 @@ public class ObjectFactory {
      */
     public ArrayOfSeznamZelja createArrayOfSeznamZelja() {
         return new ArrayOfSeznamZelja();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "registrirajUporabnikaResult", scope = RegistrirajUporabnikaResponse.class)
-    public JAXBElement<String> createRegistrirajUporabnikaResponseRegistrirajUporabnikaResult(String value) {
-        return new JAXBElement<String>(_RegistrirajUporabnikaResponseRegistrirajUporabnikaResult_QNAME, String.class, RegistrirajUporabnikaResponse.class, value);
     }
 
     /**
@@ -411,6 +402,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "uporabnik", scope = RegistrirajUporabnika.class)
+    public JAXBElement<Uporabnik> createRegistrirajUporabnikaUporabnik(Uporabnik value) {
+        return new JAXBElement<Uporabnik>(_RegistrirajUporabnikaUporabnik_QNAME, Uporabnik.class, RegistrirajUporabnika.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "registrirajUporabnikaResult", scope = RegistrirajUporabnikaResponse.class)
+    public JAXBElement<String> createRegistrirajUporabnikaResponseRegistrirajUporabnikaResult(String value) {
+        return new JAXBElement<String>(_RegistrirajUporabnikaResponseRegistrirajUporabnikaResult_QNAME, String.class, RegistrirajUporabnikaResponse.class, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
@@ -435,6 +444,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Obcina", scope = Naslov.class)
     public JAXBElement<String> createNaslovObcina(String value) {
         return new JAXBElement<String>(_NaslovObcina_QNAME, String.class, Naslov.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "upImeV", scope = LoginCheck.class)
+    public JAXBElement<String> createLoginCheckUpImeV(String value) {
+        return new JAXBElement<String>(_LoginCheckUpImeV_QNAME, String.class, LoginCheck.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "passV", scope = LoginCheck.class)
+    public JAXBElement<String> createLoginCheckPassV(String value) {
+        return new JAXBElement<String>(_LoginCheckPassV_QNAME, String.class, LoginCheck.class, value);
     }
 
     /**
@@ -516,33 +543,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "SeznamZelja", scope = Uporabnik.class)
     public JAXBElement<ArrayOfSeznamZelja> createUporabnikSeznamZelja(ArrayOfSeznamZelja value) {
         return new JAXBElement<ArrayOfSeznamZelja>(_UporabnikSeznamZelja_QNAME, ArrayOfSeznamZelja.class, Uporabnik.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "uporabnik", scope = RegistrirajUporabnika.class)
-    public JAXBElement<Uporabnik> createRegistrirajUporabnikaUporabnik(Uporabnik value) {
-        return new JAXBElement<Uporabnik>(_RegistrirajUporabnikaUporabnik_QNAME, Uporabnik.class, RegistrirajUporabnika.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "upImeV", scope = LoginCheck.class)
-    public JAXBElement<String> createLoginCheckUpImeV(String value) {
-        return new JAXBElement<String>(_LoginCheckUpImeV_QNAME, String.class, LoginCheck.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "passV", scope = LoginCheck.class)
-    public JAXBElement<String> createLoginCheckPassV(String value) {
-        return new JAXBElement<String>(_LoginCheckPassV_QNAME, String.class, LoginCheck.class, value);
     }
 
 }
