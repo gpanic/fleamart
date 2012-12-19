@@ -58,12 +58,12 @@ public class PonudbaBean
 				{
 					oglas.setCena(znesek);
 					return "oglas";
-					System.out.println("Ponudba poslana.");¸
+					System.out.println("Ponudba poslana.");ï¿½
 					
 				} else
 				{
 					return "oglas";
-					System.out.println("Ponudbe ni bilo mogoèe poslati.");
+					System.out.println("Ponudbe ni bilo mogoï¿½e poslati.");
 				}
 
 			} else
