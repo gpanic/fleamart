@@ -23,6 +23,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="Cas" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="Oglas" type="{http//www.fleamart.com/}Oglas" minOccurs="0"/>
  *         &lt;element name="Uporabnik" type="{http//www.fleamart.com/}Uporabnik" minOccurs="0"/>
  *         &lt;element name="Znesek" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *       &lt;/sequence>
@@ -37,6 +38,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "Ponudba", propOrder = {
     "cas",
     "id",
+    "oglas",
     "uporabnik",
     "znesek"
 })
@@ -47,6 +49,8 @@ public class Ponudba {
     protected XMLGregorianCalendar cas;
     @XmlElement(name = "Id")
     protected Integer id;
+    @XmlElementRef(name = "Oglas", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
+    protected JAXBElement<Oglas> oglas;
     @XmlElementRef(name = "Uporabnik", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
     protected JAXBElement<Uporabnik> uporabnik;
     @XmlElement(name = "Znesek")
@@ -98,6 +102,30 @@ public class Ponudba {
      */
     public void setId(Integer value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the oglas property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link Oglas }{@code >}
+     *     
+     */
+    public JAXBElement<Oglas> getOglas() {
+        return oglas;
+    }
+
+    /**
+     * Sets the value of the oglas property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link Oglas }{@code >}
+     *     
+     */
+    public void setOglas(JAXBElement<Oglas> value) {
+        this.oglas = value;
     }
 
     /**

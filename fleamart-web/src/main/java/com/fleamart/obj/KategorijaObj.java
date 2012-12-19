@@ -5,11 +5,14 @@ public class KategorijaObj {
 
 	private int id;
         private String naziv;
-        private int nadkategorijaId;
-        private KategorijaObj nadkategorija;
 
     public int getId() {
         return id;
+    }
+
+    public KategorijaObj(int id, String naziv) {
+        this.id = id;
+        this.naziv = naziv;
     }
 
     public void setId(int id) {
@@ -24,25 +27,10 @@ public class KategorijaObj {
         this.naziv = naziv;
     }
 
-    public int getNadkategorijaId() {
-        return nadkategorijaId;
-    }
-
-    public void setNadkategorijaId(int nadkategorijaId) {
-        this.nadkategorijaId = nadkategorijaId;
-    }
-
-    public KategorijaObj getNadkategorija() {
-        return nadkategorija;
-    }
-
-    public void setNadkategorija(KategorijaObj nadkategorija) {
-        this.nadkategorija = nadkategorija;
-    }
-
     @Override
     public String toString() {
-        return "KategorijaObj{" + "id=" + id + ", naziv=" + naziv + ", nadkategorijaId=" + nadkategorijaId + ", nadkategorija=" + nadkategorija + '}';
+        return "KategorijaObj{" + "id=" + id + ", naziv=" + naziv + '}';
     }
+
 	
 }

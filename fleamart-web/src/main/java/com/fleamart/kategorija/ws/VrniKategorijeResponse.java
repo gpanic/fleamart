@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="VrniKategorijeResult" type="{http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data}ArrayOfKategorija" minOccurs="0"/>
+ *         &lt;element name="VrniKategorijeResult" type="{http//www.fleamart.com/}ArrayOfKategorija" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

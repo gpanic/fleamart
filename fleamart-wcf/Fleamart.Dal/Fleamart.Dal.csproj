@@ -52,6 +52,7 @@
     <Compile Include="Dao\IDAO.cs" />
     <Compile Include="Dao\KategorijaEFDao.cs" />
     <Compile Include="Dao\OglasEFDao.cs" />
+    <Compile Include="Dao\PonudbaEFDao.cs" />
     <Compile Include="Dao\UporabnikEFDao.cs" />
     <Compile Include="Entities\AvtomatskiPonudnikEF.cs" />
     <Compile Include="Entities\KategorijaEF.cs" />
@@ -67,6 +68,10 @@
     <Compile Include="Entities\SeznamZeljaEF.cs" />
     <Compile Include="Entities\UporabnikEF.cs" />
     <Compile Include="FleamartContext.cs" />
+    <Compile Include="Migrations\201212190841437_asd.cs" />
+    <Compile Include="Migrations\201212190841437_asd.Designer.cs">
+      <DependentUpon>201212190841437_asd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,6 +84,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201212190841437_asd.resx">
+      <DependentUpon>201212190841437_asd.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

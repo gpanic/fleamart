@@ -21,7 +21,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Avkcija" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="Avkcija" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="Avtor" type="{http//www.fleamart.com/}Uporabnik" minOccurs="0"/>
  *         &lt;element name="CasDo" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="CasOd" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
@@ -69,7 +69,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class Oglas {
 
     @XmlElement(name = "Avkcija")
-    protected Integer avkcija;
+    protected Boolean avkcija;
     @XmlElementRef(name = "Avtor", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
     protected JAXBElement<Uporabnik> avtor;
     @XmlElement(name = "CasDo")
@@ -110,10 +110,10 @@ public class Oglas {
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link Boolean }
      *     
      */
-    public Integer getAvkcija() {
+    public Boolean isAvkcija() {
         return avkcija;
     }
 
@@ -122,10 +122,10 @@ public class Oglas {
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link Boolean }
      *     
      */
-    public void setAvkcija(Integer value) {
+    public void setAvkcija(Boolean value) {
         this.avkcija = value;
     }
 

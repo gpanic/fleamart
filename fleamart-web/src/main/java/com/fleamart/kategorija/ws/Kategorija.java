@@ -20,8 +20,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="Nadkategorija" type="{http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data}Kategorija" minOccurs="0"/>
- *         &lt;element name="NadkategorijaId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Naziv" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -32,21 +30,15 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Kategorija", namespace = "http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", propOrder = {
+@XmlType(name = "Kategorija", namespace = "http//www.fleamart.com/", propOrder = {
     "id",
-    "nadkategorija",
-    "nadkategorijaId",
     "naziv"
 })
 public class Kategorija {
 
     @XmlElement(name = "Id")
     protected Integer id;
-    @XmlElementRef(name = "Nadkategorija", namespace = "http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", type = JAXBElement.class, required = false)
-    protected JAXBElement<Kategorija> nadkategorija;
-    @XmlElementRef(name = "NadkategorijaId", namespace = "http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", type = JAXBElement.class, required = false)
-    protected JAXBElement<Integer> nadkategorijaId;
-    @XmlElementRef(name = "Naziv", namespace = "http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Naziv", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
     protected JAXBElement<String> naziv;
 
     /**
@@ -71,54 +63,6 @@ public class Kategorija {
      */
     public void setId(Integer value) {
         this.id = value;
-    }
-
-    /**
-     * Gets the value of the nadkategorija property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Kategorija }{@code >}
-     *     
-     */
-    public JAXBElement<Kategorija> getNadkategorija() {
-        return nadkategorija;
-    }
-
-    /**
-     * Sets the value of the nadkategorija property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Kategorija }{@code >}
-     *     
-     */
-    public void setNadkategorija(JAXBElement<Kategorija> value) {
-        this.nadkategorija = value;
-    }
-
-    /**
-     * Gets the value of the nadkategorijaId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
-     *     
-     */
-    public JAXBElement<Integer> getNadkategorijaId() {
-        return nadkategorijaId;
-    }
-
-    /**
-     * Sets the value of the nadkategorijaId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
-     *     
-     */
-    public void setNadkategorijaId(JAXBElement<Integer> value) {
-        this.nadkategorijaId = value;
     }
 
     /**

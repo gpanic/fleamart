@@ -3,6 +3,7 @@ package com.fleamart.obj;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class OglasObj {
 
@@ -12,17 +13,26 @@ public class OglasObj {
     private double cena;
     private double zadnjaCenaAvkcija;
     private String opis;
-    private ArrayList<String> Slike;
+    private List<String> Slike = new ArrayList<>();
     private GregorianCalendar casOd;
     private GregorianCalendar casDo;
     private GregorianCalendar casSpremenjeno;
     private int status;
-    private ArrayList<PonudbaObj> ponudbe;
+    private List<PonudbaObj> ponudbe;
     private int statusNakupa;
     private UporabnikObj avtor;
     private UporabnikObj kupec;
-    private ArrayList<KomentarObj> komentarji;
-    private ArrayList<KategorijaObj> kategorije;
+    private List<KomentarObj> komentarji;
+    private List<KategorijaObj> kategorije;
+    private int kategorija;
+
+    public int getKategorija() {
+        return kategorija;
+    }
+
+    public void setKategorija(int kategorija) {
+        this.kategorija = kategorija;
+    }
 
     public int getId() {
         return id;
@@ -72,11 +82,11 @@ public class OglasObj {
         this.opis = opis;
     }
 
-    public ArrayList<String> getSlike() {
+    public List<String> getSlike() {
         return Slike;
     }
 
-    public void setSlike(ArrayList<String> Slike) {
+    public void setSlike(List<String> Slike) {
         this.Slike = Slike;
     }
 
@@ -112,11 +122,11 @@ public class OglasObj {
         this.status = status;
     }
 
-    public ArrayList<PonudbaObj> getPonudbe() {
+    public List<PonudbaObj> getPonudbe() {
         return ponudbe;
     }
 
-    public void setPonudbe(ArrayList<PonudbaObj> ponudbe) {
+    public void setPonudbe(List<PonudbaObj> ponudbe) {
         this.ponudbe = ponudbe;
     }
 
@@ -144,22 +154,24 @@ public class OglasObj {
         this.kupec = kupec;
     }
 
-    public ArrayList<KomentarObj> getKomentarji() {
+    public List<KomentarObj> getKomentarji() {
         return komentarji;
     }
 
-    public void setKomentarji(ArrayList<KomentarObj> komentarji) {
+    public void setKomentarji(List<KomentarObj> komentarji) {
         this.komentarji = komentarji;
     }
 
-    public ArrayList<KategorijaObj> getKategorije() {
+    public List<KategorijaObj> getKategorije() {
         return kategorije;
     }
 
-    public void setKategorije(ArrayList<KategorijaObj> kategorije) {
+    public void setKategorije(List<KategorijaObj> kategorije) {
         this.kategorije = kategorije;
     }
+
     
+
     @Override
     public String toString() {
         return "OglasObj{" + "id=" + id + ", naslov=" + naslov + ", avkcija=" + avkcija + ", cena=" + cena + ", zadnjaCenaAvkcija=" + zadnjaCenaAvkcija + ", opis=" + opis + ", Slike=" + Slike + ", casOd=" + casOd + ", casDo=" + casDo + ", casSpremenjeno=" + casSpremenjeno + ", status=" + status + ", ponudbe=" + ponudbe + ", statusNakupa=" + statusNakupa + ", avtor=" + avtor + ", kupec=" + kupec + ", komentarji=" + komentarji + ", kategorije=" + kategorije + '}';

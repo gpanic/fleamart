@@ -13,7 +13,6 @@ namespace Fleamart.Service
     // NOTE: In order to launch WCF Test Client for testing this service, please select KategorijeService.svc or KategorijeService.svc.cs at the Solution Explorer and start debugging.
     public class KategorijeService : IKategorijaService
     {
-
         public List<Contracts.Data.Kategorija> VrniKategorije()
         {
             return new KategorijaEFDao().List();
