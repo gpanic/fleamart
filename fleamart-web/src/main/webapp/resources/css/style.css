@@ -79,10 +79,33 @@ body {
 	border: 2px solid #E3E3E3;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
+	margin-top: 30px;
 }
 
 .registrac input {
 	margin-left: 20px;
 	margin-right: 5px;
 	width: 150px;
+}
+
+.iskanje {
+	padding: 10px;
+	margin-top: 30px;
+	width: 635px;
+	border: 1px solid #E3E3E3;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	background-color: #F7F7F7;
+}
+
+.iskanje label {
+	font-size: 18px;
+}
+
+.iskanje input {
+	margin: 0px 10px 0 10px;
+}
+
+.iskanje select {
+	margin: 1px;
 }

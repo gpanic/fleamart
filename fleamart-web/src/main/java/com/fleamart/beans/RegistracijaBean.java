@@ -93,11 +93,23 @@ public class RegistracijaBean {
 		this.drzava = drzava;
 	}
 	
-	public void Registracija() {
+	public String Registracija() {
 		if (!this.geslo.equals(this.geslo2)) {
-			return;
+			return "fail";
 		}
-		
+		this.setUporabnikWS();
+		String resStr = new UporabnikService().getBasicHttpBindingIUporabnikService().registrirajUporabnika(this.u);
+		String out = (resStr.equals("false")) ? "fail" : "login";
+		return out;
+	}
+	public String getGeslo2() {
+		return geslo2;
+	}
+	public void setGeslo2(String geslo2) {
+		this.geslo2 = geslo2;
+	}
+	
+	public void setUporabnikWS() {
 		this.u = new Uporabnik();
 		ObjectFactory of = new ObjectFactory();
 		u.setUpime(of.createUporabnikUpime(this.uime));
@@ -113,13 +125,5 @@ public class RegistracijaBean {
 		naslov.setDrzava(of.createNaslovDrzava(this.drzava));
 		naslov.setUlica(of.createNaslovUlica(this.ulica));
 		this.u.setNaslov(of.createNaslov(naslov));
-		String resStr = new UporabnikService().getBasicHttpBindingIUporabnikService().registrirajUporabnika(this.u);
-		System.out.println(resStr);
-	}
-	public String getGeslo2() {
-		return geslo2;
-	}
-	public void setGeslo2(String geslo2) {
-		this.geslo2 = geslo2;
 	}
 }
