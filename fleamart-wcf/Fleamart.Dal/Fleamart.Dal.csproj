@@ -68,13 +68,9 @@
     <Compile Include="Entities\SeznamZeljaEF.cs" />
     <Compile Include="Entities\UporabnikEF.cs" />
     <Compile Include="FleamartContext.cs" />
-    <Compile Include="Migrations\201212180820545_InitialCreate.cs" />
-    <Compile Include="Migrations\201212180820545_InitialCreate.Designer.cs">
-      <DependentUpon>201212180820545_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201212181446580_EditPonudba.cs" />
-    <Compile Include="Migrations\201212181446580_EditPonudba.Designer.cs">
-      <DependentUpon>201212181446580_EditPonudba.cs</DependentUpon>
+    <Compile Include="Migrations\201212191013443_nekaj.cs" />
+    <Compile Include="Migrations\201212191013443_nekaj.Designer.cs">
+      <DependentUpon>201212191013443_nekaj.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,16 +86,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201212180820545_InitialCreate.resx">
-      <DependentUpon>201212180820545_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201212181446580_EditPonudba.resx">
-      <DependentUpon>201212181446580_EditPonudba.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201212190841437_asd.resx">
-      <DependentUpon>201212190841437_asd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201212191013443_nekaj.resx">
+      <DependentUpon>201212191013443_nekaj.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
