@@ -59,6 +59,10 @@ public class OglasBean {
     }
 
     public OglasBean() {
+    	oglasi = new ArrayList<OglasObj>();
+    	OglasObj o = new OglasObj();
+    	o.setId(55);
+    	oglasi.add(o);
         oglas = new OglasObj();
     }
 
