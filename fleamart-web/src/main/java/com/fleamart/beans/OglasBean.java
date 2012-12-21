@@ -30,6 +30,10 @@ public class OglasBean {
     private KategorijaObj kategorija;
 
     public OglasBean() {
+    	oglasi = new ArrayList<OglasObj>();
+    	OglasObj o = new OglasObj();
+    	o.setId(55);
+    	oglasi.add(o);
         oglas = new OglasObj();
         if (oglas.getSlike().isEmpty()) {
             oglas.getSlike().add("");

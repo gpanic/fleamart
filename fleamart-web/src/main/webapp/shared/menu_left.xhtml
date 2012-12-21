@@ -20,6 +20,27 @@
 						<li><h:outputLink value="#">Menu item 3</h:outputLink></li>
 					</ul>
 				</h:panelGroup>
+				<h:panelGroup rendered="#{!kosaricaBean.isEmpty()}" styleClass="well" layout="block" style="max-width: 340px; padding: 8px 0;">
+					<p class="nav-header">Kosarica</p>
+					<div style="padding:0px 15px;">
+					<table class="table">
+						<ui:repeat var="item" value="#{kosaricaBean.items}">
+							<tr>
+								<td><h:outputText value="#{item[1]}"/></td>
+								<td><h:outputText value="#{item[2]}€"/></td>
+								<h:form>
+									<td><h:commandLink styleClass="icon-remove" value="" action="#{kosaricaBean.removeItem(item[0])}"></h:commandLink></td>
+								</h:form>
+							</tr>
+						</ui:repeat>
+						<tr style="font-weight:bold;">
+							<td>Total:</td>
+							<td><h:outputText value="#{kosaricaBean.total}€"/></td>
+							<td></td>
+						</tr>
+					</table>
+					</div>
+				</h:panelGroup>
 			</h:panelGroup>
 		</ui:composition>
 	</h:body>
