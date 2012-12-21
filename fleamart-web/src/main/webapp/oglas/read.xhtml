@@ -1,12 +1,46 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Fleamart - #{oglasBean.oglas.naslov}</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <ui:composition template="/shared/layout.xhtml">
+            <ui:define name="content">
+                <style> 
+                    #galleria{height:320px}
+                </style>
+                <div class="span6">
+                    <h1>#{oglasBean.oglas.naslov}</h1>
+                    #{oglasBean.oglas.opis}
+                    <br/><br/>
+                    <div id="galleria">
+                        <a href="http://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Locomotives-Roundhouse2.jpg/800px-Locomotives-Roundhouse2.jpg">
+                            <img data-title="Locomotives Roundhouse"
+                                 data-description="Steam locomotives of the Chicago &amp; North Western Railway."
+                                 src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Locomotives-Roundhouse2.jpg/100px-Locomotives-Roundhouse2.jpg"/>
+                        </a>
+                        <a href="http://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Icebergs_in_the_High_Arctic_-_20050907.jpg/1000px-Icebergs_in_the_High_Arctic_-_20050907.jpg">
+                            <img data-title="Icebergs in the High Arctic"
+                                 data-description="”The debris loading isn't particularly extensive, but the color is usual.”"
+                                 src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Icebergs_in_the_High_Arctic_-_20050907.jpg/100px-Icebergs_in_the_High_Arctic_-_20050907.jpg"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="span6">
+                </div>
+                <script type="text/javascript" src="../js/galleria/galleria-1.2.8.min.js"></script>
+                <script type="text/javascript">
+                    // Load the classic theme
+                    Galleria.loadTheme('../js/galleria/galleria.classic.min.js');
+                    //
+                    //                    // Initialize Galleria
+                    Galleria.run('#galleria');
+                </script>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
-

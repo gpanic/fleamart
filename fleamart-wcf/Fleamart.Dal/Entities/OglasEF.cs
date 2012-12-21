@@ -23,12 +23,12 @@ namespace Fleamart.Dal.Entities
         public DateTime CasOd { get; set; }
         public DateTime CasDo { get; set; }
         public DateTime? CasSpremenjeno { get; set; }
-        public int Status { get; set; }
+        public int Status { get; set; } //0: aktivno, 1: nekativno
 
         public List<PonudbaEF> Ponudbe { get; set; }
 
-        public int? StatusNakupa { get; set; }
-
+        public int? StatusNakupa { get; set; } // 0: nekdo je kliknil kupi, 1: izdelek je res bil prodan
+        
         public int? AvtorId { get; set; }
         public virtual UporabnikEF Avtor { get; set; }
 

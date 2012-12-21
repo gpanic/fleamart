@@ -13,9 +13,12 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -29,18 +32,31 @@ public class OglasBean {
     private List<KategorijaObj> kategorije;
     private KategorijaObj kategorija;
 
-    public OglasBean() {
-    	oglasi = new ArrayList<OglasObj>();
-    	OglasObj o = new OglasObj();
-    	o.setId(55);
-    	oglasi.add(o);
-        oglas = new OglasObj();
-        if (oglas.getSlike().isEmpty()) {
-            oglas.getSlike().add("");
-            oglas.getSlike().add("");
-            oglas.getSlike().add("");
+    @PostConstruct
+    public void init() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        String view = fc.getViewRoot().getViewId();
+
+        if (view.equals("/oglas/read.xhtml")) {
+            try {
+                HttpServletRequest request = (HttpServletRequest) fc.getExternalContext().getRequest();
+                readOglas(Integer.parseInt(request.getParameter("id")));
+            } catch (Exception e) {
+                fc.getApplication().getNavigationHandler().handleNavigation(fc, null, "../index.xhtml");
+            }
+        } else {
+            if (view.equals("/oglas/create.xhtml")) {
+                oglas.getSlike().add("");
+                oglas.getSlike().add("");
+                oglas.getSlike().add("");
+
+                this.listKategorije();
+            }
         }
-        this.listKategorije();
+    }
+
+    public OglasBean() {
+        oglasi = new ArrayList<OglasObj>();
     }
 
     public KategorijaObj getKategorija() {
@@ -92,19 +108,19 @@ public class OglasBean {
         UporabnikObj u = new UporabnikObj();
         u.setId(1); //kasneje prebrat iz seje
         oglas.setAvtor(u);
+        oglas.setStatus(0);
         Oglas o = ConverterHelper.oglasObj2Ws(oglas);
-        
+
         OglasService client = new OglasService();
         Boolean rezultat = client.getBasicHttpBindingIOglasService().createOglas(o);
         String out = (rezultat) ? "read" : "fail";
         return out;
     }
-//
-//    public void readOglas(int id) {
-//        OglasService client = new OglasService();
-//        oglas = client.getBasicHttpBindingIOglasService().readOglas(id);
-//    }
-//
+
+    public void readOglas(int id) {
+        OglasService client = new OglasService();
+        oglas = ConverterHelper.oglasWs2Obj(client.getBasicHttpBindingIOglasService().readOglas(id));
+    }
 //    public void updateOglas(ActionEvent event) {
 //        OglasService client = new OglasService();
 //        client.getBasicHttpBindingIOglasService().updateOglas(oglas);
