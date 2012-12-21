@@ -31,8 +31,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="Kategorija" type="{http//www.fleamart.com/}Kategorija" minOccurs="0"/>
  *         &lt;element name="Komentarji" type="{http//www.fleamart.com/}ArrayOfKomentar" minOccurs="0"/>
  *         &lt;element name="Kupec" type="{http//www.fleamart.com/}Uporabnik" minOccurs="0"/>
- *         &lt;element name="Naslov" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="Opis" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Naslov" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Opis" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Ponudbe" type="{http//www.fleamart.com/}ArrayOfPonudba" minOccurs="0"/>
  *         &lt;element name="Slike" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="Status" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
@@ -90,10 +90,10 @@ public class Oglas {
     protected JAXBElement<ArrayOfKomentar> komentarji;
     @XmlElementRef(name = "Kupec", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
     protected JAXBElement<Uporabnik> kupec;
-    @XmlElementRef(name = "Naslov", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> naslov;
-    @XmlElementRef(name = "Opis", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> opis;
+    @XmlElement(name = "Naslov", required = true, nillable = true)
+    protected String naslov;
+    @XmlElement(name = "Opis", required = true, nillable = true)
+    protected String opis;
     @XmlElementRef(name = "Ponudbe", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
     protected JAXBElement<ArrayOfPonudba> ponudbe;
     @XmlElementRef(name = "Slike", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
@@ -350,10 +350,10 @@ public class Oglas {
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link String }
      *     
      */
-    public JAXBElement<String> getNaslov() {
+    public String getNaslov() {
         return naslov;
     }
 
@@ -362,10 +362,10 @@ public class Oglas {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link String }
      *     
      */
-    public void setNaslov(JAXBElement<String> value) {
+    public void setNaslov(String value) {
         this.naslov = value;
     }
 
@@ -374,10 +374,10 @@ public class Oglas {
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link String }
      *     
      */
-    public JAXBElement<String> getOpis() {
+    public String getOpis() {
         return opis;
     }
 
@@ -386,10 +386,10 @@ public class Oglas {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link String }
      *     
      */
-    public void setOpis(JAXBElement<String> value) {
+    public void setOpis(String value) {
         this.opis = value;
     }
 

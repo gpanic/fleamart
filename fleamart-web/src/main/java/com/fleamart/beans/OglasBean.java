@@ -1,8 +1,10 @@
 package com.fleamart.beans;
 
+import com.fleamart.helpers.ConverterHelper;
 import com.fleamart.kategorija.ws.*;
 import com.fleamart.obj.KategorijaObj;
 import com.fleamart.obj.OglasObj;
+import com.fleamart.obj.UporabnikObj;
 import com.fleamart.oglas.ws.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -22,7 +24,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @RequestScoped
 public class OglasBean {
 
-    private List<Oglas> oglasi;
+    private List<OglasObj> oglasi;
     private OglasObj oglas;
     private List<KategorijaObj> kategorije;
     private KategorijaObj kategorija;
@@ -37,14 +39,21 @@ public class OglasBean {
         this.listKategorije();
     }
 
+    public KategorijaObj getKategorija() {
+        return kategorija;
+    }
+
+    public void setKategorija(KategorijaObj kategorija) {
+        this.kategorija = kategorija;
+    }
+
     public void listKategorije() {
         kategorije = new ArrayList<KategorijaObj>();
         KategorijeService client = new KategorijeService();
         ArrayOfKategorija kat = client.getBasicHttpBindingIKategorijaService().vrniKategorije();
         List<com.fleamart.kategorija.ws.Kategorija> kategorijeList = kat.getKategorija();
-        for (com.fleamart.kategorija.ws.Kategorija k : kategorijeList) {
+        for (com.fleamart.kategorija.ws.Kategorija k : kategorijeList)
             kategorije.add(new KategorijaObj(k.getId().intValue(), k.getNaziv().getValue()));
-        }
     }
 
     public OglasObj getOglas() {
@@ -55,11 +64,11 @@ public class OglasBean {
         this.oglas = oglas;
     }
 
-    public List<Oglas> getOglasi() {
+    public List<OglasObj> getOglasi() {
         return oglasi;
     }
 
-    public void setOglasi(List<Oglas> oglasi) {
+    public void setOglasi(List<OglasObj> oglasi) {
         this.oglasi = oglasi;
     }
 
@@ -71,18 +80,20 @@ public class OglasBean {
         this.kategorije = kategorije;
     }
 
-    public void createOglas() {
+    public String createOglas() {
+        oglas.setCasOd(new GregorianCalendar());
         GregorianCalendar gc = new GregorianCalendar();
-        oglas.setCasOd(gc);
         gc.add(Calendar.DATE, 30);
         oglas.setCasDo(gc);
-
-
-//        ObjectFactory of = new ObjectFactory();
-        Uporabnik up = new Uporabnik();
-        up.setId(1);
-//        oglas.setAvtor(of.createUporabnik(up));
+        UporabnikObj u = new UporabnikObj();
+        u.setId(1); //kasneje prebrat iz seje
+        oglas.setAvtor(u);
+        Oglas o = ConverterHelper.oglasObj2Ws(oglas);
+        
         OglasService client = new OglasService();
+        Boolean rezultat = client.getBasicHttpBindingIOglasService().createOglas(o);
+        String out = (rezultat) ? "read" : "fail";
+        return out;
     }
 //
 //    public void readOglas(int id) {

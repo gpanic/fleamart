@@ -40,7 +40,7 @@
                             <tr>
                                 <td valign="top"><h:outputLabel value="Kategorija"/></td>
                                 <td>
-                                    <h:selectOneListbox id="kat1" value="#{oglasBean.oglas.kategorija}" required="true"  requiredMessage="Obvezno polje">
+                                    <h:selectOneListbox id="kat1" value="#{oglasBean.oglas.kategorija.id}" required="true"  requiredMessage="Obvezno polje">
                                         <f:selectItems value="#{oglasBean.kategorije}" var="katego" itemValue="#{katego.id}" itemLabel="#{katego.naziv}"/>
                                     </h:selectOneListbox>
                                 </td>
@@ -56,16 +56,29 @@
                             </tr>
                             <tr>
                                 <td><h:outputText value="Cena"/></td>
-                                <td><h:inputText id="cena" value="#{oglasBean.oglas.cena}" required="true" requiredMessage="Obvezno polje"/></td>
+                                <td>
+                                    <h:inputText id="cena" value="#{oglasBean.oglas.cena}" required="true" validatorMessage="Niz mora biti številka" requiredMessage="Obvezno polje">
+                                        <f:validateRegex pattern="(\d*.\d*|\d*)" />
+                                    </h:inputText>
+                                </td>
                                 <td><h:message for="cena"/></td>
                             </tr>
                             <tr>
-                                <td valign="top"><h:outputText value="Slike (Povezave)"/></td>
-                                <td colspan="2">
-                                    <ui:repeat value="#{oglasBean.oglas.slike}" var="slika">
+                                <td valign="top">
+                                    <h:outputText value="Slike (Povezave)"/>
+                                </td>
+                                <td>
+                                    <ui:repeat value="#{oglasBean.oglas.slike}" var="slika" varStatus="slikaStatus">
                                         <table width="100%">
                                             <tr>
-                                                <td><h:inputText styleClass="span8" value="#{slika}" /></td>
+                                                <td>
+                                                    <h:inputText id="slika" styleClass="span8" value="#{oglasBean.oglas.slike[slikaStatus.index]}" validatorMessage="Niz mora biti povezava do slike">
+                                                        <f:validator validatorId="com.fleamart.validators.UrlValidator"/>
+                                                    </h:inputText>
+                                                </td>
+                                                <td>
+                                                    <h:message for="slika"/>
+                                                </td>
                                             </tr>
                                         </table>
                                     </ui:repeat>
@@ -73,7 +86,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <h:commandButton class="btn" actionListener="#{oglasBean.createOglas}" value="Dodaj oglas"/>
+                    <h:commandButton class="btn" action="#{oglasBean.createOglas}" value="Dodaj oglas"/>
 
                 </h:form>
             </ui:define>

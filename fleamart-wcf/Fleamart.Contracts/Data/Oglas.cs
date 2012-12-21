@@ -13,7 +13,7 @@ namespace Fleamart.Contracts.Data
         [DataMember]
         public int Id { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public string Naslov { get; set; }
 
         [DataMember] 
@@ -25,7 +25,7 @@ namespace Fleamart.Contracts.Data
         [DataMember]
         public double? ZadnjaCenaAvkcija { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public string Opis { get; set; }
 
         [DataMember]
