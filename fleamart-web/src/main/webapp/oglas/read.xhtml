@@ -10,13 +10,36 @@
     <h:body>
         <ui:composition template="/shared/layout.xhtml">
             <ui:define name="content">
-                <div class="span8" style="background-color: red;">
-                <h1>#{oglasBean.oglas.naslov}</h1>
-                #{oglasBean.oglas.opis}
+                <style> 
+                    #galleria{height:320px}
+                </style>
+                <div class="span6">
+                    <h1>#{oglasBean.oglas.naslov}</h1>
+                    #{oglasBean.oglas.opis}
+                    <br/><br/>
+                    <div id="galleria">
+                        <a href="http://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Locomotives-Roundhouse2.jpg/800px-Locomotives-Roundhouse2.jpg">
+                            <img data-title="Locomotives Roundhouse"
+                                 data-description="Steam locomotives of the Chicago &amp; North Western Railway."
+                                 src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Locomotives-Roundhouse2.jpg/100px-Locomotives-Roundhouse2.jpg"/>
+                        </a>
+                        <a href="http://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Icebergs_in_the_High_Arctic_-_20050907.jpg/1000px-Icebergs_in_the_High_Arctic_-_20050907.jpg">
+                            <img data-title="Icebergs in the High Arctic"
+                                 data-description="”The debris loading isn't particularly extensive, but the color is usual.”"
+                                 src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Icebergs_in_the_High_Arctic_-_20050907.jpg/100px-Icebergs_in_the_High_Arctic_-_20050907.jpg"/>
+                        </a>
+                    </div>
                 </div>
-                <div class="span4" style="background-color: blue;">
-                    
+                <div class="span6">
                 </div>
+                <script type="text/javascript" src="../js/galleria/galleria-1.2.8.min.js"></script>
+                <script type="text/javascript">
+                    // Load the classic theme
+                    Galleria.loadTheme('../js/galleria/galleria.classic.min.js');
+                    //
+                    //                    // Initialize Galleria
+                    Galleria.run('#galleria');
+                </script>
             </ui:define>
         </ui:composition>
     </h:body>

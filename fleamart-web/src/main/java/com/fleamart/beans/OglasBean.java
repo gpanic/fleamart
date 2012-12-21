@@ -38,14 +38,11 @@ public class OglasBean {
         String view = fc.getViewRoot().getViewId();
 
         if (view.equals("/oglas/read.xhtml")) {
-            if (oglas.getId() == 0) {
+            try {
                 HttpServletRequest request = (HttpServletRequest) fc.getExternalContext().getRequest();
-                try {
-                    readOglas(Integer.parseInt(request.getParameter("id")));
-                } catch (Exception e) {
-                    System.out.println(e.toString());
-                    fc.getApplication().getNavigationHandler().handleNavigation(fc, null, "../index.xhtml");
-                }
+                readOglas(Integer.parseInt(request.getParameter("id")));
+            } catch (Exception e) {
+                fc.getApplication().getNavigationHandler().handleNavigation(fc, null, "../index.xhtml");
             }
         } else {
             if (view.equals("/oglas/create.xhtml")) {
@@ -59,11 +56,7 @@ public class OglasBean {
     }
 
     public OglasBean() {
-    	oglasi = new ArrayList<OglasObj>();
-    	OglasObj o = new OglasObj();
-    	o.setId(55);
-    	oglasi.add(o);
-        oglas = new OglasObj();
+        oglasi = new ArrayList<OglasObj>();
     }
 
     public KategorijaObj getKategorija() {

@@ -23,7 +23,6 @@ namespace Fleamart.Service
 
         public Oglas ReadOglas(int id)
         {
-            System.Diagnostics.Debug.WriteLine(odao.Read(id));
             return odao.Read(id);
         }
 
