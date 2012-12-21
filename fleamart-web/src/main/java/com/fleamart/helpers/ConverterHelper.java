@@ -15,6 +15,7 @@ import com.fleamart.oglas.ws.Naslov;
 import com.fleamart.oglas.ws.Oglas;
 import com.fleamart.oglas.ws.Uporabnik;
 import com.fleamart.uporabnik.ws.ObjectFactory;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.datatype.DatatypeConfigurationException;

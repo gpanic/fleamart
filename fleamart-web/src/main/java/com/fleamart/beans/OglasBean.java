@@ -7,6 +7,7 @@ import com.fleamart.obj.OglasObj;
 import com.fleamart.obj.UporabnikObj;
 import com.fleamart.oglas.ws.*;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -17,6 +18,7 @@ import javax.annotation.PostConstruct;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -42,7 +44,12 @@ public class OglasBean {
                 HttpServletRequest request = (HttpServletRequest) fc.getExternalContext().getRequest();
                 readOglas(Integer.parseInt(request.getParameter("id")));
             } catch (Exception e) {
-                fc.getApplication().getNavigationHandler().handleNavigation(fc, null, "../index.xhtml");
+                try {
+                    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+                    ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
+                } catch (IOException ex) {
+                    Logger.getLogger(OglasBean.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         } else {
             if (view.equals("/oglas/create.xhtml")) {
