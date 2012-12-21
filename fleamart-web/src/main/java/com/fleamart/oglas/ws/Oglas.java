@@ -22,7 +22,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="Avkcija" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="Avtor" type="{http//www.fleamart.com/}Uporabnik" minOccurs="0"/>
+ *         &lt;element name="Avtor" type="{http//www.fleamart.com/}Uporabnik"/>
  *         &lt;element name="CasDo" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="CasOd" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="CasSpremenjeno" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
@@ -70,8 +70,8 @@ public class Oglas {
 
     @XmlElement(name = "Avkcija")
     protected Boolean avkcija;
-    @XmlElementRef(name = "Avtor", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
-    protected JAXBElement<Uporabnik> avtor;
+    @XmlElement(name = "Avtor", required = true, nillable = true)
+    protected Uporabnik avtor;
     @XmlElement(name = "CasDo")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar casDo;
@@ -134,10 +134,10 @@ public class Oglas {
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}
+     *     {@link Uporabnik }
      *     
      */
-    public JAXBElement<Uporabnik> getAvtor() {
+    public Uporabnik getAvtor() {
         return avtor;
     }
 
@@ -146,10 +146,10 @@ public class Oglas {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}
+     *     {@link Uporabnik }
      *     
      */
-    public void setAvtor(JAXBElement<Uporabnik> value) {
+    public void setAvtor(Uporabnik value) {
         this.avtor = value;
     }
 
