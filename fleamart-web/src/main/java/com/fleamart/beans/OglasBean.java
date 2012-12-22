@@ -102,7 +102,7 @@ public class OglasBean {
 
 	public OglasBean() {
 		oglasi = new ArrayList<OglasObj>();
-
+		oglas = new OglasObj();
 	}
 
 	public KategorijaObj getKategorija() {
