@@ -23,5 +23,10 @@ namespace Fleamart.Contracts.Service
         [OperationContract]
         bool DeleteOglas(int id);
 
+        [OperationContract]
+        List<Oglas> getOglasi();
+
+        [OperationContract]
+        List<Oglas> searchOglasi(String kategorija, String param);
     }
 }

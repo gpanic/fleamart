@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ArrayOfKomentar", propOrder = {
+@XmlType(name = "ArrayOfKomentar", namespace = "http//www.fleamart.com/", propOrder = {
     "komentar"
 })
 public class ArrayOfKomentar {

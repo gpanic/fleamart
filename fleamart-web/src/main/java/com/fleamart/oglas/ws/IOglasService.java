@@ -79,4 +79,32 @@ public interface IOglasService {
         @WebParam(name = "id", targetNamespace = "http://tempuri.org/")
         Integer id);
 
+    /**
+     * 
+     * @return
+     *     returns com.fleamart.oglas.ws.ArrayOfOglas
+     */
+    @WebMethod(action = "http://tempuri.org/IOglasService/getOglasi")
+    @WebResult(name = "getOglasiResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "getOglasi", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.GetOglasi")
+    @ResponseWrapper(localName = "getOglasiResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.GetOglasiResponse")
+    public ArrayOfOglas getOglasi();
+
+    /**
+     * 
+     * @param param
+     * @param kategorija
+     * @return
+     *     returns com.fleamart.oglas.ws.ArrayOfOglas
+     */
+    @WebMethod(action = "http://tempuri.org/IOglasService/searchOglasi")
+    @WebResult(name = "searchOglasiResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "searchOglasi", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.SearchOglasi")
+    @ResponseWrapper(localName = "searchOglasiResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.SearchOglasiResponse")
+    public ArrayOfOglas searchOglasi(
+        @WebParam(name = "kategorija", targetNamespace = "http://tempuri.org/")
+        String kategorija,
+        @WebParam(name = "param", targetNamespace = "http://tempuri.org/")
+        String param);
+
 }

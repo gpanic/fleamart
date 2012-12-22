@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="ReadOglasResult" type="{http//www.fleamart.com/}Oglas" minOccurs="0"/>
+ *         &lt;element name="getOglasiResult" type="{http//www.fleamart.com/}ArrayOfOglas" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "readOglasResult"
+    "getOglasiResult"
 })
-@XmlRootElement(name = "ReadOglasResponse")
-public class ReadOglasResponse {
+@XmlRootElement(name = "getOglasiResponse")
+public class GetOglasiResponse {
 
-    @XmlElementRef(name = "ReadOglasResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
-    protected JAXBElement<Oglas> readOglasResult;
+    @XmlElementRef(name = "getOglasiResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    protected JAXBElement<ArrayOfOglas> getOglasiResult;
 
     /**
-     * Gets the value of the readOglasResult property.
+     * Gets the value of the getOglasiResult property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Oglas }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ArrayOfOglas }{@code >}
      *     
      */
-    public JAXBElement<Oglas> getReadOglasResult() {
-        return readOglasResult;
+    public JAXBElement<ArrayOfOglas> getGetOglasiResult() {
+        return getOglasiResult;
     }
 
     /**
-     * Sets the value of the readOglasResult property.
+     * Sets the value of the getOglasiResult property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Oglas }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ArrayOfOglas }{@code >}
      *     
      */
-    public void setReadOglasResult(JAXBElement<Oglas> value) {
-        this.readOglasResult = value;
+    public void setGetOglasiResult(JAXBElement<ArrayOfOglas> value) {
+        this.getOglasiResult = value;
     }
 
 }

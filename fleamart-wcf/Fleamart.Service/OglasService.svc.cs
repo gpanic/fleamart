@@ -35,5 +35,16 @@ namespace Fleamart.Service
         {
             return odao.Delete(id);
         }
+
+        public List<Oglas> getOglasi()
+        {
+            return odao.List();
+        }
+
+        public List<Oglas> searchOglasi(string kategorija, string param)
+        {
+            if (kategorija == null && param == null) return this.getOglasi();
+            return odao.List(kategorija, param);
+        }
     }
 }

@@ -73,7 +73,9 @@ public class ConverterHelper {
         o.setNaslov(ows.getNaslov());
         o.setAvkcija(ows.isAvkcija());
         o.setCena(ows.getCena());
-        o.setZadnjaCenaAvkcija(ows.getZadnjaCenaAvkcija().getValue());
+        if (!ows.getZadnjaCenaAvkcija().isNil()) {
+        	o.setZadnjaCenaAvkcija(ows.getZadnjaCenaAvkcija().getValue());
+        }
         o.setOpis(ows.getOpis());
         o.setSlike(ows.getSlike().getValue().getString());
         o.setCasOd(ows.getCasOd().toGregorianCalendar());

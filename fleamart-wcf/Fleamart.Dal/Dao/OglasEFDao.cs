@@ -110,7 +110,35 @@ namespace Fleamart.Dal.Dao
 
         public List<Oglas> List()
         {
-            throw new NotImplementedException();
+            using (FleamartContext db = new FleamartContext())
+            {
+                List<OglasEF> oglasi_ef = db.Oglasi.ToList();
+                List<Oglas> oglasi = (oglasi_ef != null) ? Mapper.Map<List<OglasEF>, List<Oglas>>(oglasi_ef) : null;
+                return oglasi;
+            }
+        }
+
+        public List<Oglas> List(String kategorija, String param)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                List<OglasEF> oglasi_ef = null;
+                if (param == null)
+                {
+                    oglasi_ef = db.Oglasi.Where(x => x.Kategorija.Naziv.Equals(kategorija)).ToList();
+                }
+                else if (kategorija != null && param != null)
+                {
+                    oglasi_ef = db.Oglasi.Where(x => x.Kategorija.Naziv == kategorija).Where(x => x.Naslov.Contains(param)).ToList();
+                }
+                else if (kategorija == null && param != null)
+                {
+                    oglasi_ef = db.Oglasi.Where(x => x.Naslov.Contains(param)).ToList();
+                }
+                 
+                List<Oglas> oglasi = (oglasi_ef != null) ? Mapper.Map<List<OglasEF>, List<Oglas>>(oglasi_ef) : null;
+                return oglasi;
+            }
         }
     }
 }

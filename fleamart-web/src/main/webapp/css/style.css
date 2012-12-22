@@ -13,7 +13,7 @@ body {
 }
 
 .oglas {
-	width: 100%;
+	width: 80%;
 	border: 2px solid #E3E3E3;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -91,7 +91,7 @@ body {
 .iskanje {
 	padding: 10px;
 	margin-top: 30px;
-	width: 635px;
+	width: 677px;
 	border: 1px solid #E3E3E3;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;

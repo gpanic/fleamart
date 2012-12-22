@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "OglasService", targetNamespace = "http://tempuri.org/", wsdlLocation = "http://localhost:1691/OglasService.svc?WSDL")
+@WebServiceClient(name = "OglasService", targetNamespace = "http://tempuri.org/", wsdlLocation = "http://localhost:1691/OglasService.svc?wsdl")
 public class OglasService
     extends Service
 {
@@ -30,7 +30,7 @@ public class OglasService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:1691/OglasService.svc?WSDL");
+            url = new URL("http://localhost:1691/OglasService.svc?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

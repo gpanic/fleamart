@@ -10,6 +10,7 @@
 	<f:viewParam name="param" value="#{oglasBean.searchParam}" />
 </f:metadata>
 <h:body>
+	<h:outputScript name="jquery.js" library="js" />
 	<ui:composition template="/shared/layout.xhtml">
 		<ui:param name="title" value="Fleamart" />
 		<ui:define name="content">
@@ -40,15 +41,15 @@
 				<ui:repeat var="oglas" value="#{oglasBean.oglasi}">
 					<h:panelGroup styleClass="oglas" layout="block">
 						<h:panelGroup styleClass="oglas slika" layout="block">
-							<h:graphicImage alt="image" url="#{oglas.slika}"></h:graphicImage>
+							<h:graphicImage alt="image" url="#{oglas.slike[0]}"></h:graphicImage>
 						</h:panelGroup>
 						<h:panelGroup styleClass="oglas naslov" layout="block">
-							<h:outputText value="#{oglas.ime}"></h:outputText>
+							<h:outputText value="#{oglas.naslov}"></h:outputText>
 						</h:panelGroup>
 						<h:panelGroup styleClass="oglas cena" layout="block">
 							<h:outputText value="#{oglas.cena} €"></h:outputText>
 						</h:panelGroup>
-						<h:panelGroup styleClass="oglas opis" layout="block"> to je nkei fds afdasfdsajfdč lf fasd fadsfjdsa člakksdjf čkadjčlkj sj slaj saj faslkfjsdkj fdačkjfsčf dslfjslka jsldj sač ljsdjl fa jflkj sčlkafjč Łsladjaslkdslfdčajčlfč lkadjfčlkajčlfdjfkaj ačlfdopis</h:panelGroup>
+						<h:panelGroup styleClass="oglas opis" layout="block"><h:outputText value="#{oglas.opis}" /></h:panelGroup>
 						<h:panelGroup styleClass="oglas datum" layout="block">26.03.2012</h:panelGroup>
 					</h:panelGroup>
 				</ui:repeat>
