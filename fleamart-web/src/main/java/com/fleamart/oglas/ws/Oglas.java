@@ -22,7 +22,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="Avkcija" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="Avtor" type="{http//www.fleamart.com/}Uporabnik" minOccurs="0"/>
+ *         &lt;element name="Avtor" type="{http//www.fleamart.com/}Uporabnik"/>
  *         &lt;element name="CasDo" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="CasOd" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="CasSpremenjeno" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
@@ -31,8 +31,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="Kategorija" type="{http//www.fleamart.com/}Kategorija" minOccurs="0"/>
  *         &lt;element name="Komentarji" type="{http//www.fleamart.com/}ArrayOfKomentar" minOccurs="0"/>
  *         &lt;element name="Kupec" type="{http//www.fleamart.com/}Uporabnik" minOccurs="0"/>
- *         &lt;element name="Naslov" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="Opis" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Naslov" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Opis" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Ponudbe" type="{http//www.fleamart.com/}ArrayOfPonudba" minOccurs="0"/>
  *         &lt;element name="Slike" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="Status" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
@@ -70,8 +70,8 @@ public class Oglas {
 
     @XmlElement(name = "Avkcija")
     protected Boolean avkcija;
-    @XmlElementRef(name = "Avtor", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
-    protected JAXBElement<Uporabnik> avtor;
+    @XmlElement(name = "Avtor", required = true, nillable = true)
+    protected Uporabnik avtor;
     @XmlElement(name = "CasDo")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar casDo;
@@ -90,10 +90,10 @@ public class Oglas {
     protected JAXBElement<ArrayOfKomentar> komentarji;
     @XmlElementRef(name = "Kupec", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
     protected JAXBElement<Uporabnik> kupec;
-    @XmlElementRef(name = "Naslov", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> naslov;
-    @XmlElementRef(name = "Opis", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> opis;
+    @XmlElement(name = "Naslov", required = true, nillable = true)
+    protected String naslov;
+    @XmlElement(name = "Opis", required = true, nillable = true)
+    protected String opis;
     @XmlElementRef(name = "Ponudbe", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
     protected JAXBElement<ArrayOfPonudba> ponudbe;
     @XmlElementRef(name = "Slike", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
@@ -134,10 +134,10 @@ public class Oglas {
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}
+     *     {@link Uporabnik }
      *     
      */
-    public JAXBElement<Uporabnik> getAvtor() {
+    public Uporabnik getAvtor() {
         return avtor;
     }
 
@@ -146,10 +146,10 @@ public class Oglas {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}
+     *     {@link Uporabnik }
      *     
      */
-    public void setAvtor(JAXBElement<Uporabnik> value) {
+    public void setAvtor(Uporabnik value) {
         this.avtor = value;
     }
 
@@ -350,10 +350,10 @@ public class Oglas {
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link String }
      *     
      */
-    public JAXBElement<String> getNaslov() {
+    public String getNaslov() {
         return naslov;
     }
 
@@ -362,10 +362,10 @@ public class Oglas {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link String }
      *     
      */
-    public void setNaslov(JAXBElement<String> value) {
+    public void setNaslov(String value) {
         this.naslov = value;
     }
 
@@ -374,10 +374,10 @@ public class Oglas {
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link String }
      *     
      */
-    public JAXBElement<String> getOpis() {
+    public String getOpis() {
         return opis;
     }
 
@@ -386,10 +386,10 @@ public class Oglas {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link String }
      *     
      */
-    public void setOpis(JAXBElement<String> value) {
+    public void setOpis(String value) {
         this.opis = value;
     }
 

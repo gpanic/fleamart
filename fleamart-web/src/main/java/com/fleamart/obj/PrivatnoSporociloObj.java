@@ -5,6 +5,6 @@
 package com.fleamart.obj;
 
 
-class PrivatnoSporociloObj {
+public class PrivatnoSporociloObj {
     
 }

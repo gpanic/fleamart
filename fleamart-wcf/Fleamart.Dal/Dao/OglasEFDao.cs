@@ -28,6 +28,9 @@ namespace Fleamart.Dal.Dao
 
             Mapper.CreateMap<Kategorija, KategorijaEF>();
             Mapper.CreateMap<KategorijaEF, Kategorija>();
+
+            Mapper.CreateMap<Naslov, NaslovEF>();
+            Mapper.CreateMap<NaslovEF, Naslov>();
         }
 
         public bool Create(Oglas entity)
@@ -54,10 +57,12 @@ namespace Fleamart.Dal.Dao
         {
             using (FleamartContext db = new FleamartContext())
             {
-                OglasEF ef = db.Oglasi.Find(id);
-                if (ef != null)
+                var query = from x in db.Oglasi.Include("Avtor")
+                            where x.Id == id
+                            select x;
+                if (query.Count() != 0)
                 {
-                    return Mapper.Map<OglasEF,Oglas>(ef);
+                    return Mapper.Map<OglasEF,Oglas>(query.First());
                 }
                 else
                 {

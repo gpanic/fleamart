@@ -6,6 +6,8 @@ import javax.faces.event.ActionEvent;
 
 import com.fleamart.beans.SessionBean;
 import com.fleamart.obj.Seja;
+import com.fleamart.uporabnik.ws.IUporabnikService;
+import com.fleamart.uporabnik.ws.UporabnikService;
 
 @ManagedBean(name = "loginBean")
 @RequestScoped
@@ -40,40 +42,35 @@ public class LoginBean
 		{
 
 			int idUser = 0;
-			/*
-			 * fleamart.LoginWebServiceService service = new
-			 * Login.client.LoginWebServiceService();
-			 * fleamart.client.LoginWebService port =
-			 * service.getLoginWebServicePort();
-			 * 
-			 * idUser = port.LoginCheck(username, pass);
-			 */
+			IUporabnikService service = new UporabnikService()
+					.getBasicHttpBindingIUporabnikService();
+			idUser = service.loginCheck(username, pass);
+
 			if (idUser == 0)
 			{
 				// ce uporabnik ni uspesno vpisan je idUser=0
-				Seja seja = new Seja(idUser);
-				//seja.setIdUser(idUser);
-				return "login";
+				//Seja seja = new Seja(idUser);
+				// seja.setIdUser(idUser);
+				return "register?faces-redirect=true";
 			} else
 			{
 				// ce je uporabnik uspesno vpisan
-				Seja seja = new Seja(idUser);
-				return "index";
+				//Seja seja = new Seja(idUser);
+				return "index?faces-redirect=true";
 			}
 
 		} catch (Exception e)
 		{
-			/*
-			 * e.printStackTrace();
-			 */
+
+			e.printStackTrace();
+
 		}
 		return "";
 	}
-	
-	//prestavi v class za action listener metodo
-	public void checkUserId(ActionEvent actionEvent){
-		
+	// prestavi v class za action listener metodo
+	public void checkUserId(ActionEvent actionEvent)
+	{
+
 	}
-	
 
 }

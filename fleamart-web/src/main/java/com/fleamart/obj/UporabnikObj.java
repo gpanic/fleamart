@@ -6,7 +6,7 @@ package com.fleamart.obj;
 
 import java.util.ArrayList;
 
-class UporabnikObj {
+public class UporabnikObj {
     
     private int id;
     private int vloga;

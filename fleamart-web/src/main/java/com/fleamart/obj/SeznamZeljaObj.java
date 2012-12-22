@@ -4,6 +4,6 @@
  */
 package com.fleamart.obj;
 
-class SeznamZeljaObj {
+public class SeznamZeljaObj {
     
 }

@@ -37,4 +37,21 @@ public interface IUporabnikService {
         @WebParam(name = "uporabnik", targetNamespace = "http://tempuri.org/")
         Uporabnik uporabnik);
 
+    /**
+     * 
+     * @param upImeV
+     * @param passV
+     * @return
+     *     returns java.lang.Integer
+     */
+    @WebMethod(action = "http://tempuri.org/IUporabnikService/loginCheck")
+    @WebResult(name = "loginCheckResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "loginCheck", targetNamespace = "http://tempuri.org/", className = "com.fleamart.uporabnik.ws.LoginCheck")
+    @ResponseWrapper(localName = "loginCheckResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.uporabnik.ws.LoginCheckResponse")
+    public Integer loginCheck(
+        @WebParam(name = "upImeV", targetNamespace = "http://tempuri.org/")
+        String upImeV,
+        @WebParam(name = "passV", targetNamespace = "http://tempuri.org/")
+        String passV);
+
 }
