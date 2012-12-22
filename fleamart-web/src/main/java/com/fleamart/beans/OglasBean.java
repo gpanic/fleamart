@@ -58,7 +58,7 @@ public class OglasBean {
                 oglas.getSlike().add("");
                 oglas.getSlike().add("");
 
-                this.listKategorije();
+//                this.listKategorije();
             }
         }
     }
@@ -73,6 +73,7 @@ public class OglasBean {
     		System.out.println(kat + " in " + param);
     	}
         oglasi = new ArrayList<OglasObj>();
+        oglas = new OglasObj();
     }
 
     public KategorijaObj getKategorija() {
