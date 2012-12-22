@@ -3,7 +3,7 @@ package com.fleamart.web;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import com.fleamart.obj.Oglas;
+import com.fleamart.obj.OglasObj;
 
 @ManagedBean(name = "ponudbaBean")
 @RequestScoped

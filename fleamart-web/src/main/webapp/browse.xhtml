@@ -6,7 +6,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <f:metadata>
-	<f:viewParam name="kategorija" value="#{kat.queryKategorija}" />
+	<f:viewParam name="kategorija" value="#{oglasBean.queryKateg}" />
+	<f:viewParam name="param" value="#{oglasBean.searchParam}" />
 </f:metadata>
 <h:body>
 	<ui:composition template="/shared/layout.xhtml">
@@ -16,26 +17,24 @@
 			<h:panelGroup layout="block" styleClass="iskanje">
 				<h:form>
 					<h:outputLabel value="Iskanje" style="font-weight:bold" />
-					<h:inputText id="searchparam" value="#{kat.searchParam}" />
-					<h:selectOneMenu id="kategorija" value="#{kat.izbranaKategorija}">
-						<f:selectItems value="#{kat.kategorije}"></f:selectItems>
+					<h:inputText id="searchparam" value="#{oglasBean.searchParam}" />
+					<h:selectOneMenu id="kategorija" value="#{oglasBean.queryKateg}">
+						<f:selectItems var="katItem" itemLabel="#{katItem.naziv}" itemValue="#{katItem.naziv}" value="#{oglasBean.kategorije}"></f:selectItems>
 					</h:selectOneMenu>
-					<h:commandButton styleClass="btn" value="Išči" />
+					<h:commandButton styleClass="btn" value="Išči" action="browse.xhtml?faces-redirect=true&amp;includeViewParams=true" />
 					<div class="btn-group">
 						<button class="btn dropdown-toggle" data-toggle="dropdown"
 							href="#">
 							Kategorije <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-							<li><a href="#">Vse kategorije</a></li>
-							<ui:repeat var="kateg" value="#{kat.kategorije_names}">
-								<li><h:outputLink value="browse.xhtml?kategorija=#{kateg}">#{kateg}</h:outputLink></li>
+							<ui:repeat var="kateg" value="#{oglasBean.kategorije}">
+								<li><h:outputLink value="browse.xhtml?kategorija=#{kateg.naziv}">#{kateg.naziv}</h:outputLink></li>
 							</ui:repeat>
 						</ul>
 					</div>
 				</h:form>
 			</h:panelGroup>
-			<h:outputText value="#{kat.queryKategorija}" />
 			
 			<h:panelGroup styleClass="oglasi" layout="block">
 				<ui:repeat var="oglas" value="#{oglasBean.oglasi}">
