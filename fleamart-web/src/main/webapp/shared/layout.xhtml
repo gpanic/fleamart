@@ -10,7 +10,10 @@
         <title>#{title}</title>
         <link rel="stylesheet" type="text/css" href="/fleamart-web/css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="/fleamart-web//css/style.css"/>
-        <script type="text/javascript" src="../js/jquery.js"/>
+    	<script type="text/javascript" src="/fleamart-web/js/jquery.js"/>
+        <script type="text/javascript" src="/fleamart-web/js/bootstrap.js" />
+        <script type="text/javascript" src="/fleamart-web/js/bootstrap.min.js" />
+        <script type="text/javascript" src="/fleamart-web/js/bootstrap-dropdown.js" />
     </h:head>
     <h:body>
         <h:panelGroup styleClass="container-fluid" layout="block">
@@ -27,8 +30,7 @@
             </h:panelGroup>
         </h:panelGroup>
 
-        <h:outputScript name="bootstrap.min.js" library="js" />
-        <h:outputScript name="bootstrap-dropdown.js" library="js" />
+
         <script>
             $(document).ready(function() {
                 $('.dropdown-toggle').dropdown();
