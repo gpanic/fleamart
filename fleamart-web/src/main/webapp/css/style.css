@@ -1,0 +1,177 @@
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 75px;
+    padding-bottom: 40px;
+    font-size: 14px;
+    height: 100%;
+}
+
+.oglasi {
+    width: 80%;
+    margin-top: 30px;
+}
+
+.oglas {
+    width: 80%;
+    border: 2px solid #E3E3E3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.oglas .slika {
+    border: none;
+    margin: 20px;
+    width: 160px;
+    height: 120px;
+}
+
+.oglas .naslov {
+    border: none;
+    position: absolute;
+    margin-top: 20px;
+    width: 400px;
+    color: #005580;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.oglas .cena {
+    border: none;
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 420px;
+    width: 60px;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: Arial;
+    color: red;
+}
+
+.oglas .opis {
+    border: none;
+    position: absolute;
+    margin-top: 50px;
+    width: 400px;
+    height: 100px;
+}
+
+.oglas .datum {
+    border: none;
+    position: absolute;
+    margin-left: 410px;
+    margin-top: 130px;
+    width: 60px;
+    font-style: italic;
+}
+
+.oglas img {
+    width: 140px;
+}
+
+.registrac {
+    width: 400px;
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid #E3E3E3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    margin-top: 30px;
+}
+
+.registrac input {
+    margin-left: 20px;
+    margin-right: 5px;
+    width: 150px;
+}
+
+.iskanje {
+    padding: 10px;
+    margin-top: 30px;
+    width: 677px;
+    border: 1px solid #E3E3E3;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    background-color: #F7F7F7;
+}
+
+.iskanje label {
+    font-size: 18px;
+}
+
+.iskanje input {
+    margin: 0px 10px 0 10px;
+}
+
+.iskanje select {
+    margin: 1px;
+}
+
+.oglasitem{
+    width: 700px;
+    border-bottom: 1px solid #E3E3E3;
+    display: inline-block;
+    padding: 5px;
+}
+
+.oglasitem:hover{
+    background-color: #F5F5F5;
+}
+
+.oglasitem .slika{
+    width: 200px;
+    min-height: 1px;
+    float: left;
+}
+.oglasitem .slika img{
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.oglasitem .naslovopis{
+    width: 300px;
+    float: left;
+}
+
+.oglasitem .naslovopis .naslov {
+    padding-left: 5px;
+    color: #005580;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.oglasitem .naslovopis .opis {
+    padding-left: 5px;
+}
+
+.oglasitem .cenaostalo{
+    width: 200px;
+    float: left;
+    text-align: right;
+    /*background-color: red;*/
+}
+.oglasitem .cenaostalo .cena{
+    font-weight: bold;
+    font-size: 16px;
+    color: red;
+}
+.oglasitem .cenaostalo .datum{
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.radiobtn{
+
+}
+
+.radiobtn label{
+    float: right;
+    margin-top: 1px;
+    padding: 0 5px 0 5px;
+}

@@ -3,7 +3,6 @@ package com.fleamart.oglas.ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -31,10 +30,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "id"
 })
-@XmlRootElement(name = "ReadOglas", namespace = "http://tempuri.org/")
+@XmlRootElement(name = "ReadOglas")
 public class ReadOglas {
 
-    @XmlElement(namespace = "http://tempuri.org/")
     protected Integer id;
 
     /**

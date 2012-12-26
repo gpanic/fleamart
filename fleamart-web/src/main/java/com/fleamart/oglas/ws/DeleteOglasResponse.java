@@ -31,10 +31,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "deleteOglasResult"
 })
-@XmlRootElement(name = "DeleteOglasResponse", namespace = "http://tempuri.org/")
+@XmlRootElement(name = "DeleteOglasResponse")
 public class DeleteOglasResponse {
 
-    @XmlElement(name = "DeleteOglasResult", namespace = "http://tempuri.org/")
+    @XmlElement(name = "DeleteOglasResult")
     protected Boolean deleteOglasResult;
 
     /**

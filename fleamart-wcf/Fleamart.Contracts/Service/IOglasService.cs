@@ -18,10 +18,21 @@ namespace Fleamart.Contracts.Service
         Oglas ReadOglas(int id);
 
         [OperationContract]
+        Oglas ReadOglasLast(int idAvtor);
+
+        [OperationContract]
         bool UpdateOglas(Oglas o);
 
         [OperationContract]
         bool DeleteOglas(int id);
 
+        [OperationContract]
+        List<Oglas> GetOglasi();
+
+        [OperationContract]
+        List<Oglas> ListOglasi(int idAvtor, int status);
+
+        [OperationContract]
+        List<Oglas> SearchOglasi(String kategorija, String param);
     }
 }

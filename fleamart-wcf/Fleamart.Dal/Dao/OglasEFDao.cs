@@ -28,6 +28,9 @@ namespace Fleamart.Dal.Dao
 
             Mapper.CreateMap<Kategorija, KategorijaEF>();
             Mapper.CreateMap<KategorijaEF, Kategorija>();
+
+            Mapper.CreateMap<Naslov, NaslovEF>();
+            Mapper.CreateMap<NaslovEF, Naslov>();
         }
 
         public bool Create(Oglas entity)
@@ -54,10 +57,31 @@ namespace Fleamart.Dal.Dao
         {
             using (FleamartContext db = new FleamartContext())
             {
-                OglasEF ef = db.Oglasi.Find(id);
-                if (ef != null)
+                var query = from x in db.Oglasi.Include("Avtor").Include("Kategorija")
+                            where x.Id == id
+                            select x;
+                if (query.Count() != 0)
                 {
-                    return Mapper.Map<OglasEF,Oglas>(ef);
+                    return Mapper.Map<OglasEF,Oglas>(query.First());
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public Oglas ReadLast(int idAvtor)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                var query = from x in db.Oglasi.Include("Avtor")
+                            where x.Avtor.Id == idAvtor
+                            orderby x.CasOd descending
+                            select x;
+                if (query.Count() != 0)
+                {
+                    return Mapper.Map<OglasEF, Oglas>(query.First());
                 }
                 else
                 {
@@ -105,7 +129,56 @@ namespace Fleamart.Dal.Dao
 
         public List<Oglas> List()
         {
-            throw new NotImplementedException();
+            using (FleamartContext db = new FleamartContext())
+            {
+                List<OglasEF> oglasi_ef = db.Oglasi.ToList();
+                List<Oglas> oglasi = (oglasi_ef != null) ? Mapper.Map<List<OglasEF>, List<Oglas>>(oglasi_ef) : null;
+                return oglasi;
+            }
+        }
+
+        public List<Oglas> List(String kategorija, String param)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                List<OglasEF> oglasi_ef = null;
+                if (param == null)
+                {
+                    oglasi_ef = db.Oglasi.Where(x => x.Kategorija.Naziv.Equals(kategorija)).ToList();
+                }
+                else if (kategorija != null && param != null)
+                {
+                    oglasi_ef = db.Oglasi.Where(x => x.Kategorija.Naziv == kategorija).Where(x => x.Naslov.Contains(param)).ToList();
+                }
+                else if (kategorija == null && param != null)
+                {
+                    oglasi_ef = db.Oglasi.Where(x => x.Naslov.Contains(param)).ToList();
+                }
+                 
+                List<Oglas> oglasi = (oglasi_ef != null) ? Mapper.Map<List<OglasEF>, List<Oglas>>(oglasi_ef) : null;
+                return oglasi;
+            }
+        }
+
+        public List<Oglas> List(int idAvtor, int status)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                var query = from x in db.Oglasi
+                            where x.AvtorId == idAvtor &&
+                            x.Status == status
+                            orderby x.CasOd descending
+                            select x;
+                List<Oglas> list = new List<Oglas>();
+                if (query.Count() != 0)
+                {
+                    foreach (var item in query.ToList())
+                    {
+                        list.Add(Mapper.Map<OglasEF, Oglas>(item));
+                    }
+                }
+                return list;
+            }
         }
     }
 }

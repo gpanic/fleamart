@@ -4,9 +4,10 @@
  */
 package com.fleamart.obj;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-class UporabnikObj {
+public class UporabnikObj  implements Serializable{
     
     private int id;
     private int vloga;

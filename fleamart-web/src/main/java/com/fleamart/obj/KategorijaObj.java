@@ -1,13 +1,17 @@
 package com.fleamart.obj;
 
+import java.io.Serializable;
 
-public class KategorijaObj {
+public class KategorijaObj  implements Serializable{
 
-	private int id;
-        private String naziv;
+    private int id;
+    private String naziv;
 
     public int getId() {
         return id;
+    }
+
+    public KategorijaObj() {
     }
 
     public KategorijaObj(int id, String naziv) {
@@ -31,6 +35,4 @@ public class KategorijaObj {
     public String toString() {
         return "KategorijaObj{" + "id=" + id + ", naziv=" + naziv + '}';
     }
-
-	
 }

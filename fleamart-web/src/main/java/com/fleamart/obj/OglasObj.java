@@ -1,16 +1,17 @@
 package com.fleamart.obj;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class OglasObj {
+public class OglasObj  implements Serializable{
 
     private int id;
     private String naslov;
     private boolean avkcija;
-    private double cena;
+    private String cena;
     private double zadnjaCenaAvkcija;
     private String opis;
     private List<String> Slike = new ArrayList<>();
@@ -23,14 +24,18 @@ public class OglasObj {
     private UporabnikObj avtor;
     private UporabnikObj kupec;
     private List<KomentarObj> komentarji;
-    private List<KategorijaObj> kategorije;
-    private int kategorija;
+    private KategorijaObj kategorija;
 
-    public int getKategorija() {
+    public OglasObj() {
+        kategorija = new KategorijaObj();
+    }
+
+    
+    public KategorijaObj getKategorija() {
         return kategorija;
     }
 
-    public void setKategorija(int kategorija) {
+    public void setKategorija(KategorijaObj kategorija) {
         this.kategorija = kategorija;
     }
 
@@ -58,12 +63,16 @@ public class OglasObj {
         this.avkcija = avkcija;
     }
 
-    public double getCena() {
+    public String getCena() {
         return cena;
     }
 
-    public void setCena(double cena) {
+    public void setCena(String cena) {
         this.cena = cena;
+    }
+    
+    public void setCena(double cena) {
+        this.cena = Double.toString(cena);
     }
 
     public double getZadnjaCenaAvkcija() {
@@ -162,18 +171,10 @@ public class OglasObj {
         this.komentarji = komentarji;
     }
 
-    public List<KategorijaObj> getKategorije() {
-        return kategorije;
-    }
-
-    public void setKategorije(List<KategorijaObj> kategorije) {
-        this.kategorije = kategorije;
+    @Override
+    public String toString() {
+        return "OglasObj{" + "id=" + id + ", naslov=" + naslov + ", avkcija=" + avkcija + ", cena=" + cena + ", zadnjaCenaAvkcija=" + zadnjaCenaAvkcija + ", opis=" + opis + ", Slike=" + Slike + ", casOd=" + casOd + ", casDo=" + casDo + ", casSpremenjeno=" + casSpremenjeno + ", status=" + status + ", ponudbe=" + ponudbe + ", statusNakupa=" + statusNakupa + ", avtor=" + avtor + ", kupec=" + kupec + ", komentarji=" + komentarji + ", kategorija=" + kategorija + '}';
     }
 
     
-
-    @Override
-    public String toString() {
-        return "OglasObj{" + "id=" + id + ", naslov=" + naslov + ", avkcija=" + avkcija + ", cena=" + cena + ", zadnjaCenaAvkcija=" + zadnjaCenaAvkcija + ", opis=" + opis + ", Slike=" + Slike + ", casOd=" + casOd + ", casDo=" + casDo + ", casSpremenjeno=" + casSpremenjeno + ", status=" + status + ", ponudbe=" + ponudbe + ", statusNakupa=" + statusNakupa + ", avtor=" + avtor + ", kupec=" + kupec + ", komentarji=" + komentarji + ", kategorije=" + kategorije + '}';
-    }
 }

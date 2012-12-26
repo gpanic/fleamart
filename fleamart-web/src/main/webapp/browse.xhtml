@@ -6,9 +6,11 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <f:metadata>
-	<f:viewParam name="kategorija" value="#{kat.queryKategorija}" />
+	<f:viewParam name="kategorija" value="#{oglasBean.queryKateg}" />
+	<f:viewParam name="param" value="#{oglasBean.searchParam}" />
 </f:metadata>
 <h:body>
+	<h:outputScript name="jquery.js" library="js" />
 	<ui:composition template="/shared/layout.xhtml">
 		<ui:param name="title" value="Fleamart" />
 		<ui:define name="content">
@@ -16,40 +18,38 @@
 			<h:panelGroup layout="block" styleClass="iskanje">
 				<h:form>
 					<h:outputLabel value="Iskanje" style="font-weight:bold" />
-					<h:inputText id="searchparam" value="#{kat.searchParam}" />
-					<h:selectOneMenu id="kategorija" value="#{kat.izbranaKategorija}">
-						<f:selectItems value="#{kat.kategorije}"></f:selectItems>
+					<h:inputText id="searchparam" value="#{oglasBean.searchParam}" />
+					<h:selectOneMenu id="kategorija" value="#{oglasBean.queryKateg}">
+						<f:selectItems var="katItem" itemLabel="#{katItem.naziv}" itemValue="#{katItem.naziv}" value="#{oglasBean.kategorije}"></f:selectItems>
 					</h:selectOneMenu>
-					<h:commandButton styleClass="btn" value="Išči" />
+					<h:commandButton styleClass="btn" value="Išči" action="browse.xhtml?faces-redirect=true&amp;includeViewParams=true" />
 					<div class="btn-group">
 						<button class="btn dropdown-toggle" data-toggle="dropdown"
 							href="#">
 							Kategorije <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-							<li><a href="#">Vse kategorije</a></li>
-							<ui:repeat var="kateg" value="#{kat.kategorije_names}">
-								<li><h:outputLink value="browse.xhtml?kategorija=#{kateg}">#{kateg}</h:outputLink></li>
+							<ui:repeat var="kateg" value="#{oglasBean.kategorije}">
+								<li><h:outputLink value="browse.xhtml?kategorija=#{kateg.naziv}">#{kateg.naziv}</h:outputLink></li>
 							</ui:repeat>
 						</ul>
 					</div>
 				</h:form>
 			</h:panelGroup>
-			<h:outputText value="#{kat.queryKategorija}" />
 			
 			<h:panelGroup styleClass="oglasi" layout="block">
 				<ui:repeat var="oglas" value="#{oglasBean.oglasi}">
 					<h:panelGroup styleClass="oglas" layout="block">
 						<h:panelGroup styleClass="oglas slika" layout="block">
-							<h:graphicImage alt="image" url="#{oglas.slika}"></h:graphicImage>
+							<h:graphicImage alt="image" url="#{oglas.slike[0]}"></h:graphicImage>
 						</h:panelGroup>
 						<h:panelGroup styleClass="oglas naslov" layout="block">
-							<h:outputText value="#{oglas.ime}"></h:outputText>
+							<h:outputText value="#{oglas.naslov}"></h:outputText>
 						</h:panelGroup>
 						<h:panelGroup styleClass="oglas cena" layout="block">
 							<h:outputText value="#{oglas.cena} €"></h:outputText>
 						</h:panelGroup>
-						<h:panelGroup styleClass="oglas opis" layout="block"> to je nkei fds afdasfdsajfdč lf fasd fadsfjdsa člakksdjf čkadjčlkj sj slaj saj faslkfjsdkj fdačkjfsčf dslfjslka jsldj sač ljsdjl fa jflkj sčlkafjč Łsladjaslkdslfdčajčlfč lkadjfčlkajčlfdjfkaj ačlfdopis</h:panelGroup>
+						<h:panelGroup styleClass="oglas opis" layout="block"><h:outputText value="#{oglas.opis}" /></h:panelGroup>
 						<h:panelGroup styleClass="oglas datum" layout="block">26.03.2012</h:panelGroup>
 					</h:panelGroup>
 				</ui:repeat>

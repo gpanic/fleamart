@@ -15,7 +15,7 @@ public class RegistracijaBean {
 	/* TO-DO
 	 * validacija
 	 */
-
+	
 	//ref na com.fleamart.uporabnik.ws
 	private Uporabnik u;
 	

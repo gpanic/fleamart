@@ -10,45 +10,36 @@
     <h:body>
         <ui:composition template="/shared/layout.xhtml">
             <ui:define name="content">
-
-
-                <script type="text/javascript">
-                    $(function(){
-                        alert("Hello world!");
-           
-                        $('#dodajoglas\\:kat1').click(function(){
-                            alert("$(this)"); 
-                        });
-                    });
-                </script>
                 <h:form id="dodajoglas">
                     <h1>Ustvari oglas</h1>
-
+                    <f:metadata>
+                        <f:event type="preRenderView" listener="#{oglasBean2.initOglasForm}"/>
+                    </f:metadata>
 
                     <table width="100%">
                         <tbody>
                             <tr>
                                 <td><h:outputLabel value="Naslov oglasa"/></td>
-                                <td><h:inputText styleClass="span8" id="naslov" value="#{oglasBean.oglas.naslov}" requiredMessage="Obvezno polje" required="true"/></td>
+                                <td><h:inputText styleClass="span8" id="naslov" value="#{oglasBean2.oglas.naslov}" requiredMessage="Obvezno polje" required="true"/></td>
                                 <td><h:message for="naslov"/></td>
                             </tr>
                             <tr>
                                 <td valign="top"><h:outputText value="Opis izdelka"/></td>
-                                <td><h:inputTextarea styleClass="span8" id="opis" rows="10" cols="50" value="#{oglasBean.oglas.opis}" requiredMessage="Obvezno polje" required="true"/></td>
+                                <td><h:inputTextarea styleClass="span8" id="opis" rows="10" cols="50" value="#{oglasBean2.oglas.opis}" requiredMessage="Obvezno polje" required="true"/></td>
                                 <td><h:message for="opis"/></td>
                             </tr>
                             <tr>
                                 <td valign="top"><h:outputLabel value="Kategorija"/></td>
                                 <td>
-                                    <h:selectOneListbox id="kat1" value="#{oglasBean.oglas.kategorija}" required="true"  requiredMessage="Obvezno polje">
-                                        <f:selectItems value="#{oglasBean.kategorije}" var="katego" itemValue="#{katego.id}" itemLabel="#{katego.naziv}"/>
-                                    </h:selectOneListbox>
+                                    <h:selectOneMenu id="kat1" value="#{oglasBean2.oglas.kategorija.id}" required="true" requiredMessage="Obvezno polje">
+                                        <f:selectItems value="#{oglasBean2.kategorije}" var="katego" itemValue="#{katego.id}" itemLabel="#{katego.naziv}"/>
+                                    </h:selectOneMenu>
                                 </td>
                             </tr>
                             <tr>
                                 <td><h:outputText value="Tip oglasa"/></td>
                                 <td colspan="2">
-                                    <h:selectOneRadio id="avkcija" value="#{oglasBean.oglas.avkcija}" required="true">
+                                    <h:selectOneRadio id="avkcija" value="#{oglasBean2.oglas.avkcija}" required="true">
                                         <f:selectItem itemLabel="Avkcija" itemValue="1"/>
                                         <f:selectItem itemLabel="Fiskna cena" itemValue="0"/>
                                     </h:selectOneRadio>
@@ -56,16 +47,29 @@
                             </tr>
                             <tr>
                                 <td><h:outputText value="Cena"/></td>
-                                <td><h:inputText id="cena" value="#{oglasBean.oglas.cena}" required="true" requiredMessage="Obvezno polje"/></td>
+                                <td>
+                                    <h:inputText id="cena" value="#{oglasBean2.oglas.cena}" required="true" validatorMessage="Niz mora biti številka" requiredMessage="Obvezno polje">
+                                        <f:validateRegex pattern="(\d*.\d*|\d*)" />
+                                    </h:inputText>
+                                </td>
                                 <td><h:message for="cena"/></td>
                             </tr>
                             <tr>
-                                <td valign="top"><h:outputText value="Slike (Povezave)"/></td>
-                                <td colspan="2">
-                                    <ui:repeat value="#{oglasBean.oglas.slike}" var="slika">
+                                <td valign="top">
+                                    <h:outputText value="Slike (Povezave)"/>
+                                </td>
+                                <td>
+                                    <ui:repeat value="#{oglasBean2.oglas.slike}" var="slika" varStatus="slikaStatus">
                                         <table width="100%">
                                             <tr>
-                                                <td><h:inputText styleClass="span8" value="#{slika}" /></td>
+                                                <td>
+                                                    <h:inputText id="slika" styleClass="span8" value="#{oglasBean2.oglas.slike[slikaStatus.index]}" validatorMessage="Niz mora biti povezava do slike">
+                                                        <f:validator validatorId="com.fleamart.validators.UrlValidator"/>
+                                                    </h:inputText>
+                                                </td>
+                                                <td>
+                                                    <h:message for="slika"/>
+                                                </td>
                                             </tr>
                                         </table>
                                     </ui:repeat>
@@ -73,8 +77,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <h:commandButton class="btn" actionListener="#{oglasBean.createOglas}" value="Dodaj oglas"/>
-
+                    <h:commandButton class="btn btn-primary" action="#{oglasBean2.createOglas}" value="Dodaj oglas"/>
                 </h:form>
             </ui:define>
         </ui:composition>
