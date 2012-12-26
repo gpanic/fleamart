@@ -1,11 +1,12 @@
 package com.fleamart.obj;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class OglasObj {
+public class OglasObj  implements Serializable{
 
     private int id;
     private String naslov;
@@ -23,7 +24,6 @@ public class OglasObj {
     private UporabnikObj avtor;
     private UporabnikObj kupec;
     private List<KomentarObj> komentarji;
-    private List<KategorijaObj> kategorije;
     private KategorijaObj kategorija;
 
     public OglasObj() {
@@ -171,18 +171,10 @@ public class OglasObj {
         this.komentarji = komentarji;
     }
 
-    public List<KategorijaObj> getKategorije() {
-        return kategorije;
-    }
-
-    public void setKategorije(List<KategorijaObj> kategorije) {
-        this.kategorije = kategorije;
+    @Override
+    public String toString() {
+        return "OglasObj{" + "id=" + id + ", naslov=" + naslov + ", avkcija=" + avkcija + ", cena=" + cena + ", zadnjaCenaAvkcija=" + zadnjaCenaAvkcija + ", opis=" + opis + ", Slike=" + Slike + ", casOd=" + casOd + ", casDo=" + casDo + ", casSpremenjeno=" + casSpremenjeno + ", status=" + status + ", ponudbe=" + ponudbe + ", statusNakupa=" + statusNakupa + ", avtor=" + avtor + ", kupec=" + kupec + ", komentarji=" + komentarji + ", kategorija=" + kategorija + '}';
     }
 
     
-
-    @Override
-    public String toString() {
-        return "OglasObj{" + "id=" + id + ", naslov=" + naslov + ", avkcija=" + avkcija + ", cena=" + cena + ", zadnjaCenaAvkcija=" + zadnjaCenaAvkcija + ", opis=" + opis + ", Slike=" + Slike + ", casOd=" + casOd + ", casDo=" + casDo + ", casSpremenjeno=" + casSpremenjeno + ", status=" + status + ", ponudbe=" + ponudbe + ", statusNakupa=" + statusNakupa + ", avtor=" + avtor + ", kupec=" + kupec + ", komentarji=" + komentarji + ", kategorije=" + kategorije + '}';
-    }
 }

@@ -4,8 +4,10 @@
  */
 package com.fleamart.obj;
 
+import java.io.Serializable;
 
-public class NaslovObj {
+
+public class NaslovObj  implements Serializable{
     private int id;
     private String ulica;
     private int postnaStevilka;

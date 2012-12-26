@@ -1,6 +1,8 @@
 package com.fleamart.obj;
 
-public class KategorijaObj {
+import java.io.Serializable;
+
+public class KategorijaObj  implements Serializable{
 
     private int id;
     private String naziv;

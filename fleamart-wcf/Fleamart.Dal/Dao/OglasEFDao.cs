@@ -57,12 +57,31 @@ namespace Fleamart.Dal.Dao
         {
             using (FleamartContext db = new FleamartContext())
             {
-                var query = from x in db.Oglasi.Include("Avtor")
+                var query = from x in db.Oglasi.Include("Avtor").Include("Kategorija")
                             where x.Id == id
                             select x;
                 if (query.Count() != 0)
                 {
                     return Mapper.Map<OglasEF,Oglas>(query.First());
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public Oglas ReadLast(int idAvtor)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                var query = from x in db.Oglasi.Include("Avtor")
+                            where x.Avtor.Id == idAvtor
+                            orderby x.CasOd descending
+                            select x;
+                if (query.Count() != 0)
+                {
+                    return Mapper.Map<OglasEF, Oglas>(query.First());
                 }
                 else
                 {
@@ -138,6 +157,27 @@ namespace Fleamart.Dal.Dao
                  
                 List<Oglas> oglasi = (oglasi_ef != null) ? Mapper.Map<List<OglasEF>, List<Oglas>>(oglasi_ef) : null;
                 return oglasi;
+            }
+        }
+
+        public List<Oglas> List(int idAvtor, int status)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                var query = from x in db.Oglasi
+                            where x.AvtorId == idAvtor &&
+                            x.Status == status
+                            orderby x.CasOd descending
+                            select x;
+                List<Oglas> list = new List<Oglas>();
+                if (query.Count() != 0)
+                {
+                    foreach (var item in query.ToList())
+                    {
+                        list.Add(Mapper.Map<OglasEF, Oglas>(item));
+                    }
+                }
+                return list;
             }
         }
     }

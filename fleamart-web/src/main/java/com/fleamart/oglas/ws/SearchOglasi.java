@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
     "kategorija",
     "param"
 })
-@XmlRootElement(name = "searchOglasi")
+@XmlRootElement(name = "SearchOglasi")
 public class SearchOglasi {
 
     @XmlElementRef(name = "kategorija", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
