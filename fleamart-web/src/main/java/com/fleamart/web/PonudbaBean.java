@@ -4,6 +4,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import com.fleamart.obj.OglasObj;
+import com.fleamart.oglas.ws.Ponudba;
+import com.fleamart.ponudba.ws.IPonudbaService;
 
 @ManagedBean(name = "ponudbaBean")
 @RequestScoped
@@ -58,13 +60,14 @@ public class PonudbaBean
 				{
 					oglas.setCena(znesek);
 					return "oglas";
-					System.out.println("Ponudba poslana.");�
+					System.out.println("Ponudba poslana.");
 					
 				} else
 				{
 					return "oglas";
-					System.out.println("Ponudbe ni bilo mogo�e poslati.");
+					System.out.println("Ponudbe ni bilo mogo poslati.");
 				}
+				
 
 			} else
 			{
