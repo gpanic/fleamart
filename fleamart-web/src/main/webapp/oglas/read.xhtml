@@ -26,7 +26,8 @@
                     </h1>
                     <div class="span7">
                         <blockquote><p>Cena: <b>#{oglasBean2.oglas.cena}€</b></p> 
-                            <h:button onclick="" value="Kupi" class="btn btn-primary"/>&nbsp;&nbsp;<h:button onclick="" value="Dodaj v košaro" class="btn btn-primary"/></blockquote>
+                            <h:button onclick="" value="Kupi" class="btn btn-primary"/>&nbsp;&nbsp;<h:button onclick="" value="Dodaj v košaro" class="btn btn-primary"/>
+                        </blockquote>
                         <p><h:outputText value="#{oglasBean2.oglas.opis}"/></p>
                     </div>
                     <div class="span4">
@@ -69,11 +70,11 @@
                 </div>
                 <div class="span5">
                     <h:form style="margin: 0;">
-                        <h:outputLink rendered="#{oglasBean2.oglas.avtor.id == 1}" value="update.xhtml" style="margin: -5px 5px 0;" class="btn btn-mini btn-primary" >
+                        <h:outputLink rendered="#{oglasBean2.oglas.avtor.id == 1 and oglasBean2.oglas.statusNakupa == null}" value="update.xhtml" style="margin: -5px 5px 0;" class="btn btn-mini btn-primary" >
                             <h:outputText value="Posodobi"/>
                             <f:param name="id" value="#{oglasBean2.oglas.id}"/>
                         </h:outputLink>
-                        <h:commandButton rendered="#{oglasBean2.oglas.avtor.id == 1}" action="#{oglasBean2.deleteOglas}" style="margin-bottom: 5px;" class="btn btn-mini btn-primary" value="Odstrani"/>
+                        <h:commandButton rendered="#{oglasBean2.oglas.avtor.id == 1 and oglasBean2.oglas.statusNakupa == null}" action="#{oglasBean2.deleteOglas}" style="margin-bottom: 5px;" class="btn btn-mini btn-primary" value="Odstrani"/>
                     </h:form>
                     <ui:fragment rendered="#{oglasBean2.oglas.slike.get(0) != ''}">
                         <div id="galleria">

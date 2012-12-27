@@ -30,7 +30,7 @@ namespace Fleamart.Contracts.Service
         List<Oglas> GetOglasi();
 
         [OperationContract]
-        List<Oglas> ListOglasi(int idAvtor, int status);
+        List<Oglas> ListOglasi(int idAvtor, int? status, int? statusNakupa);
 
         [OperationContract]
         List<Oglas> SearchOglasi(String kategorija, String param);

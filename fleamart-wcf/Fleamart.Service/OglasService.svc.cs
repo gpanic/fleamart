@@ -48,9 +48,11 @@ namespace Fleamart.Service
         }
 
 
-        public List<Oglas> ListOglasi(int idAvtor, int status)
+        public List<Oglas> ListOglasi(int idAvtor, int? status, int? statusNakupa)
         {
-            return odao.List(idAvtor, status);
+            System.Diagnostics.Debug.WriteLine(status + "-" + statusNakupa);
+            return odao.List(idAvtor, status, statusNakupa);
+
         }
 
 

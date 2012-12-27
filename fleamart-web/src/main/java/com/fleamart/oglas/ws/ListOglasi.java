@@ -1,8 +1,10 @@
 
 package com.fleamart.oglas.ws;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -19,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="idAvtor" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="status" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="statusNakupa" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,13 +33,17 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "idAvtor",
-    "status"
+    "status",
+    "statusNakupa"
 })
 @XmlRootElement(name = "ListOglasi")
 public class ListOglasi {
 
     protected Integer idAvtor;
-    protected Integer status;
+    @XmlElementRef(name = "status", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    protected JAXBElement<Integer> status;
+    @XmlElementRef(name = "statusNakupa", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    protected JAXBElement<Integer> statusNakupa;
 
     /**
      * Gets the value of the idAvtor property.
@@ -67,10 +74,10 @@ public class ListOglasi {
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
      *     
      */
-    public Integer getStatus() {
+    public JAXBElement<Integer> getStatus() {
         return status;
     }
 
@@ -79,11 +86,35 @@ public class ListOglasi {
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
      *     
      */
-    public void setStatus(Integer value) {
+    public void setStatus(JAXBElement<Integer> value) {
         this.status = value;
+    }
+
+    /**
+     * Gets the value of the statusNakupa property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
+     *     
+     */
+    public JAXBElement<Integer> getStatusNakupa() {
+        return statusNakupa;
+    }
+
+    /**
+     * Sets the value of the statusNakupa property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
+     *     
+     */
+    public void setStatusNakupa(JAXBElement<Integer> value) {
+        this.statusNakupa = value;
     }
 
 }

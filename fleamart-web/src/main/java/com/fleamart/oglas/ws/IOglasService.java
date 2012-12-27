@@ -107,6 +107,7 @@ public interface IOglasService {
     /**
      * 
      * @param status
+     * @param statusNakupa
      * @param idAvtor
      * @return
      *     returns com.fleamart.oglas.ws.ArrayOfOglas
@@ -119,7 +120,9 @@ public interface IOglasService {
         @WebParam(name = "idAvtor", targetNamespace = "http://tempuri.org/")
         Integer idAvtor,
         @WebParam(name = "status", targetNamespace = "http://tempuri.org/")
-        Integer status);
+        Integer status,
+        @WebParam(name = "statusNakupa", targetNamespace = "http://tempuri.org/")
+        Integer statusNakupa);
 
     /**
      * 
