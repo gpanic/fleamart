@@ -22,15 +22,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 
-/**
- *
- * @author Dejan
- */
+
 @ManagedBean(name = "oglasBean2")
 @ViewScoped
 public class OglasBean2 implements Serializable {
@@ -41,6 +38,8 @@ public class OglasBean2 implements Serializable {
     private KategorijaObj kategorija;
     private int aktivni = 0; //v oglas/list.xhtml, oglas/read.xhtml, oglas/listProdano.xhtml
     private double zasluzek;
+    @ManagedProperty(value = "#{loginBean}")
+    private LoginBean loginBean;
 
     @PostConstruct
     public void init() {
@@ -55,8 +54,6 @@ public class OglasBean2 implements Serializable {
                 break;
 
         }
-        if (view.equals("/oglas/list.xhtml"))
-            initOglasListAvtor();
     }
 
     public OglasBean2() {
@@ -72,12 +69,16 @@ public class OglasBean2 implements Serializable {
         this.oglasi = oglasi;
     }
 
-    public Double getZasluzek() {
+    public double getZasluzek() {
         return zasluzek;
     }
 
-    public void setZasluzek(int zasluzek) {
+    public void setZasluzek(double zasluzek) {
         this.zasluzek = zasluzek;
+    }
+
+    public void setLoginBean(LoginBean loginBean) {
+        this.loginBean = loginBean;
     }
 
     public OglasObj getOglas() {
@@ -131,7 +132,7 @@ public class OglasBean2 implements Serializable {
         gc.add(Calendar.DATE, 30);
         oglas.setCasDo(gc);
         UporabnikObj u = new UporabnikObj();
-        u.setId(1); // kasneje prebrat iz seje
+        u.setId(loginBean.getIdUser()); 
         oglas.setAvtor(u);
         oglas.setStatus(0);
         Oglas o = ConverterHelper.oglasObj2Ws(oglas);
@@ -140,7 +141,7 @@ public class OglasBean2 implements Serializable {
         Boolean rezultat = client.getBasicHttpBindingIOglasService().createOglas(o);
         String out = (rezultat) ? "/oglas/read.xhtml" : "fail.xhtml";
         if (rezultat) {
-            o = client.getBasicHttpBindingIOglasService().readOglasLast(1); //preberem iz seje
+            o = client.getBasicHttpBindingIOglasService().readOglasLast(loginBean.getIdUser()); 
             out += "?id=" + o.getId();
             redirect(out);
         }
@@ -194,7 +195,7 @@ public class OglasBean2 implements Serializable {
 
     public void listOglasiAvtor(Integer status, Integer statusNakupa) {
         OglasService client = new OglasService();
-        List<Oglas> oglasiws = client.getBasicHttpBindingIOglasService().listOglasi(1, status, statusNakupa).getOglas();
+        List<Oglas> oglasiws = client.getBasicHttpBindingIOglasService().listOglasi(loginBean.getIdUser(), status, statusNakupa).getOglas();
 
         oglasi.clear();
         for (Oglas o : oglasiws) {

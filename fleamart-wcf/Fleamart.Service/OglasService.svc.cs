@@ -50,9 +50,7 @@ namespace Fleamart.Service
 
         public List<Oglas> ListOglasi(int idAvtor, int? status, int? statusNakupa)
         {
-            System.Diagnostics.Debug.WriteLine(status + "-" + statusNakupa);
             return odao.List(idAvtor, status, statusNakupa);
-
         }
 
 

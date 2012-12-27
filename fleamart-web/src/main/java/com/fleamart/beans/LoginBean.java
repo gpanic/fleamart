@@ -4,10 +4,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import com.fleamart.uporabnik.ws.IUporabnikService;
 import com.fleamart.uporabnik.ws.UporabnikService;
+import java.io.Serializable;
 
 @ManagedBean(name = "loginBean")
 @SessionScoped
-public class LoginBean
+public class LoginBean implements Serializable
 {
 	String username, pass, txt;
 	int idUser;
@@ -63,7 +64,7 @@ public class LoginBean
 			{
 				setIdUser(0);
 				// ce uporabnik ni uspesno vpisan je idUser=0
-				txt = "NapaËno uporabniöko ime ali geslo, poskusite ponovno!";
+				txt = "Napaƒçno uporabni≈°ko ime ali geslo, poskusite ponovno!";
 				return "#";
 			} else
 			{
