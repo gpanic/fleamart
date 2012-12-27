@@ -5,33 +5,35 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	<h:body>
-		<ui:composition>
-			<h:panelGroup styleClass="navbar navbar-inverse navbar-fixed-top" layout="block">
+<h:body>
+	<ui:composition>
+		<h:panelGroup styleClass="navbar navbar-inverse navbar-fixed-top"
+			layout="block">
+			<h:panelGroup styleClass="navbar-inner" layout="block">
 				<h:panelGroup styleClass="navbar-inner" layout="block">
-					<h:panelGroup styleClass="navbar-inner" layout="block">
-						<h:panelGroup styleClass="container-fluid" layout="block">
-							<h:outputLink value="/fleamart-web/" styleClass="brand">Fleamart</h:outputLink>
-							<ul class="nav">
-								<li><a href="/fleamart-web/">Home</a></li>
-								<li><a href="/fleamart-web/browse.xhtml">Browse</a></li>
-								<li><a href="/fleamart-web/oglas/create.xhtml">Dodaj oglas</a></li>
-								<li><a href="#">Link 4</a></li>
-								<li><a href="#">Link 5</a></li>
-								<li class="divider-vertical"></li>
-								<h:form styleClass="navbar-search pull-left">
-									<h:inputText styleClass="search-query span4"></h:inputText>
-								</h:form>
-								<li class="divider-vertical"></li>
-							</ul>
-							<ul class="nav pull-right">
-								<li><a href="/fleamart-web/login.xhtml">Login</a></li>
-								<li><a href="/fleamart-web/register.xhtml">Register</a></li>
-							</ul>
-						</h:panelGroup>
+					<h:panelGroup styleClass="container-fluid" layout="block">
+						<h:outputLink value="/fleamart-web/" styleClass="brand">Fleamart</h:outputLink>
+						<ul class="nav">
+							<li><a href="/fleamart-web/">Home</a></li>
+							<li><a href="/fleamart-web/browse.xhtml">Browse</a></li>
+							<li><a href="/fleamart-web/oglas/create.xhtml">Dodaj
+									oglas</a></li>
+							<li><a href="#">Link 4</a></li>
+							<li><a href="#">Link 5</a></li>
+							<li class="divider-vertical"></li>
+							<h:form styleClass="navbar-search pull-left">
+								<h:inputText styleClass="search-query span4"></h:inputText>
+							</h:form>
+							<li class="divider-vertical"></li>
+						</ul>
+						<ul class="nav pull-right">
+							<li><a href="/fleamart-web/login.xhtml">Login</a></li>
+							<li><a href="/fleamart-web/register.xhtml">Register</a></li>
+                                                </ul>
 					</h:panelGroup>
 				</h:panelGroup>
 			</h:panelGroup>
-		</ui:composition>
-	</h:body>
+		</h:panelGroup>
+	</ui:composition>
+</h:body>
 </html>
