@@ -1,5 +1,7 @@
 package com.fleamart.beans;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import com.fleamart.uporabnik.ws.IUporabnikService;
@@ -7,10 +9,10 @@ import com.fleamart.uporabnik.ws.UporabnikService;
 
 @ManagedBean(name = "loginBean")
 @SessionScoped
-public class LoginBean
+public class LoginBean implements Serializable
 {
-	String username, pass, txt;
-	int idUser;
+	private String username, pass, txt;
+	private int idUser;
 
 	public int getIdUser()
 	{
@@ -63,7 +65,7 @@ public class LoginBean
 			{
 				setIdUser(0);
 				// ce uporabnik ni uspesno vpisan je idUser=0
-				txt = "Napaèno uporabniško ime ali geslo, poskusite ponovno!";
+				txt = "Napaï¿½no uporabniï¿½ko ime ali geslo, poskusite ponovno!";
 				return "#";
 			} else
 			{
