@@ -17,10 +17,12 @@
 					<br />
 
 					<h:outputText style="width:150;" value="Password: "></h:outputText>
-					<h:inputText value="#{loginBean.pass}"></h:inputText>
+					<h:inputSecret value="#{loginBean.pass}"></h:inputSecret>
 					<br />
 
 					<h:commandButton value="Login" action="#{loginBean.checkUser}"></h:commandButton>
+					<br />
+					<h:outputText style="width:150;" value="#{loginBean.txt}"></h:outputText>
 				</h:form>
 			</f:view>
 		</ui:define>
