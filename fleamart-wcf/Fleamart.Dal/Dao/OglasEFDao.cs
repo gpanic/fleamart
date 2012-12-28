@@ -63,7 +63,7 @@ namespace Fleamart.Dal.Dao
                             select x;
                 if (query.Count() != 0)
                 {
-                    return Mapper.Map<OglasEF,Oglas>(query.First());
+                    return Mapper.Map<OglasEF, Oglas>(query.First());
                 }
                 else
                 {
@@ -155,7 +155,7 @@ namespace Fleamart.Dal.Dao
                 {
                     oglasi_ef = db.Oglasi.Where(x => x.Naslov.Contains(param)).ToList();
                 }
-                 
+
                 List<Oglas> oglasi = (oglasi_ef != null) ? Mapper.Map<List<OglasEF>, List<Oglas>>(oglasi_ef) : null;
                 return oglasi;
             }
@@ -186,5 +186,6 @@ namespace Fleamart.Dal.Dao
                 return list;
             }
         }
+
     }
 }

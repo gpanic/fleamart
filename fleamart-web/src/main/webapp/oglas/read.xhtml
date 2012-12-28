@@ -26,7 +26,12 @@
                     </h1>
                     <div class="span7">
                         <blockquote><p>Cena: <b>#{oglasBean2.oglas.cena}€</b></p> 
-                            <h:button onclick="" value="Kupi" class="btn btn-primary"/>&nbsp;&nbsp;<h:button onclick="" value="Dodaj v košaro" class="btn btn-primary"/>
+                            <form>
+                                <f:ajax rendered="#{oglasBean2.oglas.avtor.id != loginBean.idUser and loginBean.idUser != 0}" listener="#{oglasBean2.kupiOglas(oglasBean2.oglas.id)}">
+                                    <h:commandButton class="btn btn-primary" value="Kupi"  /> 
+                                </f:ajax>
+                                &nbsp;<h:button onclick="" value="Dodaj v košaro" class="btn btn-primary"/>
+                            </form>
                         </blockquote>
                         <p><h:outputText value="#{oglasBean2.oglas.opis}"/></p>
                     </div>

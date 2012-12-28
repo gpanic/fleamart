@@ -164,6 +164,7 @@ public class OglasBean2 implements Serializable {
     }
 
     public void initOglasRead() {
+        System.out.println(oglas);
         readOglas(oglas.getId());
     }
 
@@ -220,5 +221,10 @@ public class OglasBean2 implements Serializable {
         OglasService client = new OglasService();
         client.getBasicHttpBindingIOglasService().updateOglas(ConverterHelper.oglasObj2Ws(oglas));
         redirect("/oglas/read.xhtml?id=" + oglas.getId());
+    }
+    
+    public void kupiOglas(int idOglas){
+        OglasService client = new OglasService();
+//        client.getBasicHttpBindingIOglasService().
     }
 }

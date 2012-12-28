@@ -34,5 +34,6 @@ namespace Fleamart.Contracts.Service
 
         [OperationContract]
         List<Oglas> SearchOglasi(String kategorija, String param);
+
     }
 }
