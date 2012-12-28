@@ -6,7 +6,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import com.fleamart.uporabnik.ws.IUporabnikService;
 import com.fleamart.uporabnik.ws.UporabnikService;
-import java.io.Serializable;
 
 @ManagedBean(name = "loginBean")
 @SessionScoped
@@ -71,6 +70,7 @@ public class LoginBean implements Serializable
 			} else
 			{
 				setIdUser(idUser);
+				pass = "";
 				// ce je uporabnik uspesno vpisan
 				return "index?faces-redirect=true";
 			}
@@ -82,6 +82,22 @@ public class LoginBean implements Serializable
 
 		}
 		return "";
+	}
+	
+	public String logOut(){
+		try
+		{
+			setIdUser(0);
+			setUsername("");
+			setPass("");	
+
+		} catch (Exception e)
+		{
+
+			e.printStackTrace();
+
+		}
+		return "index?faces-redirect=true";
 	}
 
 }

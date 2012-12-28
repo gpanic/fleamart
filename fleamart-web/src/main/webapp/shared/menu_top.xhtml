@@ -27,9 +27,29 @@
 							<li class="divider-vertical"></li>
 						</ul>
 						<ul class="nav pull-right">
-							<li><a href="/fleamart-web/login.xhtml">Login</a></li>
-							<li><a href="/fleamart-web/register.xhtml">Register</a></li>
-                                                </ul>
+							<li><h:outputLink value="/fleamart-web/login.xhtml"
+									rendered="#{loginBean.idUser == 0}">
+									<f:verbatim>Vpis</f:verbatim>
+								</h:outputLink></li>
+							<li><h:outputLink value="/fleamart-web/register.xhtml"
+									rendered="#{loginBean.idUser == 0}">
+									<f:verbatim>Registracija</f:verbatim>
+								</h:outputLink></li>
+							<ui:fragment rendered="#{loginBean.idUser!=0}">
+								<div class="btn-group">
+									<a class="btn btn-primary" href="#"><i
+										class="icon-user icon-white"></i> Uporabnik </a> <a
+										class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+										href="#"><span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="#"><i class="icon-pencil"></i>
+												Nastavitve</a></li>
+										<li class="divider"></li>
+										<li><a href="/fleamart-web/logout.xhtml"><i class="i"></i> Odjava</a></li>
+									</ul>
+								</div>
+							</ui:fragment>
+						</ul>
 					</h:panelGroup>
 				</h:panelGroup>
 			</h:panelGroup>
