@@ -1,20 +1,35 @@
 package com.fleamart.beans;
 
+import java.util.GregorianCalendar;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import com.fleamart.obj.OglasObj;
+import com.fleamart.obj.PonudbaObj;
+import com.fleamart.obj.UporabnikObj;
+import com.fleamart.oglas.ws.Oglas;
 import com.fleamart.ponudba.ws.IPonudbaService;
 import com.fleamart.ponudba.ws.PonudbaService;
+import com.fleamart.beans.LoginBean;
+import com.fleamart.helpers.ConverterHelper;
 
 @ManagedBean(name = "ponudbaBean")
 @RequestScoped
 public class PonudbaBean
 {
+	private PonudbaObj ponudba;
 	private double znesek;
-	private int idUporabnik;
-	private int idOglas;
-
+	private String txt;
+	
+	public String getTxt()
+	{
+		return txt;
+	}
+	public void setTxt(String txt)
+	{
+		this.txt = txt;
+	}
 	public double getZnesek()
 	{
 		return znesek;
@@ -23,51 +38,63 @@ public class PonudbaBean
 	{
 		this.znesek = znesek;
 	}
-	public int getIdUporabnik()
+	public PonudbaObj getPonudba()
 	{
-		return idUporabnik;
+		return ponudba;
 	}
-	public void setIdUporabnik(int idUporabnik)
+	public void setPonudba(PonudbaObj ponudba)
 	{
-		this.idUporabnik = idUporabnik;
+		this.ponudba = ponudba;
 	}
-	public int getIdOglas()
-	{
-		return idOglas;
+		
+	public PonudbaBean(){
+		ponudba = new PonudbaObj();
 	}
-	public void setIdOglas(int idOglas)
-	{
-		this.idOglas = idOglas;
-	}
-
 	public String posljiPonudbo()
 	{
 		try
-		{
-			com.fleamart.obj.OglasObj oglas = new OglasObj();
+		{	
+			OglasObj oglas = new OglasObj();
+			UporabnikObj uporabnik = new UporabnikObj();
+			
 			String trenCena = oglas.getCena();
 			double trenutnaCena = Double.parseDouble(trenCena);
+			
 			if (znesek > trenutnaCena)
 			{
-
-				IPonudbaService service = new PonudbaService()
-						.getBasicHttpBindingIPonudbaService();
-				boolean uspelo = service.placeBidOnItem(znesek, idUporabnik,
-						idOglas);
+				LoginBean lb = new LoginBean();				
+				int id = lb.getIdUser();
+				uporabnik.setId(id);
+				
+				int idOglas = oglas.getId();
+				oglas.setId(idOglas);
+				
+				//damo na ponudbo
+				ponudba.setCas(new GregorianCalendar());
+				ponudba.setOglas(oglas);
+				ponudba.setUporabnik(uporabnik);
+				ponudba.setZnesek(znesek);
+				
+				//naredi to, da spodnja koda dela!!!
+				Ponudba p = ConverterHelper.oglasObj2Ws(oglas);
+				
+				PonudbaService client = new PonudbaService();
+				boolean uspelo = client.getBasicHttpBindingIPonudbaService().placeBidOnItem(ponudba);
 				if (uspelo == true)
 				{
 					oglas.setCena(znesek);
+					txt = "Uspešno oddana ponudba!";
 					return "#";
 
 				} else
 				{
-					//TODO: naredi v oglasu txt, da ni uspelo!
+					txt = "Neuspešno oddana ponudba!";
 					return "#";
 				}
 
 			} else
 			{
-				//TODO: naredi v oglasu txt, da je prenizka cena!
+				txt = "Vpisali ste prenizko ceno!";
 				return "oglas";
 			}
 

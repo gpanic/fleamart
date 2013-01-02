@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Fleamart.Contracts.Data;
+using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,6 @@ namespace Fleamart.Contracts.Service
     public interface IPonudbaService
     {
         [OperationContract]
-        bool placeBidOnItem(double znesek, int idUporabnika, int idOglas);
+        bool placeBidOnItem(Ponudba p);
     }
 }

@@ -5,14 +5,17 @@
 package com.fleamart.helpers;
 
 import com.fleamart.beans.OglasBean;
+import com.fleamart.beans.PonudbaBean;
 import com.fleamart.obj.KategorijaObj;
 import com.fleamart.obj.NaslovObj;
 import com.fleamart.obj.OglasObj;
+import com.fleamart.obj.PonudbaObj;
 import com.fleamart.obj.UporabnikObj;
 import com.fleamart.oglas.ws.ArrayOfstring;
 import com.fleamart.oglas.ws.Kategorija;
 import com.fleamart.oglas.ws.Naslov;
 import com.fleamart.oglas.ws.Oglas;
+import com.fleamart.oglas.ws.Ponudba;
 import com.fleamart.oglas.ws.Uporabnik;
 import com.fleamart.uporabnik.ws.ObjectFactory;
 import java.util.Calendar;
@@ -92,6 +95,37 @@ public class ConverterHelper {
 
         return o;
     }
+    
+    public static Ponudba ponudbaObj2WS(PonudbaObj obj){
+    	Ponudba p = new Ponudba();
+    	com.fleamart.uporabnik.ws.ObjectFactory of = new com.fleamart.uporabnik.ws.ObjectFactory();
+    	
+    	try {
+            if (obj.getCas() != null)
+                p.setCas(DatatypeFactory.newInstance().newXMLGregorianCalendar(obj.getCas()));
+           
+        } catch (DatatypeConfigurationException ex) {
+            Logger.getLogger(PonudbaBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    	p.setId(obj.getId());
+    	p.setZnesek(obj.getZnesek());
+    	//TODO: poglej ce je prav
+    	//p.setOglas(oglasObj2Ws(obj.getOglas()));
+    	//p.setUporabnik(uporabnikObj2WS(obj.getUporabnik()));
+
+    	
+    }
+    
+    public static PonudbaObj ponudbaWs2Obj(Ponudba pon){
+    	PonudbaObj p = new PonudbaObj();
+    	p.setId(pon.getId());
+    	p.setCas(pon.getCas().toGregorianCalendar());
+    	p.setOglas(oglasWs2Obj(pon.getOglas().getValue()));
+    	p.setUporabnik(uporabnikWs2Obj(pon.getUporabnik().getValue()));
+    	p.setZnesek(pon.getZnesek());
+    	return p;
+    }
+    
 
     public static Uporabnik uporabnikObj2WS(UporabnikObj obj) {
         Uporabnik u = new Uporabnik();

@@ -25,9 +25,7 @@ public interface IPonudbaService {
 
     /**
      * 
-     * @param idUporabnika
-     * @param znesek
-     * @param idOglas
+     * @param p
      * @return
      *     returns java.lang.Boolean
      */
@@ -36,11 +34,7 @@ public interface IPonudbaService {
     @RequestWrapper(localName = "placeBidOnItem", targetNamespace = "http://tempuri.org/", className = "com.fleamart.ponudba.ws.PlaceBidOnItem")
     @ResponseWrapper(localName = "placeBidOnItemResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.ponudba.ws.PlaceBidOnItemResponse")
     public Boolean placeBidOnItem(
-        @WebParam(name = "znesek", targetNamespace = "http://tempuri.org/")
-        Double znesek,
-        @WebParam(name = "idUporabnika", targetNamespace = "http://tempuri.org/")
-        Integer idUporabnika,
-        @WebParam(name = "idOglas", targetNamespace = "http://tempuri.org/")
-        Integer idOglas);
+        @WebParam(name = "p", targetNamespace = "http://tempuri.org/")
+        Ponudba p);
 
 }

@@ -1,8 +1,10 @@
 
 package com.fleamart.ponudba.ws;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -17,9 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="znesek" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="idUporabnika" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="idOglas" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="p" type="{http//www.fleamart.com/}Ponudba" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,87 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "znesek",
-    "idUporabnika",
-    "idOglas"
+    "p"
 })
-@XmlRootElement(name = "placeBidOnItem")
+@XmlRootElement(name = "placeBidOnItem", namespace = "http://tempuri.org/")
 public class PlaceBidOnItem {
 
-    protected Double znesek;
-    protected Integer idUporabnika;
-    protected Integer idOglas;
+    @XmlElementRef(name = "p", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    protected JAXBElement<Ponudba> p;
 
     /**
-     * Gets the value of the znesek property.
+     * Gets the value of the p property.
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link JAXBElement }{@code <}{@link Ponudba }{@code >}
      *     
      */
-    public Double getZnesek() {
-        return znesek;
+    public JAXBElement<Ponudba> getP() {
+        return p;
     }
 
     /**
-     * Sets the value of the znesek property.
+     * Sets the value of the p property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link JAXBElement }{@code <}{@link Ponudba }{@code >}
      *     
      */
-    public void setZnesek(Double value) {
-        this.znesek = value;
-    }
-
-    /**
-     * Gets the value of the idUporabnika property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getIdUporabnika() {
-        return idUporabnika;
-    }
-
-    /**
-     * Sets the value of the idUporabnika property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setIdUporabnika(Integer value) {
-        this.idUporabnika = value;
-    }
-
-    /**
-     * Gets the value of the idOglas property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getIdOglas() {
-        return idOglas;
-    }
-
-    /**
-     * Sets the value of the idOglas property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setIdOglas(Integer value) {
-        this.idOglas = value;
+    public void setP(JAXBElement<Ponudba> value) {
+        this.p = value;
     }
 
 }

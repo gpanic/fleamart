@@ -3,6 +3,7 @@ package com.fleamart.ponudba.ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -30,9 +31,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "placeBidOnItemResult"
 })
-@XmlRootElement(name = "placeBidOnItemResponse")
+@XmlRootElement(name = "placeBidOnItemResponse", namespace = "http://tempuri.org/")
 public class PlaceBidOnItemResponse {
 
+    @XmlElement(namespace = "http://tempuri.org/")
     protected Boolean placeBidOnItemResult;
 
     /**

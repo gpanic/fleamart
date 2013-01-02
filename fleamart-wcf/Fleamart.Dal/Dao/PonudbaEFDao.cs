@@ -31,12 +31,7 @@ namespace Fleamart.Dal.Dao
             {
                 if (entity != null)
                 {
-                    PonudbaEF ef = Mapper.Map<Ponudba, PonudbaEF>(entity);
-                    int idUpo, idOgl;
-                    idUpo = entity.Uporabnik.Id;
-                    idOgl = entity.Oglas.Id;
-                    ef.Uporabnik = db.Uporabniki.Find(idUpo);
-                    ef.Oglas = db.Oglasi.Find(idOgl);
+                    PonudbaEF ef = Mapper.Map<Ponudba, PonudbaEF>(entity);                   
                     db.Ponudbe.Add(ef);
                     db.SaveChanges();
                     return true;

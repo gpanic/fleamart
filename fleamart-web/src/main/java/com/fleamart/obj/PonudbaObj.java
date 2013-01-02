@@ -6,15 +6,25 @@ package com.fleamart.obj;
 
 import java.util.GregorianCalendar;
 
-
-class PonudbaObj {
+public class PonudbaObj {
     
     private int id;
     private double znesek;
     private GregorianCalendar cas;
     private UporabnikObj uporabnik;
+    private OglasObj oglas;
 
-    public int getId() {
+    public OglasObj getOglas()
+	{
+		return oglas;
+	}
+
+	public void setOglas(OglasObj oglas)
+	{
+		this.oglas = oglas;
+	}
+
+	public int getId() {
         return id;
     }
 
@@ -48,7 +58,7 @@ class PonudbaObj {
 
     @Override
     public String toString() {
-        return "PonudbaObj{" + "id=" + id + ", znesek=" + znesek + ", cas=" + cas + ", uporabnik=" + uporabnik + '}';
+        return "PonudbaObj{" + "id=" + id + ", znesek=" + znesek + ", cas=" + cas + ", uporabnik=" + uporabnik + ", oglas=" + oglas + '}';
     }
     
 }
