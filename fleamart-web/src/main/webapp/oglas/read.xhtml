@@ -1,130 +1,105 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
-<h:head>
-	<title>Fleamart - #{oglasBean2.oglas.naslov}</title>
-</h:head>
-<h:body>
-	<ui:composition template="/shared/layout.xhtml">
-		<ui:define name="content">
-			<f:metadata>
-				<f:viewParam name="id" value="#{oglasBean2.oglas.id}" />
-				<f:event type="preRenderView" listener="#{oglasBean2.initOglasRead}" />
-			</f:metadata>
-			<style>
-#galleria {
-	height: 400px
-}
-</style>
-			<div class="span6">
-				<h1>
-					<h:outputText value="#{oglasBean2.oglas.naslov}" />
-					<ui:fragment rendered="#{oglasBean2.oglas.status == 1}">
-						<code>Oglas ni aktiven</code>
-					</ui:fragment>
-				</h1>
-				<div class="span7">
-					<blockquote>
-						<p>
-							Cena: <b>#{oglasBean2.oglas.cena}€</b>
-						</p>
-						<h:button onclick="" value="Kupi" class="btn btn-primary" />
-						&nbsp;&nbsp;
-						<h:button onclick="" value="Dodaj v košaro"
-							class="btn btn-primary" />
-					</blockquote>
-					<p>
-						<form>
-							<h:inputText id="znesek" value="#{ponudbaBean.znesek}"
-								required="true" validatorMessage="Niz mora biti številka"
-								requiredMessage="Obvezno polje">
-								<f:validateRegex pattern="(\d*.\d*|\d*)" />
-							</h:inputText>
-							<h:commandButton class="btn btn-primary" value="Dodaj ponudbo"
-								action="#{ponudbaBean.posljiPonudbo}"></h:commandButton>
-							<h:outputText style="width:150;" value="#{ponudbaBean.txt}"></h:outputText>
-						</form>
-					</p>
-					<p>
-						<h:outputText value="#{oglasBean2.oglas.opis}" />
-					</p>
-				</div>
-				<div class="span4">
-					<strong>Kategorija</strong><br />
-					<h:outputText value="#{oglasBean2.oglas.kategorija.naziv}" />
-					<br /> <br /> <strong>Vpisano</strong><br />
-					<h:outputText value="#{oglasBean2.oglas.casOd.time}">
-						<f:convertDateTime type="both" dateStyle="short" />
-					</h:outputText>
-					<ui:fragment rendered="#{oglasBean2.oglas.casSpremenjeno != null}">
-						<strong>Spremenjeno</strong>
-						<br />
-						<h:outputText value="#{oglasBean2.oglas.casSpremenjeno.time}">
-							<f:convertDateTime type="both" dateStyle="short" />
-						</h:outputText>
-					</ui:fragment>
-					<strong>Poteče</strong><br />
-					<h:outputText value="#{oglasBean2.oglas.casDo.time}">
-						<f:convertDateTime type="both" dateStyle="short" />
-					</h:outputText>
-					<br /> <br />
-					<legend>Prodajalec</legend>
-					<p>
-						Uporabnik<br /> <strong><h:outputText
-								value="#{oglasBean2.oglas.avtor.upime}" /></strong>
-					</p>
-					<p>
-						Občina<br /> <strong><h:outputText
-								value="#{oglasBean2.oglas.avtor.naslov.obcina}" /></strong>
-					</p>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Fleamart - #{oglasBean2.oglas.naslov}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/shared/layout.xhtml">
+            <ui:define name="content">
+                <f:metadata>
+                    <f:viewParam name="id" value="#{oglasBean2.oglas.id}" />
+                    <f:event type="preRenderView" listener="#{oglasBean2.initOglasRead}"/>
+                </f:metadata>
+                <style> 
+                    #galleria{height:400px}
+                </style>
+                <div class="span6">
+                    <h1><h:outputText value="#{oglasBean2.oglas.naslov}"/>
+                        <ui:fragment rendered="#{oglasBean2.oglas.status == 1}">
+                            <code>Oglas ni aktiven</code>
+                        </ui:fragment>
+                    </h1>
+                    <div class="span7">
+                        <blockquote><p>Cena: <b>#{oglasBean2.oglas.cena}€</b></p> 
+                            <form>
+                                <f:ajax rendered="#{oglasBean2.oglas.avtor.id != loginBean.idUser and loginBean.idUser != 0}" listener="#{oglasBean2.kupiOglas(oglasBean2.oglas.id)}">
+                                    <h:commandButton class="btn btn-primary" value="Kupi"  /> 
+                                </f:ajax>
+                                &nbsp;<h:button onclick="" value="Dodaj v košaro" class="btn btn-primary"/>
+                            </form>
+                        </blockquote>
+                        <p><h:outputText value="#{oglasBean2.oglas.opis}"/></p>
+                    </div>
+                    <div class="span4">
+                        <strong>Kategorija</strong><br/>
+                        <h:outputText value="#{oglasBean2.oglas.kategorija.naziv}"/><br/><br/>
+                        <strong>Vpisano</strong><br/>
+                        <h:outputText value="#{oglasBean2.oglas.casOd.time}">
+                            <f:convertDateTime type="both" dateStyle="short" />
+                        </h:outputText>
+                        <ui:fragment rendered="#{oglasBean2.oglas.casSpremenjeno != null}">
+                            <strong>Spremenjeno</strong><br/>
+                            <h:outputText value="#{oglasBean2.oglas.casSpremenjeno.time}">
+                                <f:convertDateTime type="both" dateStyle="short" />
+                            </h:outputText>
+                        </ui:fragment>
+                        <strong>Poteče</strong><br/>
+                        <h:outputText value="#{oglasBean2.oglas.casDo.time}">
+                            <f:convertDateTime type="both" dateStyle="short" />
+                        </h:outputText>
+                        <br/><br/>
+                        <legend>Prodajalec</legend>
+                        <p>
+                            Uporabnik<br/>
+                            <strong><h:outputText value="#{oglasBean2.oglas.avtor.upime}"/></strong>
+                        </p>
+                        <p>
+                            Občina<br/>
+                            <strong><h:outputText value="#{oglasBean2.oglas.avtor.naslov.obcina}"/></strong>
+                        </p>
 
-					<p>
-						Telefon<br /> <strong><h:outputText
-								value="#{oglasBean2.oglas.avtor.telefon}" /></strong>
-					</p>
-					<p>
-						Email<br /> <strong><h:outputText
-								value="#{oglasBean2.oglas.avtor.email}" /></strong>
-					</p>
-				</div>
-			</div>
-			<div class="span5">
-				<h:form style="margin: 0;">
-					<h:outputLink rendered="#{oglasBean2.oglas.avtor.id == 1}"
-						value="update.xhtml" style="margin: -5px 5px 0;"
-						class="btn btn-mini btn-primary">
-						<h:outputText value="Posodobi" />
-						<f:param name="id" value="#{oglasBean2.oglas.id}" />
-					</h:outputLink>
-					<h:commandButton rendered="#{oglasBean2.oglas.avtor.id == 1}"
-						action="#{oglasBean2.deleteOglas}" style="margin-bottom: 5px;"
-						class="btn btn-mini btn-primary" value="Odstrani" />
-				</h:form>
-				<ui:fragment rendered="#{oglasBean2.oglas.slike.get(0) != ''}">
-					<div id="galleria">
-						<ui:repeat value="#{oglasBean2.oglas.slike}" var="slika"
-							varStatus="slikaStatus">
-							<a href="#{slika}"> <img src="#{slika}" />
-							</a>
-						</ui:repeat>
-					</div>
-					<script type="text/javascript"
-						src="../js/galleria/galleria-1.2.8.min.js"></script>
-					<script type="text/javascript">
-						// Load the classic theme
-						Galleria
-								.loadTheme('../js/galleria/galleria.classic.min.js');
-						//
-						//                    // Initialize Galleria
-						Galleria.run('#galleria');
-					</script>
-				</ui:fragment>
-			</div>
-		</ui:define>
-	</ui:composition>
-</h:body>
+                        <p>
+                            Telefon<br/>
+                            <strong><h:outputText value="#{oglasBean2.oglas.avtor.telefon}"/></strong>
+                        </p>
+                        <p>
+                            Email<br/>
+                            <strong><h:outputText value="#{oglasBean2.oglas.avtor.email}"/></strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="span5">
+                    <h:form style="margin: 0;">
+                        <h:outputLink rendered="#{oglasBean2.oglas.avtor.id == loginBean.idUser and oglasBean2.oglas.statusNakupa == null}" value="update.xhtml" style="margin: -5px 5px 0;" class="btn btn-mini btn-primary" >
+                            <h:outputText value="Posodobi"/>
+                            <f:param name="id" value="#{oglasBean2.oglas.id}"/>
+                        </h:outputLink>
+                        <h:commandButton rendered="#{oglasBean2.oglas.avtor.id == loginBean.idUser and oglasBean2.oglas.statusNakupa == null}" action="#{oglasBean2.deleteOglas}" style="margin-bottom: 5px;" class="btn btn-mini btn-primary" value="Odstrani"/>
+                    </h:form>
+                    <ui:fragment rendered="#{oglasBean2.oglas.slike.get(0) != ''}">
+                        <div id="galleria">
+                            <ui:repeat value="#{oglasBean2.oglas.slike}" var="slika" varStatus="slikaStatus">
+                                <a href="#{slika}">
+                                    <img src="#{slika}"/>
+                                </a>
+                            </ui:repeat>
+                        </div>
+                        <script type="text/javascript" src="../js/galleria/galleria-1.2.8.min.js"></script>
+                        <script type="text/javascript">
+                            // Load the classic theme
+                            Galleria.loadTheme('../js/galleria/galleria.classic.min.js');
+                            //
+                            //                    // Initialize Galleria
+                            Galleria.run('#galleria');
+                        </script>
+                    </ui:fragment>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>

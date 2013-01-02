@@ -35,7 +35,7 @@ namespace Fleamart.Dal.Entities
         public int? KupecId { get; set; }
         public virtual UporabnikEF Kupec { get; set; }
 
-        public int? KategorijaId { get; set; }
+        public int KategorijaId { get; set; }
         public virtual KategorijaEF Kategorija { get; set; }
 
         public List<KomentarEF> Komentarji { get; set; }

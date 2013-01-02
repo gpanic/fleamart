@@ -20,7 +20,7 @@ public class OglasObj  implements Serializable{
     private GregorianCalendar casSpremenjeno;
     private int status;
     private List<PonudbaObj> ponudbe;
-    private int statusNakupa;
+    private Integer statusNakupa;
     private UporabnikObj avtor;
     private UporabnikObj kupec;
     private List<KomentarObj> komentarji;
@@ -65,6 +65,10 @@ public class OglasObj  implements Serializable{
 
     public String getCena() {
         return cena;
+    }
+    
+    public double getCenaInteger() {
+        return Double.parseDouble(cena);
     }
 
     public void setCena(String cena) {
@@ -139,11 +143,11 @@ public class OglasObj  implements Serializable{
         this.ponudbe = ponudbe;
     }
 
-    public int getStatusNakupa() {
+    public Integer getStatusNakupa() {
         return statusNakupa;
     }
 
-    public void setStatusNakupa(int statusNakupa) {
+    public void setStatusNakupa(Integer statusNakupa) {
         this.statusNakupa = statusNakupa;
     }
 

@@ -4,6 +4,7 @@ using Fleamart.Dal.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,7 +63,7 @@ namespace Fleamart.Dal.Dao
                             select x;
                 if (query.Count() != 0)
                 {
-                    return Mapper.Map<OglasEF,Oglas>(query.First());
+                    return Mapper.Map<OglasEF, Oglas>(query.First());
                 }
                 else
                 {
@@ -154,21 +155,26 @@ namespace Fleamart.Dal.Dao
                 {
                     oglasi_ef = db.Oglasi.Where(x => x.Naslov.Contains(param)).ToList();
                 }
-                 
+
                 List<Oglas> oglasi = (oglasi_ef != null) ? Mapper.Map<List<OglasEF>, List<Oglas>>(oglasi_ef) : null;
                 return oglasi;
             }
         }
 
-        public List<Oglas> List(int idAvtor, int status)
+        public List<Oglas> List(int idAvtor, int? status, int? statusNakupa)
         {
             using (FleamartContext db = new FleamartContext())
             {
                 var query = from x in db.Oglasi
-                            where x.AvtorId == idAvtor &&
-                            x.Status == status
-                            orderby x.CasOd descending
+                            where x.AvtorId == idAvtor
                             select x;
+                if (status != null)
+                    query = query.Where(a => a.Status == status);
+                if (statusNakupa != null)
+                    query = query.Where(a => a.StatusNakupa == statusNakupa);
+
+                query = query.OrderByDescending(x => x.CasOd);
+
                 List<Oglas> list = new List<Oglas>();
                 if (query.Count() != 0)
                 {
@@ -180,5 +186,6 @@ namespace Fleamart.Dal.Dao
                 return list;
             }
         }
+
     }
 }
