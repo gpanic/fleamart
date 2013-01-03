@@ -170,8 +170,12 @@ namespace Fleamart.Dal.Dao
                             select x;
                 if (status != null)
                     query = query.Where(a => a.Status == status);
-                if (statusNakupa != null)
+
+
+                if (statusNakupa >= 0) //drugače ne dela lol
                     query = query.Where(a => a.StatusNakupa == statusNakupa);
+                else
+                    query = query.Where(a => a.StatusNakupa == null);
 
                 query = query.OrderByDescending(x => x.CasOd);
 
@@ -187,5 +191,26 @@ namespace Fleamart.Dal.Dao
             }
         }
 
+        public List<Oglas> List(int idKupec, int statusNakupa)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                var query = from x in db.Oglasi
+                            where x.KupecId == idKupec &&
+                            x.StatusNakupa == statusNakupa
+                            select x;
+                query = query.OrderByDescending(x => x.CasOd);
+
+                List<Oglas> list = new List<Oglas>();
+                if (query.Count() != 0)
+                {
+                    foreach (var item in query.ToList())
+                    {
+                        list.Add(Mapper.Map<OglasEF, Oglas>(item));
+                    }
+                }
+                return list;
+            }
+        }
     }
 }

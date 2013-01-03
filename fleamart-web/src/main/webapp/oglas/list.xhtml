@@ -10,7 +10,7 @@
     <h:body>
         <ui:composition template="/shared/layout.xhtml">
             <ui:define name="content">
-                <h1>Moji oglasi</h1>
+                <h1>Moji oglasi <h:link value="Dodaj oglas" outcome="create" style="font-weight: normal; margin-top: -6px;" class="btn btn-primary"/></h1>
                 <h:form id="mojioglasi">
                     <h:selectOneRadio id="radiostatus" class="radiobtn" value="#{oglasBean2.aktivni}">
                         <f:selectItem itemValue="0" itemLabel="Aktivni" />

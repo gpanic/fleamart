@@ -10,8 +10,10 @@ import com.fleamart.kategorija.ws.KategorijeService;
 import com.fleamart.obj.KategorijaObj;
 import com.fleamart.obj.OglasObj;
 import com.fleamart.obj.UporabnikObj;
+import com.fleamart.oglas.ws.ObjectFactory;
 import com.fleamart.oglas.ws.Oglas;
 import com.fleamart.oglas.ws.OglasService;
+import com.fleamart.oglas.ws.Uporabnik;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,12 +23,12 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.FacesException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-
 
 @ManagedBean(name = "oglasBean2")
 @ViewScoped
@@ -36,7 +38,7 @@ public class OglasBean2 implements Serializable {
     private OglasObj oglas;
     private List<KategorijaObj> kategorije;
     private KategorijaObj kategorija;
-    private int aktivni = 0; //v oglas/list.xhtml, oglas/read.xhtml, oglas/listProdano.xhtml
+    private int aktivni = 0; //v oglas/list.xhtml, oglas/read.xhtml, oglas/listProdano.xhtml, kot statusNakupa v oglas/listNakupi.xhtml
     private double zasluzek;
     @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
@@ -52,7 +54,9 @@ public class OglasBean2 implements Serializable {
             case "/oglas/listProdano.xhtml":
                 initOglasListProdano();
                 break;
-
+            case "/oglas/listNakupi.xhtml":
+                initOglasListKupljeno();
+                break;
         }
     }
 
@@ -132,7 +136,7 @@ public class OglasBean2 implements Serializable {
         gc.add(Calendar.DATE, 30);
         oglas.setCasDo(gc);
         UporabnikObj u = new UporabnikObj();
-        u.setId(loginBean.getIdUser()); 
+        u.setId(loginBean.getIdUser());
         oglas.setAvtor(u);
         oglas.setStatus(0);
         Oglas o = ConverterHelper.oglasObj2Ws(oglas);
@@ -141,7 +145,7 @@ public class OglasBean2 implements Serializable {
         Boolean rezultat = client.getBasicHttpBindingIOglasService().createOglas(o);
         String out = (rezultat) ? "/oglas/read.xhtml" : "fail.xhtml";
         if (rezultat) {
-            o = client.getBasicHttpBindingIOglasService().readOglasLast(loginBean.getIdUser()); 
+            o = client.getBasicHttpBindingIOglasService().readOglasLast(loginBean.getIdUser());
             out += "?id=" + o.getId();
             redirect(out);
         }
@@ -164,7 +168,6 @@ public class OglasBean2 implements Serializable {
     }
 
     public void initOglasRead() {
-        System.out.println(oglas);
         readOglas(oglas.getId());
     }
 
@@ -175,6 +178,13 @@ public class OglasBean2 implements Serializable {
             for (OglasObj o : oglasi)
                 zasluzek += o.getCenaInteger();
         }
+    }
+
+    public void initOglasListKupljeno() {
+        listOglasiKupec(aktivni);
+        zasluzek = 0;
+        for (OglasObj o : oglasi)
+            zasluzek += o.getCenaInteger();
     }
 
     public void deleteOglas() {
@@ -196,7 +206,17 @@ public class OglasBean2 implements Serializable {
 
     public void listOglasiAvtor(Integer status, Integer statusNakupa) {
         OglasService client = new OglasService();
-        List<Oglas> oglasiws = client.getBasicHttpBindingIOglasService().listOglasi(loginBean.getIdUser(), status, statusNakupa).getOglas();
+        List<Oglas> oglasiws = client.getBasicHttpBindingIOglasService().listOglasiAvtor(loginBean.getIdUser(), status, statusNakupa).getOglas();
+
+        oglasi.clear();
+        for (Oglas o : oglasiws) {
+            oglasi.add(ConverterHelper.oglasWs2Obj(o));
+        }
+    }
+
+    public void listOglasiKupec(int statusNakupa) {
+        OglasService client = new OglasService();
+        List<Oglas> oglasiws = client.getBasicHttpBindingIOglasService().listOglasiKupec(loginBean.getIdUser(), statusNakupa).getOglas();
 
         oglasi.clear();
         for (Oglas o : oglasiws) {
@@ -222,9 +242,33 @@ public class OglasBean2 implements Serializable {
         client.getBasicHttpBindingIOglasService().updateOglas(ConverterHelper.oglasObj2Ws(oglas));
         redirect("/oglas/read.xhtml?id=" + oglas.getId());
     }
-    
-    public void kupiOglas(int idOglas){
+
+    public void kupiOglas(int idOglas) {
         OglasService client = new OglasService();
-//        client.getBasicHttpBindingIOglasService().
+        Oglas o = client.getBasicHttpBindingIOglasService().readOglas(idOglas);
+        if (o.getKupec().getValue() == null) {
+            o.setStatusNakupa(new ObjectFactory().createOglasStatusNakupa(0));
+            Uporabnik u = new Uporabnik();
+            u.setId(loginBean.getIdUser());
+            o.setKupec(new ObjectFactory().createOglasKupec(u));
+
+            Boolean uspelo = client.getBasicHttpBindingIOglasService().updateOglas(o);
+
+            if (uspelo) {
+                redirect("/oglas/read.xhtml?id=" + idOglas);
+            }
+        }
+    }
+
+    public void kupiOglasPotrdiNakup(int idOglas) {
+        OglasService client = new OglasService();
+        Oglas o = client.getBasicHttpBindingIOglasService().readOglas(idOglas);
+        o.setStatusNakupa(new ObjectFactory().createOglasStatusNakupa(1));
+
+        Boolean uspelo = client.getBasicHttpBindingIOglasService().updateOglas(o);
+
+        if (uspelo) {
+            redirect("/oglas/listProdano.xhtml");
+        }
     }
 }

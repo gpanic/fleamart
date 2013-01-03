@@ -25,13 +25,13 @@
                         </ui:fragment>
                     </h1>
                     <div class="span7">
-                        <blockquote><p>Cena: <b>#{oglasBean2.oglas.cena}€</b></p> 
-                            <form>
-                                <f:ajax rendered="#{oglasBean2.oglas.avtor.id != loginBean.idUser and loginBean.idUser != 0}" listener="#{oglasBean2.kupiOglas(oglasBean2.oglas.id)}">
-                                    <h:commandButton class="btn btn-primary" value="Kupi"  /> 
-                                </f:ajax>
-                                &nbsp;<h:button onclick="" value="Dodaj v košaro" class="btn btn-primary"/>
-                            </form>
+                        <blockquote><p>Cena: <b>#{oglasBean2.oglas.cena} €</b></p>
+                            <h:commandButton rendered="#{oglasBean2.oglas.kupec.id == loginBean.idUser and oglasBean2.oglas.avkcija == false}" value="Kupljeno" class="btn btn-primary disabled"/>
+                            <h:form id="readform" rendered="#{oglasBean2.oglas.avtor.id != loginBean.idUser and loginBean.idUser != 0 and oglasBean2.oglas.statusNakupa == null}">
+                                <h:commandButton id="kupi" class="btn btn-primary" value="Kupi">
+                                    <f:ajax listener="#{oglasBean2.kupiOglas(oglasBean2.oglas.id)}"/>
+                                </h:commandButton>
+                            </h:form>
                         </blockquote>
                         <p><h:outputText value="#{oglasBean2.oglas.opis}"/></p>
                     </div>
@@ -41,12 +41,12 @@
                         <strong>Vpisano</strong><br/>
                         <h:outputText value="#{oglasBean2.oglas.casOd.time}">
                             <f:convertDateTime type="both" dateStyle="short" />
-                        </h:outputText>
+                        </h:outputText><br/>
                         <ui:fragment rendered="#{oglasBean2.oglas.casSpremenjeno != null}">
                             <strong>Spremenjeno</strong><br/>
                             <h:outputText value="#{oglasBean2.oglas.casSpremenjeno.time}">
                                 <f:convertDateTime type="both" dateStyle="short" />
-                            </h:outputText>
+                            </h:outputText><br/>
                         </ui:fragment>
                         <strong>Poteče</strong><br/>
                         <h:outputText value="#{oglasBean2.oglas.casDo.time}">
@@ -74,13 +74,7 @@
                     </div>
                 </div>
                 <div class="span5">
-                    <h:form style="margin: 0;">
-                        <h:outputLink rendered="#{oglasBean2.oglas.avtor.id == loginBean.idUser and oglasBean2.oglas.statusNakupa == null}" value="update.xhtml" style="margin: -5px 5px 0;" class="btn btn-mini btn-primary" >
-                            <h:outputText value="Posodobi"/>
-                            <f:param name="id" value="#{oglasBean2.oglas.id}"/>
-                        </h:outputLink>
-                        <h:commandButton rendered="#{oglasBean2.oglas.avtor.id == loginBean.idUser and oglasBean2.oglas.statusNakupa == null}" action="#{oglasBean2.deleteOglas}" style="margin-bottom: 5px;" class="btn btn-mini btn-primary" value="Odstrani"/>
-                    </h:form>
+
                     <ui:fragment rendered="#{oglasBean2.oglas.slike.get(0) != ''}">
                         <div id="galleria">
                             <ui:repeat value="#{oglasBean2.oglas.slike}" var="slika" varStatus="slikaStatus">
