@@ -8,17 +8,17 @@ body {
 }
 
 .oglasi {
-	width: 80%;
 	margin-top: 30px;
 }
 
 .oglas {
-	width: 80%;
+	width: 695px;
+	height: 180px;
 	border: 2px solid #E3E3E3;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 	display: inline-block;
 }
 
@@ -57,15 +57,18 @@ body {
 	margin-top: 50px;
 	width: 400px;
 	height: 100px;
+	overflow: hidden;
+	text-align: justify;
 }
 
 .oglas .datum {
 	border: none;
 	position: absolute;
 	margin-left: 410px;
-	margin-top: 130px;
+	margin-top: 148px;
 	width: 60px;
 	font-style: italic;
+	font-weight: bold;
 }
 
 .oglas img {
@@ -108,4 +111,98 @@ body {
 
 .iskanje select {
 	margin: 1px;
+}
+
+.ocena {
+	width: 211px;
+	margin-top: 30px;
+	margin-left: 30px; border : 1px solid #E3E3E3;
+	float: left;
+	border: 1px solid #E3E3E3;
+}
+
+.ocena td {
+	padding: 5px;
+}
+
+.ocena_avtor {
+	width: 220px;
+	margin-top: 30px;
+	border: 1px solid black;
+	float: left;
+	border: 2px solid #E3E3E3;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+
+.top {
+	width: 220px;
+	height: 22px;
+	margin: 0px;
+	border-top: 1px solid #E3E3E3;
+	border-bottom: 1px solid #E3E3E3;
+	background-color: #EEE;
+	text-align: center;
+	font-weight: bold;
+}
+
+.ocena_avtor.info {
+	margin-top: 7px;
+	border-style: none;
+	padding-left: 10px;
+}
+
+.submitall {
+	display: none;
+	visibility: hidden;
+}
+
+.purchRate {
+	margin: 30px 0 0 50px;
+	width: 600px;
+	height: 325px;
+	border: 2px solid #E3E3E3;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	float: left;
+}
+
+.prSlika {
+	width: 200px;
+	height: 200px;
+	float: left;
+	margin: 20px 0 0 20px;
+}
+
+.prNaslov {
+	position: absolute;
+	width: 340px;
+	height: 50px;
+	color: #005580;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 20px 0 0 240px;
+	overflow: hidden;
+}
+
+.prOpis {
+	position: absolute;
+	margin: 68px 0 0 240px;
+	width: 340px;
+	height: 200px;
+	text-align: justify;
+	overflow: hidden;
+}
+
+.prInfo {
+	color: #005580;
+	margin: 260px 0 0 30px;
+	width: 200px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.toRate{
+	margin-top: 30px;
+	width: 600px;
 }

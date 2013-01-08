@@ -1,11 +1,12 @@
 package com.fleamart.obj;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class OglasObj {
+public class OglasObj implements Serializable {
 
     private int id;
     private String naslov;
