@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="SearchOglasiResult" type="{http//www.fleamart.com/}ArrayOfOglas" minOccurs="0"/>
+ *         &lt;element name="ListOglasiResult" type="{http//www.fleamart.com/}ArrayOfOglas" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "searchOglasiResult"
+    "listOglasiResult"
 })
-@XmlRootElement(name = "SearchOglasiResponse")
-public class SearchOglasiResponse {
+@XmlRootElement(name = "ListOglasiResponse")
+public class ListOglasiResponse {
 
-    @XmlElementRef(name = "SearchOglasiResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
-    protected JAXBElement<ArrayOfOglas> searchOglasiResult;
+    @XmlElementRef(name = "ListOglasiResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    protected JAXBElement<ArrayOfOglas> listOglasiResult;
 
     /**
-     * Gets the value of the searchOglasiResult property.
+     * Gets the value of the listOglasiResult property.
      * 
      * @return
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link ArrayOfOglas }{@code >}
      *     
      */
-    public JAXBElement<ArrayOfOglas> getSearchOglasiResult() {
-        return searchOglasiResult;
+    public JAXBElement<ArrayOfOglas> getListOglasiResult() {
+        return listOglasiResult;
     }
 
     /**
-     * Sets the value of the searchOglasiResult property.
+     * Sets the value of the listOglasiResult property.
      * 
      * @param value
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link ArrayOfOglas }{@code >}
      *     
      */
-    public void setSearchOglasiResult(JAXBElement<ArrayOfOglas> value) {
-        this.searchOglasiResult = value;
+    public void setListOglasiResult(JAXBElement<ArrayOfOglas> value) {
+        this.listOglasiResult = value;
     }
 
 }

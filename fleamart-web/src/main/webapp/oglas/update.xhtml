@@ -1,12 +1,99 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Fleamart - Posodobi oglas</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <ui:composition template="/shared/layout.xhtml">
+            <ui:define name="content">
+                <h:form id="posodobioglas">
+                    <h1>Posodobi oglas</h1>
+                    <f:metadata>
+                        <f:viewParam name="id" value="#{oglasBean2.oglas.id}" />
+                        <f:event type="preRenderView" listener="#{oglasBean2.initOglasFormUpdate}"/>
+                    </f:metadata>
+
+                    <table width="100%">
+                        <tbody>
+                            <tr>
+                                <td valign="top"><h:outputLabel value="Status"/></td>
+                                <td colspan="2">
+                                    <h:selectOneMenu id="status" value="#{oglasBean2.oglas.status}" required="true"  requiredMessage="Obvezno polje">
+                                        <f:selectItem itemValue="0" itemLabel="Aktiven"/>
+                                        <f:selectItem itemValue="1" itemLabel="Neaktiven"/>
+                                    </h:selectOneMenu>
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Naslov oglasa"/></td>
+                                <td><h:inputText styleClass="span8" id="naslov" value="#{oglasBean2.oglas.naslov}" requiredMessage="Obvezno polje" required="true"/></td>
+                                <td><h:message for="naslov"/></td>
+                            </tr>
+                            <tr>
+                                <td valign="top"><h:outputText value="Opis izdelka"/></td>
+                                <td><h:inputTextarea styleClass="span8" id="opis" rows="10" cols="50" value="#{oglasBean2.oglas.opis}" requiredMessage="Obvezno polje" required="true"/></td>
+                                <td><h:message for="opis"/></td>
+                            </tr>
+                            <tr>
+                                <td valign="top"><h:outputLabel value="Kategorija"/></td>
+                                <td>
+                                    <h:selectOneMenu id="kategorija" value="#{oglasBean2.oglas.kategorija.id}" required="true"  requiredMessage="Obvezno polje">
+                                        <f:selectItems value="#{oglasBean2.kategorije}" var="katego" itemValue="#{katego.id}" itemLabel="#{katego.naziv}"/>
+                                    </h:selectOneMenu>
+                                </td> 
+                                <td>
+                                    <td><h:message for="kategorija"/></td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><h:outputText value="Tip oglasa"/></td>
+                                <td colspan="2">
+                                    <h:selectOneRadio id="avkcija" value="#{oglasBean2.oglas.avkcija}" required="true">
+                                        <f:selectItem itemLabel="Avkcija" itemValue="#{true}"/>
+                                        <f:selectItem itemLabel="Fiskna cena" itemValue="#{false}"/>
+                                    </h:selectOneRadio>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><h:outputText value="Cena"/></td>
+                                <td>
+                                    <h:inputText id="cena" value="#{oglasBean2.oglas.cena}" required="true" validatorMessage="Niz mora biti številka" requiredMessage="Obvezno polje">
+                                        <f:validateRegex pattern="(\d*.\d*|\d*)" />
+                                    </h:inputText>
+                                </td>
+                                <td><h:message for="cena"/></td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <h:outputText value="Slike (Povezave)"/>
+                                </td>
+                                <td>
+                                    <ui:repeat value="#{oglasBean2.oglas.slike}" var="slika" varStatus="slikaStatus">
+                                        <table width="100%">
+                                            <tr>
+                                                <td>
+                                                    <h:inputText id="slika" styleClass="span8" value="#{oglasBean2.oglas.slike[slikaStatus.index]}" validatorMessage="Niz mora biti povezava do slike">
+                                                        <f:validator validatorId="com.fleamart.validators.UrlValidator"/>
+                                                    </h:inputText>
+                                                </td>
+                                                <td>
+                                                    <h:message for="slika"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ui:repeat>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h:commandButton class="btn btn-primary" action="#{oglasBean2.updateOglas}" value="Posodobi oglas"/>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
-

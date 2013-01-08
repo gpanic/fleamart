@@ -1,20 +1,35 @@
-package com.fleamart.web;
+package com.fleamart.beans;
+
+import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.event.ActionEvent;
-
-import com.fleamart.beans.SessionBean;
-import com.fleamart.obj.Seja;
+import javax.faces.bean.SessionScoped;
 import com.fleamart.uporabnik.ws.IUporabnikService;
 import com.fleamart.uporabnik.ws.UporabnikService;
 
 @ManagedBean(name = "loginBean")
-@RequestScoped
-public class LoginBean
+@SessionScoped
+public class LoginBean implements Serializable
 {
-	String username, pass;
+	private String username, pass, txt;
+	private int idUser;
 
+	public int getIdUser()
+	{
+		return idUser;
+	}
+	public void setIdUser(int idUser)
+	{
+		this.idUser = idUser;
+	}
+	public String getTxt()
+	{
+		return txt;
+	}
+	public void setTxt(String txt)
+	{
+		this.txt = txt;
+	}
 	public String getUsername()
 	{
 		return username;
@@ -48,14 +63,15 @@ public class LoginBean
 
 			if (idUser == 0)
 			{
+				setIdUser(0);
 				// ce uporabnik ni uspesno vpisan je idUser=0
-				//Seja seja = new Seja(idUser);
-				// seja.setIdUser(idUser);
-				return "register?faces-redirect=true";
+				txt = "Napa�no uporabni�ko ime ali geslo, poskusite ponovno!";
+				return "#";
 			} else
 			{
+				setIdUser(idUser);
+				pass = "";
 				// ce je uporabnik uspesno vpisan
-				//Seja seja = new Seja(idUser);
 				return "index?faces-redirect=true";
 			}
 
@@ -67,10 +83,21 @@ public class LoginBean
 		}
 		return "";
 	}
-	// prestavi v class za action listener metodo
-	public void checkUserId(ActionEvent actionEvent)
-	{
+	
+	public String logOut(){
+		try
+		{
+			setIdUser(0);
+			setUsername("");
+			setPass("");	
 
+		} catch (Exception e)
+		{
+
+			e.printStackTrace();
+
+		}
+		return "index?faces-redirect=true";
 	}
 
 }

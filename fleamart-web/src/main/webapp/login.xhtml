@@ -7,20 +7,34 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 	<ui:composition template="/shared/layout.xhtml">
-		<ui:param name="title" value="Login" />
+		<ui:param name="title" value="Vpis" />
 		<ui:define name="content">
-			<h1>Login:</h1>
+			<h1>Vpis uporabnika:</h1>
 			<f:view>
 				<h:form>
-					<h:outputText style="width:150;" value="User name: "></h:outputText>
-					<h:inputText value="#{loginBean.username}"></h:inputText>
-					<br />
+					<table width="40%">
+						<tbody>
+							<tr>
 
-					<h:outputText style="width:150;" value="Password: "></h:outputText>
-					<h:inputText value="#{loginBean.pass}"></h:inputText>
+								<td><h:outputText style="width:150;"
+										value="Uporabniško ime: "></h:outputText></td>
+								<td><h:inputText value="#{loginBean.username}"></h:inputText></td>
+							</tr>
+							<tr>
+								<td><h:outputText style="width:150;" value="Geslo: "></h:outputText></td>
+								<td><h:inputSecret class="input-small"
+										value="#{loginBean.pass}"></h:inputSecret></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><h:commandButton class="btn btn-primary" value="Vpis"
+										action="#{loginBean.checkUser}"></h:commandButton></td>
+							</tr>
+						</tbody>
+					</table>
 					<br />
+					<h:outputText style="width:150;" value="#{loginBean.txt}"></h:outputText>
 
-					<h:commandButton value="Login" action="#{loginBean.checkUser}"></h:commandButton>
 				</h:form>
 			</f:view>
 		</ui:define>

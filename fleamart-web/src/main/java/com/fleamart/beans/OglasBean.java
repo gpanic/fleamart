@@ -1,17 +1,10 @@
 package com.fleamart.beans;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,192 +13,145 @@ import com.fleamart.kategorija.ws.ArrayOfKategorija;
 import com.fleamart.kategorija.ws.KategorijeService;
 import com.fleamart.obj.KategorijaObj;
 import com.fleamart.obj.OglasObj;
-import com.fleamart.obj.UporabnikObj;
 import com.fleamart.oglas.ws.ArrayOfOglas;
 import com.fleamart.oglas.ws.Oglas;
 import com.fleamart.oglas.ws.OglasService;
+import java.util.ArrayList;
 
 @ManagedBean(name = "oglasBean")
 @RequestScoped
 public class OglasBean {
 
-	private List<OglasObj> oglasi;
-	private OglasObj oglas;
-	private List<KategorijaObj> kategorije;
-	private KategorijaObj kategorija;
-	private String searchParam;
-	private String queryKateg;
+    private List<OglasObj> oglasi;
+    private OglasObj oglas;
+    private List<KategorijaObj> kategorije;
+    private KategorijaObj kategorija;
+    private String searchParam;
+    private String queryKateg;
+    private int aktivni = 0; //v oglas/list.xhtml
 
-	@PostConstruct
-	public void init() {
-		FacesContext fc = FacesContext.getCurrentInstance();
-		String view = fc.getViewRoot().getViewId();
+    @PostConstruct
+    public void init() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        String view = fc.getViewRoot().getViewId();
 
-		HttpServletRequest request = (HttpServletRequest) fc
-				.getExternalContext().getRequest();
+        HttpServletRequest request = (HttpServletRequest) fc
+                .getExternalContext().getRequest();
 
-		if (view.equals("/oglas/read.xhtml")) {
-			try {
-				readOglas(Integer.parseInt(request.getParameter("id")));
-			} catch (Exception e) {
-				try {
-					ExternalContext ec = FacesContext.getCurrentInstance()
-							.getExternalContext();
-					ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
-				} catch (IOException ex) {
-					Logger.getLogger(OglasBean.class.getName()).log(
-							Level.SEVERE, null, ex);
-				}
-			}
+        if (view.equals("/browse.xhtml")) {
+            OglasService c = new OglasService();
+            List<Oglas> oglasiWS = null;
+            ArrayOfOglas oglasi = null;
 
-		} else {
-			if (view.equals("/oglas/create.xhtml")) {
-				oglas.getSlike().add("");
-				oglas.getSlike().add("");
-				oglas.getSlike().add("");
-				this.listKategorije();
+            this.listKategorije();
+            this.kategorije.add(0, new KategorijaObj(0, "Vse kategorije"));
 
-			} else if (view.equals("/browse.xhtml")) {
-				OglasService c = new OglasService();
-				List<Oglas> oglasiWS = null;
-				ArrayOfOglas oglasi = null;
+            String kat = request.getParameter("kategorija");
+            String param = request.getParameter("param");
 
-				this.listKategorije();
-				this.kategorije.add(0, new KategorijaObj(0, "Vse kategorije"));
+            if (kat != null) {
+                if (kat.equals("Vse kategorije") || kat.equals(""))
+                    kat = null;
 
-				String kat = request.getParameter("kategorija");
-				String param = request.getParameter("param");
-				
-				if (kat != null) {
-					if (kat.equals("Vse kategorije") || kat.equals(""))
-						kat = null;
-						
-					if (param != null)
-						if (param.equals(""))
-							param = null;
+                if (param != null)
+                    if (param.equals(""))
+                        param = null;
 
-					oglasi = c.getBasicHttpBindingIOglasService().searchOglasi(
-							kat, param);
-					oglasiWS = oglasi.getOglas();
+                oglasi = c.getBasicHttpBindingIOglasService().searchOglasi(
+                        kat, param);
+                oglasiWS = oglasi.getOglas();
 
-				} else {
-					oglasi = c.getBasicHttpBindingIOglasService().getOglasi();
-					oglasiWS = oglasi.getOglas();
-				}
+            } else {
+                oglasi = c.getBasicHttpBindingIOglasService().getOglasi();
+                oglasiWS = oglasi.getOglas();
+            }
 
-				for (Oglas oWS : oglasiWS) {
-					this.oglasi.add(ConverterHelper.oglasWs2Obj(oWS));
-				}
-			}
-		}
-	}
+            for (Oglas oWS : oglasiWS) {
+                this.oglasi.add(ConverterHelper.oglasWs2Obj(oWS));
+            }
+        }
+    }
 
-	public OglasBean() {
-		oglasi = new ArrayList<OglasObj>();
-		oglas = new OglasObj();
-	}
+    public OglasBean() {
+        oglasi = new ArrayList<OglasObj>();
+        oglas = new OglasObj();
+    }
 
-	public KategorijaObj getKategorija() {
-		return kategorija;
-	}
+    public KategorijaObj getKategorija() {
+        return kategorija;
+    }
 
-	public void setKategorija(KategorijaObj kategorija) {
-		this.kategorija = kategorija;
-	}
+    public void setKategorija(KategorijaObj kategorija) {
+        this.kategorija = kategorija;
+    }
 
-	public void listKategorije() {
-		kategorije = new ArrayList<KategorijaObj>();
-		KategorijeService client = new KategorijeService();
-		ArrayOfKategorija kat = client.getBasicHttpBindingIKategorijaService()
-				.vrniKategorije();
-		List<com.fleamart.kategorija.ws.Kategorija> kategorijeList = kat
-				.getKategorija();
+    public void listKategorije() {
+        kategorije = new ArrayList<KategorijaObj>();
+        KategorijeService client = new KategorijeService();
+        ArrayOfKategorija kat = client.getBasicHttpBindingIKategorijaService()
+                .vrniKategorije();
+        List<com.fleamart.kategorija.ws.Kategorija> kategorijeList = kat
+                .getKategorija();
 
-		for (com.fleamart.kategorija.ws.Kategorija k : kategorijeList)
-			kategorije.add(new KategorijaObj(k.getId().intValue(), k.getNaziv()
-					.getValue()));
-	}
+        for (com.fleamart.kategorija.ws.Kategorija k : kategorijeList)
+            kategorije.add(new KategorijaObj(k.getId().intValue(), k.getNaziv()
+                    .getValue()));
+    }
 
-	public OglasObj getOglas() {
-		return oglas;
-	}
+    public OglasObj getOglas() {
+        return oglas;
+    }
 
-	public void setOglas(OglasObj oglas) {
-		this.oglas = oglas;
-	}
+    public void setOglas(OglasObj oglas) {
+        this.oglas = oglas;
+    }
 
-	public List<OglasObj> getOglasi() {
-		return oglasi;
-	}
+    public int getAktivni() {
+        return aktivni;
+    }
 
-	public void setOglasi(List<OglasObj> oglasi) {
-		this.oglasi = oglasi;
-	}
+    public void setAktivni(int aktivni) {
+        this.aktivni = aktivni;
+    }
 
-	public List<KategorijaObj> getKategorije() {
-		return kategorije;
-	}
+    public List<OglasObj> getOglasi() {
+        return oglasi;
+    }
 
-	public void setKategorije(List<KategorijaObj> kategorije) {
-		this.kategorije = kategorije;
-	}
+    public void setOglasi(List<OglasObj> oglasi) {
+        this.oglasi = oglasi;
+    }
 
-	public String createOglas() {
-		oglas.setCasOd(new GregorianCalendar());
-		GregorianCalendar gc = new GregorianCalendar();
-		gc.add(Calendar.DATE, 30);
-		oglas.setCasDo(gc);
-		UporabnikObj u = new UporabnikObj();
-		u.setId(1); // kasneje prebrat iz seje
-		oglas.setAvtor(u);
-		oglas.setStatus(0);
-		Oglas o = ConverterHelper.oglasObj2Ws(oglas);
+    public List<KategorijaObj> getKategorije() {
+        return kategorije;
+    }
 
-		OglasService client = new OglasService();
-		Boolean rezultat = client.getBasicHttpBindingIOglasService()
-				.createOglas(o);
-		String out = (rezultat) ? "read" : "fail";
-		return out;
-	}
+    public void setKategorije(List<KategorijaObj> kategorije) {
+        this.kategorije = kategorije;
+    }
 
-	public void readOglas(int id) {
-		OglasService client = new OglasService();
-		oglas = ConverterHelper.oglasWs2Obj(client
-				.getBasicHttpBindingIOglasService().readOglas(id));
-	}
+    public String getSearchParam() {
+        return searchParam;
+    }
 
-	// public void updateOglas(ActionEvent event) {
-	// OglasService client = new OglasService();
-	// client.getBasicHttpBindingIOglasService().updateOglas(oglas);
-	// }
-	//
-	// public void deleteOglas(int id) {
-	// OglasService client = new OglasService();
-	// client.getBasicHttpBindingIOglasService().deleteOglas(id);
-	// }
+    public void setSearchParam(String searchParam) {
+        this.searchParam = searchParam;
+    }
 
-	public String getSearchParam() {
-		return searchParam;
-	}
+    public String getQueryKateg() {
+        return queryKateg;
+    }
 
-	public void setSearchParam(String searchParam) {
-		this.searchParam = searchParam;
-	}
-
-	public String getQueryKateg() {
-		return queryKateg;
-	}
-
-	public void setQueryKateg(String queryKateg) {
-		boolean nas = false;
-		for (KategorijaObj kategorija : this.kategorije) {
-			if (queryKateg.equals(kategorija.getNaziv())) {
-				nas = true;
-				break;
-			}
-		}
-		if (!nas)
-			queryKateg = this.kategorije.get(0).getNaziv();
-		this.queryKateg = queryKateg;
-	}
+    public void setQueryKateg(String queryKateg) {
+        boolean nas = false;
+        for (KategorijaObj kategorija : this.kategorije) {
+            if (queryKateg.equals(kategorija.getNaziv())) {
+                nas = true;
+                break;
+            }
+        }
+        if (!nas)
+            queryKateg = this.kategorije.get(0).getNaziv();
+        this.queryKateg = queryKateg;
+    }
 }

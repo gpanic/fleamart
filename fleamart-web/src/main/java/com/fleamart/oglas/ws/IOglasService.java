@@ -53,6 +53,20 @@ public interface IOglasService {
 
     /**
      * 
+     * @param idAvtor
+     * @return
+     *     returns com.fleamart.oglas.ws.Oglas
+     */
+    @WebMethod(operationName = "ReadOglasLast", action = "http://tempuri.org/IOglasService/ReadOglasLast")
+    @WebResult(name = "ReadOglasLastResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "ReadOglasLast", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ReadOglasLast")
+    @ResponseWrapper(localName = "ReadOglasLastResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ReadOglasLastResponse")
+    public Oglas readOglasLast(
+        @WebParam(name = "idAvtor", targetNamespace = "http://tempuri.org/")
+        Integer idAvtor);
+
+    /**
+     * 
      * @param o
      * @return
      *     returns java.lang.Boolean
@@ -84,11 +98,48 @@ public interface IOglasService {
      * @return
      *     returns com.fleamart.oglas.ws.ArrayOfOglas
      */
-    @WebMethod(action = "http://tempuri.org/IOglasService/getOglasi")
-    @WebResult(name = "getOglasiResult", targetNamespace = "http://tempuri.org/")
-    @RequestWrapper(localName = "getOglasi", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.GetOglasi")
-    @ResponseWrapper(localName = "getOglasiResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.GetOglasiResponse")
+    @WebMethod(operationName = "GetOglasi", action = "http://tempuri.org/IOglasService/GetOglasi")
+    @WebResult(name = "GetOglasiResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "GetOglasi", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.GetOglasi")
+    @ResponseWrapper(localName = "GetOglasiResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.GetOglasiResponse")
     public ArrayOfOglas getOglasi();
+
+    /**
+     * 
+     * @param status
+     * @param statusNakupa
+     * @param idAvtor
+     * @return
+     *     returns com.fleamart.oglas.ws.ArrayOfOglas
+     */
+    @WebMethod(operationName = "ListOglasiAvtor", action = "http://tempuri.org/IOglasService/ListOglasiAvtor")
+    @WebResult(name = "ListOglasiAvtorResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "ListOglasiAvtor", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ListOglasiAvtor")
+    @ResponseWrapper(localName = "ListOglasiAvtorResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ListOglasiAvtorResponse")
+    public ArrayOfOglas listOglasiAvtor(
+        @WebParam(name = "idAvtor", targetNamespace = "http://tempuri.org/")
+        Integer idAvtor,
+        @WebParam(name = "status", targetNamespace = "http://tempuri.org/")
+        Integer status,
+        @WebParam(name = "statusNakupa", targetNamespace = "http://tempuri.org/")
+        Integer statusNakupa);
+
+    /**
+     * 
+     * @param idKupec
+     * @param statusNakupa
+     * @return
+     *     returns com.fleamart.oglas.ws.ArrayOfOglas
+     */
+    @WebMethod(operationName = "ListOglasiKupec", action = "http://tempuri.org/IOglasService/ListOglasiKupec")
+    @WebResult(name = "ListOglasiKupecResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "ListOglasiKupec", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ListOglasiKupec")
+    @ResponseWrapper(localName = "ListOglasiKupecResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ListOglasiKupecResponse")
+    public ArrayOfOglas listOglasiKupec(
+        @WebParam(name = "idKupec", targetNamespace = "http://tempuri.org/")
+        Integer idKupec,
+        @WebParam(name = "statusNakupa", targetNamespace = "http://tempuri.org/")
+        Integer statusNakupa);
 
     /**
      * 
@@ -97,10 +148,10 @@ public interface IOglasService {
      * @return
      *     returns com.fleamart.oglas.ws.ArrayOfOglas
      */
-    @WebMethod(action = "http://tempuri.org/IOglasService/searchOglasi")
-    @WebResult(name = "searchOglasiResult", targetNamespace = "http://tempuri.org/")
-    @RequestWrapper(localName = "searchOglasi", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.SearchOglasi")
-    @ResponseWrapper(localName = "searchOglasiResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.SearchOglasiResponse")
+    @WebMethod(operationName = "SearchOglasi", action = "http://tempuri.org/IOglasService/SearchOglasi")
+    @WebResult(name = "SearchOglasiResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "SearchOglasi", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.SearchOglasi")
+    @ResponseWrapper(localName = "SearchOglasiResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.SearchOglasiResponse")
     public ArrayOfOglas searchOglasi(
         @WebParam(name = "kategorija", targetNamespace = "http://tempuri.org/")
         String kategorija,

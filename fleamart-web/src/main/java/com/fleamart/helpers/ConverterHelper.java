@@ -41,7 +41,8 @@ public class ConverterHelper {
         k.setId(obj.getKategorija().getId());
         o.setKategorija(of.createKategorija(k));
         o.setStatus(obj.getStatus());
-
+        o.setStatusNakupa(of.createOglasStatusNakupa(obj.getStatusNakupa()));
+        
         o.setAvtor(uporabnikObj2WS(obj.getAvtor()));
         if (obj.getKupec() != null)
             o.setKupec(of.createOglasKupec(uporabnikObj2WS(obj.getKupec())));
@@ -74,7 +75,7 @@ public class ConverterHelper {
         o.setAvkcija(ows.isAvkcija());
         o.setCena(ows.getCena());
         if (!ows.getZadnjaCenaAvkcija().isNil()) {
-        	o.setZadnjaCenaAvkcija(ows.getZadnjaCenaAvkcija().getValue());
+            o.setZadnjaCenaAvkcija(ows.getZadnjaCenaAvkcija().getValue());
         }
         o.setOpis(ows.getOpis());
         o.setSlike(ows.getSlike().getValue().getString());
@@ -83,8 +84,7 @@ public class ConverterHelper {
         if (ows.getCasSpremenjeno().getValue() != null)
             o.setCasSpremenjeno(ows.getCasSpremenjeno().getValue().toGregorianCalendar());
         o.setStatus(ows.getStatus());
-        if (ows.getStatusNakupa().getValue() != null)
-            o.setStatusNakupa(ows.getStatusNakupa().getValue());
+        o.setStatusNakupa(ows.getStatusNakupa().getValue());
         o.setAvtor(uporabnikWs2Obj(ows.getAvtor()));
         if (ows.getKupec().getValue() != null)
             o.setKupec(uporabnikWs2Obj(ows.getKupec().getValue()));

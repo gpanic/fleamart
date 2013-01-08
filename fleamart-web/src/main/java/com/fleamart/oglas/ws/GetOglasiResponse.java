@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="getOglasiResult" type="{http//www.fleamart.com/}ArrayOfOglas" minOccurs="0"/>
+ *         &lt;element name="GetOglasiResult" type="{http//www.fleamart.com/}ArrayOfOglas" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,10 +32,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "getOglasiResult"
 })
-@XmlRootElement(name = "getOglasiResponse")
+@XmlRootElement(name = "GetOglasiResponse")
 public class GetOglasiResponse {
 
-    @XmlElementRef(name = "getOglasiResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "GetOglasiResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
     protected JAXBElement<ArrayOfOglas> getOglasiResult;
 
     /**

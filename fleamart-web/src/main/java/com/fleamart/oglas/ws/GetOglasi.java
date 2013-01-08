@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-@XmlRootElement(name = "getOglasi")
+@XmlRootElement(name = "GetOglasi")
 public class GetOglasi {
 
 

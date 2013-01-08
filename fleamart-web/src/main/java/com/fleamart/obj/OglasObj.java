@@ -6,7 +6,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class OglasObj implements Serializable {
+
+public class OglasObj  implements Serializable{
 
     private int id;
     private String naslov;
@@ -20,11 +21,10 @@ public class OglasObj implements Serializable {
     private GregorianCalendar casSpremenjeno;
     private int status;
     private List<PonudbaObj> ponudbe;
-    private int statusNakupa;
+    private Integer statusNakupa;
     private UporabnikObj avtor;
     private UporabnikObj kupec;
     private List<KomentarObj> komentarji;
-    private List<KategorijaObj> kategorije;
     private KategorijaObj kategorija;
 
     public OglasObj() {
@@ -66,6 +66,10 @@ public class OglasObj implements Serializable {
 
     public String getCena() {
         return cena;
+    }
+    
+    public double getCenaInteger() {
+        return Double.parseDouble(cena);
     }
 
     public void setCena(String cena) {
@@ -140,11 +144,11 @@ public class OglasObj implements Serializable {
         this.ponudbe = ponudbe;
     }
 
-    public int getStatusNakupa() {
+    public Integer getStatusNakupa() {
         return statusNakupa;
     }
 
-    public void setStatusNakupa(int statusNakupa) {
+    public void setStatusNakupa(Integer statusNakupa) {
         this.statusNakupa = statusNakupa;
     }
 
@@ -172,18 +176,8 @@ public class OglasObj implements Serializable {
         this.komentarji = komentarji;
     }
 
-    public List<KategorijaObj> getKategorije() {
-        return kategorije;
-    }
-
-    public void setKategorije(List<KategorijaObj> kategorije) {
-        this.kategorije = kategorije;
-    }
-
-    
-
     @Override
     public String toString() {
-        return "OglasObj{" + "id=" + id + ", naslov=" + naslov + ", avkcija=" + avkcija + ", cena=" + cena + ", zadnjaCenaAvkcija=" + zadnjaCenaAvkcija + ", opis=" + opis + ", Slike=" + Slike + ", casOd=" + casOd + ", casDo=" + casDo + ", casSpremenjeno=" + casSpremenjeno + ", status=" + status + ", ponudbe=" + ponudbe + ", statusNakupa=" + statusNakupa + ", avtor=" + avtor + ", kupec=" + kupec + ", komentarji=" + komentarji + ", kategorije=" + kategorije + '}';
+        return "OglasObj{" + "id=" + id + ", naslov=" + naslov + ", avkcija=" + avkcija + ", cena=" + cena + ", zadnjaCenaAvkcija=" + zadnjaCenaAvkcija + ", opis=" + opis + ", Slike=" + Slike + ", casOd=" + casOd + ", casDo=" + casDo + ", casSpremenjeno=" + casSpremenjeno + ", status=" + status + ", ponudbe=" + ponudbe + ", statusNakupa=" + statusNakupa + ", avtor=" + avtor + ", kupec=" + kupec + ", komentarji=" + komentarji + ", kategorija=" + kategorija + '}';
     }
 }

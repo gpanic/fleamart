@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+    </h:head>
+    <h:body>
+        <ui:composition template="/shared/layout.xhtml">
+            <ui:define name="content">
+                <h1>Prodano</h1>
+                <h:form id="mojioglasi">
+                    <div class="span8">
+                    <h:selectOneRadio id="radiostatus" class="radiobtn" value="#{oglasBean2.aktivni}">
+                        <f:selectItem itemValue="0" itemLabel="Čakanje na plačilo" />
+                        <f:selectItem itemValue="1" itemLabel="Prodano" />
+                        <f:ajax listener="#{oglasBean2.initOglasListProdano}" render="mojioglasi" />
+                    </h:selectOneRadio>
+                    <c:forEach var="oglas" items="#{oglasBean2.oglasi}">
+                        <div class="oglasitem">
+                            <div class="slika">
+                                <c:if test="#{oglas.slike.size() > 0}">
+                                    <img src="#{oglas.slike.get(0)}"/>
+                                </c:if>
+                            </div>
+                            <div class="naslovopis">
+                                <h:link value="#{oglas.naslov}" class="naslov" outcome="read.xhtml?id=#{oglas.id}"/><br/>
+                                <h:outputText class="opis" value="#{oglas.opis}"/>
+                            </div>
+
+                            <div class="cenaostalo">
+                                <h:commandButton class="btn btn-primary btn-mini" rendered="#{oglas.statusNakupa == 0}" value="Potrdi prodajo" style="margin-bottom: 5px;" action="#{oglasBean2.kupiOglasPotrdiNakup(oglas.id)}"/><br/>
+                                <h:outputText class="cena" value="#{oglas.cena} €"/><br/>
+                                <div class="datum">
+                                    Vpisano<br/>
+                                    <h:outputText value="#{oglas.casOd.time}">
+                                        <f:convertDateTime pattern="d MMM, yyyy HH:mm"/>
+                                    </h:outputText>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    </div>
+                    <ui:fragment rendered="#{oglasBean2.aktivni == 1}">
+                        <table class="table span3" style="float: right;">
+                            <thead>
+                                <tr>
+                                    <th>Št. prodanih</th>
+                                    <th>Zaslužek</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><h:outputText value="#{oglasBean2.oglasi.size()}"/></td>
+                                    <td><h:outputText value="#{oglasBean2.zasluzek}"/> €</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </ui:fragment>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -7,10 +7,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 	<ui:composition template="/shared/layout.xhtml">
-		<ui:param name="title" value="Fleamart" />
+		<ui:param name="title" value="Odjava" />
 		<ui:define name="content">
-			<h1>Header</h1>
-			<p>Some text...</p>
+			<h1>Odjava...</h1>
+			<f:metadata>
+				<f:event type="preRenderView"
+					listener="#{loginBean.logOut()}" />
+			</f:metadata>
+			<meta http-equiv="Refresh" content="1; URL=index.xhtml" />
 		</ui:define>
 	</ui:composition>
 </h:body>

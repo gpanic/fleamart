@@ -1,9 +1,11 @@
-package com.fleamart.web;
+package com.fleamart.beans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import com.fleamart.obj.OglasObj;
+import com.fleamart.ponudba.ws.IPonudbaService;
+import com.fleamart.ponudba.ws.PonudbaService;
 
 @ManagedBean(name = "ponudbaBean")
 @RequestScoped
@@ -42,43 +44,37 @@ public class PonudbaBean
 	{
 		try
 		{
-			/*
 			com.fleamart.obj.OglasObj oglas = new OglasObj();
-			double trenutnaCena = oglas.getCena();
+			String trenCena = oglas.getCena();
+			double trenutnaCena = Double.parseDouble(trenCena);
 			if (znesek > trenutnaCena)
 			{
-				
-				fleamart.PonudbaWebServiceService service = new Ponudba.client.PonudbaWebServiceService();
-				fleamart.client.PonudbaWebService port = service
-						.getPonudbaWebServicePort();
 
-				Boolean uspelo = port.placeBidOnItem(znesek, idUporabnik,
+				IPonudbaService service = new PonudbaService()
+						.getBasicHttpBindingIPonudbaService();
+				boolean uspelo = service.placeBidOnItem(znesek, idUporabnik,
 						idOglas);
 				if (uspelo == true)
 				{
 					oglas.setCena(znesek);
-					return "oglas";
-					System.out.println("Ponudba poslana.");�
-					
+					return "#";
+
 				} else
 				{
-					return "oglas";
-					System.out.println("Ponudbe ni bilo mogo�e poslati.");
+					//TODO: naredi v oglasu txt, da ni uspelo!
+					return "#";
 				}
 
 			} else
 			{
-				System.out.println("Prenizka cena!");
+				//TODO: naredi v oglasu txt, da je prenizka cena!
 				return "oglas";
 			}
-			
-			*/
-			//zbrisi
-			return "";
+
 		} catch (Exception e)
 		{
 			e.printStackTrace();
-			return "";
+			return "#";
 		}
 
 	}
