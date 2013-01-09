@@ -21,6 +21,9 @@ import com.fleamart.uporabnik.ws.ObjectFactory;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 
@@ -95,10 +98,10 @@ public class ConverterHelper {
 
         return o;
     }
-    /*
-    public static Ponudba ponudbaObj2WS(PonudbaObj obj){
-    	Ponudba p = new Ponudba();
-    	com.fleamart.uporabnik.ws.ObjectFactory of = new com.fleamart.uporabnik.ws.ObjectFactory();
+    
+    public static com.fleamart.ponudba.ws.Ponudba ponudbaObj2WS(PonudbaObj obj){
+    	com.fleamart.ponudba.ws.ObjectFactory of = new com.fleamart.ponudba.ws.ObjectFactory();
+    	com.fleamart.ponudba.ws.Ponudba p = of.createPonudba();
     	
     	try {
             if (obj.getCas() != null)
@@ -108,18 +111,18 @@ public class ConverterHelper {
             Logger.getLogger(PonudbaBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     	p.setId(obj.getId());
-    	p.setZnesek(obj.getZnesek());
-    	//com.fleamart.ponudba.ws.
-    	//TODO: poglej ce je prav
-    	//p.setOglas(oglasObj2Ws(obj.getOglas()));
-    	//p.setUporabnik(uporabnikObj2WS(obj.getUporabnik()));
-    	/*
-    	 * com.fleamart.oglas.ws.Kategorija k = of.createKategorija();
-        k.setId(obj.getKategorija().getId());
-        o.setKategorija(of.createKategorija(k));
-    	 */
+    	p.setZnesek(obj.getZnesek()); 
     	
-    /*
+    	com.fleamart.ponudba.ws.Oglas o = of.createOglas();
+    	o.setId(obj.getOglas().getId());
+    	p.setOglas(of.createOglas(o));    	
+    	
+    	com.fleamart.ponudba.ws.Uporabnik u = of.createUporabnik();
+    	u.setId(obj.getUporabnik().getId());
+    	p.setUporabnik(of.createUporabnik(u));
+    	
+    	return p;
+    
     }
     
     public static PonudbaObj ponudbaWs2Obj(Ponudba pon){
@@ -131,7 +134,7 @@ public class ConverterHelper {
     	p.setZnesek(pon.getZnesek());
     	return p;
     }
-    */
+    
 
     public static Uporabnik uporabnikObj2WS(UporabnikObj obj) {
         Uporabnik u = new Uporabnik();

@@ -18,6 +18,10 @@ namespace Fleamart.Service
 
         public bool placeBidOnItem(Ponudba p)
         {
+            OglasEFDao odao = new OglasEFDao();
+            Oglas oglas = odao.Read(p.Oglas.Id);
+            oglas.ZadnjaCenaAvkcija = p.Znesek;
+            odao.Update(oglas);
             return pdao.Create(p);
         }
     }

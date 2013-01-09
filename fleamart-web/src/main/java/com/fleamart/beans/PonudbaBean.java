@@ -10,6 +10,7 @@ import com.fleamart.obj.PonudbaObj;
 import com.fleamart.obj.UporabnikObj;
 import com.fleamart.oglas.ws.Oglas;
 import com.fleamart.ponudba.ws.IPonudbaService;
+import com.fleamart.ponudba.ws.Ponudba;
 import com.fleamart.ponudba.ws.PonudbaService;
 import com.fleamart.beans.LoginBean;
 import com.fleamart.helpers.ConverterHelper;
@@ -19,7 +20,7 @@ import com.fleamart.helpers.ConverterHelper;
 public class PonudbaBean
 {
 	private PonudbaObj ponudba;
-	private double znesek;
+	private String znesek;
 	private String txt;
 	
 	public String getTxt()
@@ -30,11 +31,11 @@ public class PonudbaBean
 	{
 		this.txt = txt;
 	}
-	public double getZnesek()
+	public String getZnesek()
 	{
 		return znesek;
 	}
-	public void setZnesek(double znesek)
+	public void setZnesek(String znesek)
 	{
 		this.znesek = znesek;
 	}
@@ -50,37 +51,36 @@ public class PonudbaBean
 	public PonudbaBean(){
 		ponudba = new PonudbaObj();
 	}
-	public String posljiPonudbo()
+	public String posljiPonudbo(OglasObj oglas, int idUpor)
 	{
 		try
 		{	
-			OglasObj oglas = new OglasObj();
+			//OglasObj oglas = new OglasObj();
 			UporabnikObj uporabnik = new UporabnikObj();
 			
 			String trenCena = oglas.getCena();
 			double trenutnaCena = Double.parseDouble(trenCena);
-			
-			if (znesek > trenutnaCena)
+			double znesekD = Double.parseDouble(znesek);
+			if (znesekD > trenutnaCena)
 			{
-				LoginBean lb = new LoginBean();				
-				int id = lb.getIdUser();
-				uporabnik.setId(id);
+				//LoginBean lb = new LoginBean();				
+				//int id = lb.getIdUser();
+				uporabnik.setId(idUpor);
 				
-				int idOglas = oglas.getId();
-				oglas.setId(idOglas);
+				//int idOglas = oglas.getId();
+				//oglas.setId(idOglas);
 				
 				//damo na ponudbo
 				ponudba.setCas(new GregorianCalendar());
 				ponudba.setOglas(oglas);
 				ponudba.setUporabnik(uporabnik);
-				ponudba.setZnesek(znesek);
+				ponudba.setZnesek(znesekD);
 				
 				//naredi ConverterHelper!!!, da spodnje vrstice delajo!!
-				//Ponudba p = ConverterHelper.oglasObj2Ws(oglas);
+				Ponudba p = ConverterHelper.ponudbaObj2WS(ponudba);
 				
 				PonudbaService client = new PonudbaService();
-				boolean uspelo = false;
-				//uspelo = client.getBasicHttpBindingIPonudbaService().placeBidOnItem(ponudba);
+				boolean uspelo = client.getBasicHttpBindingIPonudbaService().placeBidOnItem(p);
 				if (uspelo == true)
 				{
 					oglas.setCena(znesek);
