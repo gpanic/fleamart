@@ -27,10 +27,18 @@
                     <div class="span7">
                         <blockquote><p>Cena: <b>#{oglasBean2.oglas.cena} €</b></p>
                             <h:commandButton rendered="#{oglasBean2.oglas.kupec.id == loginBean.idUser and oglasBean2.oglas.avkcija == false}" value="Kupljeno" class="btn btn-primary disabled"/>
-                            <h:form id="readform" rendered="#{oglasBean2.oglas.avtor.id != loginBean.idUser and loginBean.idUser != 0 and oglasBean2.oglas.statusNakupa == null}">
+                            <h:form id="readform" rendered="#{oglasBean2.oglas.avtor.id != loginBean.idUser and loginBean.idUser != 0 and oglasBean2.oglas.statusNakupa == null}" style="display:inline;">
                                 <h:commandButton id="kupi" class="btn btn-primary" value="Kupi">
                                     <f:ajax listener="#{oglasBean2.kupiOglas(oglasBean2.oglas.id)}"/>
                                 </h:commandButton>
+                            </h:form>
+                            &nbsp;
+                            <h:form style="display:inline;" rendered="#{!kosaricaBean.itemInCart(oglasBean2.oglas.id)}">
+                            	<h:commandLink id="addKosarica" styleClass="btn btn-primary" style="height:20px;" action="#{kosaricaBean.addItem(oglasBean2.oglas.id, oglasBean2.oglas.naslov, oglasBean2.oglas.cena)}">
+                            		&nbsp;
+                            		<i class="icon-shopping-cart icon-white" />
+                            		&nbsp;
+                            	</h:commandLink>
                             </h:form>
                         </blockquote>
                         <p><h:outputText value="#{oglasBean2.oglas.opis}"/></p>

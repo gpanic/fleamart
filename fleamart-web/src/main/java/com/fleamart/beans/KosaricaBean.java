@@ -56,5 +56,15 @@ public class KosaricaBean {
 	public void clearCart() {
 		items = new ArrayList<>();
 	}
+	
+	public boolean itemInCart(int id) {
+		boolean contains = false;
+		for (Object[] o : items) {
+			if(((int)o[0]) == id) {
+				contains = true;
+			}
+		}
+		return contains;
+	}
 
 }

@@ -117,7 +117,7 @@ public class KategorijaBean {
 		KategorijeService srv = new KategorijeService();
 		ObjectFactory of = new ObjectFactory();
 		Kategorija k = of.createKategorija();
-		k.setNaziv(of.createString(kategorijaCreate.getNaziv()));
+		k.setNaziv(of.createKategorijaNaziv(kategorijaCreate.getNaziv()));
 		boolean rezultat = srv.getBasicHttpBindingIKategorijaService().dodajKategorijo(k);
         String out = (rezultat) ? "/kategorija/list.xhtml" : "fail.xhtml";
         if (rezultat) {
