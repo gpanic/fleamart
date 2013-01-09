@@ -75,11 +75,12 @@ public class PonudbaBean
 				ponudba.setUporabnik(uporabnik);
 				ponudba.setZnesek(znesek);
 				
-				//naredi to, da spodnja koda dela!!!
-				Ponudba p = ConverterHelper.oglasObj2Ws(oglas);
+				//naredi ConverterHelper!!!, da spodnje vrstice delajo!!
+				//Ponudba p = ConverterHelper.oglasObj2Ws(oglas);
 				
 				PonudbaService client = new PonudbaService();
-				boolean uspelo = client.getBasicHttpBindingIPonudbaService().placeBidOnItem(ponudba);
+				boolean uspelo = false;
+				//uspelo = client.getBasicHttpBindingIPonudbaService().placeBidOnItem(ponudba);
 				if (uspelo == true)
 				{
 					oglas.setCena(znesek);

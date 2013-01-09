@@ -95,7 +95,7 @@ public class ConverterHelper {
 
         return o;
     }
-    
+    /*
     public static Ponudba ponudbaObj2WS(PonudbaObj obj){
     	Ponudba p = new Ponudba();
     	com.fleamart.uporabnik.ws.ObjectFactory of = new com.fleamart.uporabnik.ws.ObjectFactory();
@@ -109,11 +109,17 @@ public class ConverterHelper {
         }
     	p.setId(obj.getId());
     	p.setZnesek(obj.getZnesek());
+    	//com.fleamart.ponudba.ws.
     	//TODO: poglej ce je prav
     	//p.setOglas(oglasObj2Ws(obj.getOglas()));
     	//p.setUporabnik(uporabnikObj2WS(obj.getUporabnik()));
-
+    	/*
+    	 * com.fleamart.oglas.ws.Kategorija k = of.createKategorija();
+        k.setId(obj.getKategorija().getId());
+        o.setKategorija(of.createKategorija(k));
+    	 */
     	
+    /*
     }
     
     public static PonudbaObj ponudbaWs2Obj(Ponudba pon){
@@ -125,7 +131,7 @@ public class ConverterHelper {
     	p.setZnesek(pon.getZnesek());
     	return p;
     }
-    
+    */
 
     public static Uporabnik uporabnikObj2WS(UporabnikObj obj) {
         Uporabnik u = new Uporabnik();
