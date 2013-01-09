@@ -1,16 +1,22 @@
 package com.fleamart.beans;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 import com.fleamart.kategorija.ws.ArrayOfKategorija;
 import com.fleamart.kategorija.ws.Kategorija;
 import com.fleamart.kategorija.ws.KategorijeService;
 import com.fleamart.kategorija.ws.ObjectFactory;
+import com.fleamart.obj.KategorijaObj;
 
 @ManagedBean(name="kat")
 @RequestScoped
@@ -21,8 +27,11 @@ public class KategorijaBean {
 	private String izbranaKategorija;
 	private String searchParam;
 	private String queryKategorija;
-	
+	private List<Kategorija> kategorijaObjList;
+	private KategorijaObj kategorijaCreate;
+
 	public KategorijaBean() {
+		kategorijaCreate = new KategorijaObj();
 		this.kategorije = new HashMap<String,String>();
 		
 		try {
@@ -31,6 +40,7 @@ public class KategorijaBean {
 			ArrayOfKategorija kat = srv.getBasicHttpBindingIKategorijaService().vrniKategorije();
 			
 			List<Kategorija> kategorijeList = kat.getKategorija();
+			kategorijaObjList = kategorijeList;
 			for (Kategorija k : kategorijeList) {
 				kategorije_names.add(k.getNaziv().getValue());
 				kategorije.put(k.getNaziv().getValue(), String.valueOf(k.getId()));
@@ -78,4 +88,51 @@ public class KategorijaBean {
 	public void setQueryKategorija(String queryKategorija) {
 		this.queryKategorija = queryKategorija;
 	}
+	
+	public List<Kategorija> getKategorijaObjList() {
+		return kategorijaObjList;
+	}
+	
+	public KategorijaObj getKategorijaCreate() {
+		return kategorijaCreate;
+	}
+
+	public void setKategorijaCreate(KategorijaObj kategorijaCreate) {
+		this.kategorijaCreate = kategorijaCreate;
+	}
+	
+	public void removeKategorija(int id) {
+		Kategorija kremove = null;
+		for(Kategorija k: kategorijaObjList) {
+			if(k.getId().equals(id)) {
+				kremove = k;
+			}
+		}
+		kategorijaObjList.remove(kremove);
+		KategorijeService srv = new KategorijeService();
+		srv.getBasicHttpBindingIKategorijaService().izbrisiKategorijo(id);
+	}
+	
+	public void createKategorija() {
+		KategorijeService srv = new KategorijeService();
+		ObjectFactory of = new ObjectFactory();
+		Kategorija k = of.createKategorija();
+		k.setNaziv(of.createString(kategorijaCreate.getNaziv()));
+		boolean rezultat = srv.getBasicHttpBindingIKategorijaService().dodajKategorijo(k);
+        String out = (rezultat) ? "/kategorija/list.xhtml" : "fail.xhtml";
+        if (rezultat) {
+            redirect(out);
+        }
+	}
+	
+    public void redirect(String path) {
+        try {
+            ExternalContext ec = FacesContext.getCurrentInstance()
+                    .getExternalContext();
+            ec.redirect(ec.getRequestContextPath() + path);
+        } catch (IOException ex) {
+            Logger.getLogger(OglasBean.class.getName()).log(
+                    Level.SEVERE, null, ex);
+        }
+    }
 }

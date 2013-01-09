@@ -28,8 +28,6 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _KomentarSporocilo_QNAME = new QName("http//www.fleamart.com/", "Sporocilo");
-    private final static QName _KomentarAvtor_QNAME = new QName("http//www.fleamart.com/", "Avtor");
     private final static QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
     private final static QName _DateTime_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "dateTime");
@@ -37,8 +35,8 @@ public class ObjectFactory {
     private final static QName _QName_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "QName");
     private final static QName _Kategorija_QNAME = new QName("http//www.fleamart.com/", "Kategorija");
     private final static QName _UnsignedShort_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedShort");
-    private final static QName _SeznamZelja_QNAME = new QName("http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", "SeznamZelja");
     private final static QName _Naslov_QNAME = new QName("http//www.fleamart.com/", "Naslov");
+    private final static QName _SeznamZelja_QNAME = new QName("http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", "SeznamZelja");
     private final static QName _Float_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "float");
     private final static QName _Long_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "long");
     private final static QName _Short_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "short");
@@ -65,26 +63,15 @@ public class ObjectFactory {
     private final static QName _Oglas_QNAME = new QName("http//www.fleamart.com/", "Oglas");
     private final static QName _PrivatnoSporocilo_QNAME = new QName("http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", "PrivatnoSporocilo");
     private final static QName _ArrayOfPonudba_QNAME = new QName("http//www.fleamart.com/", "ArrayOfPonudba");
-    private final static QName _ReadOglasLastResponseReadOglasLastResult_QNAME = new QName("http://tempuri.org/", "ReadOglasLastResult");
-    private final static QName _ReadOglasResponseReadOglasResult_QNAME = new QName("http://tempuri.org/", "ReadOglasResult");
-    private final static QName _CreateOglasO_QNAME = new QName("http://tempuri.org/", "o");
-    private final static QName _OglasKupec_QNAME = new QName("http//www.fleamart.com/", "Kupec");
-    private final static QName _OglasCasSpremenjeno_QNAME = new QName("http//www.fleamart.com/", "CasSpremenjeno");
-    private final static QName _OglasSlike_QNAME = new QName("http//www.fleamart.com/", "Slike");
-    private final static QName _OglasKomentarji_QNAME = new QName("http//www.fleamart.com/", "Komentarji");
-    private final static QName _OglasZadnjaCenaAvkcija_QNAME = new QName("http//www.fleamart.com/", "ZadnjaCenaAvkcija");
-    private final static QName _OglasStatusNakupa_QNAME = new QName("http//www.fleamart.com/", "StatusNakupa");
-    private final static QName _OglasPonudbe_QNAME = new QName("http//www.fleamart.com/", "Ponudbe");
     private final static QName _GetOglasiResponseGetOglasiResult_QNAME = new QName("http://tempuri.org/", "GetOglasiResult");
-    private final static QName _SearchOglasiResponseSearchOglasiResult_QNAME = new QName("http://tempuri.org/", "SearchOglasiResult");
-    private final static QName _ListOglasiResponseListOglasiResult_QNAME = new QName("http://tempuri.org/", "ListOglasiResult");
+    private final static QName _KategorijaNaziv_QNAME = new QName("http//www.fleamart.com/", "Naziv");
+    private final static QName _KomentarSporocilo_QNAME = new QName("http//www.fleamart.com/", "Sporocilo");
+    private final static QName _KomentarAvtor_QNAME = new QName("http//www.fleamart.com/", "Avtor");
+    private final static QName _ListOglasiKupecResponseListOglasiKupecResult_QNAME = new QName("http://tempuri.org/", "ListOglasiKupecResult");
     private final static QName _SearchOglasiParam_QNAME = new QName("http://tempuri.org/", "param");
     private final static QName _SearchOglasiKategorija_QNAME = new QName("http://tempuri.org/", "kategorija");
-    private final static QName _NaslovDrzava_QNAME = new QName("http//www.fleamart.com/", "Drzava");
-    private final static QName _NaslovUlica_QNAME = new QName("http//www.fleamart.com/", "Ulica");
-    private final static QName _NaslovObcina_QNAME = new QName("http//www.fleamart.com/", "Obcina");
-    private final static QName _ListOglasiStatusNakupa_QNAME = new QName("http://tempuri.org/", "statusNakupa");
-    private final static QName _ListOglasiStatus_QNAME = new QName("http://tempuri.org/", "status");
+    private final static QName _CreateOglasO_QNAME = new QName("http://tempuri.org/", "o");
+    private final static QName _ReadOglasResponseReadOglasResult_QNAME = new QName("http://tempuri.org/", "ReadOglasResult");
     private final static QName _UporabnikPrivatnaSporocila_QNAME = new QName("http//www.fleamart.com/", "PrivatnaSporocila");
     private final static QName _UporabnikIme_QNAME = new QName("http//www.fleamart.com/", "Ime");
     private final static QName _UporabnikEmail_QNAME = new QName("http//www.fleamart.com/", "Email");
@@ -93,221 +80,27 @@ public class ObjectFactory {
     private final static QName _UporabnikPriimek_QNAME = new QName("http//www.fleamart.com/", "Priimek");
     private final static QName _UporabnikUpime_QNAME = new QName("http//www.fleamart.com/", "Upime");
     private final static QName _UporabnikSeznamZelja_QNAME = new QName("http//www.fleamart.com/", "SeznamZelja");
-    private final static QName _KategorijaNaziv_QNAME = new QName("http//www.fleamart.com/", "Naziv");
+    private final static QName _OglasKupec_QNAME = new QName("http//www.fleamart.com/", "Kupec");
+    private final static QName _OglasCasSpremenjeno_QNAME = new QName("http//www.fleamart.com/", "CasSpremenjeno");
+    private final static QName _OglasSlike_QNAME = new QName("http//www.fleamart.com/", "Slike");
+    private final static QName _OglasKomentarji_QNAME = new QName("http//www.fleamart.com/", "Komentarji");
+    private final static QName _OglasZadnjaCenaAvkcija_QNAME = new QName("http//www.fleamart.com/", "ZadnjaCenaAvkcija");
+    private final static QName _OglasStatusNakupa_QNAME = new QName("http//www.fleamart.com/", "StatusNakupa");
+    private final static QName _OglasPonudbe_QNAME = new QName("http//www.fleamart.com/", "Ponudbe");
+    private final static QName _ReadOglasLastResponseReadOglasLastResult_QNAME = new QName("http://tempuri.org/", "ReadOglasLastResult");
+    private final static QName _NaslovDrzava_QNAME = new QName("http//www.fleamart.com/", "Drzava");
+    private final static QName _NaslovUlica_QNAME = new QName("http//www.fleamart.com/", "Ulica");
+    private final static QName _NaslovObcina_QNAME = new QName("http//www.fleamart.com/", "Obcina");
+    private final static QName _ListOglasiAvtorStatusNakupa_QNAME = new QName("http://tempuri.org/", "statusNakupa");
+    private final static QName _ListOglasiAvtorStatus_QNAME = new QName("http://tempuri.org/", "status");
+    private final static QName _ListOglasiAvtorResponseListOglasiAvtorResult_QNAME = new QName("http://tempuri.org/", "ListOglasiAvtorResult");
+    private final static QName _SearchOglasiResponseSearchOglasiResult_QNAME = new QName("http://tempuri.org/", "SearchOglasiResult");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.fleamart.oglas.ws
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link DeleteOglasResponse }
-     * 
-     */
-    public DeleteOglasResponse createDeleteOglasResponse() {
-        return new DeleteOglasResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetOglasiResponse }
-     * 
-     */
-    public GetOglasiResponse createGetOglasiResponse() {
-        return new GetOglasiResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfOglas }
-     * 
-     */
-    public ArrayOfOglas createArrayOfOglas() {
-        return new ArrayOfOglas();
-    }
-
-    /**
-     * Create an instance of {@link ReadOglas }
-     * 
-     */
-    public ReadOglas createReadOglas() {
-        return new ReadOglas();
-    }
-
-    /**
-     * Create an instance of {@link CreateOglasResponse }
-     * 
-     */
-    public CreateOglasResponse createCreateOglasResponse() {
-        return new CreateOglasResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateOglas }
-     * 
-     */
-    public UpdateOglas createUpdateOglas() {
-        return new UpdateOglas();
-    }
-
-    /**
-     * Create an instance of {@link Oglas }
-     * 
-     */
-    public Oglas createOglas() {
-        return new Oglas();
-    }
-
-    /**
-     * Create an instance of {@link SearchOglasiResponse }
-     * 
-     */
-    public SearchOglasiResponse createSearchOglasiResponse() {
-        return new SearchOglasiResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetOglasi }
-     * 
-     */
-    public GetOglasi createGetOglasi() {
-        return new GetOglasi();
-    }
-
-    /**
-     * Create an instance of {@link UpdateOglasResponse }
-     * 
-     */
-    public UpdateOglasResponse createUpdateOglasResponse() {
-        return new UpdateOglasResponse();
-    }
-
-    /**
-     * Create an instance of {@link ListOglasi }
-     * 
-     */
-    public ListOglasi createListOglasi() {
-        return new ListOglasi();
-    }
-
-    /**
-     * Create an instance of {@link CreateOglas }
-     * 
-     */
-    public CreateOglas createCreateOglas() {
-        return new CreateOglas();
-    }
-
-    /**
-     * Create an instance of {@link DeleteOglas }
-     * 
-     */
-    public DeleteOglas createDeleteOglas() {
-        return new DeleteOglas();
-    }
-
-    /**
-     * Create an instance of {@link ListOglasiResponse }
-     * 
-     */
-    public ListOglasiResponse createListOglasiResponse() {
-        return new ListOglasiResponse();
-    }
-
-    /**
-     * Create an instance of {@link SearchOglasi }
-     * 
-     */
-    public SearchOglasi createSearchOglasi() {
-        return new SearchOglasi();
-    }
-
-    /**
-     * Create an instance of {@link ReadOglasLastResponse }
-     * 
-     */
-    public ReadOglasLastResponse createReadOglasLastResponse() {
-        return new ReadOglasLastResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadOglasLast }
-     * 
-     */
-    public ReadOglasLast createReadOglasLast() {
-        return new ReadOglasLast();
-    }
-
-    /**
-     * Create an instance of {@link ReadOglasResponse }
-     * 
-     */
-    public ReadOglasResponse createReadOglasResponse() {
-        return new ReadOglasResponse();
-    }
-
-    /**
-     * Create an instance of {@link Komentar }
-     * 
-     */
-    public Komentar createKomentar() {
-        return new Komentar();
-    }
-
-    /**
-     * Create an instance of {@link Ponudba }
-     * 
-     */
-    public Ponudba createPonudba() {
-        return new Ponudba();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfPonudba }
-     * 
-     */
-    public ArrayOfPonudba createArrayOfPonudba() {
-        return new ArrayOfPonudba();
-    }
-
-    /**
-     * Create an instance of {@link Naslov }
-     * 
-     */
-    public Naslov createNaslov() {
-        return new Naslov();
-    }
-
-    /**
-     * Create an instance of {@link Uporabnik }
-     * 
-     */
-    public Uporabnik createUporabnik() {
-        return new Uporabnik();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfKomentar }
-     * 
-     */
-    public ArrayOfKomentar createArrayOfKomentar() {
-        return new ArrayOfKomentar();
-    }
-
-    /**
-     * Create an instance of {@link Kategorija }
-     * 
-     */
-    public Kategorija createKategorija() {
-        return new Kategorija();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfstring }
-     * 
-     */
-    public ArrayOfstring createArrayOfstring() {
-        return new ArrayOfstring();
     }
 
     /**
@@ -343,21 +136,227 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link ArrayOfOglas }
      * 
      */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Sporocilo", scope = Komentar.class)
-    public JAXBElement<String> createKomentarSporocilo(String value) {
-        return new JAXBElement<String>(_KomentarSporocilo_QNAME, String.class, Komentar.class, value);
+    public ArrayOfOglas createArrayOfOglas() {
+        return new ArrayOfOglas();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}}
+     * Create an instance of {@link Komentar }
      * 
      */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Avtor", scope = Komentar.class)
-    public JAXBElement<Uporabnik> createKomentarAvtor(Uporabnik value) {
-        return new JAXBElement<Uporabnik>(_KomentarAvtor_QNAME, Uporabnik.class, Komentar.class, value);
+    public Komentar createKomentar() {
+        return new Komentar();
+    }
+
+    /**
+     * Create an instance of {@link Ponudba }
+     * 
+     */
+    public Ponudba createPonudba() {
+        return new Ponudba();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfPonudba }
+     * 
+     */
+    public ArrayOfPonudba createArrayOfPonudba() {
+        return new ArrayOfPonudba();
+    }
+
+    /**
+     * Create an instance of {@link Oglas }
+     * 
+     */
+    public Oglas createOglas() {
+        return new Oglas();
+    }
+
+    /**
+     * Create an instance of {@link Naslov }
+     * 
+     */
+    public Naslov createNaslov() {
+        return new Naslov();
+    }
+
+    /**
+     * Create an instance of {@link Uporabnik }
+     * 
+     */
+    public Uporabnik createUporabnik() {
+        return new Uporabnik();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfKomentar }
+     * 
+     */
+    public ArrayOfKomentar createArrayOfKomentar() {
+        return new ArrayOfKomentar();
+    }
+
+    /**
+     * Create an instance of {@link Kategorija }
+     * 
+     */
+    public Kategorija createKategorija() {
+        return new Kategorija();
+    }
+
+    /**
+     * Create an instance of {@link DeleteOglasResponse }
+     * 
+     */
+    public DeleteOglasResponse createDeleteOglasResponse() {
+        return new DeleteOglasResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetOglasiResponse }
+     * 
+     */
+    public GetOglasiResponse createGetOglasiResponse() {
+        return new GetOglasiResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadOglas }
+     * 
+     */
+    public ReadOglas createReadOglas() {
+        return new ReadOglas();
+    }
+
+    /**
+     * Create an instance of {@link CreateOglasResponse }
+     * 
+     */
+    public CreateOglasResponse createCreateOglasResponse() {
+        return new CreateOglasResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateOglas }
+     * 
+     */
+    public UpdateOglas createUpdateOglas() {
+        return new UpdateOglas();
+    }
+
+    /**
+     * Create an instance of {@link ListOglasiAvtor }
+     * 
+     */
+    public ListOglasiAvtor createListOglasiAvtor() {
+        return new ListOglasiAvtor();
+    }
+
+    /**
+     * Create an instance of {@link SearchOglasiResponse }
+     * 
+     */
+    public SearchOglasiResponse createSearchOglasiResponse() {
+        return new SearchOglasiResponse();
+    }
+
+    /**
+     * Create an instance of {@link ListOglasiKupec }
+     * 
+     */
+    public ListOglasiKupec createListOglasiKupec() {
+        return new ListOglasiKupec();
+    }
+
+    /**
+     * Create an instance of {@link GetOglasi }
+     * 
+     */
+    public GetOglasi createGetOglasi() {
+        return new GetOglasi();
+    }
+
+    /**
+     * Create an instance of {@link UpdateOglasResponse }
+     * 
+     */
+    public UpdateOglasResponse createUpdateOglasResponse() {
+        return new UpdateOglasResponse();
+    }
+
+    /**
+     * Create an instance of {@link CreateOglas }
+     * 
+     */
+    public CreateOglas createCreateOglas() {
+        return new CreateOglas();
+    }
+
+    /**
+     * Create an instance of {@link DeleteOglas }
+     * 
+     */
+    public DeleteOglas createDeleteOglas() {
+        return new DeleteOglas();
+    }
+
+    /**
+     * Create an instance of {@link ListOglasiKupecResponse }
+     * 
+     */
+    public ListOglasiKupecResponse createListOglasiKupecResponse() {
+        return new ListOglasiKupecResponse();
+    }
+
+    /**
+     * Create an instance of {@link SearchOglasi }
+     * 
+     */
+    public SearchOglasi createSearchOglasi() {
+        return new SearchOglasi();
+    }
+
+    /**
+     * Create an instance of {@link ReadOglasLastResponse }
+     * 
+     */
+    public ReadOglasLastResponse createReadOglasLastResponse() {
+        return new ReadOglasLastResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadOglasLast }
+     * 
+     */
+    public ReadOglasLast createReadOglasLast() {
+        return new ReadOglasLast();
+    }
+
+    /**
+     * Create an instance of {@link ListOglasiAvtorResponse }
+     * 
+     */
+    public ListOglasiAvtorResponse createListOglasiAvtorResponse() {
+        return new ListOglasiAvtorResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadOglasResponse }
+     * 
+     */
+    public ReadOglasResponse createReadOglasResponse() {
+        return new ReadOglasResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfstring }
+     * 
+     */
+    public ArrayOfstring createArrayOfstring() {
+        return new ArrayOfstring();
     }
 
     /**
@@ -424,21 +423,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SeznamZelja }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", name = "SeznamZelja")
-    public JAXBElement<SeznamZelja> createSeznamZelja(SeznamZelja value) {
-        return new JAXBElement<SeznamZelja>(_SeznamZelja_QNAME, SeznamZelja.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Naslov }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Naslov")
     public JAXBElement<Naslov> createNaslov(Naslov value) {
         return new JAXBElement<Naslov>(_Naslov_QNAME, Naslov.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SeznamZelja }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", name = "SeznamZelja")
+    public JAXBElement<SeznamZelja> createSeznamZelja(SeznamZelja value) {
+        return new JAXBElement<SeznamZelja>(_SeznamZelja_QNAME, SeznamZelja.class, null, value);
     }
 
     /**
@@ -676,123 +675,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Oglas }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "ReadOglasLastResult", scope = ReadOglasLastResponse.class)
-    public JAXBElement<Oglas> createReadOglasLastResponseReadOglasLastResult(Oglas value) {
-        return new JAXBElement<Oglas>(_ReadOglasLastResponseReadOglasLastResult_QNAME, Oglas.class, ReadOglasLastResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Oglas }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "ReadOglasResult", scope = ReadOglasResponse.class)
-    public JAXBElement<Oglas> createReadOglasResponseReadOglasResult(Oglas value) {
-        return new JAXBElement<Oglas>(_ReadOglasResponseReadOglasResult_QNAME, Oglas.class, ReadOglasResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Uporabnik", scope = Ponudba.class)
-    public JAXBElement<Uporabnik> createPonudbaUporabnik(Uporabnik value) {
-        return new JAXBElement<Uporabnik>(_Uporabnik_QNAME, Uporabnik.class, Ponudba.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Oglas }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Oglas", scope = Ponudba.class)
-    public JAXBElement<Oglas> createPonudbaOglas(Oglas value) {
-        return new JAXBElement<Oglas>(_Oglas_QNAME, Oglas.class, Ponudba.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Oglas }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "o", scope = CreateOglas.class)
-    public JAXBElement<Oglas> createCreateOglasO(Oglas value) {
-        return new JAXBElement<Oglas>(_CreateOglasO_QNAME, Oglas.class, CreateOglas.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Kupec", scope = Oglas.class)
-    public JAXBElement<Uporabnik> createOglasKupec(Uporabnik value) {
-        return new JAXBElement<Uporabnik>(_OglasKupec_QNAME, Uporabnik.class, Oglas.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "CasSpremenjeno", scope = Oglas.class)
-    public JAXBElement<XMLGregorianCalendar> createOglasCasSpremenjeno(XMLGregorianCalendar value) {
-        return new JAXBElement<XMLGregorianCalendar>(_OglasCasSpremenjeno_QNAME, XMLGregorianCalendar.class, Oglas.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfstring }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Slike", scope = Oglas.class)
-    public JAXBElement<ArrayOfstring> createOglasSlike(ArrayOfstring value) {
-        return new JAXBElement<ArrayOfstring>(_OglasSlike_QNAME, ArrayOfstring.class, Oglas.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKomentar }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Komentarji", scope = Oglas.class)
-    public JAXBElement<ArrayOfKomentar> createOglasKomentarji(ArrayOfKomentar value) {
-        return new JAXBElement<ArrayOfKomentar>(_OglasKomentarji_QNAME, ArrayOfKomentar.class, Oglas.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Kategorija }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Kategorija", scope = Oglas.class)
-    public JAXBElement<Kategorija> createOglasKategorija(Kategorija value) {
-        return new JAXBElement<Kategorija>(_Kategorija_QNAME, Kategorija.class, Oglas.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Double }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "ZadnjaCenaAvkcija", scope = Oglas.class)
-    public JAXBElement<Double> createOglasZadnjaCenaAvkcija(Double value) {
-        return new JAXBElement<Double>(_OglasZadnjaCenaAvkcija_QNAME, Double.class, Oglas.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "StatusNakupa", scope = Oglas.class)
-    public JAXBElement<Integer> createOglasStatusNakupa(Integer value) {
-        return new JAXBElement<Integer>(_OglasStatusNakupa_QNAME, Integer.class, Oglas.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfPonudba }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Ponudbe", scope = Oglas.class)
-    public JAXBElement<ArrayOfPonudba> createOglasPonudbe(ArrayOfPonudba value) {
-        return new JAXBElement<ArrayOfPonudba>(_OglasPonudbe_QNAME, ArrayOfPonudba.class, Oglas.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfOglas }{@code >}}
      * 
      */
@@ -802,30 +684,39 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Oglas }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "o", scope = UpdateOglas.class)
-    public JAXBElement<Oglas> createUpdateOglasO(Oglas value) {
-        return new JAXBElement<Oglas>(_CreateOglasO_QNAME, Oglas.class, UpdateOglas.class, value);
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Naziv", scope = Kategorija.class)
+    public JAXBElement<String> createKategorijaNaziv(String value) {
+        return new JAXBElement<String>(_KategorijaNaziv_QNAME, String.class, Kategorija.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Sporocilo", scope = Komentar.class)
+    public JAXBElement<String> createKomentarSporocilo(String value) {
+        return new JAXBElement<String>(_KomentarSporocilo_QNAME, String.class, Komentar.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Avtor", scope = Komentar.class)
+    public JAXBElement<Uporabnik> createKomentarAvtor(Uporabnik value) {
+        return new JAXBElement<Uporabnik>(_KomentarAvtor_QNAME, Uporabnik.class, Komentar.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfOglas }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "SearchOglasiResult", scope = SearchOglasiResponse.class)
-    public JAXBElement<ArrayOfOglas> createSearchOglasiResponseSearchOglasiResult(ArrayOfOglas value) {
-        return new JAXBElement<ArrayOfOglas>(_SearchOglasiResponseSearchOglasiResult_QNAME, ArrayOfOglas.class, SearchOglasiResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfOglas }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "ListOglasiResult", scope = ListOglasiResponse.class)
-    public JAXBElement<ArrayOfOglas> createListOglasiResponseListOglasiResult(ArrayOfOglas value) {
-        return new JAXBElement<ArrayOfOglas>(_ListOglasiResponseListOglasiResult_QNAME, ArrayOfOglas.class, ListOglasiResponse.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "ListOglasiKupecResult", scope = ListOglasiKupecResponse.class)
+    public JAXBElement<ArrayOfOglas> createListOglasiKupecResponseListOglasiKupecResult(ArrayOfOglas value) {
+        return new JAXBElement<ArrayOfOglas>(_ListOglasiKupecResponseListOglasiKupecResult_QNAME, ArrayOfOglas.class, ListOglasiKupecResponse.class, value);
     }
 
     /**
@@ -847,48 +738,30 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Oglas }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Drzava", scope = Naslov.class)
-    public JAXBElement<String> createNaslovDrzava(String value) {
-        return new JAXBElement<String>(_NaslovDrzava_QNAME, String.class, Naslov.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "o", scope = CreateOglas.class)
+    public JAXBElement<Oglas> createCreateOglasO(Oglas value) {
+        return new JAXBElement<Oglas>(_CreateOglasO_QNAME, Oglas.class, CreateOglas.class, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Oglas }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Ulica", scope = Naslov.class)
-    public JAXBElement<String> createNaslovUlica(String value) {
-        return new JAXBElement<String>(_NaslovUlica_QNAME, String.class, Naslov.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "ReadOglasResult", scope = ReadOglasResponse.class)
+    public JAXBElement<Oglas> createReadOglasResponseReadOglasResult(Oglas value) {
+        return new JAXBElement<Oglas>(_ReadOglasResponseReadOglasResult_QNAME, Oglas.class, ReadOglasResponse.class, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Oglas }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Obcina", scope = Naslov.class)
-    public JAXBElement<String> createNaslovObcina(String value) {
-        return new JAXBElement<String>(_NaslovObcina_QNAME, String.class, Naslov.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "statusNakupa", scope = ListOglasi.class)
-    public JAXBElement<Integer> createListOglasiStatusNakupa(Integer value) {
-        return new JAXBElement<Integer>(_ListOglasiStatusNakupa_QNAME, Integer.class, ListOglasi.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "status", scope = ListOglasi.class)
-    public JAXBElement<Integer> createListOglasiStatus(Integer value) {
-        return new JAXBElement<Integer>(_ListOglasiStatus_QNAME, Integer.class, ListOglasi.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "o", scope = UpdateOglas.class)
+    public JAXBElement<Oglas> createUpdateOglasO(Oglas value) {
+        return new JAXBElement<Oglas>(_CreateOglasO_QNAME, Oglas.class, UpdateOglas.class, value);
     }
 
     /**
@@ -973,12 +846,165 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Kupec", scope = Oglas.class)
+    public JAXBElement<Uporabnik> createOglasKupec(Uporabnik value) {
+        return new JAXBElement<Uporabnik>(_OglasKupec_QNAME, Uporabnik.class, Oglas.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "CasSpremenjeno", scope = Oglas.class)
+    public JAXBElement<XMLGregorianCalendar> createOglasCasSpremenjeno(XMLGregorianCalendar value) {
+        return new JAXBElement<XMLGregorianCalendar>(_OglasCasSpremenjeno_QNAME, XMLGregorianCalendar.class, Oglas.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfstring }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Slike", scope = Oglas.class)
+    public JAXBElement<ArrayOfstring> createOglasSlike(ArrayOfstring value) {
+        return new JAXBElement<ArrayOfstring>(_OglasSlike_QNAME, ArrayOfstring.class, Oglas.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKomentar }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Komentarji", scope = Oglas.class)
+    public JAXBElement<ArrayOfKomentar> createOglasKomentarji(ArrayOfKomentar value) {
+        return new JAXBElement<ArrayOfKomentar>(_OglasKomentarji_QNAME, ArrayOfKomentar.class, Oglas.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Kategorija }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Kategorija", scope = Oglas.class)
+    public JAXBElement<Kategorija> createOglasKategorija(Kategorija value) {
+        return new JAXBElement<Kategorija>(_Kategorija_QNAME, Kategorija.class, Oglas.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Double }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "ZadnjaCenaAvkcija", scope = Oglas.class)
+    public JAXBElement<Double> createOglasZadnjaCenaAvkcija(Double value) {
+        return new JAXBElement<Double>(_OglasZadnjaCenaAvkcija_QNAME, Double.class, Oglas.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "StatusNakupa", scope = Oglas.class)
+    public JAXBElement<Integer> createOglasStatusNakupa(Integer value) {
+        return new JAXBElement<Integer>(_OglasStatusNakupa_QNAME, Integer.class, Oglas.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfPonudba }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Ponudbe", scope = Oglas.class)
+    public JAXBElement<ArrayOfPonudba> createOglasPonudbe(ArrayOfPonudba value) {
+        return new JAXBElement<ArrayOfPonudba>(_OglasPonudbe_QNAME, ArrayOfPonudba.class, Oglas.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Oglas }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "ReadOglasLastResult", scope = ReadOglasLastResponse.class)
+    public JAXBElement<Oglas> createReadOglasLastResponseReadOglasLastResult(Oglas value) {
+        return new JAXBElement<Oglas>(_ReadOglasLastResponseReadOglasLastResult_QNAME, Oglas.class, ReadOglasLastResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Uporabnik", scope = Ponudba.class)
+    public JAXBElement<Uporabnik> createPonudbaUporabnik(Uporabnik value) {
+        return new JAXBElement<Uporabnik>(_Uporabnik_QNAME, Uporabnik.class, Ponudba.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Oglas }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Oglas", scope = Ponudba.class)
+    public JAXBElement<Oglas> createPonudbaOglas(Oglas value) {
+        return new JAXBElement<Oglas>(_Oglas_QNAME, Oglas.class, Ponudba.class, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Naziv", scope = Kategorija.class)
-    public JAXBElement<String> createKategorijaNaziv(String value) {
-        return new JAXBElement<String>(_KategorijaNaziv_QNAME, String.class, Kategorija.class, value);
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Drzava", scope = Naslov.class)
+    public JAXBElement<String> createNaslovDrzava(String value) {
+        return new JAXBElement<String>(_NaslovDrzava_QNAME, String.class, Naslov.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Ulica", scope = Naslov.class)
+    public JAXBElement<String> createNaslovUlica(String value) {
+        return new JAXBElement<String>(_NaslovUlica_QNAME, String.class, Naslov.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http//www.fleamart.com/", name = "Obcina", scope = Naslov.class)
+    public JAXBElement<String> createNaslovObcina(String value) {
+        return new JAXBElement<String>(_NaslovObcina_QNAME, String.class, Naslov.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "statusNakupa", scope = ListOglasiAvtor.class)
+    public JAXBElement<Integer> createListOglasiAvtorStatusNakupa(Integer value) {
+        return new JAXBElement<Integer>(_ListOglasiAvtorStatusNakupa_QNAME, Integer.class, ListOglasiAvtor.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "status", scope = ListOglasiAvtor.class)
+    public JAXBElement<Integer> createListOglasiAvtorStatus(Integer value) {
+        return new JAXBElement<Integer>(_ListOglasiAvtorStatus_QNAME, Integer.class, ListOglasiAvtor.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfOglas }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "ListOglasiAvtorResult", scope = ListOglasiAvtorResponse.class)
+    public JAXBElement<ArrayOfOglas> createListOglasiAvtorResponseListOglasiAvtorResult(ArrayOfOglas value) {
+        return new JAXBElement<ArrayOfOglas>(_ListOglasiAvtorResponseListOglasiAvtorResult_QNAME, ArrayOfOglas.class, ListOglasiAvtorResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfOglas }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "SearchOglasiResult", scope = SearchOglasiResponse.class)
+    public JAXBElement<ArrayOfOglas> createSearchOglasiResponseSearchOglasiResult(ArrayOfOglas value) {
+        return new JAXBElement<ArrayOfOglas>(_SearchOglasiResponseSearchOglasiResult_QNAME, ArrayOfOglas.class, SearchOglasiResponse.class, value);
     }
 
 }

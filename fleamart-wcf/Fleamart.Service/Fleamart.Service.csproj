@@ -61,6 +61,7 @@
   <ItemGroup>
     <Content Include="FleamartService.svc" />
     <Content Include="KategorijeService.svc" />
+    <Content Include="OceneService.svc" />
     <Content Include="OglasService.svc" />
     <Content Include="PonudbaService.svc" />
     <Content Include="UporabnikService.svc" />
@@ -72,6 +73,9 @@
     </Compile>
     <Compile Include="KategorijeService.svc.cs">
       <DependentUpon>KategorijeService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="OceneService.svc.cs">
+      <DependentUpon>OceneService.svc</DependentUpon>
     </Compile>
     <Compile Include="OglasService.svc.cs">
       <DependentUpon>OglasService.svc</DependentUpon>

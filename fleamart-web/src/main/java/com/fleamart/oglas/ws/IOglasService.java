@@ -112,15 +112,32 @@ public interface IOglasService {
      * @return
      *     returns com.fleamart.oglas.ws.ArrayOfOglas
      */
-    @WebMethod(operationName = "ListOglasi", action = "http://tempuri.org/IOglasService/ListOglasi")
-    @WebResult(name = "ListOglasiResult", targetNamespace = "http://tempuri.org/")
-    @RequestWrapper(localName = "ListOglasi", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ListOglasi")
-    @ResponseWrapper(localName = "ListOglasiResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ListOglasiResponse")
-    public ArrayOfOglas listOglasi(
+    @WebMethod(operationName = "ListOglasiAvtor", action = "http://tempuri.org/IOglasService/ListOglasiAvtor")
+    @WebResult(name = "ListOglasiAvtorResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "ListOglasiAvtor", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ListOglasiAvtor")
+    @ResponseWrapper(localName = "ListOglasiAvtorResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ListOglasiAvtorResponse")
+    public ArrayOfOglas listOglasiAvtor(
         @WebParam(name = "idAvtor", targetNamespace = "http://tempuri.org/")
         Integer idAvtor,
         @WebParam(name = "status", targetNamespace = "http://tempuri.org/")
         Integer status,
+        @WebParam(name = "statusNakupa", targetNamespace = "http://tempuri.org/")
+        Integer statusNakupa);
+
+    /**
+     * 
+     * @param idKupec
+     * @param statusNakupa
+     * @return
+     *     returns com.fleamart.oglas.ws.ArrayOfOglas
+     */
+    @WebMethod(operationName = "ListOglasiKupec", action = "http://tempuri.org/IOglasService/ListOglasiKupec")
+    @WebResult(name = "ListOglasiKupecResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "ListOglasiKupec", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ListOglasiKupec")
+    @ResponseWrapper(localName = "ListOglasiKupecResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ListOglasiKupecResponse")
+    public ArrayOfOglas listOglasiKupec(
+        @WebParam(name = "idKupec", targetNamespace = "http://tempuri.org/")
+        Integer idKupec,
         @WebParam(name = "statusNakupa", targetNamespace = "http://tempuri.org/")
         Integer statusNakupa);
 

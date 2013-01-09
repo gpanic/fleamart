@@ -1,177 +1,279 @@
 body {
-    margin: 0;
-    padding: 0;
-    padding-top: 75px;
-    padding-bottom: 40px;
-    font-size: 14px;
-    height: 100%;
+	margin: 0;
+	padding: 0;
+	padding-top: 75px;
+	padding-bottom: 40px;
+	font-size: 14px;
+	height: 100%;
 }
 
 .oglasi {
-    width: 80%;
-    margin-top: 30px;
+	margin-top: 30px;
 }
 
 .oglas {
-    width: 80%;
-    border: 2px solid #E3E3E3;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    display: inline-block;
+	width: 695px;
+	height: 180px;
+	border: 2px solid #E3E3E3;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	margin-bottom: 30px;
+	display: inline-block;
 }
 
 .oglas .slika {
-    border: none;
-    margin: 20px;
-    width: 160px;
-    height: 120px;
+	border: none;
+	margin: 20px;
+	width: 160px;
+	height: 120px;
 }
 
 .oglas .naslov {
-    border: none;
-    position: absolute;
-    margin-top: 20px;
-    width: 400px;
-    color: #005580;
-    font-size: 16px;
-    font-weight: bold;
+	border: none;
+	position: absolute;
+	margin-top: 20px;
+	width: 400px;
+	color: #005580;
+	font-size: 16px;
+	font-weight: bold;
 }
 
 .oglas .cena {
-    border: none;
-    position: absolute;
-    margin-top: 20px;
-    margin-left: 420px;
-    width: 60px;
-    font-size: 13px;
-    font-weight: bold;
-    font-family: Arial;
-    color: red;
+	border: none;
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 420px;
+	width: 60px;
+	font-size: 13px;
+	font-weight: bold;
+	font-family: Arial;
+	color: red;
 }
 
 .oglas .opis {
-    border: none;
-    position: absolute;
-    margin-top: 50px;
-    width: 400px;
-    height: 100px;
+	border: none;
+	position: absolute;
+	margin-top: 50px;
+	width: 400px;
+	height: 100px;
+	overflow: hidden;
+	text-align: justify;
 }
 
 .oglas .datum {
-    border: none;
-    position: absolute;
-    margin-left: 410px;
-    margin-top: 130px;
-    width: 60px;
-    font-style: italic;
+	border: none;
+	position: absolute;
+	margin-left: 410px;
+	margin-top: 148px;
+	width: 60px;
+	font-style: italic;
+	font-weight: bold;
 }
 
 .oglas img {
-    width: 140px;
+	width: 140px;
+	max-height: 145px;
 }
 
 .registrac {
-    width: 400px;
-    margin-top: 30px;
-    padding: 20px;
-    border: 2px solid #E3E3E3;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    margin-top: 30px;
+	width: 400px;
+	margin-top: 30px;
+	padding: 20px;
+	border: 2px solid #E3E3E3;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	margin-top: 30px;
 }
 
 .registrac input {
-    margin-left: 20px;
-    margin-right: 5px;
-    width: 150px;
+	margin-left: 20px;
+	margin-right: 5px;
+	width: 150px;
 }
 
 .iskanje {
-    padding: 10px;
-    margin-top: 30px;
-    width: 677px;
-    border: 1px solid #E3E3E3;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    background-color: #F7F7F7;
+	padding: 10px;
+	margin-top: 30px;
+	width: 677px;
+	border: 1px solid #E3E3E3;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	background-color: #F7F7F7;
 }
 
 .iskanje label {
-    font-size: 18px;
+	font-size: 18px;
 }
 
 .iskanje input {
-    margin: 0px 10px 0 10px;
+	margin: 0px 10px 0 10px;
 }
 
 .iskanje select {
-    margin: 1px;
+	margin: 1px;
 }
 
-.oglasitem{
-    width: 700px;
-    border-bottom: 1px solid #E3E3E3;
-    display: inline-block;
-    padding: 5px;
+.ocena {
+	width: 211px;
+	margin-top: 30px;
+	margin-left: 30px;
+	border: 1px solid #E3E3E3;
+	float: left;
+	border: 1px solid #E3E3E3;
 }
 
-.oglasitem:hover{
-    background-color: #F5F5F5;
+.ocena td {
+	padding: 5px;
 }
 
-.oglasitem .slika{
-    width: 200px;
-    min-height: 1px;
-    float: left;
-}
-.oglasitem .slika img{
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    max-width: 200px;
-    max-height: 200px;
+.ocena_avtor {
+	width: 220px;
+	margin-top: 30px;
+	border: 1px solid black;
+	float: left;
+	border: 2px solid #E3E3E3;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
 }
 
-.oglasitem .naslovopis{
-    width: 300px;
-    float: left;
+.top {
+	width: 220px;
+	height: 22px;
+	margin: 0px;
+	border-top: 1px solid #E3E3E3;
+	border-bottom: 1px solid #E3E3E3;
+	background-color: #EEE;
+	text-align: center;
+	font-weight: bold;
+}
+
+.ocena_avtor.info {
+	margin-top: 7px;
+	border-style: none;
+	padding-left: 10px;
+}
+
+.submitall {
+	display: none;
+	visibility: hidden;
+}
+
+.purchRate {
+	margin: 30px 0 0 50px;
+	width: 600px;
+	height: 325px;
+	border: 2px solid #E3E3E3;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	float: left;
+}
+
+.prSlika {
+	width: 200px;
+	height: 200px;
+	float: left;
+	margin: 20px 0 0 20px;
+}
+
+.prNaslov {
+	position: absolute;
+	width: 340px;
+	height: 50px;
+	color: #005580;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 20px 0 0 240px;
+	overflow: hidden;
+}
+
+.prOpis {
+	position: absolute;
+	margin: 68px 0 0 240px;
+	width: 340px;
+	height: 200px;
+	text-align: justify;
+	overflow: hidden;
+}
+
+.prInfo {
+	color: #005580;
+	margin: 260px 0 0 30px;
+	width: 200px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.toRate {
+	margin-top: 30px;
+	width: 600px;
+}
+
+.oglasitem {
+	width: 700px;
+	border-bottom: 1px solid #E3E3E3;
+	display: inline-block;
+	padding: 5px;
+}
+
+.oglasitem:hover {
+	background-color: #F5F5F5;
+}
+
+.oglasitem .slika {
+	width: 200px;
+	min-height: 1px;
+	float: left;
+}
+
+.oglasitem .slika img {
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	max-width: 200px;
+	max-height: 200px;
+}
+
+.oglasitem .naslovopis {
+	width: 300px;
+	float: left;
 }
 
 .oglasitem .naslovopis .naslov {
-    padding-left: 5px;
-    color: #005580;
-    font-size: 16px;
-    font-weight: bold;
+	padding-left: 5px;
+	color: #005580;
+	font-size: 16px;
+	font-weight: bold;
 }
 
 .oglasitem .naslovopis .opis {
-    padding-left: 5px;
+	padding-left: 5px;
 }
 
-.oglasitem .cenaostalo{
-    width: 200px;
-    float: left;
-    text-align: right;
-    /*background-color: red;*/
-}
-.oglasitem .cenaostalo .cena{
-    font-weight: bold;
-    font-size: 16px;
-    color: red;
-}
-.oglasitem .cenaostalo .datum{
-    font-size: 12px;
-    margin-top: 10px;
+.oglasitem .cenaostalo {
+	width: 200px;
+	float: left;
+	text-align: right;
+	/*background-color: red;*/
 }
 
-.radiobtn{
-
+.oglasitem .cenaostalo .cena {
+	font-weight: bold;
+	font-size: 16px;
+	color: red;
 }
 
-.radiobtn label{
-    float: right;
-    margin-top: 1px;
-    padding: 0 5px 0 5px;
+.oglasitem .cenaostalo .datum {
+	font-size: 12px;
+	margin-top: 10px;
+}
+
+.radiobtn {
+	
+}
+
+.radiobtn label {
+	float: right;
+	margin-top: 1px;
+	padding: 0 5px 0 5px;
 }

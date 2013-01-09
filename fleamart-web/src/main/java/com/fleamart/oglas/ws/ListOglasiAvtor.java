@@ -36,8 +36,8 @@ import javax.xml.bind.annotation.XmlType;
     "status",
     "statusNakupa"
 })
-@XmlRootElement(name = "ListOglasi")
-public class ListOglasi {
+@XmlRootElement(name = "ListOglasiAvtor")
+public class ListOglasiAvtor {
 
     protected Integer idAvtor;
     @XmlElementRef(name = "status", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)

@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using Fleamart.Contracts.Service;
 using Fleamart.Dal.Dao;
+using System.Diagnostics;
 
 namespace Fleamart.Service
 {
@@ -25,7 +26,7 @@ namespace Fleamart.Service
 
         public bool IzbrisiKategorijo(int id)
         {
-            throw new NotImplementedException();
+            return new KategorijaEFDao().Delete(id);
         }
     }
 }

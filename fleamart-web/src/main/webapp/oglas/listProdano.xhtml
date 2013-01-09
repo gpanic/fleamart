@@ -31,6 +31,7 @@
                             </div>
 
                             <div class="cenaostalo">
+                                <h:commandButton class="btn btn-primary btn-mini" rendered="#{oglas.statusNakupa == 0}" value="Potrdi prodajo" style="margin-bottom: 5px;" action="#{oglasBean2.kupiOglasPotrdiNakup(oglas.id)}"/><br/>
                                 <h:outputText class="cena" value="#{oglas.cena} €"/><br/>
                                 <div class="datum">
                                     Vpisano<br/>

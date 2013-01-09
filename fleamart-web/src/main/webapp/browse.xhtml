@@ -10,7 +10,6 @@
 	<f:viewParam name="param" value="#{oglasBean.searchParam}" />
 </f:metadata>
 <h:body>
-	<h:outputScript name="jquery.js" library="js" />
 	<ui:composition template="/shared/layout.xhtml">
 		<ui:param name="title" value="Fleamart" />
 		<ui:define name="content">
@@ -44,13 +43,13 @@
 							<h:graphicImage alt="image" url="#{oglas.slike[0]}"></h:graphicImage>
 						</h:panelGroup>
 						<h:panelGroup styleClass="oglas naslov" layout="block">
-							<h:outputText value="#{oglas.naslov}"></h:outputText>
+							<h:link outcome="/oglas/read.xhtml?id=#{oglas.id}" value="#{oglas.naslov}"></h:link>
 						</h:panelGroup>
 						<h:panelGroup styleClass="oglas cena" layout="block">
 							<h:outputText value="#{oglas.cena} €"></h:outputText>
 						</h:panelGroup>
 						<h:panelGroup styleClass="oglas opis" layout="block"><h:outputText value="#{oglas.opis}" /></h:panelGroup>
-						<h:panelGroup styleClass="oglas datum" layout="block">26.03.2012</h:panelGroup>
+						<h:panelGroup styleClass="oglas datum" layout="block"><h:outputText value="#{oglas.casOd.time}"><f:convertDateTime pattern="dd.MM.yyyy" /></h:outputText></h:panelGroup>
 					</h:panelGroup>
 				</ui:repeat>
 			</h:panelGroup>

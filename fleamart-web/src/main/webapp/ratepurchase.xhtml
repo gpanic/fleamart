@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:metadata>
+	<f:viewParam name="nakup" value="#{ocenaBean.nakupId}" />
+	<f:event listener="#{ocenaBean.preRender}" type="preRenderView"></f:event>
+</f:metadata>
+<h:body>
+	<ui:composition template="/shared/layout.xhtml">
+		<ui:param name="title" value="Fleamart" />
+		<ui:define name="content">
+			<link rel="stylesheet" type="text/css"
+				href="/fleamart-web/css/jquery.rating.css" />
+			<script type="text/javascript"
+				src="/fleamart-web/js/rating/jquery.form.js" />
+			<script type="text/javascript"
+				src="/fleamart-web/js/rating/jquery.MetaData.js" />
+			<script type="text/javascript"
+				src="/fleamart-web/js/rating/jquery.rating.js" />
+			<script type="text/javascript"
+				src="/fleamart-web/js/rating/jquery.rating.pack.js" />
+			<h1>Oceni nakup</h1>
+			<h:panelGroup layout="block" rendered="#{ocenaBean.nakupId != null}">
+				<h:panelGroup layout="block" styleClass="ocena_avtor">
+					<h:graphicImage url="/img/ava.jpg" />
+					<h:panelGroup layout="block" styleClass="top">Uporabniško ime</h:panelGroup>
+					<h:panelGroup layout="block" styleClass="ocena_avtor info">
+						<h:form id="setratings">
+							<h:panelGrid columns="2" cellpadding="1">
+								<h:outputText value="Ocena izdelka" />
+
+								<input name="oi" type="radio" class="star" value="1" />
+								<input name="oi" type="radio" class="star" value="2" />
+								<input name="oi" type="radio" class="star" value="3" />
+								<input name="oi" type="radio" class="star" value="4" />
+								<input name="oi" type="radio" class="star" value="5" />
+
+								<h:outputText value="Čas dobave" />
+								<input name="cd" type="radio" class="star" value="1" />
+								<input name="cd" type="radio" class="star" value="2" />
+								<input name="cd" type="radio" class="star" value="3" />
+								<input name="cd" type="radio" class="star" value="4" />
+								<input name="cd" type="radio" class="star" value="5" />
+
+								<h:outputText value="Komunikacija"></h:outputText>
+								<input name="kom" type="radio" class="star" value="1" />
+								<input name="kom" type="radio" class="star" value="2" />
+								<input name="kom" type="radio" class="star" value="3" />
+								<input name="kom" type="radio" class="star" value="4" />
+								<input name="kom" type="radio" class="star" value="5" />
+							</h:panelGrid>
+							<h:inputHidden id="rating_oi" value="#{ocenaBean.ocena_oi}" />
+							<h:inputHidden id="rating_cd" value="#{ocenaBean.ocena_cd}" />
+							<h:inputHidden id="rating_kom" value="#{ocenaBean.ocena_kom}" />
+
+							<h:panelGroup layout="block" styleClass="submitall">
+								<h:commandButton id="submitall" value="Submit">
+									<f:ajax execute="@form" listener="#{ocenaBean.submitRating}" />
+								</h:commandButton>
+							</h:panelGroup>
+						</h:form>
+					</h:panelGroup>
+				</h:panelGroup>
+				<h:panelGroup layout="block" styleClass="purchRate">
+					<h:panelGroup layout="block" styleClass="prSlika">
+						<h:graphicImage url="#{ocenaBean.oglas.slike[0]}"></h:graphicImage>
+					</h:panelGroup>
+					<h:panelGroup layout="block" styleClass="prNaslov">#{ocenaBean.oglas.naslov}</h:panelGroup>
+					<h:panelGroup layout="block" styleClass="prOpis">
+						#{ocenaBean.oglas.opis}
+					</h:panelGroup>
+					<h:panelGroup layout="block" styleClass="prInfo">
+					Cena: #{ocenaBean.oglas.cena} €<br />
+					Datum: <h:outputText value="#{ocenaBean.oglas.casOd.time}"><f:convertDateTime pattern="dd.MM.yyyy" /></h:outputText>
+				</h:panelGroup>
+				</h:panelGroup>
+			</h:panelGroup>
+			<h:panelGroup layout="block" styleClass="toRate"
+				rendered="#{ocenaBean.nakupId == null and ocenaBean.oglasi.size() != 0}">
+				<h:dataTable var="o" value="#{ocenaBean.oglasi}" styleClass="table">
+					<h:column>
+						<f:facet name="header">Ime oglasa</f:facet>
+						<h:outputLink value="ratepurchase.xhtml?nakup=#{o.id}">#{o.naslov}</h:outputLink>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Aktiven od</f:facet>
+						<h:outputText value="#{o.casOd.time}">
+							<f:convertDateTime pattern="dd.MM.yyyy" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Avtor</f:facet>
+						<h:outputLink value="profile.xhtml?id=">#{o.avtor.upime}</h:outputLink>
+					</h:column>
+				</h:dataTable>
+			</h:panelGroup>
+			<h:panelGroup rendered="#{ocenaBean.oglasi.size() == 0}">
+				Nisi kupil nobenega izdelka
+			</h:panelGroup>
+			<script>
+				//<![CDATA[
+				$(document).ready(function() {
+					$("#setratings").click(function() {
+						$('input', this).each(function() {
+							if ($(this).is(':checked')) {
+								var name = $(this).attr('name');
+								var val = $(this).val();
+
+								if (name == "oi") {
+									$("#setratings\\:rating_oi").val(val);
+								} else if (name == "cd") {
+									$("#setratings\\:rating_cd").val(val);
+								} else if (name == "kom") {
+									$("#setratings\\:rating_kom").val(val);
+								}
+							}
+						});
+						var o1 = $("#setratings\\:rating_oi").val();
+						var o2 = $("#setratings\\:rating_cd").val();
+						var o3 = $("#setratings\\:rating_kom").val();
+						if (o1 != 0 && o2 != 0 && o3 != 0) {
+							$("#setratings").unbind();
+							$("#setratings\\:submitall").trigger('click');
+						}
+						return false;
+					});
+				});
+				//]]>
+			</script>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

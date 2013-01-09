@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+
 public class OglasObj  implements Serializable{
 
     private int id;
@@ -179,6 +180,4 @@ public class OglasObj  implements Serializable{
     public String toString() {
         return "OglasObj{" + "id=" + id + ", naslov=" + naslov + ", avkcija=" + avkcija + ", cena=" + cena + ", zadnjaCenaAvkcija=" + zadnjaCenaAvkcija + ", opis=" + opis + ", Slike=" + Slike + ", casOd=" + casOd + ", casDo=" + casDo + ", casSpremenjeno=" + casSpremenjeno + ", status=" + status + ", ponudbe=" + ponudbe + ", statusNakupa=" + statusNakupa + ", avtor=" + avtor + ", kupec=" + kupec + ", komentarji=" + komentarji + ", kategorija=" + kategorija + '}';
     }
-
-    
 }

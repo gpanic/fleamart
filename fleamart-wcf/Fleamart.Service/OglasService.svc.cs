@@ -48,15 +48,21 @@ namespace Fleamart.Service
         }
 
 
-        public List<Oglas> ListOglasi(int idAvtor, int? status, int? statusNakupa)
+        public List<Oglas> ListOglasiAvtor(int idAvtor, int? status, int? statusNakupa)
         {
             return odao.List(idAvtor, status, statusNakupa);
         }
 
+        public List<Oglas> ListOglasiKupec(int idKupec, int statusNakupa)
+        {
+            return odao.List(idKupec, statusNakupa);
+        }
 
         public Oglas ReadOglasLast(int idAvtor)
         {
             return odao.ReadLast(idAvtor);
         }
+
+        
     }
 }
