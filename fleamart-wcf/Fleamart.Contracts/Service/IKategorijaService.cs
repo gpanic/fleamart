@@ -19,5 +19,17 @@ namespace Fleamart.Contracts.Service
 
         [OperationContract]
         bool IzbrisiKategorijo(int id);
+
+        [OperationContract]
+        bool DodajNarocenoKategorijo(NarocenaKategorija nk);
+
+        [OperationContract]
+        bool IzbrisiNarocenoKategorijo(Uporabnik u, Kategorija k);
+
+        [OperationContract]
+        List<Kategorija> VrniNaroceneKategorije(Uporabnik u);
+
+        [OperationContract]
+        List<Uporabnik> VrniNaroceneUporabnike(Kategorija k);
     }
 }
