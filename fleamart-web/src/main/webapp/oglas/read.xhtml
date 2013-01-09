@@ -33,7 +33,7 @@
                                 </h:commandButton>
                             </h:form>
                             &nbsp;
-                            <h:form style="display:inline;" rendered="#{!kosaricaBean.itemInCart(oglasBean2.oglas.id)}">
+                            <h:form style="display:inline;" rendered="#{oglasBean2.oglas.avtor.id != loginBean.idUser and loginBean.idUser != 0 and oglasBean2.oglas.statusNakupa == null and !kosaricaBean.itemInCart(oglasBean2.oglas.id)}">
                             	<h:commandLink id="addKosarica" styleClass="btn btn-primary" style="height:20px;" action="#{kosaricaBean.addItem(oglasBean2.oglas.id, oglasBean2.oglas.naslov, oglasBean2.oglas.cena)}">
                             		&nbsp;
                             		<i class="icon-shopping-cart icon-white" />
