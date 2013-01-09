@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Data\Kategorija.cs" />
     <Compile Include="Data\Komentar.cs" />
+    <Compile Include="Data\NarocenaKategorija.cs" />
     <Compile Include="Data\Naslov.cs" />
     <Compile Include="Data\Ocena.cs" />
     <Compile Include="Data\Oglas.cs" />

@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Dao\IDAO.cs" />
     <Compile Include="Dao\KategorijaEFDao.cs" />
+    <Compile Include="Dao\NarocenaKategorijaEFDao.cs" />
     <Compile Include="Dao\OcenaEFDao.cs" />
     <Compile Include="Dao\OglasEFDao.cs" />
     <Compile Include="Dao\PonudbaEFDao.cs" />
