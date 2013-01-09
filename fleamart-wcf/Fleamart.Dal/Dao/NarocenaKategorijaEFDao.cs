@@ -30,11 +30,20 @@ namespace Fleamart.Dal.Dao
                 if (entity != null)
                 {
                     NarocenaKategorijaEF ef = Mapper.Map<NarocenaKategorija, NarocenaKategorijaEF>(entity);
-                    db.Kategorije.Attach(ef.Kategorija);
-                    db.Uporabniki.Attach(ef.Uporabnik);
-                    db.NaroceneKategorije.Add(ef);
-                    db.SaveChanges();
-                    return true;
+                    UporabnikEF uef = db.Uporabniki.Find(entity.Uporabnik.Id);
+                    KategorijaEF kef = db.Kategorije.Find(entity.Kategorija.Id);
+                    if (uef != null && kef != null)
+                    {
+                        ef.Uporabnik = uef;
+                        ef.Kategorija = kef;
+                        db.NaroceneKategorije.Add(ef);
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 return false;
             }

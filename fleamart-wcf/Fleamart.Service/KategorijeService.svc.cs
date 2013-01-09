@@ -32,6 +32,7 @@ namespace Fleamart.Service
 
         public bool DodajNarocenoKategorijo(NarocenaKategorija nk)
         {
+            Debug.WriteLine("TO SE PROZI");
             NarocenaKategorijaEFDao nkdao = new NarocenaKategorijaEFDao();
             if (!nkdao.Exists(nk.Uporabnik, nk.Kategorija))
             {
