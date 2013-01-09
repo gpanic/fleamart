@@ -64,7 +64,6 @@ public class KosaricaBean {
 				contains = true;
 			}
 		}
-		System.out.println(contains);
 		return contains;
 	}
 
