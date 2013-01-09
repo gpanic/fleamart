@@ -33,7 +33,7 @@ public class OcenaBean implements Serializable {
 		oc1.setOcena(Integer.parseInt(this.ocena_oi));
 		oc1.setTip(1);
 		oc1.setOglasId(Integer.parseInt(this.nakupId));
-		
+
 		OcenaDTO oc2 = new OcenaDTO();
 		oc2.setOcena(Integer.parseInt(this.ocena_cd));
 		oc2.setTip(2);

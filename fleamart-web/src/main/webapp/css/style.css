@@ -73,6 +73,7 @@ body {
 
 .oglas img {
 	width: 140px;
+	max-height: 145px;
 }
 
 .registrac {
