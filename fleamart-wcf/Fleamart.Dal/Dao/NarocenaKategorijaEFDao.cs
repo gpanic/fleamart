@@ -21,6 +21,8 @@ namespace Fleamart.Dal.Dao
             Mapper.CreateMap<Kategorija, KategorijaEF>();
             Mapper.CreateMap<UporabnikEF, Uporabnik>();
             Mapper.CreateMap<Uporabnik, UporabnikEF>();
+            Mapper.CreateMap<NaslovEF, Naslov>();
+            Mapper.CreateMap<Naslov, NaslovEF>();
         }
 
         public bool Create(NarocenaKategorija entity)

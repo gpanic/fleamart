@@ -6,7 +6,9 @@ package com.fleamart.beans;
 
 import com.fleamart.helpers.ConverterHelper;
 import com.fleamart.kategorija.ws.ArrayOfKategorija;
+import com.fleamart.kategorija.ws.Kategorija;
 import com.fleamart.kategorija.ws.KategorijeService;
+import com.fleamart.mail.MailHelper;
 import com.fleamart.obj.KategorijaObj;
 import com.fleamart.obj.OglasObj;
 import com.fleamart.obj.UporabnikObj;
@@ -144,6 +146,23 @@ public class OglasBean2 implements Serializable {
         oglas.setAvtor(u);
         oglas.setStatus(0);
         Oglas o = ConverterHelper.oglasObj2Ws(oglas);
+        
+		//SEND EMAILS
+        KategorijeService ks = new KategorijeService();
+        com.fleamart.kategorija.ws.Kategorija k = new com.fleamart.kategorija.ws.Kategorija();
+        k.setId(o.getKategorija().getValue().getId());
+        List<com.fleamart.kategorija.ws.Uporabnik> narocniki = ks.getBasicHttpBindingIKategorijaService().vrniNaroceneUporabnike(k).getUporabnik();
+        String nazivKategorije = "";
+        for (com.fleamart.kategorija.ws.Uporabnik up : narocniki) {
+        	System.out.println(o.getKategorija().getValue().getId());
+        	for(KategorijaObj ko : kategorije) {
+        		if(ko.getId() == o.getKategorija().getValue().getId()) {
+        			nazivKategorije = ko.getNaziv();
+        			break;
+        		}
+        	}
+//        	MailHelper.sendCategoryReminder(nazivKategorije, up, o);
+        }
 
         OglasService client = new OglasService();
         Boolean rezultat = client.getBasicHttpBindingIOglasService().createOglas(o);

@@ -65,7 +65,9 @@
     <Content Include="OglasService.svc" />
     <Content Include="PonudbaService.svc" />
     <Content Include="UporabnikService.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FleamartService.svc.cs">
