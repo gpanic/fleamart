@@ -22,7 +22,7 @@ public class PonudbaBean
 	private PonudbaObj ponudba;
 	private String znesek;
 	private String txt;
-	
+
 	public String getTxt()
 	{
 		return txt;
@@ -47,40 +47,30 @@ public class PonudbaBean
 	{
 		this.ponudba = ponudba;
 	}
-		
-	public PonudbaBean(){
+
+	public PonudbaBean()
+	{
 		ponudba = new PonudbaObj();
 	}
 	public String posljiPonudbo(OglasObj oglas, int idUpor)
 	{
 		try
-		{	
-			//OglasObj oglas = new OglasObj();
+		{
 			UporabnikObj uporabnik = new UporabnikObj();
-			
 			String trenCena = oglas.getCena();
 			double trenutnaCena = Double.parseDouble(trenCena);
 			double znesekD = Double.parseDouble(znesek);
 			if (znesekD > trenutnaCena)
 			{
-				//LoginBean lb = new LoginBean();				
-				//int id = lb.getIdUser();
 				uporabnik.setId(idUpor);
-				
-				//int idOglas = oglas.getId();
-				//oglas.setId(idOglas);
-				
-				//damo na ponudbo
 				ponudba.setCas(new GregorianCalendar());
 				ponudba.setOglas(oglas);
 				ponudba.setUporabnik(uporabnik);
 				ponudba.setZnesek(znesekD);
-				
-				//naredi ConverterHelper!!!, da spodnje vrstice delajo!!
 				Ponudba p = ConverterHelper.ponudbaObj2WS(ponudba);
-				
 				PonudbaService client = new PonudbaService();
-				boolean uspelo = client.getBasicHttpBindingIPonudbaService().placeBidOnItem(p);
+				boolean uspelo = client.getBasicHttpBindingIPonudbaService()
+						.placeBidOnItem(p);
 				if (uspelo == true)
 				{
 					oglas.setCena(znesek);
