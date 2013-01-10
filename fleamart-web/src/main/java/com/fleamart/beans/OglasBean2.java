@@ -157,7 +157,7 @@ public class OglasBean2 implements Serializable {
         			break;
         		}
         	}
-        	MailHelper.sendCategoryReminder(nazivKategorije, up, o);
+//        	MailHelper.sendCategoryReminder(nazivKategorije, up, o);
         }
 
         OglasService client = new OglasService();
