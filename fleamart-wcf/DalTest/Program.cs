@@ -1,6 +1,8 @@
-﻿using Fleamart.Contracts.Data;
+﻿using AutoMapper;
+using Fleamart.Contracts.Data;
 using Fleamart.Dal;
 using Fleamart.Dal.Dao;
+using Fleamart.Dal.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
