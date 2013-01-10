@@ -57,6 +57,10 @@ public class OglasBean2 implements Serializable {
             case "/oglas/listNakupi.xhtml":
                 initOglasListKupljeno();
                 break;
+            case "/oglas/create.xhtml":
+                if (loginBean.getIdUser() < 1)
+                    redirect("/login.xhtml");
+                break;
         }
     }
 
