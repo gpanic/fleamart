@@ -176,6 +176,11 @@ body {
 	margin: 20px 0 0 20px;
 }
 
+.prSlika img {
+	max-height: 200px;
+	max-width: 200px;
+}
+
 .prNaslov {
 	position: absolute;
 	width: 340px;

@@ -8,6 +8,7 @@
 <f:metadata>
 	<f:viewParam name="nakup" value="#{ocenaBean.nakupId}" />
 	<f:event listener="#{ocenaBean.preRender}" type="preRenderView"></f:event>
+	<f:event listener="#{loginBean.checkIfLoggedIn}" type="preRenderView"></f:event>
 </f:metadata>
 <h:body>
 	<ui:composition template="/shared/layout.xhtml">
@@ -99,7 +100,7 @@
 				</h:dataTable>
 			</h:panelGroup>
 			<h:panelGroup rendered="#{ocenaBean.oglasi.size() == 0}">
-				Nisi kupil nobenega izdelka
+				Vsi kupljeni izdelki so ocenjeni
 			</h:panelGroup>
 			<script>
 				//<![CDATA[

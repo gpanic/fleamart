@@ -1,9 +1,12 @@
 package com.fleamart.beans;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
 import com.fleamart.uporabnik.ws.IUporabnikService;
 import com.fleamart.uporabnik.ws.UporabnikService;
 
@@ -99,5 +102,18 @@ public class LoginBean implements Serializable
 		}
 		return "index?faces-redirect=true";
 	}
-
+	
+	public void checkIfLoggedIn() throws IOException {
+		LoginBean lb = (LoginBean)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
+		try {
+			int uid = lb.getIdUser();
+			if (uid == 0) {
+				lb.setTxt("");
+				FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+			}
+		} catch (Exception e) {
+			lb.setTxt("");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+		}
+	}
 }
