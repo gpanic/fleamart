@@ -44,6 +44,9 @@ public class OglasBean2 implements Serializable {
     private double zasluzek;
     @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
+    
+    @ManagedProperty(value = "#{kosaricaBean}")
+    private KosaricaBean kosaricaBean;
 
     @PostConstruct
     public void init() {
@@ -85,6 +88,14 @@ public class OglasBean2 implements Serializable {
 
     public void setZasluzek(double zasluzek) {
         this.zasluzek = zasluzek;
+    }
+
+    public KosaricaBean getKosaricaBean() {
+        return kosaricaBean;
+    }
+
+    public void setKosaricaBean(KosaricaBean kosaricaBean) {
+        this.kosaricaBean = kosaricaBean;
     }
 
     public void setLoginBean(LoginBean loginBean) {

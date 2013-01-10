@@ -1,5 +1,6 @@
 package com.fleamart.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name="kosaricaBean")
 @SessionScoped
-public class KosaricaBean {
+public class KosaricaBean implements Serializable {
 	
 	private List<Object[]> items;
 	
