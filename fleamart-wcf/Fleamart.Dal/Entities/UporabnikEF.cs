@@ -20,9 +20,7 @@ namespace Fleamart.Dal.Entities
         
         public int? NaslovId { get; set; }
         public virtual NaslovEF Naslov { get; set; }
-
-        public List<PrivatnoSporociloEF> PrivatnaSporocila { get; set; }
-
+        public virtual List<PrivatnoSporociloEF> PrivatnaSporocila { get; set; }
         public List<SeznamZeljaEF> SeznamZelja { get; set; }
 
     }

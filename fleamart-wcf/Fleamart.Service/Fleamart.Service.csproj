@@ -64,6 +64,7 @@
     <Content Include="OceneService.svc" />
     <Content Include="OglasService.svc" />
     <Content Include="PonudbaService.svc" />
+    <Content Include="PrivatnoSporociloService.svc" />
     <Content Include="UporabnikService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -84,6 +85,9 @@
     </Compile>
     <Compile Include="PonudbaService.svc.cs">
       <DependentUpon>PonudbaService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="PrivatnoSporociloService.svc.cs">
+      <DependentUpon>PrivatnoSporociloService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UporabnikService.svc.cs">

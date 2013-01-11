@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 namespace Fleamart.Contracts.Service
 {
     [ServiceContract]
-    public interface IUporabnikService
+    public interface IPrivatnoSporociloService
     {
         [OperationContract]
-        String registrirajUporabnika(Uporabnik uporabnik);
+        bool DodajNovoSporocilo(PrivatnoSporocilo ps);
 
         [OperationContract]
-        int loginCheck(string upImeV, string passV);
+        bool IzbrisiSporocilo(int UserId, int SporociloId);
 
         [OperationContract]
-        Uporabnik ReadUporabnik(int Id);
+        List<PrivatnoSporocilo> VrniPrivatnaSporocilaUporabnika(int UporabnikId);
     }
 }
