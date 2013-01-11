@@ -42,7 +42,7 @@
                                 $("#readoglasform\\:linkoglas").parent().removeClass("active");
                             else
                                 $("#readoglasform\\:linkkomentarji").parent().removeClass("active");
-                            var galerija = '#{oglasBean2.oglas.slike.get(0)}';
+                            var galerija = #{oglasBean2.oglas.slike.get(0)};
                             if(galerija != '')
                                 Galleria.run('#galleria');
                         });
