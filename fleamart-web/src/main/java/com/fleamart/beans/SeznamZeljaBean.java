@@ -35,7 +35,7 @@ public class SeznamZeljaBean
 			seznamZelja.setOglas(oglas);
 			//TODO: CONVENTER HELPER......
 			
-			//!!!!!!!!!!!!!ZBRIŠI POTEM
+			//!!!!!!!!!!!!!ZBRISI POTEM
 			return "#";
 		}
 		catch (Exception e)

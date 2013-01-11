@@ -26,8 +26,7 @@ namespace Fleamart.Service
 
         public List<SeznamZelja> pridobiSeznamZelja(int uporabnikId)
         {
-            //SPREMENI!!! METODO JE V SeznamZeljaEFDao potrebno še naret!!!! - da lahko najdem vse zelje po id uporabnika
-            return szdao.List();
+            return szdao.List(uporabnikId);
         }
     }
 }

@@ -110,15 +110,25 @@ namespace Fleamart.Dal.Dao
             }
         }
 
-        //Glej OglasiEFDao
-        /*
-        public List<SeznamZelja> ListZeljaPoIdUporabnika(int uporabnikId)
+
+        public List<SeznamZelja> List(int uporabnikId)
         {
             using (FleamartContext db = new FleamartContext())
-            {
-               
+            {                
+                var query = from s in db.SeznamZelja
+                            where s.UporabnikId == uporabnikId
+                            select s;
+
+                List<SeznamZelja> list = new List<SeznamZelja>();
+                if (query.Count()!=0)
+                {
+                    foreach (var item in query.ToList())
+                    {
+                        list.Add(Mapper.Map<SeznamZeljaEF, SeznamZelja>(item));
+                    }
+                }
+                return list;
             }
         }
-        */
     }
 }
