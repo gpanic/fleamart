@@ -52,7 +52,7 @@ namespace Fleamart.Service
         public List<Kategorija> VrniNaroceneKategorije(Uporabnik u)
         {
             List<NarocenaKategorija> list = new NarocenaKategorijaEFDao().List();
-            list.Where(x => x.Uporabnik.Id == u.Id).ToList();
+            list = list.Where(x => x.Uporabnik.Id == u.Id).ToList();
             List<Kategorija> kategorije = new List<Kategorija>();
             foreach (NarocenaKategorija nk in list)
             {
@@ -64,7 +64,7 @@ namespace Fleamart.Service
         public List<Uporabnik> VrniNaroceneUporabnike(Kategorija k)
         {
             List<NarocenaKategorija> list = new NarocenaKategorijaEFDao().List();
-            list.Where(x => x.Kategorija.Id == k.Id).ToList();
+            list = list.Where(x => x.Kategorija.Id == k.Id).ToList();
             List<Uporabnik> uporabniki = new List<Uporabnik>();
             foreach (NarocenaKategorija nk in list)
             {

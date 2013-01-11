@@ -20,7 +20,7 @@
 						<li><h:outputLink value="#">Menu item 3</h:outputLink></li>
 					</ul>
 				</h:panelGroup>
-				<h:panelGroup rendered="#{!kosaricaBean.isEmpty()}" styleClass="well" layout="block" style="max-width: 340px; padding: 8px 0;">
+				<h:panelGroup rendered="#{!kosaricaBean.isEmpty() and kosaricaBean.nakupView()}" styleClass="well" layout="block" style="max-width: 340px; padding: 8px 0;">
 					<p class="nav-header">Kosarica</p>
 					<div style="padding:0px 15px;">
 					<table class="table">
@@ -34,11 +34,13 @@
 							</tr>
 						</ui:repeat>
 						<tr style="font-weight:bold;">
-							<td>Total:</td>
+							<td>Skupaj:</td>
 							<td><h:outputText value="#{kosaricaBean.total}€"/></td>
 							<td></td>
 						</tr>
 					</table>
+                                            <a class="btn btn-primary" href="/fleamart-web/oglas/nakup.xhtml" style="float: right;">Kupi</a>
+                                            <div style="clear: both;"/>
 					</div>
 				</h:panelGroup>
 			</h:panelGroup>

@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Fleamart - #{oglasBean2.oglas.naslov}</title>
+    </h:head>
+    <h:body>
+        <style> 
+            #galleria{height:400px}
+        </style>
+        <div class="span6">
+            <h1><h:outputText value="#{oglasBean2.oglas.naslov}"/>
+                <ui:fragment rendered="#{oglasBean2.oglas.status == 1}">
+                    <code>Oglas ni aktiven</code>
+                </ui:fragment>
+            </h1>
+            <div class="span7">
+                <blockquote><p>Cena: <b>#{oglasBean2.oglas.cena} €</b></p>
+                    <h:commandButton rendered="#{oglasBean2.oglas.kupec.id == loginBean.idUser and oglasBean2.oglas.avkcija == false}" value="Kupljeno" class="btn btn-primary disabled"/>
+                    <h:form id="readform" rendered="#{oglasBean2.oglas.avtor.id != loginBean.idUser and loginBean.idUser != 0 and oglasBean2.oglas.statusNakupa == null}" style="display:inline;">
+                        <h:commandButton id="kupi" class="btn btn-primary" action="#{kosaricaBean.schnellkauf(oglasBean2.oglas.id, oglasBean2.oglas.naslov, oglasBean2.oglas.cena)}" value="Kupi"/>
+                    </h:form>
+                    &nbsp;
+                    <h:form id="nekaj" style="display:inline;" rendered="#{oglasBean2.oglas.avtor.id != loginBean.idUser and loginBean.idUser != 0 and oglasBean2.oglas.statusNakupa == null and !kosaricaBean.itemInCart(oglasBean2.oglas.id)}">
+                        <h:commandLink id="addKosarica" styleClass="btn btn-primary" style="height:20px;" action="#{kosaricaBean.addItem(oglasBean2.oglas.id, oglasBean2.oglas.naslov, oglasBean2.oglas.cena)}">
+                            &nbsp;
+                            <i class="icon-shopping-cart icon-white" />
+                            &nbsp;
+                        </h:commandLink>
+                    </h:form>
+                </blockquote>
+                <p><h:outputText value="#{oglasBean2.oglas.opis}"/></p>
+                <ui:fragment
+                    rendered="#{oglasBean2.oglas.avkcija and loginBean.idUser != 0}">
+                    <p>
+                        <h:outputText value="Vpišite ponudbo:" />
+                        <h:form id="ponudbaForm">
+                            <h:inputText id="ponudbaCena" styleClass="span3" value="#{ponudbaBean.znesek}"
+                                         required="true" validatorMessage="Niz mora biti številka"
+                                         requiredMessage="Obvezno polje">
+                                <f:validateRegex pattern="(\d*.\d*|\d*)" />
+                            </h:inputText>	&nbsp;						
+                            <h:commandButton id="ponudi" style="margin-bottom: 10px;" class="btn btn-primary"
+                                             value="Ponudi"
+                                             action="#{ponudbaBean.posljiPonudbo(oglasBean2.oglas, loginBean.idUser)}">
+                            </h:commandButton>
+                            <h:outputText value="#{ponudbaBean.txt}" />
+                        </h:form>
+                    </p>
+
+                </ui:fragment>
+            </div>
+            <div class="span4">
+                <strong>Kategorija</strong><br/>
+                <h:outputText value="#{oglasBean2.oglas.kategorija.naziv}"/><br/><br/>
+                <strong>Vpisano</strong><br/>
+                <h:outputText value="#{oglasBean2.oglas.casOd.time}">
+                    <f:convertDateTime type="both" dateStyle="short" />
+                </h:outputText><br/>
+                <ui:fragment rendered="#{oglasBean2.oglas.casSpremenjeno != null}">
+                    <strong>Spremenjeno</strong><br/>
+                    <h:outputText value="#{oglasBean2.oglas.casSpremenjeno.time}">
+                        <f:convertDateTime type="both" dateStyle="short" />
+                    </h:outputText><br/>
+                </ui:fragment>
+                <strong>Poteče</strong><br/>
+                <h:outputText value="#{oglasBean2.oglas.casDo.time}">
+                    <f:convertDateTime type="both" dateStyle="short" />
+                </h:outputText>
+                <br/><br/>
+                <legend>Prodajalec</legend>
+                <p>
+                    Uporabnik<br/>
+                    <strong><h:outputText value="#{oglasBean2.oglas.avtor.upime}"/></strong>
+                </p>
+                <p>
+                    Občina<br/>
+                    <strong><h:outputText value="#{oglasBean2.oglas.avtor.naslov.obcina}"/></strong>
+                </p>
+
+                <p>
+                    Telefon<br/>
+                    <strong><h:outputText value="#{oglasBean2.oglas.avtor.telefon}"/></strong>
+                </p>
+                <p>
+                    Email<br/>
+                    <strong><h:outputText value="#{oglasBean2.oglas.avtor.email}"/></strong>
+                </p>
+            </div>
+        </div>
+        <div class="span5">
+
+            <ui:fragment rendered="#{oglasBean2.oglas.slike.get(0) != ''}">
+                <div id="galleria">
+                    <ui:repeat value="#{oglasBean2.oglas.slike}" var="slika" varStatus="slikaStatus">
+                        <a href="#{slika}">
+                            <img src="#{slika}"/>
+                        </a>
+                    </ui:repeat>
+                </div>
+            </ui:fragment>
+        </div>
+    </h:body>
+</html>

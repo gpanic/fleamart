@@ -6,7 +6,9 @@ package com.fleamart.beans;
 
 import com.fleamart.helpers.ConverterHelper;
 import com.fleamart.kategorija.ws.ArrayOfKategorija;
+import com.fleamart.kategorija.ws.Kategorija;
 import com.fleamart.kategorija.ws.KategorijeService;
+import com.fleamart.mail.MailHelper;
 import com.fleamart.obj.KategorijaObj;
 import com.fleamart.obj.OglasObj;
 import com.fleamart.obj.UporabnikObj;
@@ -42,6 +44,10 @@ public class OglasBean2 implements Serializable {
     private double zasluzek;
     @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
+    private int readTab = 1;
+    
+    @ManagedProperty(value = "#{kosaricaBean}")
+    private KosaricaBean kosaricaBean;
 
     @PostConstruct
     public void init() {
@@ -56,6 +62,10 @@ public class OglasBean2 implements Serializable {
                 break;
             case "/oglas/listNakupi.xhtml":
                 initOglasListKupljeno();
+                break;
+            case "/oglas/create.xhtml":
+                if (loginBean.getIdUser() < 1)
+                    redirect("/login.xhtml");
                 break;
         }
     }
@@ -81,6 +91,14 @@ public class OglasBean2 implements Serializable {
         this.zasluzek = zasluzek;
     }
 
+    public KosaricaBean getKosaricaBean() {
+        return kosaricaBean;
+    }
+
+    public void setKosaricaBean(KosaricaBean kosaricaBean) {
+        this.kosaricaBean = kosaricaBean;
+    }
+
     public void setLoginBean(LoginBean loginBean) {
         this.loginBean = loginBean;
     }
@@ -91,6 +109,14 @@ public class OglasBean2 implements Serializable {
 
     public void setOglas(OglasObj oglas) {
         this.oglas = oglas;
+    }
+
+    public int getReadTab() {
+        return readTab;
+    }
+
+    public void setReadTab(int readTab) {
+        this.readTab = readTab;
     }
 
     public List<KategorijaObj> getKategorije() {
@@ -140,6 +166,23 @@ public class OglasBean2 implements Serializable {
         oglas.setAvtor(u);
         oglas.setStatus(0);
         Oglas o = ConverterHelper.oglasObj2Ws(oglas);
+        
+		//SEND EMAILS
+        KategorijeService ks = new KategorijeService();
+        com.fleamart.kategorija.ws.Kategorija k = new com.fleamart.kategorija.ws.Kategorija();
+        k.setId(o.getKategorija().getValue().getId());
+        List<com.fleamart.kategorija.ws.Uporabnik> narocniki = ks.getBasicHttpBindingIKategorijaService().vrniNaroceneUporabnike(k).getUporabnik();
+        String nazivKategorije = "";
+        for (com.fleamart.kategorija.ws.Uporabnik up : narocniki) {
+        	System.out.println(o.getKategorija().getValue().getId());
+        	for(KategorijaObj ko : kategorije) {
+        		if(ko.getId() == o.getKategorija().getValue().getId()) {
+        			nazivKategorije = ko.getNaziv();
+        			break;
+        		}
+        	}
+//        	MailHelper.sendCategoryReminder(nazivKategorije, up, o);
+        }
 
         OglasService client = new OglasService();
         Boolean rezultat = client.getBasicHttpBindingIOglasService().createOglas(o);
@@ -243,6 +286,13 @@ public class OglasBean2 implements Serializable {
         redirect("/oglas/read.xhtml?id=" + oglas.getId());
     }
 
+    public void nakup(){
+        for(Object[] o:kosaricaBean.getItems())
+            kupiOglas((int) o[0]);
+        kosaricaBean.clearCart();
+        redirect("/oglas/listNakupi.xhtml");
+    }
+    
     public void kupiOglas(int idOglas) {
         OglasService client = new OglasService();
         Oglas o = client.getBasicHttpBindingIOglasService().readOglas(idOglas);
@@ -253,10 +303,6 @@ public class OglasBean2 implements Serializable {
             o.setKupec(new ObjectFactory().createOglasKupec(u));
 
             Boolean uspelo = client.getBasicHttpBindingIOglasService().updateOglas(o);
-
-            if (uspelo) {
-                redirect("/oglas/read.xhtml?id=" + idOglas);
-            }
         }
     }
 
@@ -270,5 +316,9 @@ public class OglasBean2 implements Serializable {
         if (uspelo) {
             redirect("/oglas/listProdano.xhtml");
         }
+    }
+    
+    public void ajaxReadMenjajView(int tab){
+        readTab = tab;
     }
 }

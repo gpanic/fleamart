@@ -16,7 +16,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import com.fleamart.oglas.ws.Oglas;
-import com.fleamart.uporabnik.ws.Uporabnik;
+import com.fleamart.kategorija.ws.Uporabnik;
 
 public class MailHelper {
 	
@@ -63,7 +63,7 @@ public class MailHelper {
 		String subject = "Nov oglas v kategoriji "+category+"!";
 		StringBuilder text;
 		text = new StringBuilder();
-		text.append("<p>Dragi(a) "+recipient.getIme().getValue()+"</p>");
+		text.append("<p>Dragi(a) "+recipient.getIme().getValue()+",</p>");
 		text.append("<p>želimo vas obvestiti, da je v kategoriji "+category+" bil dodan nov oglas.</p>");
 		text.append("<p>Ime oglasa: "+ad.getNaslov()+"<br />");
 		text.append("Opis oglasa: "+ad.getOpis()+"<br />");
@@ -77,7 +77,7 @@ public class MailHelper {
 			text.append("</p>");
 		}
 		text.append("<p>Lep pozdrav,<br />");
-		text.append("Ekipa fleamart</p>");
+		text.append("Ekipa Fleamart</p>");
 		
 		List<String> recipients = new ArrayList<>();
 		recipients.add(recipient.getEmail().getValue());
@@ -96,7 +96,7 @@ public class MailHelper {
 	}
 	
 	public static void main(String[] args) {
-		com.fleamart.uporabnik.ws.ObjectFactory ofu = new com.fleamart.uporabnik.ws.ObjectFactory();
+		com.fleamart.kategorija.ws.ObjectFactory ofu = new com.fleamart.kategorija.ws.ObjectFactory();
 		Uporabnik u = ofu.createUporabnik();
 		u.setIme(ofu.createUporabnikIme("Gregor"));
 		u.setEmail(ofu.createUporabnikEmail("gregor.panic@gmail.com"));
