@@ -62,26 +62,34 @@
 						<p>
 							<h:outputText value="Vpišite ponudbo:" />
 							<h:form id="ponudbaForm">
-								<h:inputText id="ponudbaCena" styleClass="span3" value="#{ponudbaBean.znesek}"
-									required="true" validatorMessage="Niz mora biti številka"
+								<h:inputText id="ponudbaCena" styleClass="span3"
+									value="#{ponudbaBean.znesek}" required="true"
+									validatorMessage="Niz mora biti številka"
 									requiredMessage="Obvezno polje">
 									<f:validateRegex pattern="(\d*.\d*|\d*)" />
 								</h:inputText>	&nbsp;						
-								<h:commandButton id="ponudi" style="margin-bottom: 10px;" class="btn btn-primary"
-									value="Ponudi"
+								<h:commandButton id="ponudi" style="margin-bottom: 10px;"
+									class="btn btn-primary" value="Ponudi"
 									action="#{ponudbaBean.posljiPonudbo(oglasBean2.oglas, loginBean.idUser)}">
 								</h:commandButton>
 								<h:outputText value="#{ponudbaBean.txt}" />
 							</h:form>
 						</p>
-
+					</ui:fragment>
+					<ui:fragment rendered="#{loginBean.idUser != 0}">
+						<p>
+							<h:commandButton id="dodajNaSeznamZelja"
+								style="margin-bottom: 10px;" class="btn btn-primary"
+								value="Dodaj na seznam želja"
+								action="#{seznamZeljaBean.dodajZeljo(oglasBean2.oglas, loginBean.idUser)}">
+							</h:commandButton>
+						</p>
 					</ui:fragment>
 				</div>
 				<div class="span4">
 					<strong>Kategorija</strong><br />
 					<h:outputText value="#{oglasBean2.oglas.kategorija.naziv}" />
-					<br />
-					<br /> <strong>Vpisano</strong><br />
+					<br /> <br /> <strong>Vpisano</strong><br />
 					<h:outputText value="#{oglasBean2.oglas.casOd.time}">
 						<f:convertDateTime type="both" dateStyle="short" />
 					</h:outputText>
@@ -98,8 +106,7 @@
 					<h:outputText value="#{oglasBean2.oglas.casDo.time}">
 						<f:convertDateTime type="both" dateStyle="short" />
 					</h:outputText>
-					<br />
-					<br />
+					<br /> <br />
 					<legend>Prodajalec</legend>
 					<p>
 						Uporabnik<br /> <strong><h:outputText
