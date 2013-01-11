@@ -83,7 +83,7 @@ public class PonudbaBean
 			} else
 			{
 				txt = "Vpisali ste prenizko ceno!";
-				return "oglas";
+				return "#";
 			}
 
 		} catch (Exception e)

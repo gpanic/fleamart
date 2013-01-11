@@ -7,6 +7,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import com.fleamart.obj.OglasObj;
@@ -23,8 +24,10 @@ public class OcenaBean implements Serializable {
 	private String nakupId;
 	private OglasObj oglas;
 	private ArrayList<OglasObj> oglasi;
+	private LoginBean loginB;
 
-	public OcenaBean() {}
+	public OcenaBean() {
+	}
 
 	public void submitRating() throws IOException {
 		OceneService serv = new OceneService();
@@ -38,23 +41,24 @@ public class OcenaBean implements Serializable {
 		oc2.setOcena(Integer.parseInt(this.ocena_cd));
 		oc2.setTip(2);
 		oc2.setOglasId(Integer.parseInt(this.nakupId));
-		
+
 		OcenaDTO oc3 = new OcenaDTO();
 		oc3.setOcena(Integer.parseInt(this.ocena_kom));
 		oc3.setTip(3);
 		oc3.setOglasId(Integer.parseInt(this.nakupId));
-		
+
 		arrOc.getOcenaDTO().add(oc1);
 		arrOc.getOcenaDTO().add(oc2);
 		arrOc.getOcenaDTO().add(oc3);
-		
-		//TO-DO get id prijavljenega uporabnika
-		serv.getBasicHttpBindingIOcenaService().oceniOglas(1, arrOc);
-		
-		String path = FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
-		FacesContext.getCurrentInstance().getExternalContext().redirect(path + "/ratepurchase.xhtml");
+
+		serv.getBasicHttpBindingIOcenaService().oceniOglas(this.loginB.getIdUser(), arrOc);
+
+		String path = FacesContext.getCurrentInstance().getExternalContext()
+				.getRequestContextPath();
+		FacesContext.getCurrentInstance().getExternalContext()
+				.redirect(path + "/ratepurchase.xhtml");
 	}
-	
+
 	public String getOcena_oi() {
 		return ocena_oi;
 	}
@@ -103,24 +107,32 @@ public class OcenaBean implements Serializable {
 		this.nakupId = nakupId;
 	}
 
-	public void preRender() {
+	public void preRender() throws IOException {
 		oglasi = new ArrayList<OglasObj>();
 		OceneService serv = new OceneService();
-		List<Oglas> oglasi_ws = serv.getBasicHttpBindingIOcenaService()
-				.vrniNeocenjeneOglaseKupca(1).getOglas();
+		List<Oglas> oglasi_ws = null;
+		try {
+			this.loginB = (LoginBean) FacesContext.getCurrentInstance()
+					.getExternalContext().getSessionMap().get("loginBean");
+			int uid = this.loginB.getIdUser();
+			oglasi_ws = serv.getBasicHttpBindingIOcenaService()
+					.vrniNeocenjeneOglaseKupca(uid).getOglas();
+		} catch (Exception e) {}
 
-		for (Oglas obj : oglasi_ws) {
-			OglasObj o = new OglasObj();
-			o.setId(obj.getId());
-			o.setNaslov(obj.getNaslov());
-			o.setOpis(obj.getOpis());
-			o.setCasOd(obj.getCasOd().toGregorianCalendar());
-			o.setCena(String.valueOf(obj.getCena()));
-			o.setSlike(obj.getSlike().getValue().getString());
-			UporabnikObj u = new UporabnikObj();
-			u.setUpime(obj.getAvtor().getUpime().getValue());
-			o.setAvtor(u);
-			this.oglasi.add(o);
+		if (oglasi_ws != null) {
+			for (Oglas obj : oglasi_ws) {
+				OglasObj o = new OglasObj();
+				o.setId(obj.getId());
+				o.setNaslov(obj.getNaslov());
+				o.setOpis(obj.getOpis());
+				o.setCasOd(obj.getCasOd().toGregorianCalendar());
+				o.setCena(String.valueOf(obj.getCena()));
+				o.setSlike(obj.getSlike().getValue().getString());
+				UporabnikObj u = new UporabnikObj();
+				u.setUpime(obj.getAvtor().getUpime().getValue());
+				o.setAvtor(u);
+				this.oglasi.add(o);
+			}
 		}
 
 		if (this.nakupId != null) {

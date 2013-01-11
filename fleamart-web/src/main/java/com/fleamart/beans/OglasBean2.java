@@ -44,6 +44,7 @@ public class OglasBean2 implements Serializable {
     private double zasluzek;
     @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
+    private int readTab = 1;
     
     @ManagedProperty(value = "#{kosaricaBean}")
     private KosaricaBean kosaricaBean;
@@ -108,6 +109,14 @@ public class OglasBean2 implements Serializable {
 
     public void setOglas(OglasObj oglas) {
         this.oglas = oglas;
+    }
+
+    public int getReadTab() {
+        return readTab;
+    }
+
+    public void setReadTab(int readTab) {
+        this.readTab = readTab;
     }
 
     public List<KategorijaObj> getKategorije() {
@@ -277,6 +286,13 @@ public class OglasBean2 implements Serializable {
         redirect("/oglas/read.xhtml?id=" + oglas.getId());
     }
 
+    public void nakup(){
+        for(Object[] o:kosaricaBean.getItems())
+            kupiOglas((int) o[0]);
+        kosaricaBean.clearCart();
+        redirect("/oglas/listNakupi.xhtml");
+    }
+    
     public void kupiOglas(int idOglas) {
         OglasService client = new OglasService();
         Oglas o = client.getBasicHttpBindingIOglasService().readOglas(idOglas);
@@ -287,10 +303,6 @@ public class OglasBean2 implements Serializable {
             o.setKupec(new ObjectFactory().createOglasKupec(u));
 
             Boolean uspelo = client.getBasicHttpBindingIOglasService().updateOglas(o);
-
-            if (uspelo) {
-                redirect("/oglas/read.xhtml?id=" + idOglas);
-            }
         }
     }
 
@@ -304,5 +316,9 @@ public class OglasBean2 implements Serializable {
         if (uspelo) {
             redirect("/oglas/listProdano.xhtml");
         }
+    }
+    
+    public void ajaxReadMenjajView(int tab){
+        readTab = tab;
     }
 }
