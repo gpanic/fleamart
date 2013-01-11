@@ -15,6 +15,7 @@ namespace Fleamart.Service
     public class PonudbaService : IPonudbaService
     {
         private PonudbaEFDao pdao = new PonudbaEFDao();
+        private AvtomatskiPonudnikEFDao apdao = new AvtomatskiPonudnikEFDao();
 
         public bool placeBidOnItem(Ponudba p)
         {
@@ -23,6 +24,11 @@ namespace Fleamart.Service
             oglas.ZadnjaCenaAvkcija = p.Znesek;
             odao.Update(oglas);
             return pdao.Create(p);
+        }
+
+        public bool placeAutoBidOnItem(AvtomatskiPonudnik a)
+        {
+            return apdao.Create(a);
         }
     }
 }

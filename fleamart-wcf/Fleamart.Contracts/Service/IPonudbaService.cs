@@ -10,5 +10,9 @@ namespace Fleamart.Contracts.Service
     {
         [OperationContract]
         bool placeBidOnItem(Ponudba p);
+
+        [OperationContract]
+        bool placeAutoBidOnItem(AvtomatskiPonudnik a);
+
     }
 }
