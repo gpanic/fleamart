@@ -26,8 +26,7 @@ namespace Fleamart.Dal
 
         protected override void OnModelCreating(DbModelBuilder mb)
         {
-     
-           
+            mb.Entity<UporabnikEF>().HasMany(x => x.PrivatnaSporocila).WithRequired(i => i.Prejemnik).WillCascadeOnDelete(false);   
         }
     }
 }

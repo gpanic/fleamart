@@ -49,6 +49,21 @@ namespace Fleamart.Service
 
         }
 
+        public Uporabnik ReadUporabnik(int Id)
+        {
+            Uporabnik u = new UporabnikEFDao().Read(Id);
+            
+            // Zaradi ciklične reference med uporabnikom in prejemnikom, je potrebno prejemnika nastaviti na null, drugače je exeption pri vračanju!
+            if (u.PrivatnaSporocila != null)
+            {
+                foreach (PrivatnoSporocilo ps in u.PrivatnaSporocila)
+                {
+                    ps.Prejemnik = null;
+                }
+            }
+            return u;
+		}
+
         public Uporabnik dobiProfilUporabnika(int uporabnikId)
         {
             return udao.Read(uporabnikId);
