@@ -56,6 +56,7 @@
     <Compile Include="Dao\OglasEFDao.cs" />
     <Compile Include="Dao\PonudbaEFDao.cs" />
     <Compile Include="Dao\PrivatnoSporociloDao.cs" />
+    <Compile Include="Dao\SeznamZeljaEFDao.cs" />
     <Compile Include="Dao\UporabnikEFDao.cs" />
     <Compile Include="Entities\AvtomatskiPonudnikEF.cs" />
     <Compile Include="Entities\KategorijaEF.cs" />

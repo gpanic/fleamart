@@ -8,11 +8,8 @@ import javax.faces.bean.RequestScoped;
 import com.fleamart.obj.OglasObj;
 import com.fleamart.obj.PonudbaObj;
 import com.fleamart.obj.UporabnikObj;
-import com.fleamart.oglas.ws.Oglas;
-import com.fleamart.ponudba.ws.IPonudbaService;
 import com.fleamart.ponudba.ws.Ponudba;
 import com.fleamart.ponudba.ws.PonudbaService;
-import com.fleamart.beans.LoginBean;
 import com.fleamart.helpers.ConverterHelper;
 
 @ManagedBean(name = "ponudbaBean")
@@ -74,19 +71,19 @@ public class PonudbaBean
 				if (uspelo == true)
 				{
 					oglas.setCena(znesek);
-					txt = "Uspeöno oddana ponudba!";
+					txt = "Uspe≈°no oddana ponudba!";
 					return "#";
 
 				} else
 				{
-					txt = "Neuspeöno oddana ponudba!";
+					txt = "Neuspe≈°no oddana ponudba!";
 					return "#";
 				}
 
 			} else
 			{
 				txt = "Vpisali ste prenizko ceno!";
-				return "oglas";
+				return "#";
 			}
 
 		} catch (Exception e)

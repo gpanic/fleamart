@@ -1,5 +1,4 @@
 ﻿using Fleamart.Contracts.Data;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -9,18 +8,16 @@ using System.Threading.Tasks;
 namespace Fleamart.Contracts.Service
 {
     [ServiceContract]
-    public interface IUporabnikService
+    public interface ISeznamZeljaService
     {
         [OperationContract]
-        String registrirajUporabnika(Uporabnik uporabnik);
+        bool dodajZeljo(SeznamZelja s);
 
         [OperationContract]
-        int loginCheck(string upImeV, string passV);
+        bool izbrisiZeljo(int id);
 
         [OperationContract]
-        Uporabnik ReadUporabnik(int Id);
-
-        [OperationContract]
-        Uporabnik dobiProfilUporabnika(int uporabnikId);
+        List<SeznamZelja> pridobiSeznamZelja(int uporabnikId);
+        
     }
 }

@@ -62,6 +62,11 @@ namespace Fleamart.Service
                 }
             }
             return u;
+		}
+
+        public Uporabnik dobiProfilUporabnika(int uporabnikId)
+        {
+            return udao.Read(uporabnikId);
         }
     }
 }
