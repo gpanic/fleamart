@@ -46,8 +46,7 @@ namespace Fleamart.Dal.Dao
         {
             using (FleamartContext db = new FleamartContext())
             {
-                db.Configuration.LazyLoadingEnabled = false;
-                UporabnikEF ef = db.Uporabniki.Include("PrivatnaSporocila").Include("PrivatnaSporocila.Posiljatelj").FirstOrDefault(x => x.Id == id);
+                UporabnikEF ef = db.Uporabniki.FirstOrDefault(x => x.Id == id);
                 Uporabnik upor = (ef != null) ? Mapper.Map<UporabnikEF, Uporabnik>(ef) : null;
                 return upor;
             }

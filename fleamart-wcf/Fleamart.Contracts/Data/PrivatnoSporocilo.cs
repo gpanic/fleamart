@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Fleamart.Contracts.Data
 {
-    [DataContract(Name = "PrivatnoSporocilo", Namespace = "http//www.fleamart.com/")]
+    [DataContract(Name = "PrivatnoSporocilo", Namespace = "http//www.fleamart.com/", IsReference=true)]
     public class PrivatnoSporocilo
     {
         [DataMember]

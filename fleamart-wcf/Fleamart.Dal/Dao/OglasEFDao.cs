@@ -32,6 +32,9 @@ namespace Fleamart.Dal.Dao
 
             Mapper.CreateMap<Naslov, NaslovEF>();
             Mapper.CreateMap<NaslovEF, Naslov>();
+
+            Mapper.CreateMap<PrivatnoSporocilo, PrivatnoSporociloEF>();
+            Mapper.CreateMap<PrivatnoSporociloEF, PrivatnoSporocilo>();
         }
 
         public bool Create(Oglas entity)
