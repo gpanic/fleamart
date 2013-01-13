@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="PrivatnoSporocilo" type="{http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data}PrivatnoSporocilo" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="PrivatnoSporocilo" type="{http//www.fleamart.com/}PrivatnoSporocilo" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ArrayOfPrivatnoSporocilo", namespace = "http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data", propOrder = {
+@XmlType(name = "ArrayOfPrivatnoSporocilo", propOrder = {
     "privatnoSporocilo"
 })
 public class ArrayOfPrivatnoSporocilo {

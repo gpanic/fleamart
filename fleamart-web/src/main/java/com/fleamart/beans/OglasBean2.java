@@ -16,6 +16,8 @@ import com.fleamart.oglas.ws.ObjectFactory;
 import com.fleamart.oglas.ws.Oglas;
 import com.fleamart.oglas.ws.OglasService;
 import com.fleamart.oglas.ws.Uporabnik;
+import com.fleamart.uporabnik.ws.UporabnikService;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -321,4 +323,5 @@ public class OglasBean2 implements Serializable {
     public void ajaxReadMenjajView(int tab){
         readTab = tab;
     }
+        
 }

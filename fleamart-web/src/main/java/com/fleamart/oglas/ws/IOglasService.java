@@ -158,4 +158,77 @@ public interface IOglasService {
         @WebParam(name = "param", targetNamespace = "http://tempuri.org/")
         String param);
 
+    /**
+     * 
+     * @param u
+     * @param s
+     * @return
+     *     returns java.lang.Boolean
+     */
+    @WebMethod(action = "http://tempuri.org/IOglasService/dodajZeljo")
+    @WebResult(name = "dodajZeljoResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "dodajZeljo", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.DodajZeljo")
+    @ResponseWrapper(localName = "dodajZeljoResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.DodajZeljoResponse")
+    public Boolean dodajZeljo(
+        @WebParam(name = "s", targetNamespace = "http://tempuri.org/")
+        Oglas s,
+        @WebParam(name = "u", targetNamespace = "http://tempuri.org/")
+        Uporabnik u);
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns java.lang.Boolean
+     */
+    @WebMethod(action = "http://tempuri.org/IOglasService/izbrisiZeljo")
+    @WebResult(name = "izbrisiZeljoResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "izbrisiZeljo", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.IzbrisiZeljo")
+    @ResponseWrapper(localName = "izbrisiZeljoResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.IzbrisiZeljoResponse")
+    public Boolean izbrisiZeljo(
+        @WebParam(name = "id", targetNamespace = "http://tempuri.org/")
+        Integer id);
+
+    /**
+     * 
+     * @param uporabnikId
+     * @return
+     *     returns com.fleamart.oglas.ws.ArrayOfOglas
+     */
+    @WebMethod(action = "http://tempuri.org/IOglasService/pridobiSeznamZelja")
+    @WebResult(name = "pridobiSeznamZeljaResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "pridobiSeznamZelja", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.PridobiSeznamZelja")
+    @ResponseWrapper(localName = "pridobiSeznamZeljaResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.PridobiSeznamZeljaResponse")
+    public ArrayOfOglas pridobiSeznamZelja(
+        @WebParam(name = "uporabnikId", targetNamespace = "http://tempuri.org/")
+        Integer uporabnikId);
+
+    /**
+     * 
+     * @param prodajalecId
+     * @return
+     *     returns com.fleamart.oglas.ws.ArrayOfOglas
+     */
+    @WebMethod(action = "http://tempuri.org/IOglasService/pridobiOglaseProdajalca")
+    @WebResult(name = "pridobiOglaseProdajalcaResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "pridobiOglaseProdajalca", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.PridobiOglaseProdajalca")
+    @ResponseWrapper(localName = "pridobiOglaseProdajalcaResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.PridobiOglaseProdajalcaResponse")
+    public ArrayOfOglas pridobiOglaseProdajalca(
+        @WebParam(name = "prodajalecId", targetNamespace = "http://tempuri.org/")
+        Integer prodajalecId);
+
+    /**
+     * 
+     * @param uporabnikId
+     * @return
+     *     returns java.lang.Double
+     */
+    @WebMethod(action = "http://tempuri.org/IOglasService/izracunajPovprecje")
+    @WebResult(name = "izracunajPovprecjeResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "izracunajPovprecje", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.IzracunajPovprecje")
+    @ResponseWrapper(localName = "izracunajPovprecjeResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.IzracunajPovprecjeResponse")
+    public Double izracunajPovprecje(
+        @WebParam(name = "uporabnikId", targetNamespace = "http://tempuri.org/")
+        Integer uporabnikId);
+
 }

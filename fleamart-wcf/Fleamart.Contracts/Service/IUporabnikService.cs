@@ -21,6 +21,6 @@ namespace Fleamart.Contracts.Service
         Uporabnik ReadUporabnik(int Id);
 
         [OperationContract]
-        Uporabnik dobiProfilUporabnika(int uporabnikId);
+        Uporabnik ProfilUporabnika(int Id);
     }
 }

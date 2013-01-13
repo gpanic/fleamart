@@ -9,10 +9,7 @@ namespace Fleamart.Contracts.Service
     public interface IPonudbaService
     {
         [OperationContract]
-        bool placeBidOnItem(Ponudba p);
-
-        [OperationContract]
-        bool placeAutoBidOnItem(AvtomatskiPonudnik a);
+        bool placeBidOnItem(Ponudba p, bool autoBider);
 
     }
 }
