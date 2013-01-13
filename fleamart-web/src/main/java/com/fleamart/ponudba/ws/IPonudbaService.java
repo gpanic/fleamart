@@ -25,6 +25,7 @@ public interface IPonudbaService {
 
     /**
      * 
+     * @param autoBider
      * @param p
      * @return
      *     returns java.lang.Boolean
@@ -35,6 +36,8 @@ public interface IPonudbaService {
     @ResponseWrapper(localName = "placeBidOnItemResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.ponudba.ws.PlaceBidOnItemResponse")
     public Boolean placeBidOnItem(
         @WebParam(name = "p", targetNamespace = "http://tempuri.org/")
-        Ponudba p);
+        Ponudba p,
+        @WebParam(name = "autoBider", targetNamespace = "http://tempuri.org/")
+        Boolean autoBider);
 
 }

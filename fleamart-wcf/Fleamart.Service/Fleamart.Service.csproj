@@ -64,6 +64,8 @@
     <Content Include="OceneService.svc" />
     <Content Include="OglasService.svc" />
     <Content Include="PonudbaService.svc" />
+    <Content Include="PrivatnoSporociloService.svc" />
+    <Content Include="SeznamZeljaService.svc" />
     <Content Include="UporabnikService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -85,7 +87,13 @@
     <Compile Include="PonudbaService.svc.cs">
       <DependentUpon>PonudbaService.svc</DependentUpon>
     </Compile>
+    <Compile Include="PrivatnoSporociloService.svc.cs">
+      <DependentUpon>PrivatnoSporociloService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeznamZeljaService.svc.cs">
+      <DependentUpon>SeznamZeljaService.svc</DependentUpon>
+    </Compile>
     <Compile Include="UporabnikService.svc.cs">
       <DependentUpon>UporabnikService.svc</DependentUpon>
     </Compile>
@@ -110,6 +118,9 @@
       <Project>{bbdc92f0-f076-40c1-8285-617ef53a20cc}</Project>
       <Name>Fleamart.Dal</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

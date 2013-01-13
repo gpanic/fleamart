@@ -6,10 +6,12 @@ package com.fleamart.helpers;
 
 import com.fleamart.beans.OglasBean;
 import com.fleamart.beans.PonudbaBean;
+import com.fleamart.obj.AvtomatskiPonudnikObj;
 import com.fleamart.obj.KategorijaObj;
 import com.fleamart.obj.NaslovObj;
 import com.fleamart.obj.OglasObj;
 import com.fleamart.obj.PonudbaObj;
+import com.fleamart.obj.SeznamZeljaObj;
 import com.fleamart.obj.UporabnikObj;
 import com.fleamart.oglas.ws.ArrayOfstring;
 import com.fleamart.oglas.ws.Kategorija;
@@ -17,6 +19,7 @@ import com.fleamart.oglas.ws.Naslov;
 import com.fleamart.oglas.ws.Oglas;
 import com.fleamart.oglas.ws.Ponudba;
 import com.fleamart.oglas.ws.Uporabnik;
+import com.fleamart.seznamZelja.ws.SeznamZelja;
 import com.fleamart.uporabnik.ws.ObjectFactory;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -99,6 +102,7 @@ public class ConverterHelper {
         return o;
     }
     
+    
     public static com.fleamart.ponudba.ws.Ponudba ponudbaObj2WS(PonudbaObj obj){
     	com.fleamart.ponudba.ws.ObjectFactory of = new com.fleamart.ponudba.ws.ObjectFactory();
     	com.fleamart.ponudba.ws.Ponudba p = of.createPonudba();
@@ -135,7 +139,6 @@ public class ConverterHelper {
     	return p;
     }
     
-
     public static Uporabnik uporabnikObj2WS(UporabnikObj obj) {
         Uporabnik u = new Uporabnik();
 
@@ -168,6 +171,23 @@ public class ConverterHelper {
         return u;
 
     }
+    
+    //prejme Uporabnik iz uporabnika.ws
+    public static UporabnikObj uporabnikWs22Obj(com.fleamart.uporabnik.ws.Uporabnik uws) {
+        UporabnikObj u = new UporabnikObj();
+        u.setId(uws.getId());
+        u.setVloga(uws.getVloga());
+        u.setIme(uws.getIme().getValue());
+        u.setPriimek(uws.getPriimek().getValue());
+        u.setEmail(uws.getEmail().getValue());
+        u.setUpime(uws.getUpime().getValue());
+        u.setGeslo(uws.getGeslo().getValue());
+        u.setTelefon(uws.getTelefon().getValue());
+        u.setNaslov(naslovWs22Obj(uws.getNaslov().getValue()));
+
+        return u;
+
+    }
 
     private static KategorijaObj kategorijaWs2Obj(Kategorija kws) {
         KategorijaObj k = new KategorijaObj();
@@ -179,6 +199,16 @@ public class ConverterHelper {
     private static NaslovObj naslovWs2Obj(Naslov nws) {
         NaslovObj n = new NaslovObj();
 
+        n.setId(nws.getId());
+        n.setUlica(nws.getUlica().getValue());
+        n.setPostnaStevilka(nws.getPostnaStevilka());
+        n.setObcina(nws.getObcina().getValue());
+        n.setDrzava(nws.getDrzava().getValue());
+        return n;
+    }
+    //prejme naslov iz uporabnik.ws
+    private static NaslovObj naslovWs22Obj(com.fleamart.uporabnik.ws.Naslov nws) {
+        NaslovObj n = new NaslovObj();
         n.setId(nws.getId());
         n.setUlica(nws.getUlica().getValue());
         n.setPostnaStevilka(nws.getPostnaStevilka());

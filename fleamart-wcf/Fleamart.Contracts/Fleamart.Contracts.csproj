@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\AvtomatskiPonudnik.cs" />
     <Compile Include="Data\Kategorija.cs" />
     <Compile Include="Data\Komentar.cs" />
     <Compile Include="Data\NarocenaKategorija.cs" />
@@ -60,6 +61,8 @@
     <Compile Include="Service\IKategorijaService.cs" />
     <Compile Include="Service\IPonudbaService.cs" />
     <Compile Include="Service\IOglasService.cs" />
+    <Compile Include="Service\IPrivatnoSporociloService.cs" />
+    <Compile Include="Service\ISeznamZeljaService.cs" />
     <Compile Include="Service\IUporabnikService.cs" />
     <Compile Include="Service\IOcenaService.cs" />
   </ItemGroup>

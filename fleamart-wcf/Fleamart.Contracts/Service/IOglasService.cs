@@ -37,5 +37,22 @@ namespace Fleamart.Contracts.Service
 
         [OperationContract]
         List<Oglas> SearchOglasi(String kategorija, String param);
+
+        //za seznam zelja
+        [OperationContract]
+        bool dodajZeljo(Oglas s, Uporabnik u);
+
+        [OperationContract]
+        bool izbrisiZeljo(int id);
+
+        [OperationContract]
+        List<Oglas> pridobiSeznamZelja(int uporabnikId);
+
+        [OperationContract]
+        List<Oglas> pridobiOglaseProdajalca(int prodajalecId);
+
+        [OperationContract]
+        double izracunajPovprecje(int uporabnikId);
+        
     }
 }

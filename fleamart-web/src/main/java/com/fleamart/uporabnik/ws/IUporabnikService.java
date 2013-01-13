@@ -54,4 +54,32 @@ public interface IUporabnikService {
         @WebParam(name = "passV", targetNamespace = "http://tempuri.org/")
         String passV);
 
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns com.fleamart.uporabnik.ws.Uporabnik
+     */
+    @WebMethod(operationName = "ReadUporabnik", action = "http://tempuri.org/IUporabnikService/ReadUporabnik")
+    @WebResult(name = "ReadUporabnikResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "ReadUporabnik", targetNamespace = "http://tempuri.org/", className = "com.fleamart.uporabnik.ws.ReadUporabnik")
+    @ResponseWrapper(localName = "ReadUporabnikResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.uporabnik.ws.ReadUporabnikResponse")
+    public Uporabnik readUporabnik(
+        @WebParam(name = "Id", targetNamespace = "http://tempuri.org/")
+        Integer id);
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns com.fleamart.uporabnik.ws.Uporabnik
+     */
+    @WebMethod(operationName = "ProfilUporabnika", action = "http://tempuri.org/IUporabnikService/ProfilUporabnika")
+    @WebResult(name = "ProfilUporabnikaResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "ProfilUporabnika", targetNamespace = "http://tempuri.org/", className = "com.fleamart.uporabnik.ws.ProfilUporabnika")
+    @ResponseWrapper(localName = "ProfilUporabnikaResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.uporabnik.ws.ProfilUporabnikaResponse")
+    public Uporabnik profilUporabnika(
+        @WebParam(name = "Id", targetNamespace = "http://tempuri.org/")
+        Integer id);
+
 }

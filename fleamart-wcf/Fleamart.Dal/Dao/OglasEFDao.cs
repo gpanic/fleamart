@@ -227,5 +227,52 @@ namespace Fleamart.Dal.Dao
                 return list;
             }
         }
+
+        public List<Oglas> OglasiPoAvtorId(int idProdajalec)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                var query = from x in db.Oglasi
+                            where x.AvtorId == idProdajalec
+                            select x;
+                
+                query = query.OrderByDescending(x => x.CasOd);
+
+                List<Oglas> list = new List<Oglas>();
+                if (query.Count() != 0)
+                {
+                    foreach (var item in query.ToList())
+                    {
+                        list.Add(Mapper.Map<OglasEF, Oglas>(item));
+                    }
+                }
+                return list;
+            }
+        }
+        //za profil prodajalca
+        public double VrniPovprecjeOcen(int uporabnikId)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                //vsi oglasi od avtorja
+                var queryOglasi = from z in db.Oglasi where z.AvtorId == uporabnikId select z.Id;
+                
+                var query = from s in db.Ocene
+                            where queryOglasi.Contains(s.OglasId)
+                            select s;
+                double povprecje = 0.0;
+                if (query.Count() != 0)
+                {
+                    foreach (var item in query.ToList())
+                    {
+                        povprecje = povprecje + item.Ocena;
+                    }
+                    povprecje = povprecje / query.Count();
+                }
+                
+                return povprecje;
+            }
+        }
+
     }
 }

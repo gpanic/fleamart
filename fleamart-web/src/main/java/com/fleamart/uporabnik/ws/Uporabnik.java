@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Ime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Naslov" type="{http//www.fleamart.com/}Naslov" minOccurs="0"/>
  *         &lt;element name="Priimek" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="PrivatnaSporocila" type="{http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data}ArrayOfPrivatnoSporocilo" minOccurs="0"/>
- *         &lt;element name="SeznamZelja" type="{http://schemas.datacontract.org/2004/07/Fleamart.Contracts.Data}ArrayOfSeznamZelja" minOccurs="0"/>
+ *         &lt;element name="PrivatnaSporocila" type="{http//www.fleamart.com/}ArrayOfPrivatnoSporocilo" minOccurs="0"/>
+ *         &lt;element name="SeznamZelja" type="{http//www.fleamart.com/}ArrayOfSeznamZelja" minOccurs="0"/>
  *         &lt;element name="Telefon" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Upime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Vloga" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Uporabnik", namespace = "http//www.fleamart.com/", propOrder = {
+@XmlType(name = "Uporabnik", propOrder = {
     "email",
     "geslo",
     "id",

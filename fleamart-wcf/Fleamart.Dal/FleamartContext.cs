@@ -32,6 +32,7 @@ namespace Fleamart.Dal
         {
             mb.Entity<SupportTicketEF>().HasOptional(x => x.Avtor).WithMany().HasForeignKey(x => x.AvtorId).WillCascadeOnDelete(false);
             mb.Entity<SupportTicketEF>().HasOptional(x => x.Tehnik).WithMany().HasForeignKey(x => x.TehnikId).WillCascadeOnDelete(false);
+            mb.Entity<UporabnikEF>().HasMany(x => x.PrivatnaSporocila).WithRequired(i => i.Prejemnik).WillCascadeOnDelete(false);
         }
     }
 }

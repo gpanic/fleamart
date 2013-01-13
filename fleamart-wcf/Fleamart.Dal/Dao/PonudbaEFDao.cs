@@ -111,5 +111,41 @@ namespace Fleamart.Dal.Dao
             }
         }
 
+        public List<Ponudba> PonudbeZaAutobid(double znesek, int idOglasa)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                var query = from x in db.Ponudbe
+                            where x.Znesek >= znesek && x.OglasId == idOglasa
+                            select x;
+
+                List<Ponudba> list = new List<Ponudba>();
+                if (query.Count() != 0)
+                {
+                    foreach (var item in query.ToList())
+                    {
+                        list.Add(Mapper.Map<PonudbaEF, Ponudba>(item));
+                    }
+                }
+                return list;
+            }
+        }
+
+        public Ponudba obstajaPonudba(int idUporabnik, int idOglasa)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                
+                var query = from x in db.Ponudbe
+                            where x.UporabnikId == idUporabnik && x.OglasId == idOglasa
+                            select x;
+                if (query.Count() != 0)
+                {
+                    return Mapper.Map<PonudbaEF, Ponudba>(query.First());
+                }
+                return null;
+            }
+        }
+
     }
 }

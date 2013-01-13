@@ -17,5 +17,10 @@ namespace Fleamart.Contracts.Service
         [OperationContract]
         int loginCheck(string upImeV, string passV);
 
+        [OperationContract]
+        Uporabnik ReadUporabnik(int Id);
+
+        [OperationContract]
+        Uporabnik ProfilUporabnika(int Id);
     }
 }

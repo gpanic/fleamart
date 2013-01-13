@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Fleamart.Service.SeznamZeljaService" CodeBehind="SeznamZeljaService.svc.cs" %>

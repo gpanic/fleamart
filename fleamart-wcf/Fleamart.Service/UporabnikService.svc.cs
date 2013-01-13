@@ -26,7 +26,12 @@ namespace Fleamart.Service
         public int loginCheck(string upImeV, string passV)
         {
             try
-            {
+            {               
+                /*
+                //za kodiranje gesla
+                var data = Encoding.ASCII.GetBytes(passV);
+                string kript = Convert.ToBase64String(System.Security.Cryptography.MD5.Create().ComputeHash(data));
+                */
                 Fleamart.Contracts.Data.Uporabnik up = new Fleamart.Dal.Dao.UporabnikEFDao().Read(upImeV);
                 if (up == null)
                 {
@@ -48,5 +53,26 @@ namespace Fleamart.Service
             }
 
         }
+
+        public Uporabnik ReadUporabnik(int Id)
+        {
+            Uporabnik u = new UporabnikEFDao().Read(Id);
+            
+            // Zaradi ciklične reference med uporabnikom in prejemnikom, je potrebno prejemnika nastaviti na null, drugače je exeption pri vračanju!
+            if (u.PrivatnaSporocila != null)
+            {
+                foreach (PrivatnoSporocilo ps in u.PrivatnaSporocila)
+                {
+                    ps.Prejemnik = null;
+                }
+            }
+            return u;
+		}
+
+        public Uporabnik ProfilUporabnika(int Id)
+        {
+            return udao.Read2(Id);
+        }
+      
     }
 }
