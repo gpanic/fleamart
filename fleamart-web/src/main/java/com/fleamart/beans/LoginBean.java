@@ -109,11 +109,11 @@ public class LoginBean implements Serializable
 			int uid = lb.getIdUser();
 			if (uid == 0) {
 				lb.setTxt("");
-				FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/fleamart-web/login.xhtml");
 			}
 		} catch (Exception e) {
 			lb.setTxt("");
-			FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/fleamart-web/login.xhtml");
 		}
 	}
 }

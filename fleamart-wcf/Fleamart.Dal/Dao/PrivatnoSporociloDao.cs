@@ -90,5 +90,16 @@ namespace Fleamart.Dal.Dao
                 return sporocila;
             }
         }
+
+        public void OznaciSporociloKotPrebrano(int SporociloId)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                PrivatnoSporociloEF psef = db.PrivatnaSporocila.FirstOrDefault(x => x.Id == SporociloId);
+                db.PrivatnaSporocila.Attach(psef);
+                psef.Prebrano = true;
+                db.SaveChanges();
+            }
+        }
     }
 }

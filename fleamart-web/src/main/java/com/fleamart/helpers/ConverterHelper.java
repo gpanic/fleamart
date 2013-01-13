@@ -11,6 +11,7 @@ import com.fleamart.obj.KategorijaObj;
 import com.fleamart.obj.NaslovObj;
 import com.fleamart.obj.OglasObj;
 import com.fleamart.obj.PonudbaObj;
+import com.fleamart.obj.PrivatnoSporociloObj;
 import com.fleamart.obj.SeznamZeljaObj;
 import com.fleamart.obj.UporabnikObj;
 import com.fleamart.oglas.ws.ArrayOfstring;
@@ -19,6 +20,7 @@ import com.fleamart.oglas.ws.Naslov;
 import com.fleamart.oglas.ws.Oglas;
 import com.fleamart.oglas.ws.Ponudba;
 import com.fleamart.oglas.ws.Uporabnik;
+import com.fleamart.pm.ws.PrivatnoSporocilo;
 import com.fleamart.seznamZelja.ws.SeznamZelja;
 import com.fleamart.uporabnik.ws.ObjectFactory;
 import java.util.Calendar;
@@ -31,7 +33,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 
 /**
- *
+ * 
  * @author Dejan
  */
 public class ConverterHelper {
@@ -216,4 +218,20 @@ public class ConverterHelper {
         n.setDrzava(nws.getDrzava().getValue());
         return n;
     }
+    
+	public static PrivatnoSporociloObj PrivatnoSporociloWs2PrivatnoSporociloObj(PrivatnoSporocilo psws) {
+		PrivatnoSporociloObj ps = new PrivatnoSporociloObj();
+		try {
+			ps.setId(psws.getPrivatnoSporociloId());
+			ps.setCas(psws.getCas().toGregorianCalendar());
+			ps.setSporocilo(psws.getSporocilo().getValue());
+			UporabnikObj posiljatelj = new UporabnikObj();
+			posiljatelj.setUpime(psws.getPosiljatelj().getValue().getUpime().getValue());
+			ps.setPosiljatelj(posiljatelj);
+			return ps;
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return null;
+	}
 }
