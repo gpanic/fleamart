@@ -49,12 +49,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\AvtomatskiPonudnikEFDao.cs" />
     <Compile Include="Dao\IDAO.cs" />
     <Compile Include="Dao\KategorijaEFDao.cs" />
     <Compile Include="Dao\NarocenaKategorijaEFDao.cs" />
     <Compile Include="Dao\OcenaEFDao.cs" />
     <Compile Include="Dao\OglasEFDao.cs" />
     <Compile Include="Dao\PonudbaEFDao.cs" />
+    <Compile Include="Dao\SupportTicketEFDao.cs" />
+    <Compile Include="Dao\SupportTicketKategorijaEFDao.cs" />
+    <Compile Include="Dao\SupportTicketKomentarEFDao.cs" />
+    <Compile Include="Dao\SupportTicketStatusEFDao.cs" />
+    <Compile Include="Dao\PrivatnoSporociloDao.cs" />
+    <Compile Include="Dao\SeznamZeljaEFDao.cs" />
     <Compile Include="Dao\UporabnikEFDao.cs" />
     <Compile Include="Entities\AvtomatskiPonudnikEF.cs" />
     <Compile Include="Entities\KategorijaEF.cs" />
@@ -68,6 +75,10 @@
     <Compile Include="Entities\KarticniSistemEF.cs" />
     <Compile Include="Entities\PrivatnoSporociloEF.cs" />
     <Compile Include="Entities\SeznamZeljaEF.cs" />
+    <Compile Include="Entities\SupportTicketEF.cs" />
+    <Compile Include="Entities\SupportTicketKategorijaEF.cs" />
+    <Compile Include="Entities\SupportTicketKomentarEF.cs" />
+    <Compile Include="Entities\SupportTicketStatusEF.cs" />
     <Compile Include="Entities\UporabnikEF.cs" />
     <Compile Include="FleamartContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />

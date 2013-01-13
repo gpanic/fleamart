@@ -6,11 +6,14 @@ package com.fleamart.helpers;
 
 import com.fleamart.beans.OglasBean;
 import com.fleamart.beans.PonudbaBean;
+import com.fleamart.obj.AvtomatskiPonudnikObj;
 import com.fleamart.obj.KategorijaObj;
 import com.fleamart.obj.KomentarObj;
 import com.fleamart.obj.NaslovObj;
 import com.fleamart.obj.OglasObj;
 import com.fleamart.obj.PonudbaObj;
+import com.fleamart.obj.PrivatnoSporociloObj;
+import com.fleamart.obj.SeznamZeljaObj;
 import com.fleamart.obj.UporabnikObj;
 import com.fleamart.oglas.ws.ArrayOfKomentar;
 import com.fleamart.oglas.ws.ArrayOfstring;
@@ -19,6 +22,8 @@ import com.fleamart.oglas.ws.Naslov;
 import com.fleamart.oglas.ws.Oglas;
 import com.fleamart.oglas.ws.Ponudba;
 import com.fleamart.oglas.ws.Uporabnik;
+import com.fleamart.pm.ws.PrivatnoSporocilo;
+import com.fleamart.seznamZelja.ws.SeznamZelja;
 import com.fleamart.uporabnik.ws.ObjectFactory;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,7 +37,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 
 /**
- *
+ * 
  * @author Dejan
  */
 public class ConverterHelper {
@@ -107,12 +112,12 @@ public class ConverterHelper {
         o.setKomentarji(komentarListWs2Obj(ows.getKomentarji().getValue()));
         return o;
     }
-
-    public static com.fleamart.ponudba.ws.Ponudba ponudbaObj2WS(PonudbaObj obj) {
-        com.fleamart.ponudba.ws.ObjectFactory of = new com.fleamart.ponudba.ws.ObjectFactory();
-        com.fleamart.ponudba.ws.Ponudba p = of.createPonudba();
-
-        try {
+    
+    public static com.fleamart.ponudba.ws.Ponudba ponudbaObj2WS(PonudbaObj obj){
+    	com.fleamart.ponudba.ws.ObjectFactory of = new com.fleamart.ponudba.ws.ObjectFactory();
+    	com.fleamart.ponudba.ws.Ponudba p = of.createPonudba();
+    	
+    	try {
             if (obj.getCas() != null)
                 p.setCas(DatatypeFactory.newInstance().newXMLGregorianCalendar(obj.getCas()));
 
@@ -143,7 +148,6 @@ public class ConverterHelper {
         p.setZnesek(pon.getZnesek());
         return p;
     }
-
     public static Uporabnik uporabnikObj2WS(UporabnikObj obj) {
         Uporabnik u = new Uporabnik();
 
@@ -172,6 +176,23 @@ public class ConverterHelper {
         u.setGeslo(uws.getGeslo().getValue());
         u.setTelefon(uws.getTelefon().getValue());
         u.setNaslov(naslovWs2Obj(uws.getNaslov().getValue()));
+
+        return u;
+
+    }
+    
+    //prejme Uporabnik iz uporabnika.ws
+    public static UporabnikObj uporabnikWs22Obj(com.fleamart.uporabnik.ws.Uporabnik uws) {
+        UporabnikObj u = new UporabnikObj();
+        u.setId(uws.getId());
+        u.setVloga(uws.getVloga());
+        u.setIme(uws.getIme().getValue());
+        u.setPriimek(uws.getPriimek().getValue());
+        u.setEmail(uws.getEmail().getValue());
+        u.setUpime(uws.getUpime().getValue());
+        u.setGeslo(uws.getGeslo().getValue());
+        u.setTelefon(uws.getTelefon().getValue());
+        u.setNaslov(naslovWs22Obj(uws.getNaslov().getValue()));
 
         return u;
 
@@ -221,4 +242,30 @@ public class ConverterHelper {
         
         return k;
     }
+    //prejme naslov iz uporabnik.ws
+    private static NaslovObj naslovWs22Obj(com.fleamart.uporabnik.ws.Naslov nws) {
+        NaslovObj n = new NaslovObj();
+        n.setId(nws.getId());
+        n.setUlica(nws.getUlica().getValue());
+        n.setPostnaStevilka(nws.getPostnaStevilka());
+        n.setObcina(nws.getObcina().getValue());
+        n.setDrzava(nws.getDrzava().getValue());
+        return n;
+    }
+    
+	public static PrivatnoSporociloObj PrivatnoSporociloWs2PrivatnoSporociloObj(PrivatnoSporocilo psws) {
+		PrivatnoSporociloObj ps = new PrivatnoSporociloObj();
+		try {
+			ps.setId(psws.getPrivatnoSporociloId());
+			ps.setCas(psws.getCas().toGregorianCalendar());
+			ps.setSporocilo(psws.getSporocilo().getValue());
+			UporabnikObj posiljatelj = new UporabnikObj();
+			posiljatelj.setUpime(psws.getPosiljatelj().getValue().getUpime().getValue());
+			ps.setPosiljatelj(posiljatelj);
+			return ps;
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return null;
+	}
 }

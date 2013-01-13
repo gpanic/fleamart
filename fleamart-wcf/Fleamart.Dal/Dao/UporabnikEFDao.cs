@@ -18,6 +18,8 @@ namespace Fleamart.Dal.Dao
             Mapper.CreateMap<Uporabnik, UporabnikEF>();
             Mapper.CreateMap<NaslovEF, Naslov>();
             Mapper.CreateMap<Naslov, NaslovEF>();
+            Mapper.CreateMap<PrivatnoSporocilo, PrivatnoSporociloEF>();
+            Mapper.CreateMap<PrivatnoSporociloEF, PrivatnoSporocilo>();
         }
 
         public bool Create(Uporabnik entity)
@@ -44,15 +46,9 @@ namespace Fleamart.Dal.Dao
         {
             using (FleamartContext db = new FleamartContext())
             {
-                UporabnikEF ef = db.Uporabniki.Find(id);
-                if (ef != null)
-                {
-                    return Mapper.Map<UporabnikEF, Uporabnik>(ef);
-                }
-                else
-                {
-                    return null;
-                }
+                UporabnikEF ef = db.Uporabniki.FirstOrDefault(x => x.Id == id);
+                Uporabnik upor = (ef != null) ? Mapper.Map<UporabnikEF, Uporabnik>(ef) : null;
+                return upor;
             }
         }
 
@@ -111,6 +107,22 @@ namespace Fleamart.Dal.Dao
             using (FleamartContext db = new FleamartContext())
             {
                 UporabnikEF ef = db.Uporabniki.Where(u => u.Upime == username).FirstOrDefault();
+                if (ef != null)
+                {
+                    return Mapper.Map<UporabnikEF, Uporabnik>(ef);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public Uporabnik Read2(int id)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                UporabnikEF ef = db.Uporabniki.Find(id);
                 if (ef != null)
                 {
                     return Mapper.Map<UporabnikEF, Uporabnik>(ef);

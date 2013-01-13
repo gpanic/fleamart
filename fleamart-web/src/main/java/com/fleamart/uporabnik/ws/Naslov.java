@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Naslov", namespace = "http//www.fleamart.com/", propOrder = {
+@XmlType(name = "Naslov", propOrder = {
     "drzava",
     "id",
     "obcina",

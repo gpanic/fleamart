@@ -14,5 +14,8 @@ namespace Fleamart.Dal.Entities
         public int OglasId { get; set; }
         public virtual OglasEF Oglas { get; set; }
 
+        public int UporabnikId { get; set; }
+        public UporabnikEF Uporabnik { get; set; }
+
     }
 }
