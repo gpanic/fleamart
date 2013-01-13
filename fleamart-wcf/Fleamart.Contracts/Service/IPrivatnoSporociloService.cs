@@ -19,5 +19,8 @@ namespace Fleamart.Contracts.Service
 
         [OperationContract]
         List<PrivatnoSporocilo> VrniPrivatnaSporocilaUporabnika(int UporabnikId);
+
+        [OperationContract]
+        void OznaciSporociloKotPrebrano(int SporociloId);
     }
 }

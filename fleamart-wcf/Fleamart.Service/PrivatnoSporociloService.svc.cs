@@ -39,5 +39,11 @@ namespace Fleamart.Service
         {
             return new PrivatnoSporociloDao().PrivatnaSporocilaUporabnika(UporabnikId);
         }
+
+
+        public void OznaciSporociloKotPrebrano(int SporociloId)
+        {
+            new PrivatnoSporociloDao().OznaciSporociloKotPrebrano(SporociloId);
+        }
     }
 }
