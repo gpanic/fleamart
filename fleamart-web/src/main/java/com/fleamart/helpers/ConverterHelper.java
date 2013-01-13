@@ -7,10 +7,12 @@ package com.fleamart.helpers;
 import com.fleamart.beans.OglasBean;
 import com.fleamart.beans.PonudbaBean;
 import com.fleamart.obj.KategorijaObj;
+import com.fleamart.obj.KomentarObj;
 import com.fleamart.obj.NaslovObj;
 import com.fleamart.obj.OglasObj;
 import com.fleamart.obj.PonudbaObj;
 import com.fleamart.obj.UporabnikObj;
+import com.fleamart.oglas.ws.ArrayOfKomentar;
 import com.fleamart.oglas.ws.ArrayOfstring;
 import com.fleamart.oglas.ws.Kategorija;
 import com.fleamart.oglas.ws.Naslov;
@@ -18,7 +20,9 @@ import com.fleamart.oglas.ws.Oglas;
 import com.fleamart.oglas.ws.Ponudba;
 import com.fleamart.oglas.ws.Uporabnik;
 import com.fleamart.uporabnik.ws.ObjectFactory;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -71,6 +75,11 @@ public class ConverterHelper {
         }
         o.setSlike(of.createOglasSlike(slike));
 
+        ArrayOfKomentar komentarji = of.createArrayOfKomentar();
+        for(KomentarObj ko:obj.getKomentarji())
+            komentarji.getKomentar().add(komentarObj2Ws(ko));
+        o.setKomentarji(of.createOglasKomentarji(komentarji));
+        
         return o;
     }
 
@@ -95,46 +104,45 @@ public class ConverterHelper {
         if (ows.getKupec().getValue() != null)
             o.setKupec(uporabnikWs2Obj(ows.getKupec().getValue()));
         o.setKategorija(kategorijaWs2Obj(ows.getKategorija().getValue()));
-
+        o.setKomentarji(komentarListWs2Obj(ows.getKomentarji().getValue()));
         return o;
     }
-    
-    public static com.fleamart.ponudba.ws.Ponudba ponudbaObj2WS(PonudbaObj obj){
-    	com.fleamart.ponudba.ws.ObjectFactory of = new com.fleamart.ponudba.ws.ObjectFactory();
-    	com.fleamart.ponudba.ws.Ponudba p = of.createPonudba();
-    	
-    	try {
+
+    public static com.fleamart.ponudba.ws.Ponudba ponudbaObj2WS(PonudbaObj obj) {
+        com.fleamart.ponudba.ws.ObjectFactory of = new com.fleamart.ponudba.ws.ObjectFactory();
+        com.fleamart.ponudba.ws.Ponudba p = of.createPonudba();
+
+        try {
             if (obj.getCas() != null)
                 p.setCas(DatatypeFactory.newInstance().newXMLGregorianCalendar(obj.getCas()));
-           
+
         } catch (DatatypeConfigurationException ex) {
             Logger.getLogger(PonudbaBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-    	p.setId(obj.getId());
-    	p.setZnesek(obj.getZnesek()); 
-    	
-    	com.fleamart.ponudba.ws.Oglas o = of.createOglas();
-    	o.setId(obj.getOglas().getId());
-    	p.setOglas(of.createOglas(o));    	
-    	
-    	com.fleamart.ponudba.ws.Uporabnik u = of.createUporabnik();
-    	u.setId(obj.getUporabnik().getId());
-    	p.setUporabnik(of.createUporabnik(u));
-    	
-    	return p;
-    
+        p.setId(obj.getId());
+        p.setZnesek(obj.getZnesek());
+
+        com.fleamart.ponudba.ws.Oglas o = of.createOglas();
+        o.setId(obj.getOglas().getId());
+        p.setOglas(of.createOglas(o));
+
+        com.fleamart.ponudba.ws.Uporabnik u = of.createUporabnik();
+        u.setId(obj.getUporabnik().getId());
+        p.setUporabnik(of.createUporabnik(u));
+
+        return p;
+
     }
-    
-    public static PonudbaObj ponudbaWs2Obj(Ponudba pon){
-    	PonudbaObj p = new PonudbaObj();
-    	p.setId(pon.getId());
-    	p.setCas(pon.getCas().toGregorianCalendar());
-    	p.setOglas(oglasWs2Obj(pon.getOglas().getValue()));
-    	p.setUporabnik(uporabnikWs2Obj(pon.getUporabnik().getValue()));
-    	p.setZnesek(pon.getZnesek());
-    	return p;
+
+    public static PonudbaObj ponudbaWs2Obj(Ponudba pon) {
+        PonudbaObj p = new PonudbaObj();
+        p.setId(pon.getId());
+        p.setCas(pon.getCas().toGregorianCalendar());
+        p.setOglas(oglasWs2Obj(pon.getOglas().getValue()));
+        p.setUporabnik(uporabnikWs2Obj(pon.getUporabnik().getValue()));
+        p.setZnesek(pon.getZnesek());
+        return p;
     }
-    
 
     public static Uporabnik uporabnikObj2WS(UporabnikObj obj) {
         Uporabnik u = new Uporabnik();
@@ -169,14 +177,14 @@ public class ConverterHelper {
 
     }
 
-    private static KategorijaObj kategorijaWs2Obj(Kategorija kws) {
+    public static KategorijaObj kategorijaWs2Obj(Kategorija kws) {
         KategorijaObj k = new KategorijaObj();
         k.setId(kws.getId());
         k.setNaziv(kws.getNaziv().getValue());
         return k;
     }
 
-    private static NaslovObj naslovWs2Obj(Naslov nws) {
+    public static NaslovObj naslovWs2Obj(Naslov nws) {
         NaslovObj n = new NaslovObj();
 
         n.setId(nws.getId());
@@ -185,5 +193,32 @@ public class ConverterHelper {
         n.setObcina(nws.getObcina().getValue());
         n.setDrzava(nws.getDrzava().getValue());
         return n;
+    }
+
+    public static List<KomentarObj> komentarListWs2Obj(ArrayOfKomentar kwsl) {
+        ArrayList<KomentarObj> kl = new ArrayList<KomentarObj>();
+        for (com.fleamart.oglas.ws.Komentar k : kwsl.getKomentar())
+            kl.add(komentarWs2Obj(k));
+        return kl;
+    }
+
+    public static KomentarObj komentarWs2Obj(com.fleamart.oglas.ws.Komentar kws) {
+        return new KomentarObj(kws.getId(), kws.getSporocilo(), kws.getCas().toGregorianCalendar(), uporabnikWs2Obj(kws.getAvtor()));
+
+    }
+
+    public static com.fleamart.oglas.ws.Komentar komentarObj2Ws(KomentarObj obj) {
+        com.fleamart.oglas.ws.Komentar k = new com.fleamart.oglas.ws.Komentar();
+        k.setId(obj.getId());
+        k.setSporocilo(obj.getSporocilo());
+        k.setAvtor(uporabnikObj2WS(obj.getAvtor()));
+
+        try {
+            k.setCas(DatatypeFactory.newInstance().newXMLGregorianCalendar(obj.getCas()));
+        } catch (DatatypeConfigurationException ex) {
+            Logger.getLogger(ConverterHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return k;
     }
 }

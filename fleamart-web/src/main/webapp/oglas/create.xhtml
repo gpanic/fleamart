@@ -7,15 +7,15 @@
     <h:head>
         <title>Fleamart - Ustvari oglas</title>
     </h:head>
+    <f:metadata>
+        <f:event listener="#{loginBean.checkIfLoggedIn}" type="preRenderView"></f:event>
+        <f:event type="preRenderView" listener="#{oglasBean2.initOglasForm}"/>
+    </f:metadata>
     <h:body>
         <ui:composition template="/shared/layout.xhtml">
             <ui:define name="content">
                 <h:form id="dodajoglas">
                     <h1>Ustvari oglas</h1>
-                    <f:metadata>
-                        <f:event type="preRenderView" listener="#{oglasBean2.initOglasForm}"/>
-                    </f:metadata>
-
                     <table width="100%">
                         <tbody>
                             <tr>
@@ -47,7 +47,7 @@
                             </tr>
                             <tr>
                                 <td><h:outputText value="Cena"/></td>
-                                
+
                                 <td>
                                     <h:inputText id="cena" value="#{oglasBean2.oglas.cena}" required="true" validatorMessage="Niz mora biti številka" requiredMessage="Obvezno polje">
                                         <f:validateRegex pattern="(\d*.\d*|\d*)" />

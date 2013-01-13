@@ -1,11 +1,9 @@
 
 package com.fleamart.oglas.ws;
 
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -21,10 +19,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Avtor" type="{http//www.fleamart.com/}Uporabnik" minOccurs="0"/>
+ *         &lt;element name="Avtor" type="{http//www.fleamart.com/}Uporabnik"/>
  *         &lt;element name="Cas" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="Sporocilo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Sporocilo" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -42,25 +40,25 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class Komentar {
 
-    @XmlElementRef(name = "Avtor", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
-    protected JAXBElement<Uporabnik> avtor;
+    @XmlElement(name = "Avtor", required = true, nillable = true)
+    protected Uporabnik avtor;
     @XmlElement(name = "Cas")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar cas;
     @XmlElement(name = "Id")
     protected Integer id;
-    @XmlElementRef(name = "Sporocilo", namespace = "http//www.fleamart.com/", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> sporocilo;
+    @XmlElement(name = "Sporocilo", required = true, nillable = true)
+    protected String sporocilo;
 
     /**
      * Gets the value of the avtor property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}
+     *     {@link Uporabnik }
      *     
      */
-    public JAXBElement<Uporabnik> getAvtor() {
+    public Uporabnik getAvtor() {
         return avtor;
     }
 
@@ -69,10 +67,10 @@ public class Komentar {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}
+     *     {@link Uporabnik }
      *     
      */
-    public void setAvtor(JAXBElement<Uporabnik> value) {
+    public void setAvtor(Uporabnik value) {
         this.avtor = value;
     }
 
@@ -129,10 +127,10 @@ public class Komentar {
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link String }
      *     
      */
-    public JAXBElement<String> getSporocilo() {
+    public String getSporocilo() {
         return sporocilo;
     }
 
@@ -141,10 +139,10 @@ public class Komentar {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link String }
      *     
      */
-    public void setSporocilo(JAXBElement<String> value) {
+    public void setSporocilo(String value) {
         this.sporocilo = value;
     }
 

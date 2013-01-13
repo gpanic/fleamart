@@ -62,7 +62,5 @@ namespace Fleamart.Service
         {
             return odao.ReadLast(idAvtor);
         }
-
-        
     }
 }

@@ -74,12 +74,12 @@ public class PonudbaBean
 				if (uspelo == true)
 				{
 					oglas.setCena(znesek);
-					txt = "Uspeöno oddana ponudba!";
+					txt = "Uspe≈°no oddana ponudba!";
 					return "#";
 
 				} else
 				{
-					txt = "Neuspeöno oddana ponudba!";
+					txt = "Neuspe≈°no oddana ponudba!";
 					return "#";
 				}
 
