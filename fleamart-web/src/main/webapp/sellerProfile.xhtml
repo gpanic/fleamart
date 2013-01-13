@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="/shared/layout.xhtml">
+		<ui:define name="content">
+			<f:metadata>
+				<f:viewParam name="prodajalecId"
+					value="#{profilUporabnikaBean.prodajalecId}" />
+				<f:event type="preRenderView"
+					listener="#{profilUporabnikaBean.prikaziProfil}" />
+			</f:metadata>
+			<h1>Prodajalec</h1>
+			<h:form id="mojioglasi">
+			<p>
+				Uporabnik<br /> <strong><h:outputText
+						value="#{profilUporabnikaBean.uporabnik.upime}" /></strong>
+			</p>
+			<p>
+				Občina<br /> <strong><h:outputText
+						value="#{profilUporabnikaBean.uporabnik.naslov.obcina}" /></strong>
+			</p>
+
+			<p>
+				Telefon<br /> <strong><h:outputText
+						value="#{profilUporabnikaBean.uporabnik.telefon}" /></strong>
+			</p>
+			<p>
+				Email<br /> <strong><h:outputText
+						value="#{profilUporabnikaBean.uporabnik.email}" /></strong>
+			</p>
+			
+			<!-- POglej še za ostale podatke - naslov-->
+			
+			<p>
+			Povprecna ocena <br /><h:outputText
+						value="#{profilUporabnikaBean.ocena}" />
+			
+			</p>
+				<ui:repeat var="oglas" value="#{profilUporabnikaBean.oglasi}">
+					<div class="oglasitem">
+						<div class="slika">
+							<h:graphicImage alt="image" url="#{oglas.slike[0]}"></h:graphicImage>
+						</div>
+						<div class="naslovopis">
+							<h:link value="#{oglas.naslov}" class="naslov"
+								outcome="read.xhtml?id=#{oglas.id}" />
+							<br />
+							<h:outputText class="opis" value="#{oglas.opis}" />
+						</div>
+
+						<div class="cenaostalo">							
+							<h:outputText class="cena" value="#{oglas.cena} €" />
+							<br />
+							<div class="datum">
+								Vpisano<br />
+								<h:outputText value="#{oglas.casOd.time}">
+									<f:convertDateTime pattern="d MMM, yyyy HH:mm" />
+								</h:outputText>
+							</div>
+						</div>
+					</div>
+				</ui:repeat>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

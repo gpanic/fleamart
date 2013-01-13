@@ -110,7 +110,7 @@ namespace Fleamart.Dal.Dao
             }
         }
 
-
+        /*
         public List<SeznamZelja> List(int uporabnikId)
         {
             using (FleamartContext db = new FleamartContext())
@@ -125,6 +125,29 @@ namespace Fleamart.Dal.Dao
                     foreach (var item in query.ToList())
                     {
                         list.Add(Mapper.Map<SeznamZeljaEF, SeznamZelja>(item));
+                    }
+                }
+                return list;
+            }
+        }
+         */
+        public List<Oglas> List(int uporabnikId)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                //seznam idOglas iz tabele SeznamZelja
+                var querySeznamZelja = from z in db.SeznamZelja where z.UporabnikId == uporabnikId select z.OglasId;
+                //seznam oglasov iz tabele Oglas, kjer je id enak seznamu zgoraj
+                var query = from s in db.Oglasi
+                            where querySeznamZelja.Contains(s.Id)
+                            select s;
+
+                List<Oglas> list = new List<Oglas>();
+                if (query.Count() != 0)
+                {
+                    foreach (var item in query.ToList())
+                    {
+                        list.Add(Mapper.Map<OglasEF, Oglas>(item));
                     }
                 }
                 return list;

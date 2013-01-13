@@ -63,6 +63,38 @@ namespace Fleamart.Service
             return odao.ReadLast(idAvtor);
         }
 
+        //za seznam zelja
+
+        private SeznamZeljaEFDao szdao = new SeznamZeljaEFDao();
+
+        public bool dodajZeljo(Oglas s, Uporabnik u)
+        {
+            SeznamZelja sez = new SeznamZelja();
+            sez.Oglas = s;
+            sez.Uporabnik = u;
+            return szdao.Create(sez);
+        }
+
+        public bool izbrisiZeljo(int id)
+        {
+            return szdao.Delete(id);
+        }
+
+        public List<Oglas> pridobiSeznamZelja(int uporabnikId)
+        {
+            return szdao.List(uporabnikId);
+        }
         
+        //za Profil prodajalca
+        public List<Oglas> pridobiOglaseProdajalca(int prodajalecId)
+        {
+            return odao.OglasiPoAvtorId(prodajalecId);
+        }
+
+        public double izracunajPovprecje(int uporabnikId)
+        {
+            return odao.VrniPovprecjeOcen(uporabnikId);
+        }
+
     }
 }

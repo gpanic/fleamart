@@ -68,7 +68,7 @@ public class LoginBean implements Serializable
 			{
 				setIdUser(0);
 				// ce uporabnik ni uspesno vpisan je idUser=0
-				txt = "Napa�no uporabni�ko ime ali geslo, poskusite ponovno!";
+				txt = "Napačno uporabniško ime ali geslo, poskusite ponovno!";
 				return "#";
 			} else
 			{

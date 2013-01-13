@@ -55,36 +55,46 @@
 				rendered="#{oglasBean2.oglas.avkcija and loginBean.idUser != 0}">
 				<p>
 					<h:outputText value="Vpišite ponudbo:" />
-					<h:form id="ponudbaForm">
+					
 						<h:inputText id="ponudbaCena" styleClass="span3"
 							value="#{ponudbaBean.znesek}" required="true"
 							validatorMessage="Niz mora biti številka"
 							requiredMessage="Obvezno polje">
 							<f:validateRegex pattern="(\d*.\d*|\d*)" />
 						</h:inputText>	&nbsp;						
-								<h:commandButton id="ponudi" style="margin-bottom: 10px;"
+						<h:commandButton id="ponudi" style="margin-bottom: 10px;"
 							class="btn btn-primary" value="Ponudi"
-							action="#{ponudbaBean.posljiPonudbo(oglasBean2.oglas, loginBean.idUser)}">
+							action="#{ponudbaBean.posljiPonudbo(oglasBean2.oglas, loginBean.idUser, false)}">
 						</h:commandButton>
+						<br />
 						<h:outputText value="#{ponudbaBean.txt}" />
-					</h:form>
+						<h:commandButton id="autoPonudba" style="margin-bottom: 5px;"
+							class="btn btn-primary" value="Avtomatski ponudnik"
+							action="#{ponudbaBean.posljiPonudbo(oglasBean2.oglas, loginBean.idUser, true)}">
+						</h:commandButton>						
+						<h:outputText value="#{avtomatskiPonudnikBean.txt}" />
+					
 				</p>
 			</ui:fragment>
+
 			<ui:fragment rendered="#{loginBean.idUser != 0}">
-				<p>
-					<h:commandButton id="dodajNaSeznamZelja"
-						style="margin-bottom: 10px;" class="btn btn-primary"
-						value="Dodaj na seznam želja"
-						action="#{seznamZeljaBean.dodajZeljo(oglasBean2.oglas, loginBean.idUser)}">
-					</h:commandButton>
-				</p>
+				<h:form id="jdnsjkcv">
+					<p>
+						<h:commandButton id="dodajNaSeznamZelja"
+							style="margin-bottom: 10px;" class="btn btn-mini btn-primary"
+							value="Dodaj na seznam želja"
+							action="#{seznamZeljaBean.dodajZeljo(oglasBean2.oglas, loginBean.idUser)}">
+						</h:commandButton>
+						<br />
+						<h:outputText value="#{seznamZeljaBean.txt}" />
+					</p>
+				</h:form>
 			</ui:fragment>
 		</div>
 		<div class="span4">
 			<strong>Kategorija</strong><br />
 			<h:outputText value="#{oglasBean2.oglas.kategorija.naziv}" />
-			<br />
-			<br /> <strong>Vpisano</strong><br />
+			<br /> <br /> <strong>Vpisano</strong><br />
 			<h:outputText value="#{oglasBean2.oglas.casOd.time}">
 				<f:convertDateTime type="both" dateStyle="short" />
 			</h:outputText>
@@ -101,9 +111,14 @@
 			<h:outputText value="#{oglasBean2.oglas.casDo.time}">
 				<f:convertDateTime type="both" dateStyle="short" />
 			</h:outputText>
-			<br />
-			<br />
-			<legend>Prodajalec</legend>
+			<br /> <br />
+			<form>
+				<legend>
+					<h:link
+						outcome="/sellerProfile.xhtml?prodajalecId=#{oglasBean2.oglas.avtor.id}"
+						value="Prodajalec"></h:link>
+				</legend>
+			</form>
 			<p>
 				Uporabnik<br /> <strong><h:outputText
 						value="#{oglasBean2.oglas.avtor.upime}" /></strong>

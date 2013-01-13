@@ -49,7 +49,7 @@ public class PonudbaBean
 	{
 		ponudba = new PonudbaObj();
 	}
-	public String posljiPonudbo(OglasObj oglas, int idUpor)
+	public String posljiPonudbo(OglasObj oglas, int idUpor, boolean autobid)
 	{
 		try
 		{
@@ -67,7 +67,7 @@ public class PonudbaBean
 				Ponudba p = ConverterHelper.ponudbaObj2WS(ponudba);
 				PonudbaService client = new PonudbaService();
 				boolean uspelo = client.getBasicHttpBindingIPonudbaService()
-						.placeBidOnItem(p);
+						.placeBidOnItem(p, autobid);
 				if (uspelo == true)
 				{
 					oglas.setCena(znesek);

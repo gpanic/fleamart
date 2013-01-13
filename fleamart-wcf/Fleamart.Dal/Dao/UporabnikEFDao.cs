@@ -117,5 +117,21 @@ namespace Fleamart.Dal.Dao
                 }
             }
         }
+
+        public Uporabnik Read2(int id)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                UporabnikEF ef = db.Uporabniki.Find(id);
+                if (ef != null)
+                {
+                    return Mapper.Map<UporabnikEF, Uporabnik>(ef);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
     }
 }

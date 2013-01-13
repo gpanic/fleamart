@@ -26,7 +26,12 @@ namespace Fleamart.Service
         public int loginCheck(string upImeV, string passV)
         {
             try
-            {
+            {               
+                /*
+                //za kodiranje gesla
+                var data = Encoding.ASCII.GetBytes(passV);
+                string kript = Convert.ToBase64String(System.Security.Cryptography.MD5.Create().ComputeHash(data));
+                */
                 Fleamart.Contracts.Data.Uporabnik up = new Fleamart.Dal.Dao.UporabnikEFDao().Read(upImeV);
                 if (up == null)
                 {
@@ -55,9 +60,10 @@ namespace Fleamart.Service
             return u;
 		}
 
-        public Uporabnik dobiProfilUporabnika(int uporabnikId)
+        public Uporabnik ProfilUporabnika(int Id)
         {
-            return udao.Read(uporabnikId);
+            return udao.Read2(Id);
         }
+      
     }
 }
