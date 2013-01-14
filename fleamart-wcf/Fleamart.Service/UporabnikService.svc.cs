@@ -26,7 +26,7 @@ namespace Fleamart.Service
         public int loginCheck(string upImeV, string passV)
         {
             try
-            {               
+            {
                 /*
                 //za kodiranje gesla
                 var data = Encoding.ASCII.GetBytes(passV);
