@@ -14,6 +14,8 @@ import com.fleamart.obj.OglasObj;
 import com.fleamart.obj.PonudbaObj;
 import com.fleamart.obj.PrivatnoSporociloObj;
 import com.fleamart.obj.SeznamZeljaObj;
+import com.fleamart.obj.SupportTicketKategorijaObj;
+import com.fleamart.obj.SupportTicketStatusObj;
 import com.fleamart.obj.UporabnikObj;
 import com.fleamart.oglas.ws.ArrayOfKomentar;
 import com.fleamart.oglas.ws.ArrayOfstring;
@@ -24,6 +26,8 @@ import com.fleamart.oglas.ws.Ponudba;
 import com.fleamart.oglas.ws.Uporabnik;
 import com.fleamart.pm.ws.PrivatnoSporocilo;
 import com.fleamart.seznamZelja.ws.SeznamZelja;
+import com.fleamart.supportticket.ws.SupportTicketKategorija;
+import com.fleamart.supportticket.ws.SupportTicketStatus;
 import com.fleamart.uporabnik.ws.ObjectFactory;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -267,5 +271,37 @@ public class ConverterHelper {
 			System.out.println(e.toString());
 		}
 		return null;
+	}
+	
+	public static SupportTicketKategorijaObj supportTicketKategorijaWs2Obj(SupportTicketKategorija ws) {
+		SupportTicketKategorijaObj obj = new SupportTicketKategorijaObj();
+		obj.setId(ws.getId());
+		obj.setNaziv(ws.getNaziv().getValue());
+		return obj;
+	}
+	
+	public static SupportTicketKategorija supportTicketKategorijaObj2Ws(SupportTicketKategorijaObj obj) {
+		com.fleamart.supportticket.ws.ObjectFactory of = new com.fleamart.supportticket.ws.ObjectFactory();
+		SupportTicketKategorija ws = new SupportTicketKategorija();
+		ws.setId(obj.getId());
+		ws.setNaziv(of.createSupportTicketKategorijaNaziv(obj.getNaziv()));
+		return ws;
+	}
+	
+	public static SupportTicketStatusObj supportTicketStatusWs2Obj(SupportTicketStatus ws) {
+		SupportTicketStatusObj obj = new SupportTicketStatusObj();
+		obj.setId(ws.getId());
+		obj.setNaziv(ws.getNaziv().getValue());
+		obj.setOpis(ws.getOpis().getValue());
+		return obj;
+	}
+	
+	public static SupportTicketStatus supportTicketStatusObj2Ws(SupportTicketStatusObj obj) {
+		com.fleamart.supportticket.ws.ObjectFactory of = new com.fleamart.supportticket.ws.ObjectFactory();
+		SupportTicketStatus ws = new SupportTicketStatus();
+		ws.setId(obj.getId());
+		ws.setNaziv(of.createSupportTicketStatusNaziv(obj.getNaziv()));
+		ws.setOpis(of.createSupportTicketStatusOpis(obj.getOpis()));
+		return ws;
 	}
 }

@@ -9,14 +9,13 @@
 	<ui:composition template="/shared/layout.xhtml">
 		<ui:param name="title" value="Fleamart" />
 		<ui:define name="content">
-			<h1>Ustvari kategorijo</h1>
+			<h1>Ustvari kategorijo naloga</h1>
 			<h:form id="dodajKategorijo" styleClass="form-horizontal">
 				<table width="100%">
 					<tbody>
 						<tr>
 							<td><h:outputLabel value="Naziv kategorije" for="naziv"/></td>
-							<td><h:inputText styleClass="span8" id="naziv" value="#{kat.kategorijaCreate.naziv}" requiredMessage="Obvezno polje" required="true"/></td>
-							<td><h:message for="naziv"/></td>
+							<td><h:inputText styleClass="span8" id="naziv" value="#{supportBean.kategorijaCreate.naziv}" requiredMessage="Obvezno polje" required="true"/></td>
 						</tr>
 						<tr>
 							<td></td>
@@ -25,7 +24,7 @@
 					</tbody>
 				</table>
 				<br />
-				<h:commandButton class="btn btn-primary" action="#{kat.createKategorija}" value="Dodaj kategorijo"/>
+				<h:commandButton class="btn btn-primary" action="#{supportBean.createKategorija}" value="Dodaj kategorijo"/>
 			</h:form>
 		</ui:define>
 	</ui:composition>
