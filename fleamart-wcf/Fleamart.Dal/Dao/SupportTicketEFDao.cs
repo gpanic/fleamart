@@ -36,12 +36,12 @@ namespace Fleamart.Dal.Dao
                 if (entity != null)
                 {
                     SupportTicketEF ef = Mapper.Map<SupportTicket, SupportTicketEF>(entity);
-                    if (ef.Avtor == null || ef.Kategorija == null || ef.Status == null) return false;
+                    if (ef.Avtor == null || ef.SupportTicketKategorija == null || ef.SupportTicketStatus == null) return false;
                     ef.Komentarji = null;
                     ef.Tehnik = null;
                     db.Uporabniki.Attach(ef.Avtor);
-                    db.SupportTicketKategorije.Attach(ef.Kategorija);
-                    db.SupportTicketStatusi.Attach(ef.Status);
+                    db.SupportTicketKategorije.Attach(ef.SupportTicketKategorija);
+                    db.SupportTicketStatusi.Attach(ef.SupportTicketStatus);
                     db.SupportTickets.Add(ef);
                     db.SaveChanges();
                     return true;
@@ -55,8 +55,8 @@ namespace Fleamart.Dal.Dao
             using (FleamartContext db = new FleamartContext())
             {
                 SupportTicketEF ef = db.SupportTickets
-                    .Include("Status")
-                    .Include("Kategorija")
+                    .Include("SupportTicketStatus")
+                    .Include("SupportTicketKategorija")
                     .Include("Avtor")
                     .Include("Tehnik")
                     .Include("Komentarji")
@@ -72,7 +72,7 @@ namespace Fleamart.Dal.Dao
                 if (entity != null)
                 {
                     SupportTicketEF ef = Mapper.Map<SupportTicket, SupportTicketEF>(entity);
-                    if (ef.Avtor == null || ef.Kategorija == null || ef.Status == null) return false;
+                    if (ef.Avtor == null || ef.SupportTicketKategorija == null || ef.SupportTicketStatus == null) return false;
                     db.SupportTickets.Attach(ef);
                     db.Entry(ef).State = EntityState.Modified;
                     db.SaveChanges();
@@ -102,8 +102,8 @@ namespace Fleamart.Dal.Dao
             using (FleamartContext db = new FleamartContext())
             {
                 List<SupportTicketEF> efList = db.SupportTickets
-                    .Include("Status")
-                    .Include("Kategorija")
+                    .Include("SupportTicketStatus")
+                    .Include("SupportTicketKategorija")
                     .Include("Avtor")
                     .Include("Tehnik")
                     .Include("Komentarji")

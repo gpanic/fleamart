@@ -28,7 +28,7 @@ namespace Fleamart.Contracts.Service
 
         [OperationContract]
         bool CreateSupportTicketKategorija(SupportTicketKategorija k);
-        
+
         [OperationContract]
         bool DeleteSupportTicketKategorija(int id);
 
@@ -46,7 +46,7 @@ namespace Fleamart.Contracts.Service
 
         [OperationContract]
         bool CreateSupportTicketKomentar(SupportTicketKomentar k);
-        
+
         [OperationContract]
         bool UpdateSupportTicketKomentar(SupportTicketKomentar k);
 

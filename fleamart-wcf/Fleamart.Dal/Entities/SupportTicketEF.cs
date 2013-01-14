@@ -14,11 +14,11 @@ namespace Fleamart.Dal.Entities
         public DateTime? CasUstvarjen { get; set; }
         public DateTime? CasZaprt { get; set; }
 
-        public int StatusId { get; set; }
-        public virtual SupportTicketStatusEF Status { get; set; }
+        public int SupportTicketStatusId { get; set; }
+        public virtual SupportTicketStatusEF SupportTicketStatus { get; set; }
 
-        public int KategorijaId { get; set; }
-        public virtual SupportTicketKategorijaEF Kategorija { get; set; }
+        public int SupportTicketKategorijaId { get; set; }
+        public virtual SupportTicketKategorijaEF SupportTicketKategorija { get; set; }
 
         public int? AvtorId { get; set; }
         public virtual UporabnikEF Avtor { get; set; }

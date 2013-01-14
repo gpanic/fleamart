@@ -12,7 +12,7 @@ namespace Fleamart.Contracts.Data
     {
         [DataMember]
         public int Id { get; set; }
-        
+
         [DataMember]
         public string Naziv { get; set; }
     }

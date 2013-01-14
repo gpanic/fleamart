@@ -26,10 +26,10 @@ namespace Fleamart.Contracts.Data
         public DateTime? CasZaprt { get; set; }
 
         [DataMember]
-        public SupportTicketStatus Status { get; set; }
+        public SupportTicketStatus SupportTicketStatus { get; set; }
 
         [DataMember]
-        public SupportTicketKategorija Kategorija { get; set; }
+        public SupportTicketKategorija SupportTicketKategorija { get; set; }
 
         [DataMember]
         public Uporabnik Avtor { get; set; }
