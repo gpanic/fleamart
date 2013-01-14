@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SupportTicketService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:1691/SupportTicketService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:1691/SupportTicketService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:1691/SupportTicketService.svc?xsd=xsd2" namespace="http//www.fleamart.com/" />
+      <xsd:import schemaLocation="http://localhost:1691/SupportTicketService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISupportTicketService_CreateSupportTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSupportTicket" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_CreateSupportTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSupportTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_ReadSupportTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadSupportTicket" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_ReadSupportTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadSupportTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_UpdateSupportTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSupportTicket" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_UpdateSupportTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSupportTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_DeleteSupportTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSupportTicket" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_DeleteSupportTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSupportTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_ListSupportTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListSupportTicket" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_ListSupportTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListSupportTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_CreateSupportTicketKategorija_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSupportTicketKategorija" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_CreateSupportTicketKategorija_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSupportTicketKategorijaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_DeleteSupportTicketKategorija_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSupportTicketKategorija" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_DeleteSupportTicketKategorija_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSupportTicketKategorijaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_ListSupportTicketKategorija_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListSupportTicketKategorija" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_ListSupportTicketKategorija_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListSupportTicketKategorijaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_CreateSupportTicketStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSupportTicketStatus" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_CreateSupportTicketStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSupportTicketStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_DeleteSupportTicketStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSupportTicketStatus" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_DeleteSupportTicketStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSupportTicketStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_ListSupportTicketStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListSupportTicketStatus" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_ListSupportTicketStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListSupportTicketStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_CreateSupportTicketKomentar_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSupportTicketKomentar" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_CreateSupportTicketKomentar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSupportTicketKomentarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_UpdateSupportTicketKomentar_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSupportTicketKomentar" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_UpdateSupportTicketKomentar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSupportTicketKomentarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_DeleteSupportTicketKomentar_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSupportTicketKomentar" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_DeleteSupportTicketKomentar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSupportTicketKomentarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_ListSupportTicketKomentar_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListSupportTicketKomentar" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_ListSupportTicketKomentar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListSupportTicketKomentarResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISupportTicketService">
+    <wsdl:operation name="CreateSupportTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/CreateSupportTicket" message="tns:ISupportTicketService_CreateSupportTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/CreateSupportTicketResponse" message="tns:ISupportTicketService_CreateSupportTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadSupportTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/ReadSupportTicket" message="tns:ISupportTicketService_ReadSupportTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/ReadSupportTicketResponse" message="tns:ISupportTicketService_ReadSupportTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSupportTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/UpdateSupportTicket" message="tns:ISupportTicketService_UpdateSupportTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/UpdateSupportTicketResponse" message="tns:ISupportTicketService_UpdateSupportTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSupportTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/DeleteSupportTicket" message="tns:ISupportTicketService_DeleteSupportTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/DeleteSupportTicketResponse" message="tns:ISupportTicketService_DeleteSupportTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListSupportTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/ListSupportTicket" message="tns:ISupportTicketService_ListSupportTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/ListSupportTicketResponse" message="tns:ISupportTicketService_ListSupportTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSupportTicketKategorija">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/CreateSupportTicketKategorija" message="tns:ISupportTicketService_CreateSupportTicketKategorija_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/CreateSupportTicketKategorijaResponse" message="tns:ISupportTicketService_CreateSupportTicketKategorija_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSupportTicketKategorija">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/DeleteSupportTicketKategorija" message="tns:ISupportTicketService_DeleteSupportTicketKategorija_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/DeleteSupportTicketKategorijaResponse" message="tns:ISupportTicketService_DeleteSupportTicketKategorija_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListSupportTicketKategorija">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/ListSupportTicketKategorija" message="tns:ISupportTicketService_ListSupportTicketKategorija_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/ListSupportTicketKategorijaResponse" message="tns:ISupportTicketService_ListSupportTicketKategorija_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSupportTicketStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/CreateSupportTicketStatus" message="tns:ISupportTicketService_CreateSupportTicketStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/CreateSupportTicketStatusResponse" message="tns:ISupportTicketService_CreateSupportTicketStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSupportTicketStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/DeleteSupportTicketStatus" message="tns:ISupportTicketService_DeleteSupportTicketStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/DeleteSupportTicketStatusResponse" message="tns:ISupportTicketService_DeleteSupportTicketStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListSupportTicketStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/ListSupportTicketStatus" message="tns:ISupportTicketService_ListSupportTicketStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/ListSupportTicketStatusResponse" message="tns:ISupportTicketService_ListSupportTicketStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSupportTicketKomentar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/CreateSupportTicketKomentar" message="tns:ISupportTicketService_CreateSupportTicketKomentar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/CreateSupportTicketKomentarResponse" message="tns:ISupportTicketService_CreateSupportTicketKomentar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSupportTicketKomentar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/UpdateSupportTicketKomentar" message="tns:ISupportTicketService_UpdateSupportTicketKomentar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/UpdateSupportTicketKomentarResponse" message="tns:ISupportTicketService_UpdateSupportTicketKomentar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSupportTicketKomentar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/DeleteSupportTicketKomentar" message="tns:ISupportTicketService_DeleteSupportTicketKomentar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/DeleteSupportTicketKomentarResponse" message="tns:ISupportTicketService_DeleteSupportTicketKomentar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListSupportTicketKomentar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/ListSupportTicketKomentar" message="tns:ISupportTicketService_ListSupportTicketKomentar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/ListSupportTicketKomentarResponse" message="tns:ISupportTicketService_ListSupportTicketKomentar_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISupportTicketService" type="tns:ISupportTicketService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateSupportTicket">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/CreateSupportTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadSupportTicket">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/ReadSupportTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSupportTicket">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/UpdateSupportTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSupportTicket">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/DeleteSupportTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListSupportTicket">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/ListSupportTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSupportTicketKategorija">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/CreateSupportTicketKategorija" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSupportTicketKategorija">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/DeleteSupportTicketKategorija" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListSupportTicketKategorija">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/ListSupportTicketKategorija" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSupportTicketStatus">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/CreateSupportTicketStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSupportTicketStatus">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/DeleteSupportTicketStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListSupportTicketStatus">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/ListSupportTicketStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSupportTicketKomentar">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/CreateSupportTicketKomentar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSupportTicketKomentar">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/UpdateSupportTicketKomentar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSupportTicketKomentar">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/DeleteSupportTicketKomentar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListSupportTicketKomentar">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/ListSupportTicketKomentar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SupportTicketService">
+    <wsdl:port name="BasicHttpBinding_ISupportTicketService" binding="tns:BasicHttpBinding_ISupportTicketService">
+      <soap:address location="http://localhost:1691/SupportTicketService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

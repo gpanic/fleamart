@@ -1,4 +1,5 @@
 ﻿using Fleamart.TestClient.FleamartServiceReference;
+using Fleamart.TestClient.SupportTicketService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,6 @@ namespace Fleamart.TestClient
             string response = client.TestOperation();
             Console.WriteLine(response);
             Console.ReadLine();
-
         }
     }
 }

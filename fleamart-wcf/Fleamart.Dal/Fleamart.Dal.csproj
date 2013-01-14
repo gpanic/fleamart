@@ -56,6 +56,10 @@
     <Compile Include="Dao\OcenaEFDao.cs" />
     <Compile Include="Dao\OglasEFDao.cs" />
     <Compile Include="Dao\PonudbaEFDao.cs" />
+    <Compile Include="Dao\SupportTicketEFDao.cs" />
+    <Compile Include="Dao\SupportTicketKategorijaEFDao.cs" />
+    <Compile Include="Dao\SupportTicketKomentarEFDao.cs" />
+    <Compile Include="Dao\SupportTicketStatusEFDao.cs" />
     <Compile Include="Dao\PrivatnoSporociloDao.cs" />
     <Compile Include="Dao\SeznamZeljaEFDao.cs" />
     <Compile Include="Dao\UporabnikEFDao.cs" />
@@ -71,8 +75,16 @@
     <Compile Include="Entities\KarticniSistemEF.cs" />
     <Compile Include="Entities\PrivatnoSporociloEF.cs" />
     <Compile Include="Entities\SeznamZeljaEF.cs" />
+    <Compile Include="Entities\SupportTicketEF.cs" />
+    <Compile Include="Entities\SupportTicketKategorijaEF.cs" />
+    <Compile Include="Entities\SupportTicketKomentarEF.cs" />
+    <Compile Include="Entities\SupportTicketStatusEF.cs" />
     <Compile Include="Entities\UporabnikEF.cs" />
     <Compile Include="FleamartContext.cs" />
+    <Compile Include="Migrations\201301141751202_Initial.cs" />
+    <Compile Include="Migrations\201301141751202_Initial.Designer.cs">
+      <DependentUpon>201301141751202_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -85,6 +97,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201301141751202_Initial.resx">
+      <DependentUpon>201301141751202_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

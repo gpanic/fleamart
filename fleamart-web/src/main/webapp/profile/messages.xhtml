@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:metadata>
+	<f:event listener="#{loginBean.checkIfLoggedIn}" type="preRenderView"></f:event>
+	<f:event
+		listener="#{pmBean.setPrejetaSporocilaPrijavljenegaUporabnika}"
+		type="preRenderView"></f:event>
+</f:metadata>
+<h:body>
+	<ui:composition template="/shared/layout.xhtml">
+		<ui:param name="title" value="Fleamart" />
+		<ui:define name="content">
+			<h1>Prejeta privatna sporočila</h1>
+			<h4>
+				Število neprebranih sporočil:
+				<h:outputText value="#{pmBean.neprebranih}" />
+			</h4>
+
+			<h:panelGroup layout="block" styleClass="seznamSpor">
+				<ui:repeat var="sporocilo" value="#{pmBean.prejetaSporocila}">
+					<h:panelGroup layout="block" styleClass="posSpor">
+						<h:panelGroup layout="block" styleClass="posiljatelj">
+							<i class="icon-envelope"></i>&nbsp; <b>Pošiljatelj </b> - <h:outputText
+								value="#{sporocilo.posiljatelj.upime}"></h:outputText>
+						</h:panelGroup>
+						<h:panelGroup layout="block" styleClass="datumSpor">
+							<h:outputText value="#{sporocilo.cas.time}">
+								<f:convertDateTime pattern="dd.MM.yyyy 'ob' HH:mm" />
+							</h:outputText>
+						</h:panelGroup>
+						<h:panelGroup styleClass="vsebina" layout="block">
+							<h:outputText value="#{sporocilo.sporocilo}" />
+						</h:panelGroup>
+						<h:panelGroup styleClass="pokaziskrij" layout="block">
+							<h:outputLink styleClass="ps" value="#">Pokaži/Skrij</h:outputLink>
+						</h:panelGroup>
+						<h:panelGroup styleClass="hideForm">
+							<h:form>
+								<h:commandButton>
+									<f:param name="sporocilo" value="#{sporocilo.id}"></f:param>
+									<f:ajax listener="#{pmBean.oznaciKotPrebrano}" execute="@this"></f:ajax>
+								</h:commandButton>
+							</h:form>
+						</h:panelGroup>
+					</h:panelGroup>
+				</ui:repeat>
+			</h:panelGroup>
+
+
+			<script>
+				$(function() {
+					$(".ps").click(
+							function() {
+								$(this).parents("div.posSpor").find(
+										"div.vsebina").slideToggle();
+								$(this).parents("div.posSpor").find("form input:submit")
+										.trigger('click');
+								return false;
+							});
+				});
+			</script>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

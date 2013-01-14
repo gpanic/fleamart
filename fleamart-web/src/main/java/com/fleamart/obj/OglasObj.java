@@ -24,7 +24,7 @@ public class OglasObj  implements Serializable{
     private Integer statusNakupa;
     private UporabnikObj avtor;
     private UporabnikObj kupec;
-    private List<KomentarObj> komentarji;
+    private List<KomentarObj> komentarji = new ArrayList<>();
     private KategorijaObj kategorija;
 
     public OglasObj() {

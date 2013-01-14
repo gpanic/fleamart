@@ -16,7 +16,10 @@ namespace Fleamart.DalTest
         {
             using (var db = new FleamartContext())
             {
-                db.Database.Initialize(true);
+                //db.Database.Initialize(true);
+                SupportTicketEFDao dao = new SupportTicketEFDao();
+                //dao.Create(new SupportTicket { Avtor = new Uporabnik { Id = 1 }, Kategorija = new SupportTicketKategorija { Id = 1 }, Naslov = "naslov", Status = new SupportTicketStatus { Id = 1 }, Vsebina = "vsebina" });
+                //Console.WriteLine(dao.Update(new SupportTicket {Id=2, Kategorija = new SupportTicketKategorija { Id = 1 }, Status = new SupportTicketStatus { Id = 1 }, Vsebina = "s343434s" }));
                 Console.WriteLine("DATABASE INITIALIZED");
                 Console.ReadLine();
             }

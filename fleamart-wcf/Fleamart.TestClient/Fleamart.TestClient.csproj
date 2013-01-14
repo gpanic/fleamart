@@ -50,6 +50,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\SupportTicketService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -60,12 +65,32 @@
     <None Include="Service References\FleamartServiceReference\FleamartService1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\SupportTicketService\Fleamart.TestClient.SupportTicketService.SupportTicket.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SupportTicketService\Fleamart.TestClient.SupportTicketService.SupportTicketStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SupportTicketService\SupportTicketService.wsdl" />
+    <None Include="Service References\SupportTicketService\SupportTicketService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SupportTicketService\SupportTicketService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SupportTicketService\SupportTicketService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SupportTicketService\SupportTicketService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\FleamartServiceReference\" />
+    <WCFMetadataStorage Include="Service References\SupportTicketService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\FleamartServiceReference\configuration91.svcinfo" />
@@ -75,6 +100,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\FleamartServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SupportTicketService\SupportTicketService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SupportTicketService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SupportTicketService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SupportTicketService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

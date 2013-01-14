@@ -32,6 +32,9 @@ namespace Fleamart.Dal.Dao
 
             Mapper.CreateMap<Naslov, NaslovEF>();
             Mapper.CreateMap<NaslovEF, Naslov>();
+
+            Mapper.CreateMap<PrivatnoSporocilo, PrivatnoSporociloEF>();
+            Mapper.CreateMap<PrivatnoSporociloEF, PrivatnoSporocilo>();
         }
 
         public bool Create(Oglas entity)
@@ -58,7 +61,7 @@ namespace Fleamart.Dal.Dao
         {
             using (FleamartContext db = new FleamartContext())
             {
-                var query = from x in db.Oglasi.Include("Avtor").Include("Kategorija")
+                var query = from x in db.Oglasi.Include("Avtor").Include("Kategorija").Include("Komentarji")
                             where x.Id == id
                             select x;
                 if (query.Count() != 0)
@@ -98,10 +101,23 @@ namespace Fleamart.Dal.Dao
                 if (entity != null)
                 {
                     OglasEF ef = Mapper.Map<Oglas, OglasEF>(entity);
-                    db.Oglasi.Attach(ef);
-                    db.Entry(ef).State = EntityState.Modified;
+                    OglasEF efInDb = db.Oglasi.Include("Komentarji").FirstOrDefault(x => x.Id == entity.Id);
+
+                    if (ef.Komentarji.Count() > efInDb.Komentarji.Count())
+                    {
+                        KomentarEF komef = ef.Komentarji[ef.Komentarji.Count() - 1];
+                        db.Komentarji.Attach(komef);
+                        if (efInDb.Komentarji == null)
+                            efInDb.Komentarji = new List<KomentarEF>();
+                        efInDb.Komentarji.Add(komef);
+                        db.Entry(komef).State = EntityState.Added;
+                    }
+                    db.Entry(efInDb).CurrentValues.SetValues(ef);
+
+                    db.Entry(efInDb).State = EntityState.Modified;
                     db.SaveChanges();
                     return true;
+
                 }
                 else
                 {
@@ -169,13 +185,14 @@ namespace Fleamart.Dal.Dao
                 List<OglasEF> oglasi_ef = query.ToList();
                 List<Oglas> oglasi = new List<Oglas>();
 
-                foreach(OglasEF oef in oglasi_ef) {
+                foreach (OglasEF oef in oglasi_ef)
+                {
                     oglasi.Add(Mapper.Map<OglasEF, Oglas>(oef));
                 }
                 return oglasi;
-			}
-		}
-		
+            }
+        }
+
         public List<Oglas> List(int idAvtor, int? status, int? statusNakupa)
         {
             using (FleamartContext db = new FleamartContext())

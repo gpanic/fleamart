@@ -51,6 +51,10 @@
     <Compile Include="Data\Ponudba.cs" />
     <Compile Include="Data\PrivatnoSporocilo.cs" />
     <Compile Include="Data\SeznamZelja.cs" />
+    <Compile Include="Data\SupportTicket.cs" />
+    <Compile Include="Data\SupportTicketKategorija.cs" />
+    <Compile Include="Data\SupportTicketKomentar.cs" />
+    <Compile Include="Data\SupportTicketStatus.cs" />
     <Compile Include="Data\Uporabnik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\IFleamartService.cs" />
@@ -59,6 +63,7 @@
     <Compile Include="Service\IOglasService.cs" />
     <Compile Include="Service\IPrivatnoSporociloService.cs" />
     <Compile Include="Service\ISeznamZeljaService.cs" />
+    <Compile Include="Service\ISupportTicketService.cs" />
     <Compile Include="Service\IUporabnikService.cs" />
     <Compile Include="Service\IOcenaService.cs" />
   </ItemGroup>

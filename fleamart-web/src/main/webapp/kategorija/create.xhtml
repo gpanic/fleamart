@@ -14,9 +14,13 @@
 				<table width="100%">
 					<tbody>
 						<tr>
-							<td><h:outputLabel value="Naziv kategorije"/></td>
+							<td><h:outputLabel value="Naziv kategorije" for="naziv"/></td>
 							<td><h:inputText styleClass="span8" id="naziv" value="#{kat.kategorijaCreate.naziv}" requiredMessage="Obvezno polje" required="true"/></td>
 							<td><h:message for="naziv"/></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><h:message for="naziv"/>&nbsp;</td>
 						</tr>
 					</tbody>
 				</table>

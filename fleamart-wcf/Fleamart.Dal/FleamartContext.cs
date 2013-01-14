@@ -23,10 +23,16 @@ namespace Fleamart.Dal
         public DbSet<PrivatnoSporociloEF> PrivatnaSporocila { get; set; }
         public DbSet<SeznamZeljaEF> SeznamZelja { get; set; }
         public DbSet<UporabnikEF> Uporabniki { get; set; }
+        public DbSet<SupportTicketEF> SupportTickets { get; set; }
+        public DbSet<SupportTicketStatusEF> SupportTicketStatusi { get; set; }
+        public DbSet<SupportTicketKomentarEF> SupportTicketKomentarji { get; set; }
+        public DbSet<SupportTicketKategorijaEF> SupportTicketKategorije { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder mb)
         {
-            mb.Entity<UporabnikEF>().HasMany(x => x.PrivatnaSporocila).WithRequired(i => i.Prejemnik).WillCascadeOnDelete(false);   
+            mb.Entity<SupportTicketEF>().HasOptional(x => x.Avtor).WithMany().HasForeignKey(x => x.AvtorId).WillCascadeOnDelete(false);
+            mb.Entity<SupportTicketEF>().HasOptional(x => x.Tehnik).WithMany().HasForeignKey(x => x.TehnikId).WillCascadeOnDelete(false);
+            mb.Entity<UporabnikEF>().HasMany(x => x.PrivatnaSporocila).WithRequired(i => i.Prejemnik).WillCascadeOnDelete(false);
         }
     }
 }

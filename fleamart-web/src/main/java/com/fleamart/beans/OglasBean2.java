@@ -10,8 +10,10 @@ import com.fleamart.kategorija.ws.Kategorija;
 import com.fleamart.kategorija.ws.KategorijeService;
 import com.fleamart.mail.MailHelper;
 import com.fleamart.obj.KategorijaObj;
+import com.fleamart.obj.KomentarObj;
 import com.fleamart.obj.OglasObj;
 import com.fleamart.obj.UporabnikObj;
+import com.fleamart.oglas.ws.Komentar;
 import com.fleamart.oglas.ws.ObjectFactory;
 import com.fleamart.oglas.ws.Oglas;
 import com.fleamart.oglas.ws.OglasService;
@@ -22,6 +24,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
@@ -47,9 +51,10 @@ public class OglasBean2 implements Serializable {
     @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
     private int readTab = 1;
-    
+    private String komentar;
     @ManagedProperty(value = "#{kosaricaBean}")
     private KosaricaBean kosaricaBean;
+    private ArrayList<KomentarObj> komentarjidesc;
 
     @PostConstruct
     public void init() {
@@ -64,10 +69,6 @@ public class OglasBean2 implements Serializable {
                 break;
             case "/oglas/listNakupi.xhtml":
                 initOglasListKupljeno();
-                break;
-            case "/oglas/create.xhtml":
-                if (loginBean.getIdUser() < 1)
-                    redirect("/login.xhtml");
                 break;
         }
     }
@@ -99,6 +100,22 @@ public class OglasBean2 implements Serializable {
 
     public void setKosaricaBean(KosaricaBean kosaricaBean) {
         this.kosaricaBean = kosaricaBean;
+    }
+
+    public String getKomentar() {
+        return komentar;
+    }
+
+    public void setKomentar(String komentar) {
+        this.komentar = komentar;
+    }
+
+    public ArrayList<KomentarObj> getKomentarjidesc() {
+        return komentarjidesc;
+    }
+
+    public void setKomentarjidesc(ArrayList<KomentarObj> komentarjidesc) {
+        this.komentarjidesc = komentarjidesc;
     }
 
     public void setLoginBean(LoginBean loginBean) {
@@ -168,21 +185,21 @@ public class OglasBean2 implements Serializable {
         oglas.setAvtor(u);
         oglas.setStatus(0);
         Oglas o = ConverterHelper.oglasObj2Ws(oglas);
-        
-		//SEND EMAILS
+
+        //SEND EMAILS
         KategorijeService ks = new KategorijeService();
         com.fleamart.kategorija.ws.Kategorija k = new com.fleamart.kategorija.ws.Kategorija();
         k.setId(o.getKategorija().getValue().getId());
         List<com.fleamart.kategorija.ws.Uporabnik> narocniki = ks.getBasicHttpBindingIKategorijaService().vrniNaroceneUporabnike(k).getUporabnik();
         String nazivKategorije = "";
         for (com.fleamart.kategorija.ws.Uporabnik up : narocniki) {
-        	System.out.println(o.getKategorija().getValue().getId());
-        	for(KategorijaObj ko : kategorije) {
-        		if(ko.getId() == o.getKategorija().getValue().getId()) {
-        			nazivKategorije = ko.getNaziv();
-        			break;
-        		}
-        	}
+            System.out.println(o.getKategorija().getValue().getId());
+            for (KategorijaObj ko : kategorije) {
+                if (ko.getId() == o.getKategorija().getValue().getId()) {
+                    nazivKategorije = ko.getNaziv();
+                    break;
+                }
+            }
 //        	MailHelper.sendCategoryReminder(nazivKategorije, up, o);
         }
 
@@ -214,6 +231,17 @@ public class OglasBean2 implements Serializable {
 
     public void initOglasRead() {
         readOglas(oglas.getId());
+        if (oglas.getKomentarji().size() > 0) {
+            komentarjidesc = (ArrayList<KomentarObj>) oglas.getKomentarji();
+            Comparator comparator = new Comparator<KomentarObj>() {
+                @Override
+                public int compare(KomentarObj o1, KomentarObj o2) {
+                    return (o1.getId() > o2.getId() ) ? -1: (o1.getId() < o2.getId()) ? 1:0 ;
+
+                }
+            };
+            Collections.sort(komentarjidesc, comparator);
+        }
     }
 
     public void initOglasListProdano() {
@@ -288,13 +316,13 @@ public class OglasBean2 implements Serializable {
         redirect("/oglas/read.xhtml?id=" + oglas.getId());
     }
 
-    public void nakup(){
-        for(Object[] o:kosaricaBean.getItems())
+    public void nakup() {
+        for (Object[] o : kosaricaBean.getItems())
             kupiOglas((int) o[0]);
         kosaricaBean.clearCart();
         redirect("/oglas/listNakupi.xhtml");
     }
-    
+
     public void kupiOglas(int idOglas) {
         OglasService client = new OglasService();
         Oglas o = client.getBasicHttpBindingIOglasService().readOglas(idOglas);
@@ -319,9 +347,22 @@ public class OglasBean2 implements Serializable {
             redirect("/oglas/listProdano.xhtml");
         }
     }
-    
-    public void ajaxReadMenjajView(int tab){
+
+    public void ajaxReadMenjajView(int tab) {
         readTab = tab;
+    }
+
+    public void dodajKomentar() {
+        UporabnikObj u = new UporabnikObj();
+        u.setId(loginBean.getIdUser());
+        KomentarObj k = new KomentarObj(komentar, new GregorianCalendar(), u);
+        oglas.getKomentarji().add(k);
+        System.out.println(oglas.getKomentarji());
+        Oglas o = ConverterHelper.oglasObj2Ws(oglas);
+        OglasService client = new OglasService();
+        boolean rezultat = client.getBasicHttpBindingIOglasService().updateOglas(o);
+        String out = (rezultat) ? "/oglas/read.xhtml?id=" + oglas.getId() + "&tab=2" : "fail";
+        redirect(out);
     }
         
 }
