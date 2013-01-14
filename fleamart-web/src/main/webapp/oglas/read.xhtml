@@ -5,60 +5,50 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <f:metadata>
+        <f:viewParam name="id" value="#{oglasBean2.oglas.id}" />
+        <f:viewParam name="tab" value="#{oglasBean2.readTab}" />
+        <f:event type="preRenderView" listener="#{oglasBean2.initOglasRead}"/>
+    </f:metadata>
     <h:head>
         <title>Fleamart - #{oglasBean2.oglas.naslov}</title>
     </h:head>
     <h:body>
         <ui:composition template="/shared/layout.xhtml">
             <ui:define name="content">
-                <f:metadata>
-                    <f:viewParam name="id" value="#{oglasBean2.oglas.id}" />
-                    <f:event type="preRenderView" listener="#{oglasBean2.initOglasRead}"/>
-                </f:metadata>
-                <h:form id="readoglasform">
-                    <ul class="nav nav-tabs">
-                        <li class="active">
-                            <h:commandLink id="linkoglas" value="Oglas" action="#{oglasBean2.ajaxReadMenjajView(1)}">
-                                <f:ajax render="oglas_vsebina"/>
-                            </h:commandLink>
-                        </li>
-                        <li>
-                            <h:commandLink id="linkkomentarji" value="Komentarji" action="#{oglasBean2.ajaxReadMenjajView(2)}">
-                                <f:ajax render="oglas_vsebina"/>
-                            </h:commandLink>
-                        </li>
-                    </ul>
-                    <h:panelGroup layout="block" id="oglas_vsebina">
-                        <ui:fragment rendered="#{oglasBean2.readTab == 1}">
-                            <ui:include src="readoglas.xhtml"/>
-                        </ui:fragment>
-                    </h:panelGroup> 
-                </h:form>
+                <ul class="nav nav-tabs">
+                    <li>
+                        <h:outputLink value="/fleamart-web/oglas/read.xhtml">
+                            <h:outputText value="Oglas" id="linkOglas"/>
+                            <f:param name="id" value="#{oglasBean2.oglas.id}"/>
+                            <f:param name="tab" value="1"/>
+                        </h:outputLink>
+                    </li>
+                    <li>
+                        <h:outputLink value="/fleamart-web/oglas/read.xhtml">
+                            <h:outputText value="Komentarji" id="linkKomentarji"/>
+                            <f:param name="id" value="#{oglasBean2.oglas.id}"/>
+                            <f:param name="tab" value="2"/>
+                        </h:outputLink>
+                    </li>
+                </ul>
+                <h:panelGroup layout="block" id="oglas_vsebina">
+                    <ui:fragment rendered="#{oglasBean2.readTab == 1}">
+                        <ui:include src="readoglas.xhtml"/>
+                    </ui:fragment>
+                    <ui:fragment rendered="#{oglasBean2.readTab == 2}">
+                        <ui:include src="comments.xhtml"/>
+                    </ui:fragment>
+                </h:panelGroup> 
                 <script type="text/javascript">
                     $(function(){
-                        $("#readoglasform\\:linkoglas,#readoglasform\\:linkkomentarji").click(function(){
-                            $(this).parent().addClass("active");
-                            if($(this).attr("id") == "readoglasform:linkkomentarji")
-                                $("#readoglasform\\:linkoglas").parent().removeClass("active");
-                            else
-                                $("#readoglasform\\:linkkomentarji").parent().removeClass("active");
-                            var galerija = '#{oglasBean2.oglas.slike.get(0)}';
-                            if(galerija != '')
-                                Galleria.run('#galleria');
+                        var tab = #{oglasBean2.readTab};
+                        if(tab == 2)
+                            $("#linkKomentarji").parent().parent().addClass("active");
+                        else
+                            $("#linkOglas").parent().parent().addClass("active");
                         });
-                    });
                 </script>
-
-                <script type="text/javascript" src="/fleamart-web/js/galleria/galleria-1.2.8.min.js"></script>
-                <ui:fragment rendered="#{oglasBean2.oglas.slike.get(0) != ''}">
-                    <script type="text/javascript">
-                        // Load the classic theme
-                        Galleria.loadTheme('/fleamart-web/js/galleria/galleria.classic.min.js');
-                        //
-                        // Initialize Galleria
-                        Galleria.run('#galleria');
-                    </script>
-                </ui:fragment>
             </ui:define>
         </ui:composition>
     </h:body>

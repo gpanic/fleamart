@@ -64,7 +64,7 @@ public class MailHelper {
 		StringBuilder text;
 		text = new StringBuilder();
 		text.append("<p>Dragi(a) "+recipient.getIme().getValue()+",</p>");
-		text.append("<p>želimo vas obvestiti, da je v kategoriji "+category+" bil dodan nov oglas.</p>");
+		text.append("<p>Å½elimo vas obvestiti, da je v kategoriji "+category+" bil dodan nov oglas.</p>");
 		text.append("<p>Ime oglasa: "+ad.getNaslov()+"<br />");
 		text.append("Opis oglasa: "+ad.getOpis()+"<br />");
 		if(ad.getSlike().getValue() != null) {

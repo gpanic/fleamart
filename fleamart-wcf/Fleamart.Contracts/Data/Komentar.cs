@@ -12,13 +12,13 @@ namespace Fleamart.Contracts.Data
         [DataMember]
         public int Id { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public string Sporocilo { get; set; }
 
         [DataMember]
         public DateTime Cas { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public Uporabnik Avtor { get; set; }
     }
 }
