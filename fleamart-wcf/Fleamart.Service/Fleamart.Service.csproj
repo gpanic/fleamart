@@ -66,6 +66,7 @@
     <Content Include="PonudbaService.svc" />
     <Content Include="PrivatnoSporociloService.svc" />
     <Content Include="SeznamZeljaService.svc" />
+    <Content Include="SupportTicketService.svc" />
     <Content Include="UporabnikService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -93,6 +94,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeznamZeljaService.svc.cs">
       <DependentUpon>SeznamZeljaService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="SupportTicketService.svc.cs">
+      <DependentUpon>SupportTicketService.svc</DependentUpon>
     </Compile>
     <Compile Include="UporabnikService.svc.cs">
       <DependentUpon>UporabnikService.svc</DependentUpon>
@@ -135,7 +139,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>12895</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:1691/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

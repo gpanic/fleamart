@@ -36,6 +36,7 @@ namespace Fleamart.Dal.Dao
                 if (entity != null)
                 {
                     SupportTicketEF ef = Mapper.Map<SupportTicket, SupportTicketEF>(entity);
+                    if (ef.Avtor == null || ef.Kategorija == null || ef.Status == null) return false;
                     ef.Komentarji = null;
                     ef.Tehnik = null;
                     db.Uporabniki.Attach(ef.Avtor);
@@ -71,6 +72,7 @@ namespace Fleamart.Dal.Dao
                 if (entity != null)
                 {
                     SupportTicketEF ef = Mapper.Map<SupportTicket, SupportTicketEF>(entity);
+                    if (ef.Avtor == null || ef.Kategorija == null || ef.Status == null) return false;
                     db.SupportTickets.Attach(ef);
                     db.Entry(ef).State = EntityState.Modified;
                     db.SaveChanges();

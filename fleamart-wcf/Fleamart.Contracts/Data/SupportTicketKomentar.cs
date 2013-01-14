@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Fleamart.Contracts.Data
 {
-    [DataContract(Name = "SupportTicketStatus", Namespace = "http//www.fleamart.com/")]
+    [DataContract(Name = "SupportTicketKomentar", Namespace = "http//www.fleamart.com/")]
     public class SupportTicketKomentar
     {
         [DataMember]

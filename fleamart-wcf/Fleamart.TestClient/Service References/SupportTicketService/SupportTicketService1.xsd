@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1691/SupportTicketService.svc?xsd=xsd2" namespace="http//www.fleamart.com/" />
+  <xs:element name="CreateSupportTicket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http//www.fleamart.com/" minOccurs="0" name="t" nillable="true" type="q1:SupportTicket" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateSupportTicketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateSupportTicketResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadSupportTicket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadSupportTicketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http//www.fleamart.com/" minOccurs="0" name="ReadSupportTicketResult" nillable="true" type="q2:SupportTicket" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSupportTicket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http//www.fleamart.com/" minOccurs="0" name="t" nillable="true" type="q3:SupportTicket" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSupportTicketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateSupportTicketResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSupportTicket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSupportTicketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteSupportTicketResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListSupportTicket">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListSupportTicketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http//www.fleamart.com/" minOccurs="0" name="ListSupportTicketResult" nillable="true" type="q4:ArrayOfSupportTicket" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateSupportTicketKategorija">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http//www.fleamart.com/" minOccurs="0" name="k" nillable="true" type="q5:SupportTicketStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateSupportTicketKategorijaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateSupportTicketKategorijaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSupportTicketKategorija">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSupportTicketKategorijaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteSupportTicketKategorijaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListSupportTicketKategorija">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListSupportTicketKategorijaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http//www.fleamart.com/" minOccurs="0" name="ListSupportTicketKategorijaResult" nillable="true" type="q6:ArrayOfSupportTicketStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateSupportTicketStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http//www.fleamart.com/" minOccurs="0" name="s" nillable="true" type="q7:SupportTicketStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateSupportTicketStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateSupportTicketStatusResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSupportTicketStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSupportTicketStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteSupportTicketStatusResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListSupportTicketStatus">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListSupportTicketStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http//www.fleamart.com/" minOccurs="0" name="ListSupportTicketStatusResult" nillable="true" type="q8:ArrayOfSupportTicketStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateSupportTicketKomentar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http//www.fleamart.com/" minOccurs="0" name="k" nillable="true" type="q9:SupportTicketStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateSupportTicketKomentarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateSupportTicketKomentarResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSupportTicketKomentar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http//www.fleamart.com/" minOccurs="0" name="k" nillable="true" type="q10:SupportTicketStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSupportTicketKomentarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateSupportTicketKomentarResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSupportTicketKomentar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSupportTicketKomentarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteSupportTicketKomentarResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListSupportTicketKomentar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="supportTicketId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListSupportTicketKomentarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http//www.fleamart.com/" minOccurs="0" name="ListSupportTicketKomentarResult" nillable="true" type="q11:ArrayOfSupportTicketStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -63,6 +63,7 @@
     <Compile Include="Service\IOglasService.cs" />
     <Compile Include="Service\IPrivatnoSporociloService.cs" />
     <Compile Include="Service\ISeznamZeljaService.cs" />
+    <Compile Include="Service\ISupportTicketService.cs" />
     <Compile Include="Service\IUporabnikService.cs" />
     <Compile Include="Service\IOcenaService.cs" />
   </ItemGroup>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http//www.fleamart.com/" elementFormDefault="qualified" targetNamespace="http//www.fleamart.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1691/SupportTicketService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:1691/SupportTicketService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="SupportTicket">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Avtor" nillable="true" type="tns:Uporabnik" />
+      <xs:element minOccurs="0" name="CasUstvarjen" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CasZaprt" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Kategorija" nillable="true" type="tns:SupportTicketStatus" />
+      <xs:element minOccurs="0" name="Komentarji" nillable="true" type="tns:ArrayOfSupportTicketStatus" />
+      <xs:element minOccurs="0" name="Naslov" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="tns:SupportTicketStatus" />
+      <xs:element minOccurs="0" name="Tehnik" nillable="true" type="tns:Uporabnik" />
+      <xs:element minOccurs="0" name="Vsebina" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SupportTicket" nillable="true" type="tns:SupportTicket" />
+  <xs:complexType name="Uporabnik">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Geslo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Ime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Naslov" nillable="true" type="tns:Naslov" />
+      <xs:element minOccurs="0" name="Priimek" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrivatnaSporocila" nillable="true" type="tns:ArrayOfPrivatnoSporocilo" />
+      <xs:element minOccurs="0" name="SeznamZelja" nillable="true" type="tns:ArrayOfSeznamZelja" />
+      <xs:element minOccurs="0" name="Telefon" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Upime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Vloga" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Uporabnik" nillable="true" type="tns:Uporabnik" />
+  <xs:complexType name="Naslov">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Drzava" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Obcina" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostnaStevilka" type="xs:int" />
+      <xs:element minOccurs="0" name="Ulica" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Naslov" nillable="true" type="tns:Naslov" />
+  <xs:complexType name="ArrayOfPrivatnoSporocilo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PrivatnoSporocilo" nillable="true" type="tns:PrivatnoSporocilo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPrivatnoSporocilo" nillable="true" type="tns:ArrayOfPrivatnoSporocilo" />
+  <xs:complexType name="PrivatnoSporocilo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cas" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Posiljatelj" nillable="true" type="tns:Uporabnik" />
+      <xs:element minOccurs="0" name="PosiljateljId" type="xs:int" />
+      <xs:element minOccurs="0" name="Prebrano" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Prejemnik" nillable="true" type="tns:Uporabnik" />
+      <xs:element minOccurs="0" name="PrejemnikId" type="xs:int" />
+      <xs:element minOccurs="0" name="PrivatnoSporociloId" type="xs:int" />
+      <xs:element minOccurs="0" name="Sporocilo" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="PrivatnoSporocilo" nillable="true" type="tns:PrivatnoSporocilo" />
+  <xs:complexType name="ArrayOfSeznamZelja">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SeznamZelja" nillable="true" type="tns:SeznamZelja" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeznamZelja" nillable="true" type="tns:ArrayOfSeznamZelja" />
+  <xs:complexType name="SeznamZelja">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Oglas" nillable="true" type="tns:Oglas" />
+      <xs:element minOccurs="0" name="Uporabnik" nillable="true" type="tns:Uporabnik" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeznamZelja" nillable="true" type="tns:SeznamZelja" />
+  <xs:complexType name="Oglas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Avkcija" type="xs:boolean" />
+      <xs:element name="Avtor" nillable="true" type="tns:Uporabnik" />
+      <xs:element minOccurs="0" name="CasDo" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CasOd" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CasSpremenjeno" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Cena" type="xs:double" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Kategorija" nillable="true" type="tns:Kategorija" />
+      <xs:element minOccurs="0" name="Komentarji" nillable="true" type="tns:ArrayOfKomentar" />
+      <xs:element minOccurs="0" name="Kupec" nillable="true" type="tns:Uporabnik" />
+      <xs:element name="Naslov" nillable="true" type="xs:string" />
+      <xs:element name="Opis" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ponudbe" nillable="true" type="tns:ArrayOfPonudba" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Slike" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="StatusNakupa" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ZadnjaCenaAvkcija" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Oglas" nillable="true" type="tns:Oglas" />
+  <xs:complexType name="Kategorija">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Naziv" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Kategorija" nillable="true" type="tns:Kategorija" />
+  <xs:complexType name="ArrayOfKomentar">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Komentar" nillable="true" type="tns:Komentar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKomentar" nillable="true" type="tns:ArrayOfKomentar" />
+  <xs:complexType name="Komentar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Avtor" nillable="true" type="tns:Uporabnik" />
+      <xs:element minOccurs="0" name="Cas" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Sporocilo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Komentar" nillable="true" type="tns:Komentar" />
+  <xs:complexType name="ArrayOfPonudba">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ponudba" nillable="true" type="tns:Ponudba" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPonudba" nillable="true" type="tns:ArrayOfPonudba" />
+  <xs:complexType name="Ponudba">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cas" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Oglas" nillable="true" type="tns:Oglas" />
+      <xs:element minOccurs="0" name="Uporabnik" nillable="true" type="tns:Uporabnik" />
+      <xs:element minOccurs="0" name="Znesek" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Ponudba" nillable="true" type="tns:Ponudba" />
+  <xs:complexType name="SupportTicketStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Naziv" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SupportTicketStatus" nillable="true" type="tns:SupportTicketStatus" />
+  <xs:complexType name="ArrayOfSupportTicketStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SupportTicketStatus" nillable="true" type="tns:SupportTicketStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSupportTicketStatus" nillable="true" type="tns:ArrayOfSupportTicketStatus" />
+  <xs:complexType name="ArrayOfSupportTicket">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SupportTicket" nillable="true" type="tns:SupportTicket" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSupportTicket" nillable="true" type="tns:ArrayOfSupportTicket" />
+</xs:schema>
