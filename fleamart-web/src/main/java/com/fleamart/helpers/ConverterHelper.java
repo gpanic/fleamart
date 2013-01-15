@@ -15,6 +15,7 @@ import com.fleamart.obj.PonudbaObj;
 import com.fleamart.obj.PrivatnoSporociloObj;
 import com.fleamart.obj.SeznamZeljaObj;
 import com.fleamart.obj.SupportTicketKategorijaObj;
+import com.fleamart.obj.SupportTicketObj;
 import com.fleamart.obj.SupportTicketStatusObj;
 import com.fleamart.obj.UporabnikObj;
 import com.fleamart.oglas.ws.ArrayOfKomentar;
@@ -26,6 +27,7 @@ import com.fleamart.oglas.ws.Ponudba;
 import com.fleamart.oglas.ws.Uporabnik;
 import com.fleamart.pm.ws.PrivatnoSporocilo;
 import com.fleamart.seznamZelja.ws.SeznamZelja;
+import com.fleamart.supportticket.ws.SupportTicket;
 import com.fleamart.supportticket.ws.SupportTicketKategorija;
 import com.fleamart.supportticket.ws.SupportTicketStatus;
 import com.fleamart.uporabnik.ws.ObjectFactory;
@@ -39,6 +41,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * 
@@ -302,6 +305,64 @@ public class ConverterHelper {
 		ws.setId(obj.getId());
 		ws.setNaziv(of.createSupportTicketStatusNaziv(obj.getNaziv()));
 		ws.setOpis(of.createSupportTicketStatusOpis(obj.getOpis()));
+		return ws;
+	}
+	
+	public static SupportTicketObj supportTicketWs2Obj(SupportTicket ws) {
+		SupportTicketObj obj = new SupportTicketObj();
+		obj.setId(ws.getId());
+		obj.setNaslov(ws.getNaslov().getValue());
+		obj.setVsebina(ws.getVsebina().getValue());
+		obj.setCasUstvarjen(ws.getCasUstvarjen().getValue().toGregorianCalendar());
+		obj.setCasZaprt(ws.getCasZaprt().getValue().toGregorianCalendar());
+		if(ws.getAvtor() != null) {
+			obj.setAvtor(supportTicketUporabnikWs2Obj(ws.getAvtor().getValue()));
+		}
+		if(ws.getTehnik() != null) {
+			obj.setTehnik(supportTicketUporabnikWs2Obj(ws.getTehnik().getValue()));
+		}
+		obj.setSupportTicketKategorija(supportTicketKategorijaWs2Obj(ws.getSupportTicketKategorija().getValue()));
+		obj.setSupportTicketStatus(supportTicketStatusWs2Obj(ws.getSupportTicketStatus().getValue()));
+		return obj;
+	}
+	
+	public static SupportTicket supportTicketObjt2Ws(SupportTicketObj obj) {
+		com.fleamart.supportticket.ws.ObjectFactory of = new com.fleamart.supportticket.ws.ObjectFactory();
+		SupportTicket ws = new SupportTicket();
+		ws.setId(obj.getId());
+		try {
+			if(obj.getCasUstvarjen() != null) {
+				ws.setCasUstvarjen(of.createSupportTicketCasUstvarjen(DatatypeFactory.newInstance().newXMLGregorianCalendar(obj.getCasUstvarjen())));
+			}
+			if(obj.getCasZaprt() != null) {
+				ws.setCasZaprt(of.createSupportTicketCasZaprt(DatatypeFactory.newInstance().newXMLGregorianCalendar(obj.getCasZaprt())));
+			}
+		} catch (DatatypeConfigurationException e) {
+			e.printStackTrace();
+		}
+		ws.setAvtor(of.createSupportTicketAvtor(supportTicketUporanikObj2Ws(obj.getAvtor())));
+		ws.setTehnik(of.createSupportTicketTehnik(supportTicketUporanikObj2Ws(obj.getTehnik())));
+		ws.setSupportTicketKategorija(of.createSupportTicketKategorija(supportTicketKategorijaObj2Ws(obj.getSupportTicketKategorija())));
+		ws.setSupportTicketStatus(of.createCreateSupportTicketStatusS(supportTicketStatusObj2Ws(obj.getSupportTicketStatus())));
+		ws.setNaslov(of.createSupportTicketNaslov(obj.getNaslov()));
+		ws.setVsebina(of.createSupportTicketVsebina(obj.getVsebina()));
+		return ws;
+	}
+	
+	private static UporabnikObj supportTicketUporabnikWs2Obj(com.fleamart.supportticket.ws.Uporabnik ws) {
+		UporabnikObj obj = new UporabnikObj();
+		obj.setId(ws.getId());
+		obj.setEmail(ws.getEmail().getValue());
+		obj.setIme(ws.getIme().getValue());
+		obj.setPriimek(ws.getPriimek().getValue());
+		obj.setUpime(ws.getUpime().getValue());
+		obj.setVloga(ws.getVloga());
+		return obj;
+	}
+	
+	private static com.fleamart.supportticket.ws.Uporabnik supportTicketUporanikObj2Ws(UporabnikObj obj) {
+		com.fleamart.supportticket.ws.Uporabnik ws = new com.fleamart.supportticket.ws.Uporabnik();
+		ws.setId(obj.getId());
 		return ws;
 	}
 }
