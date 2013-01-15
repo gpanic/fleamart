@@ -10,6 +10,7 @@
 	<f:event
 		listener="#{pmBean.setPrejetaSporocilaPrijavljenegaUporabnika}"
 		type="preRenderView"></f:event>
+	<f:viewParam name="info" value="#{pmBean.info}"></f:viewParam>
 </f:metadata>
 <h:body>
 	<ui:composition template="/shared/layout.xhtml">
@@ -21,6 +22,20 @@
 				<h:outputText value="#{pmBean.neprebranih}" />
 			</h4>
 
+			<h:panelGroup layout="block" styleClass="alertmessage"
+				rendered="#{pmBean.info == 'uspesno'}">
+				<h:panelGroup layout="block" styleClass="alert alert-info">
+					Vaše sporočilo je bilo uspešno poslano uporabniku!
+					<button type="button" class="close" data-dismiss="alert">×</button>
+				</h:panelGroup>
+			</h:panelGroup>
+			<h:panelGroup layout="block" styleClass="alertmessage"
+				rendered="#{pmBean.info == 'neuspesno'}">
+				<h:panelGroup layout="block" styleClass="alert alert-error">
+					Napaka! Sporočilo ni bilo poslano.
+					<button type="button" class="close" data-dismiss="alert">×</button>
+				</h:panelGroup>
+			</h:panelGroup>
 			<h:panelGroup layout="block" styleClass="seznamSpor">
 				<ui:repeat var="sporocilo" value="#{pmBean.prejetaSporocila}">
 					<h:panelGroup layout="block" styleClass="posSpor">
@@ -54,12 +69,13 @@
 
 			<script>
 				$(function() {
+					$(".alert").alert();
 					$(".ps").click(
 							function() {
 								$(this).parents("div.posSpor").find(
 										"div.vsebina").slideToggle();
-								$(this).parents("div.posSpor").find("form input:submit")
-										.trigger('click');
+								$(this).parents("div.posSpor").find(
+										"form input:submit").trigger('click');
 								return false;
 							});
 				});

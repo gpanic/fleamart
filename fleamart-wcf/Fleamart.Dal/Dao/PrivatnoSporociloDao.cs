@@ -85,7 +85,7 @@ namespace Fleamart.Dal.Dao
             using (FleamartContext db = new FleamartContext())
             {
                 db.Configuration.LazyLoadingEnabled = false;
-                List<PrivatnoSporociloEF> sporocila_ef = db.PrivatnaSporocila.Include("Posiljatelj").Where(x => x.Prejemnik.Id == Uporabnikid).ToList();
+                List<PrivatnoSporociloEF> sporocila_ef = db.PrivatnaSporocila.Include("Posiljatelj").Where(x => x.Prejemnik.Id == Uporabnikid).OrderByDescending(x => x.Id).ToList();
                 List<PrivatnoSporocilo> sporocila = (sporocila_ef != null) ? Mapper.Map<List<PrivatnoSporociloEF>,List<PrivatnoSporocilo>>(sporocila_ef) : null;
                 return sporocila;
             }
