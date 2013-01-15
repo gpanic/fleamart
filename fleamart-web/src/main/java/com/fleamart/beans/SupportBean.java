@@ -41,8 +41,9 @@ public class SupportBean implements Serializable {
     private SupportTicketStatusObj statusCreate;
     
     private List<SupportTicketObj> tickets;
-    private SupportTicketObj readTicket;
-    private int readTicketId;
+    private SupportTicketObj ticketRead;
+    private int ticketReadId;
+    private SupportTicketObj ticketCreate;
     private SupportTicketKomentarObj komentarCreate;
 
     public SupportBean() {
@@ -56,6 +57,7 @@ public class SupportBean implements Serializable {
 
         tickets = new ArrayList<>();
         komentarCreate = new SupportTicketKomentarObj();
+        ticketCreate = new SupportTicketObj();
 
         getKategorijeFromService();
         getStatusiFromService();
@@ -65,14 +67,6 @@ public class SupportBean implements Serializable {
     @PostConstruct
     public void init() {
         getTicketFromService();
-    }
-
-    public List<SupportTicketKategorijaObj> getKategorije() {
-        return kategorije;
-    }
-
-    public SupportTicketKategorijaObj getKategorijaCreate() {
-        return kategorijaCreate;
     }
 
     public void createKategorija() {
@@ -94,14 +88,6 @@ public class SupportBean implements Serializable {
         for (SupportTicketKategorija k : wsList) {
             kategorije.add(ConverterHelper.supportTicketKategorijaWs2Obj(k));
         }
-    }
-
-    public List<SupportTicketStatusObj> getStatusi() {
-        return statusi;
-    }
-
-    public SupportTicketStatusObj getStatusCreate() {
-        return statusCreate;
     }
 
     public void createStatus() {
@@ -138,32 +124,12 @@ public class SupportBean implements Serializable {
         }
     }
 
-    public SupportTicketObj getReadTicket() {
-        return readTicket;
-    }
-
-    public int getReadTicketId() {
-        return readTicketId;
-    }
-
-    public void setReadTicketId(int readTicketId) {
-        this.readTicketId = readTicketId;
-    }
-
-    public SupportTicketKomentarObj getKomentarCreate() {
-        return komentarCreate;
-    }
-
-    public void setKomentarCreate(SupportTicketKomentarObj komentarCreate) {
-        this.komentarCreate = komentarCreate;
-    }
-
     public void createTicketKomentar() {
         komentarCreate.setCas(new GregorianCalendar());
         UporabnikObj avtor = new UporabnikObj();
         avtor.setId(loginBean.getIdUser());
         komentarCreate.setAvtor(avtor);
-        komentarCreate.setSupportTicketId(readTicketId);
+        komentarCreate.setSupportTicketId(getTicketReadId());
         service.createSupportTicketKomentar(ConverterHelper.supportTicketKomentarObj2Ws(komentarCreate));
         getTicketFromService();
         komentarCreate = new SupportTicketKomentarObj();
@@ -175,7 +141,7 @@ public class SupportBean implements Serializable {
     }
     
     public boolean isOwnerOfKomentar(int idKomentar) {
-        for(SupportTicketKomentarObj k : readTicket.getKomentarji()) {
+        for(SupportTicketKomentarObj k : getTicketRead().getKomentarji()) {
             if(k.getId() == idKomentar) {
                 if(k.getAvtor().getId() == loginBean.getIdUser()) {
                     return true;
@@ -187,12 +153,13 @@ public class SupportBean implements Serializable {
     }
 
     private void getTicketFromService() {
-        SupportTicket ticket = service.readSupportTicket(readTicketId);
+        SupportTicket ticket = service.readSupportTicket(getTicketReadId());
         if (ticket != null) {
-            readTicket = ConverterHelper.supportTicketWs2Obj(ticket);
+            setTicketRead(ConverterHelper.supportTicketWs2Obj(ticket));
         }
     }
 
+    //GETTERS AND SETTERS
     public LoginBean getLoginBean() {
         return loginBean;
     }
@@ -200,4 +167,53 @@ public class SupportBean implements Serializable {
     public void setLoginBean(LoginBean loginBean) {
         this.loginBean = loginBean;
     }
+
+    public SupportTicketObj getTicketRead() {
+        return ticketRead;
+    }
+
+    public void setTicketRead(SupportTicketObj ticketRead) {
+        this.ticketRead = ticketRead;
+    }
+
+    public int getTicketReadId() {
+        return ticketReadId;
+    }
+
+    public void setTicketReadId(int ticketReadId) {
+        this.ticketReadId = ticketReadId;
+    }
+    
+    public SupportTicketKomentarObj getKomentarCreate() {
+        return komentarCreate;
+    }
+
+    public void setKomentarCreate(SupportTicketKomentarObj komentarCreate) {
+        this.komentarCreate = komentarCreate;
+    }
+    
+    public List<SupportTicketStatusObj> getStatusi() {
+        return statusi;
+    }
+
+    public SupportTicketStatusObj getStatusCreate() {
+        return statusCreate;
+    }
+    
+    public List<SupportTicketKategorijaObj> getKategorije() {
+        return kategorije;
+    }
+
+    public SupportTicketKategorijaObj getKategorijaCreate() {
+        return kategorijaCreate;
+    }
+
+    public SupportTicketObj getTicketCreate() {
+        return ticketCreate;
+    }
+    
+    public void setTicketCreate(SupportTicketObj ticketCreate) {
+        this.ticketCreate = ticketCreate;
+    }
+    
 }
