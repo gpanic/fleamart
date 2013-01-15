@@ -2,38 +2,54 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
-<h:body>
-	<ui:composition template="/shared/layout.xhtml">
-		<ui:param name="title" value="Fleamart" />
-		<ui:define name="content">
-			<h1>Nalogi</h1>
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Ime</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<ui:repeat var="kategorija" value="#{supportBean.kategorije}">
-							<tr>
-								<td><h:outputText value="#{kategorija.id}"/></td>
-								<td><h:outputText value="#{kategorija.naziv}"/></td>
-								<h:form>
-									<td>
-										<h:commandLink styleClass="icon-remove" value="" action="#{supportBean.deleteKategorija(kategorija.id)}" />
-									</td>
-								</h:form>
-							</tr>
-						</ui:repeat>
-					</tbody>
-				</table>
-		</ui:define>
-	</ui:composition>
-</h:body>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:body>
+        <ui:composition template="/shared/layout.xhtml">
+            <ui:param name="title" value="Fleamart" />
+            <ui:define name="content">
+                <h1>Nalogi</h1>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Naslov</th>
+                            <th>Vsebina</th>
+                            <th>Ustvarjen</th>
+                            <th>Zaport</th>
+                            <th>Avtor</th>
+                            <th>Tehnik</th>
+                            <th>Kategorija</th>
+                            <th>Status</th>
+                            <th>Komentarji</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ui:repeat var="ticket" value="#{supportBean.tickets}">
+                            <tr>
+                                <td><h:outputText value="#{ticket.id}"/></td>
+                                <td><h:outputText value="#{ticket.naslov}"/></td>
+                                <td><h:outputText value="#{ticket.vsebina}"/></td>
+                                <td><h:outputText value="#{ticket.casUstvarjen}"/></td>
+                                <td><h:outputText value="#{ticket.casZaprt}"/></td>
+                                <td><h:outputText value="#{ticket.avtor.upime}"/></td>
+                                <td><h:outputText value="#{ticket.tehnik.upime}"/></td>
+                                <td><h:outputText value="#{ticket.supportTicketKategorija.naziv}"/></td>
+                                <td><h:outputText value="#{ticket.supportTicketStatus.naziv}"/></td>
+                                <td><h:outputText value="#{ticket.komentarji.size()}"/></td>
+                                <h:form>
+                                    <td>
+                                        <!-- <h:commandLink styleClass="icon-remove" value="" action="#{supportBean.deleteKategorija(kategorija.id)}" />-->
+                                    </td>
+                                </h:form>
+                            </tr>
+                        </ui:repeat>
+                    </tbody>
+                </table>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>
