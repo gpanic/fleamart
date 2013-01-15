@@ -4,6 +4,7 @@ using Fleamart.Dal.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -72,9 +73,21 @@ namespace Fleamart.Dal.Dao
                 if (entity != null)
                 {
                     SupportTicketEF ef = Mapper.Map<SupportTicket, SupportTicketEF>(entity);
-                    if (ef.Avtor == null || ef.SupportTicketKategorija == null || ef.SupportTicketStatus == null) return false;
-                    db.SupportTickets.Attach(ef);
-                    db.Entry(ef).State = EntityState.Modified;
+                    Debug.WriteLine(entity.Avtor);
+                    Debug.WriteLine(entity.SupportTicketKategorija);
+                    Debug.WriteLine(entity.SupportTicketStatus);
+                    Debug.WriteLine(ef.Avtor);
+                    Debug.WriteLine(ef.SupportTicketKategorija);
+                    Debug.WriteLine(ef.SupportTicketStatus);
+                    Debug.WriteLine(db.SupportTickets.Find(ef.Id));
+                    if (ef.SupportTicketKategorija == null || ef.SupportTicketStatus == null) return false;
+                    if (db.SupportTickets.Find(ef.Id) == null) return false;
+                    SupportTicketEF ef2 = db.SupportTickets.Find(ef.Id);
+                    ef2.Naslov = ef.Naslov;
+                    ef2.Vsebina = ef.Vsebina;
+                    ef2.SupportTicketKategorija = db.SupportTicketKategorije.Find(ef.SupportTicketKategorija.Id);
+                    ef2.SupportTicketStatus = db.SupportTicketStatusi.Find(ef.SupportTicketStatus.Id);
+                    ef2.Tehnik = db.Uporabniki.Find(ef.Tehnik.Id);
                     db.SaveChanges();
                     return true;
                 }

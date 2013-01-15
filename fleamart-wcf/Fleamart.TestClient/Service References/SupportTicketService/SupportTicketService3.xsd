@@ -8,10 +8,10 @@
       <xs:element minOccurs="0" name="CasUstvarjen" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="CasZaprt" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Kategorija" nillable="true" type="tns:SupportTicketStatus" />
-      <xs:element minOccurs="0" name="Komentarji" nillable="true" type="tns:ArrayOfSupportTicketStatus" />
+      <xs:element minOccurs="0" name="Komentarji" nillable="true" type="tns:ArrayOfSupportTicketKomentar" />
       <xs:element minOccurs="0" name="Naslov" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Status" nillable="true" type="tns:SupportTicketStatus" />
+      <xs:element minOccurs="0" name="SupportTicketKategorija" nillable="true" type="tns:SupportTicketKategorija" />
+      <xs:element minOccurs="0" name="SupportTicketStatus" nillable="true" type="tns:SupportTicketStatus" />
       <xs:element minOccurs="0" name="Tehnik" nillable="true" type="tns:Uporabnik" />
       <xs:element minOccurs="0" name="Vsebina" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -115,10 +115,10 @@
   <xs:element name="ArrayOfKomentar" nillable="true" type="tns:ArrayOfKomentar" />
   <xs:complexType name="Komentar">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Avtor" nillable="true" type="tns:Uporabnik" />
+      <xs:element name="Avtor" nillable="true" type="tns:Uporabnik" />
       <xs:element minOccurs="0" name="Cas" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Sporocilo" nillable="true" type="xs:string" />
+      <xs:element name="Sporocilo" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Komentar" nillable="true" type="tns:Komentar" />
@@ -138,23 +138,59 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Ponudba" nillable="true" type="tns:Ponudba" />
-  <xs:complexType name="SupportTicketStatus">
+  <xs:complexType name="ArrayOfSupportTicketKomentar">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SupportTicketKomentar" nillable="true" type="tns:SupportTicketKomentar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSupportTicketKomentar" nillable="true" type="tns:ArrayOfSupportTicketKomentar" />
+  <xs:complexType name="SupportTicketKomentar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Avtor" nillable="true" type="tns:Uporabnik" />
+      <xs:element minOccurs="0" name="Cas" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="SupportTicketId" type="xs:int" />
+      <xs:element minOccurs="0" name="Vsebina" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SupportTicketKomentar" nillable="true" type="tns:SupportTicketKomentar" />
+  <xs:complexType name="SupportTicketKategorija">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Naziv" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="SupportTicketStatus" nillable="true" type="tns:SupportTicketStatus" />
-  <xs:complexType name="ArrayOfSupportTicketStatus">
+  <xs:element name="SupportTicketKategorija" nillable="true" type="tns:SupportTicketKategorija" />
+  <xs:complexType name="SupportTicketStatus">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="SupportTicketStatus" nillable="true" type="tns:SupportTicketStatus" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Naziv" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Opis" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfSupportTicketStatus" nillable="true" type="tns:ArrayOfSupportTicketStatus" />
+  <xs:element name="SupportTicketStatus" nillable="true" type="tns:SupportTicketStatus" />
   <xs:complexType name="ArrayOfSupportTicket">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="SupportTicket" nillable="true" type="tns:SupportTicket" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSupportTicket" nillable="true" type="tns:ArrayOfSupportTicket" />
+  <xs:complexType name="ArrayOfSupportTicketKategorija">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SupportTicketKategorija" nillable="true" type="tns:SupportTicketKategorija" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSupportTicketKategorija" nillable="true" type="tns:ArrayOfSupportTicketKategorija" />
+  <xs:complexType name="ArrayOfSupportTicketStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SupportTicketStatus" nillable="true" type="tns:SupportTicketStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSupportTicketStatus" nillable="true" type="tns:ArrayOfSupportTicketStatus" />
+  <xs:complexType name="ArrayOfUporabnik">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Uporabnik" nillable="true" type="tns:Uporabnik" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUporabnik" nillable="true" type="tns:ArrayOfUporabnik" />
 </xs:schema>

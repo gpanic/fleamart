@@ -72,7 +72,7 @@
   <xs:element name="CreateSupportTicketKategorija">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http//www.fleamart.com/" minOccurs="0" name="k" nillable="true" type="q5:SupportTicketStatus" />
+        <xs:element xmlns:q5="http//www.fleamart.com/" minOccurs="0" name="k" nillable="true" type="q5:SupportTicketKategorija" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -105,7 +105,7 @@
   <xs:element name="ListSupportTicketKategorijaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http//www.fleamart.com/" minOccurs="0" name="ListSupportTicketKategorijaResult" nillable="true" type="q6:ArrayOfSupportTicketStatus" />
+        <xs:element xmlns:q6="http//www.fleamart.com/" minOccurs="0" name="ListSupportTicketKategorijaResult" nillable="true" type="q6:ArrayOfSupportTicketKategorija" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -152,7 +152,7 @@
   <xs:element name="CreateSupportTicketKomentar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http//www.fleamart.com/" minOccurs="0" name="k" nillable="true" type="q9:SupportTicketStatus" />
+        <xs:element xmlns:q9="http//www.fleamart.com/" minOccurs="0" name="k" nillable="true" type="q9:SupportTicketKomentar" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -166,7 +166,7 @@
   <xs:element name="UpdateSupportTicketKomentar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http//www.fleamart.com/" minOccurs="0" name="k" nillable="true" type="q10:SupportTicketStatus" />
+        <xs:element xmlns:q10="http//www.fleamart.com/" minOccurs="0" name="k" nillable="true" type="q10:SupportTicketKomentar" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -201,7 +201,19 @@
   <xs:element name="ListSupportTicketKomentarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http//www.fleamart.com/" minOccurs="0" name="ListSupportTicketKomentarResult" nillable="true" type="q11:ArrayOfSupportTicketStatus" />
+        <xs:element xmlns:q11="http//www.fleamart.com/" minOccurs="0" name="ListSupportTicketKomentarResult" nillable="true" type="q11:ArrayOfSupportTicketKomentar" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListUporabnik">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListUporabnikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http//www.fleamart.com/" minOccurs="0" name="ListUporabnikResult" nillable="true" type="q12:ArrayOfUporabnik" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

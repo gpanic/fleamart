@@ -1,8 +1,9 @@
 package com.fleamart.obj;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class SupportTicketKomentarObj {
+public class SupportTicketKomentarObj implements Serializable {
 	
 	private int id;
 	private String vsebina;

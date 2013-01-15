@@ -98,6 +98,12 @@
   <wsdl:message name="ISupportTicketService_ListSupportTicketKomentar_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListSupportTicketKomentarResponse" />
   </wsdl:message>
+  <wsdl:message name="ISupportTicketService_ListUporabnik_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListUporabnik" />
+  </wsdl:message>
+  <wsdl:message name="ISupportTicketService_ListUporabnik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListUporabnikResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISupportTicketService">
     <wsdl:operation name="CreateSupportTicket">
       <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/CreateSupportTicket" message="tns:ISupportTicketService_CreateSupportTicket_InputMessage" />
@@ -158,6 +164,10 @@
     <wsdl:operation name="ListSupportTicketKomentar">
       <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/ListSupportTicketKomentar" message="tns:ISupportTicketService_ListSupportTicketKomentar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/ListSupportTicketKomentarResponse" message="tns:ISupportTicketService_ListSupportTicketKomentar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListUporabnik">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportTicketService/ListUporabnik" message="tns:ISupportTicketService_ListUporabnik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportTicketService/ListUporabnikResponse" message="tns:ISupportTicketService_ListUporabnik_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISupportTicketService" type="tns:ISupportTicketService">
@@ -290,6 +300,15 @@
     </wsdl:operation>
     <wsdl:operation name="ListSupportTicketKomentar">
       <soap:operation soapAction="http://tempuri.org/ISupportTicketService/ListSupportTicketKomentar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListUporabnik">
+      <soap:operation soapAction="http://tempuri.org/ISupportTicketService/ListUporabnik" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

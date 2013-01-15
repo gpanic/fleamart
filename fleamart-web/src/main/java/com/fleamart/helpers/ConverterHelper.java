@@ -363,16 +363,20 @@ public class ConverterHelper {
         } catch (DatatypeConfigurationException e) {
             e.printStackTrace();
         }
-        ws.setAvtor(of.createSupportTicketAvtor(supportTicketUporanikObj2Ws(obj.getAvtor())));
-        ws.setTehnik(of.createSupportTicketTehnik(supportTicketUporanikObj2Ws(obj.getTehnik())));
+        if(obj.getAvtor() != null) {
+            ws.setAvtor(of.createSupportTicketAvtor(supportTicketUporanikObj2Ws(obj.getAvtor())));
+        }
+        if(obj.getTehnik() != null) {
+            ws.setTehnik(of.createSupportTicketTehnik(supportTicketUporanikObj2Ws(obj.getTehnik())));
+        }
         ws.setSupportTicketKategorija(of.createSupportTicketKategorija(supportTicketKategorijaObj2Ws(obj.getSupportTicketKategorija())));
-        ws.setSupportTicketStatus(of.createCreateSupportTicketStatusS(supportTicketStatusObj2Ws(obj.getSupportTicketStatus())));
+        ws.setSupportTicketStatus(of.createSupportTicketStatus(supportTicketStatusObj2Ws(obj.getSupportTicketStatus())));
         ws.setNaslov(of.createSupportTicketNaslov(obj.getNaslov()));
         ws.setVsebina(of.createSupportTicketVsebina(obj.getVsebina()));
         return ws;
     }
     
-    private static UporabnikObj supportTicketUporabnikWs2Obj(com.fleamart.supportticket.ws.Uporabnik ws) {
+    public static UporabnikObj supportTicketUporabnikWs2Obj(com.fleamart.supportticket.ws.Uporabnik ws) {
         UporabnikObj obj = new UporabnikObj();
         obj.setId(ws.getId());
         obj.setEmail(ws.getEmail().getValue());
@@ -383,7 +387,7 @@ public class ConverterHelper {
         return obj;
     }
     
-    private static com.fleamart.supportticket.ws.Uporabnik supportTicketUporanikObj2Ws(UporabnikObj obj) {
+    public static com.fleamart.supportticket.ws.Uporabnik supportTicketUporanikObj2Ws(UporabnikObj obj) {
         com.fleamart.supportticket.ws.Uporabnik ws = new com.fleamart.supportticket.ws.Uporabnik();
         ws.setId(obj.getId());
         return ws;

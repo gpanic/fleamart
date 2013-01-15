@@ -68,7 +68,16 @@
     <None Include="Service References\SupportTicketService\Fleamart.TestClient.SupportTicketService.SupportTicket.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\SupportTicketService\Fleamart.TestClient.SupportTicketService.SupportTicketKategorija.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SupportTicketService\Fleamart.TestClient.SupportTicketService.SupportTicketKomentar.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\SupportTicketService\Fleamart.TestClient.SupportTicketService.SupportTicketStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SupportTicketService\Fleamart.TestClient.SupportTicketService.Uporabnik.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\SupportTicketService\SupportTicketService.wsdl" />

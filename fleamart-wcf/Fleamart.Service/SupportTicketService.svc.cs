@@ -101,5 +101,12 @@ namespace Fleamart.Service
         {
             return stkodao.List().Where(x => x.SupportTicketId == supportTicketId).ToList();
         }
+
+
+        public List<Uporabnik> ListUporabnik()
+        {
+            UporabnikEFDao dao = new UporabnikEFDao();
+            return dao.List();
+        }
     }
 }

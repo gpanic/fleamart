@@ -19,29 +19,36 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><h:message for="naziv"/>&nbsp;</td>
+                                <td><h:message for="naslov"/>&nbsp;</td>
                             </tr>
                             <tr>
                                 <td><h:outputLabel value="Vsebina" for="vsebina"/></td>
-                                <td><h:inputTextarea rows="5" styleClass="span8" id="vsebina" value="#{supportBean.ticketCreate.naslov}" requiredMessage="Obvezno polje" required="true"/></td>
+                                <td><h:inputTextarea rows="5" styleClass="span8" id="vsebina" value="#{supportBean.ticketCreate.vsebina}" requiredMessage="Obvezno polje" required="true"/></td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><h:message for="naziv"/>&nbsp;</td>
+                                <td><h:message for="vsebina"/>&nbsp;</td>
                             </tr>
                             <tr>
                                 <td><h:outputLabel value="Kategorija" for="kategorija"/></td>
-                                <td></td> 
-                                <td><h:inputText styleClass="span8" id="naslov" value="#{supportBean.ticketCreate.naslov}" requiredMessage="Obvezno polje" required="true"/></td>
+                                <td>
+                                    <h:selectOneMenu id="kategorija" value="#{supportBean.selectedKategorija}">
+                                        <f:selectItems value="#{supportBean.kategorije}" var="kategorija" itemLabel="#{kategorija.naziv}" itemValue="#{kategorija.id}" />
+                                    </h:selectOneMenu>
+                                </td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td><h:message for="naziv"/>&nbsp;</td>
+                                <td><h:outputLabel value="Status" for="status"/></td>
+                                <td>
+                                    <h:selectOneMenu id="status" value="#{supportBean.selectedStatus}">
+                                        <f:selectItems value="#{supportBean.statusi}" var="status" itemLabel="#{status.naziv}" itemValue="#{status.id}" />
+                                    </h:selectOneMenu>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                     <br />
-                    <h:commandButton class="btn btn-primary" action="#{supportBean.createKategorija}" value="Dodaj kategorijo"/>
+                    <h:commandButton class="btn btn-primary" action="#{supportBean.createTicket}" value="Dodaj nalog"/>
                 </h:form>
             </ui:define>
         </ui:composition>

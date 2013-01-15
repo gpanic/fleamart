@@ -224,4 +224,15 @@ public interface ISupportTicketService {
         @WebParam(name = "supportTicketId", targetNamespace = "http://tempuri.org/")
         Integer supportTicketId);
 
+    /**
+     * 
+     * @return
+     *     returns com.fleamart.supportticket.ws.ArrayOfUporabnik
+     */
+    @WebMethod(operationName = "ListUporabnik", action = "http://tempuri.org/ISupportTicketService/ListUporabnik")
+    @WebResult(name = "ListUporabnikResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "ListUporabnik", targetNamespace = "http://tempuri.org/", className = "com.fleamart.supportticket.ws.ListUporabnik")
+    @ResponseWrapper(localName = "ListUporabnikResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.supportticket.ws.ListUporabnikResponse")
+    public ArrayOfUporabnik listUporabnik();
+
 }
