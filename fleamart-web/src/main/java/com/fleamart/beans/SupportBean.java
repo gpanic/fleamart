@@ -18,6 +18,7 @@ import com.fleamart.supportticket.ws.SupportTicketKategorija;
 import com.fleamart.supportticket.ws.SupportTicketService;
 import com.fleamart.supportticket.ws.SupportTicketStatus;
 import com.fleamart.supportticket.ws.SupportTicket;
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedProperty;
@@ -26,11 +27,11 @@ import javax.servlet.http.HttpServletRequest;
 
 @ManagedBean(name = "supportBean")
 @RequestScoped
-public class SupportBean {
-    
+public class SupportBean implements Serializable {
+
     @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
-
+    
     private ISupportTicketService service;
     
     private List<SupportTicketKategorijaObj> kategorije;
@@ -46,13 +47,13 @@ public class SupportBean {
 
     public SupportBean() {
         service = new SupportTicketService().getBasicHttpBindingISupportTicketService();
-        
+
         kategorije = new ArrayList<>();
         kategorijaCreate = new SupportTicketKategorijaObj();
-        
+
         statusi = new ArrayList<>();
         statusCreate = new SupportTicketStatusObj();
-        
+
         tickets = new ArrayList<>();
         komentarCreate = new SupportTicketKomentarObj();
 
@@ -144,11 +145,11 @@ public class SupportBean {
     public int getReadTicketId() {
         return readTicketId;
     }
-    
+
     public void setReadTicketId(int readTicketId) {
         this.readTicketId = readTicketId;
     }
-    
+
     public SupportTicketKomentarObj getKomentarCreate() {
         return komentarCreate;
     }
@@ -156,7 +157,7 @@ public class SupportBean {
     public void setKomentarCreate(SupportTicketKomentarObj komentarCreate) {
         this.komentarCreate = komentarCreate;
     }
-    
+
     public void createTicketKomentar() {
         komentarCreate.setCas(new GregorianCalendar());
         UporabnikObj avtor = new UporabnikObj();
@@ -164,17 +165,34 @@ public class SupportBean {
         komentarCreate.setAvtor(avtor);
         komentarCreate.setSupportTicketId(readTicketId);
         service.createSupportTicketKomentar(ConverterHelper.supportTicketKomentarObj2Ws(komentarCreate));
-        getTicketsFromService();
+        getTicketFromService();
         komentarCreate = new SupportTicketKomentarObj();
+    }
+    
+    public void deleteTicketKomentar(int id) {
+        service.deleteSupportTicketKomentar(id);
+        getTicketFromService();
+    }
+    
+    public boolean isOwnerOfKomentar(int idKomentar) {
+        for(SupportTicketKomentarObj k : readTicket.getKomentarji()) {
+            if(k.getId() == idKomentar) {
+                if(k.getAvtor().getId() == loginBean.getIdUser()) {
+                    return true;
+                }
+                break;
+            }
+        }
+        return false;
     }
 
     private void getTicketFromService() {
         SupportTicket ticket = service.readSupportTicket(readTicketId);
-        if(ticket != null) {
+        if (ticket != null) {
             readTicket = ConverterHelper.supportTicketWs2Obj(ticket);
         }
     }
-    
+
     public LoginBean getLoginBean() {
         return loginBean;
     }
@@ -182,5 +200,4 @@ public class SupportBean {
     public void setLoginBean(LoginBean loginBean) {
         this.loginBean = loginBean;
     }
-
 }

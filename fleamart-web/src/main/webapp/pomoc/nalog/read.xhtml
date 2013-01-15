@@ -33,11 +33,11 @@
                             </tr>
                             <tr>
                                 <th>Ustvarjen</th>
-                                <td><h:outputText value="#{ticket.casUstvarjen}" /></td>
+                                <td><h:outputText value="#{ticket.casUstvarjen.time}" /></td>
                             </tr>
                             <tr>
                                 <th>Zaprt</th>
-                                <td><h:outputText value="#{ticket.casZaprt}" /></td>
+                                <td><h:outputText value="#{ticket.casZaprt.time}" /></td>
                             </tr>
                             <tr>
                                 <th>Kategorija</th>
@@ -67,10 +67,11 @@
                     </ui:repeat>
                     <c:if test="#{loginBean.idUser != 0}">
                         <h2>Dodaj komentar</h2>
-                        <h:form>
+                        <h:form id="dodajKomentar">
                             <h:inputTextarea value="#{supportBean.komentarCreate.vsebina}" rows="5" style="width:500px;" /><br />
                             <h:commandButton value="Dodaj komentar" action="#{supportBean.createTicketKomentar()}" styleClass="btn btn-primary" />
                         </h:form>
+
                     </c:if>
                 </div>
             </ui:define>

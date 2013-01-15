@@ -25,6 +25,7 @@
                             <th>Status</th>
                             <th>Komentarji</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,13 +34,16 @@
                                 <td><h:outputText value="#{ticket.id}"/></td>
                                 <td><h:outputText value="#{ticket.naslov}"/></td>
                                 <td><h:outputText value="#{ticket.vsebina}"/></td>
-                                <td><h:outputText value="#{ticket.casUstvarjen}"/></td>
-                                <td><h:outputText value="#{ticket.casZaprt}"/></td>
+                                <td><h:outputText value="#{ticket.casUstvarjen.time}"/></td>
+                                <td><h:outputText value="#{ticket.casZaprt.time}"/></td>
                                 <td><h:outputText value="#{ticket.avtor.upime}"/></td>
                                 <td><h:outputText value="#{ticket.tehnik.upime}"/></td>
                                 <td><h:outputText value="#{ticket.supportTicketKategorija.naziv}"/></td>
                                 <td><h:outputText value="#{ticket.supportTicketStatus.naziv}"/></td>
                                 <td><h:outputText value="#{ticket.komentarji.size()}"/></td>
+                                <td>
+                                    <h:outputLink value="/fleamart-web/pomoc/nalog/read.xhtml?id=#{ticket.id}" styleClass="icon-edit"/>
+                                </td>
                                 <h:form>
                                     <td>
                                         <!-- <h:commandLink styleClass="icon-remove" value="" action="#{supportBean.deleteKategorija(kategorija.id)}" />-->
