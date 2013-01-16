@@ -9,32 +9,36 @@
 	<ui:composition template="/shared/layout.xhtml">
 		<ui:param name="title" value="Vpis" />
 		<ui:define name="content">
-			<h1>Prijava:</h1>
 			<f:view>
-				<h:form>
-					<table width="40%">
-						<tbody>
-							<tr>
-
-								<td><h:outputText style="width:150;"
-										value="Uporabniško ime: "></h:outputText></td>
-								<td><h:inputText value="#{loginBean.username}"></h:inputText></td>
-							</tr>
-							<tr>
-								<td><h:outputText style="width:150;" value="Geslo: "></h:outputText></td>
-								<td><h:inputSecret value="#{loginBean.pass}"></h:inputSecret></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td><h:commandButton class="btn btn-primary" value="Vpis"
-										action="#{loginBean.checkUser}"></h:commandButton></td>
-							</tr>
-						</tbody>
-					</table>
-					<br />
-					<h:outputText style="width:150;" value="#{loginBean.txt}"></h:outputText>
-
-				</h:form>
+				<ui:fragment rendered="#{loginBean.idUser==0}">
+					<h1>Prijava:</h1>
+					<h:form>
+						<table width="40%">
+							<tbody>
+								<tr>
+									<td><h:outputText style="width:150;"
+											value="Uporabniško ime: "></h:outputText></td>
+									<td><h:inputText value="#{loginBean.username}"></h:inputText></td>
+								</tr>
+								<tr>
+									<td><h:outputText style="width:150;" value="Geslo: "></h:outputText></td>
+									<td><h:inputSecret value="#{loginBean.pass}"></h:inputSecret></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><h:commandButton class="btn btn-primary" value="Vpis"
+											action="#{loginBean.checkUser}"></h:commandButton></td>
+								</tr>
+							</tbody>
+						</table>
+						<br />
+						<h:outputText style="width:150;" value="#{loginBean.txt}"></h:outputText>
+					</h:form>
+				</ui:fragment>
+				<ui:fragment rendered="#{loginBean.idUser!=0}">
+					<br /> Prijavljeni ste kot <strong><h:outputText
+							value=" #{loginBean.username}" /></strong>!
+				</ui:fragment>
 			</f:view>
 		</ui:define>
 	</ui:composition>

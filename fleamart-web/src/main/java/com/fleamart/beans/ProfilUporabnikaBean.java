@@ -82,8 +82,7 @@ public class ProfilUporabnikaBean
 	}
 
 	public void prikaziProfil()
-	{
-	
+	{	
 			UporabnikService client = new UporabnikService();
 			Uporabnik u1 = client.getBasicHttpBindingIUporabnikService().profilUporabnika(prodajalecId);
 			uporabnik = ConverterHelper.uporabnikWs22Obj(u1);
