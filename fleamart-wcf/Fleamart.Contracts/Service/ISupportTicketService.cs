@@ -55,5 +55,8 @@ namespace Fleamart.Contracts.Service
 
         [OperationContract]
         List<SupportTicketKomentar> ListSupportTicketKomentar(int supportTicketId);
+
+        [OperationContract]
+        List<Uporabnik> ListUporabnik();
     }
 }

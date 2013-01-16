@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <ui:composition template="/shared/layout.xhtml">
+            <ui:param name="title" value="Fleamart" />
+            <ui:define name="content">
+                <h1>Ustvari nalog</h1>
+                <h:form id="dodajNalog" styleClass="form-horizontal">
+                    <table width="100%">
+                        <tbody>
+                            <tr>
+                                <td><h:outputLabel value="Naslov" for="naslov"/></td>
+                                <td><h:inputText styleClass="span8" id="naslov" value="#{supportBean.ticketCreate.naslov}" requiredMessage="Obvezno polje" required="true"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><h:message for="naslov"/>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Vsebina" for="vsebina"/></td>
+                                <td><h:inputTextarea rows="5" styleClass="span8" id="vsebina" value="#{supportBean.ticketCreate.vsebina}" requiredMessage="Obvezno polje" required="true"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><h:message for="vsebina"/>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Kategorija" for="kategorija"/></td>
+                                <td>
+                                    <h:selectOneMenu id="kategorija" value="#{supportBean.selectedKategorija}">
+                                        <f:selectItems value="#{supportBean.kategorije}" var="kategorija" itemLabel="#{kategorija.naziv}" itemValue="#{kategorija.id}" />
+                                    </h:selectOneMenu>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Status" for="status"/></td>
+                                <td>
+                                    <h:selectOneMenu id="status" value="#{supportBean.selectedStatus}">
+                                        <f:selectItems value="#{supportBean.statusi}" var="status" itemLabel="#{status.naziv}" itemValue="#{status.id}" />
+                                    </h:selectOneMenu>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <h:commandButton class="btn btn-primary" action="#{supportBean.createTicket}" value="Dodaj nalog"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

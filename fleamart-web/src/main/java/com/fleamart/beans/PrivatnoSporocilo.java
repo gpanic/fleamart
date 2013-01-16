@@ -3,16 +3,24 @@ package com.fleamart.beans;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.bind.JAXBElement;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.fleamart.helpers.ConverterHelper;
 import com.fleamart.obj.PrivatnoSporociloObj;
 import com.fleamart.pm.ws.PrivatnoSporociloService;
+import com.fleamart.uporabnik.ws.Uporabnik;
+import com.fleamart.uporabnik.ws.UporabnikService;
 
 @ManagedBean(name = "pmBean")
 @ViewScoped
@@ -20,6 +28,11 @@ public class PrivatnoSporocilo implements Serializable {
 
 	private List<PrivatnoSporociloObj> prejetaSporocila;
 	private int neprebranih = 0;
+	private String prejemnik;
+	private String prejemnikUpIme;
+	private String sporocilo;
+	private String info;
+	private int posiljatelj;
 
 	public List<PrivatnoSporociloObj> getPrejetaSporocila() {
 		return prejetaSporocila;
@@ -69,5 +82,72 @@ public class PrivatnoSporocilo implements Serializable {
 		} catch (Exception e) {
 
 		}
+	}
+	
+	public void findPrejemnikById() throws IOException {
+		try {
+			int uporabnikId = Integer.parseInt(this.prejemnik);
+			LoginBean lb = (LoginBean)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
+			if (uporabnikId == lb.getIdUser()) FacesContext.getCurrentInstance().getExternalContext().redirect("/fleamart-web/browse.xhtml");
+			this.posiljatelj = lb.getIdUser();
+			Uporabnik prej = new UporabnikService().getBasicHttpBindingIUporabnikService().readUporabnik(uporabnikId);
+			if (prej == null) FacesContext.getCurrentInstance().getExternalContext().redirect("/fleamart-web/browse.xhtml");
+			this.prejemnikUpIme = prej.getUpime().getValue();
+		} catch (NumberFormatException e) {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/fleamart-web/browse.xhtml");
+		}
+	}
+	
+	public String getPrejemnik() {
+		return prejemnik;
+	}
+
+	public void setPrejemnik(String prejemnik) {
+		this.prejemnik = prejemnik;
+	}
+
+	public String getPrejemnikUpIme() {
+		return prejemnikUpIme;
+	}
+
+	public void setPrejemnikUpIme(String prejemnikUpIme) {
+		this.prejemnikUpIme = prejemnikUpIme;
+	}
+	
+	public void PosljiNovoSporocilo() throws IOException, DatatypeConfigurationException {
+		com.fleamart.pm.ws.ObjectFactory of = new com.fleamart.pm.ws.ObjectFactory();
+		com.fleamart.pm.ws.PrivatnoSporocilo ps = of.createPrivatnoSporocilo();
+		ps.setPosiljateljId(this.getPosiljatelj());
+		ps.setPrejemnikId(Integer.parseInt(this.prejemnik));
+		ps.setCas(DatatypeFactory.newInstance().newXMLGregorianCalendar(new GregorianCalendar()));
+		ps.setSporocilo(of.createPrivatnoSporociloSporocilo(this.sporocilo));
+		boolean uspesno = new PrivatnoSporociloService().getBasicHttpBindingIPrivatnoSporociloService().dodajNovoSporocilo(ps);
+		String url = "/fleamart-web/profile/messages.xhtml?info=";
+		url += (uspesno) ? "uspesno" : "neuspesno";
+		FacesContext.getCurrentInstance().getExternalContext().redirect(url);
+	}
+	
+	public String getSporocilo() {
+		return sporocilo;
+	}
+
+	public void setSporocilo(String sporocilo) {
+		this.sporocilo = sporocilo;
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+
+	public int getPosiljatelj() {
+		return posiljatelj;
+	}
+
+	public void setPosiljatelj(int posiljatelj) {
+		this.posiljatelj = posiljatelj;
 	}
 }

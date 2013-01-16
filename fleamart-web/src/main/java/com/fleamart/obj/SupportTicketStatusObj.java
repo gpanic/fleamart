@@ -1,6 +1,8 @@
 package com.fleamart.obj;
 
-public class SupportTicketStatusObj {
+import java.io.Serializable;
+
+public class SupportTicketStatusObj implements Serializable  {
 	
 	private int id;
 	private String naziv;
