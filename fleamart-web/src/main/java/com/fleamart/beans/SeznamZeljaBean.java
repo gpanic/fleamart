@@ -84,12 +84,16 @@ public class SeznamZeljaBean
 		oglasi = new ArrayList<OglasObj>();
 	}
 
+	public void proba(){
+		System.out.println("___________*****************______________");
+		
+	}
+	
 	public String izbrisiZeljo(int id)
-	{
+	{ 
+		
 		try
 		{
-			System.out
-					.println("__________________________________________****************************************");
 			OglasService client = new OglasService();
 			boolean vrne = client.getBasicHttpBindingIOglasService()
 					.izbrisiZeljo(id);
@@ -109,7 +113,7 @@ public class SeznamZeljaBean
 			return "#";
 		}
 	}
-
+		
 	public void prikaziSeznamZelja(int idUporabnik)
 	{
 		OglasService client = new OglasService();
