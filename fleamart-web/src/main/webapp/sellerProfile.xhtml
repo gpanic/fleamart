@@ -16,7 +16,7 @@
 				<f:event type="preRenderView"
 					listener="#{profilUporabnikaBean.prikaziProfil}" />
 			</f:metadata>
-			<h1>Prodajalec</h1>
+			<h1>Uporabnik</h1>
 			<h:form id="mojioglasi">
 				<p>
 					Uporabnik: <strong><h:outputText
@@ -37,38 +37,49 @@
 				</p>
 				<p>
 					Email: <strong><a href="mailto:#"><h:outputText
-							value="#{profilUporabnikaBean.uporabnik.email}" /></a></strong>
+								value="#{profilUporabnikaBean.uporabnik.email}" /></a></strong>
 				</p>
 				<p>
-					Povprečna ocena izdelkov prodajalca: <i class="icon-star"></i>  <strong><h:outputText
-							value="#{profilUporabnikaBean.ocena}" /></strong> <i class="icon-star"></i>
-
+					<ui:fragment rendered="#{profilUporabnikaBean.ocena != 0}">
+					Povprečna ocena izdelkov prodajalca: <i class="icon-star"></i>
+						<strong><h:outputText
+								value="#{profilUporabnikaBean.ocena}" /></strong>
+						<i class="icon-star"></i>
+					</ui:fragment>
 				</p>
 				<br />
-				<p>Oglasi prodajalca: <br /></p><p><br /></p>
-				<ui:repeat var="oglas" value="#{profilUporabnikaBean.oglasi}">
-					<div class="oglasitem">
-						<div class="slika">
-							<h:graphicImage rendered="#{oglas.slike.size()>0}" url="#{oglas.slike[0]}"></h:graphicImage>
-						</div>
-						<div class="naslovopis">
-							<h:link value="#{oglas.naslov}" class="naslov"
-								outcome="/oglas/read.xhtml?id=#{oglas.id}" />
-							<br />
-							<h:outputText class="opis" value="#{oglas.opis}" />
-						</div>
-						<div class="cenaostalo">
-							<h:outputText class="cena" value="#{oglas.cena} €" />
-							<br />
-							<div class="datum">
+				<ui:fragment rendered="#{profilUporabnikaBean.oglasi.size() != 0}">
+					<p>
+						Oglasi prodajalca: <br />
+					</p>
+					<p>
+						<br />
+					</p>
+					<ui:repeat var="oglas" value="#{profilUporabnikaBean.oglasi}">
+						<div class="oglasitem">
+							<div class="slika">
+								<h:graphicImage rendered="#{oglas.slike.size()>0}"
+									url="#{oglas.slike[0]}"></h:graphicImage>
+							</div>
+							<div class="naslovopis">
+								<h:link value="#{oglas.naslov}" class="naslov"
+									outcome="/oglas/read.xhtml?id=#{oglas.id}" />
 								<br />
-								<h:outputText value="#{oglas.casOd.time}">
-									<f:convertDateTime pattern="d MMM, yyyy HH:mm" />
-								</h:outputText>
+								<h:outputText class="opis" value="#{oglas.opis}" />
+							</div>
+							<div class="cenaostalo">
+								<h:outputText class="cena" value="#{oglas.cena} €" />
+								<br />
+								<div class="datum">
+									<br />
+									<h:outputText value="#{oglas.casOd.time}">
+										<f:convertDateTime pattern="d MMM, yyyy HH:mm" />
+									</h:outputText>
+								</div>
 							</div>
 						</div>
-					</div>
-				</ui:repeat>
+					</ui:repeat>
+				</ui:fragment>				
 			</h:form>
 		</ui:define>
 	</ui:composition>

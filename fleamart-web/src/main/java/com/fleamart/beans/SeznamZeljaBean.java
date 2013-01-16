@@ -84,9 +84,14 @@ public class SeznamZeljaBean
 		oglasi = new ArrayList<OglasObj>();
 	}
 
+	public void proba(){
+		System.out.println("___________*****************______________");
+		
+	}
+	
 	public String izbrisiZeljo(int id)
-	{
-		System.out.println("adsdas");
+	{ 
+		
 		try
 		{
 			OglasService client = new OglasService();
