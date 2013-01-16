@@ -236,7 +236,7 @@ public class OglasBean2 implements Serializable {
             Comparator comparator = new Comparator<KomentarObj>() {
                 @Override
                 public int compare(KomentarObj o1, KomentarObj o2) {
-                    return (o1.getId() > o2.getId() ) ? -1: (o1.getId() < o2.getId()) ? 1:0 ;
+                    return (o1.getId() > o2.getId()) ? -1 : (o1.getId() < o2.getId()) ? 1 : 0;
 
                 }
             };
@@ -364,5 +364,4 @@ public class OglasBean2 implements Serializable {
         String out = (rezultat) ? "/oglas/read.xhtml?id=" + oglas.getId() + "&tab=2" : "fail";
         redirect(out);
     }
-        
 }
