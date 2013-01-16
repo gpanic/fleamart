@@ -25,6 +25,6 @@
         <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
     </listener>
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>browse.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>
