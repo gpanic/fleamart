@@ -15,7 +15,7 @@ namespace Fleamart.Contracts.Service
         String registrirajUporabnika(Uporabnik uporabnik);
 
         [OperationContract]
-        int loginCheck(string upImeV, string passV);
+        Uporabnik loginCheck(string upImeV, string passV);
 
         [OperationContract]
         Uporabnik ReadUporabnik(int Id);

@@ -15,7 +15,9 @@
                     <h:selectOneRadio id="radiostatus" class="radiobtn" value="#{oglasBean2.aktivni}">
                         <f:selectItem itemValue="0" itemLabel="Aktivni" />
                         <f:selectItem itemValue="1" itemLabel="Neaktivni" />
-                        <f:ajax listener="#{oglasBean2.initOglasListAvtor}" render="mojioglasi" />
+                        <f:selectItem itemValue="2" itemLabel="Prodani" />
+                        <f:selectItem itemValue="3" itemLabel="Čakanje na plačilo" />
+                        <f:ajax listener="#{oglasBean2.initOglasAdmin}" render="mojioglasi" />
                     </h:selectOneRadio>
                     <c:forEach var="oglas" items="#{oglasBean2.oglasi}">
                         <div class="oglasitem">
@@ -25,18 +27,21 @@
                                 </c:if>
                             </div>
                             <div class="naslovopis">
-                                <h:link value="#{oglas.naslov}" class="naslov" outcome="read.xhtml?id=#{oglas.id}"/><br/>
+                                <h:outputLink class="naslov" value="/fleamart-web/oglas/read.xhtml">
+                                    <f:param name="id" value="#{oglas.id}"/>
+                                    <h:outputText value="#{oglas.naslov}"/>
+                                </h:outputLink><br/>
                                 <h:outputText class="opis" value="#{oglas.opis}"/>
                             </div>
 
                             <div class="cenaostalo">
-                                <h:outputLink value="update.xhtml" style="margin: -5px 5px 0;" class="btn btn-mini btn-primary" >
+                                <h:outputLink value="/fleamart-web/oglas/update.xhtml" style="margin: -5px 5px 0;" class="btn btn-mini btn-primary" >
                                     <h:outputText value="Posodobi"/>
                                     <f:param name="id" value="#{oglas.id}"/>
                                 </h:outputLink>
                                 <h:commandButton action="#{oglasBean2.deleteOglas}" style="margin-bottom: 5px;" class="btn btn-mini btn-primary" value="Odstrani">
                                     <f:setPropertyActionListener target="#{oglasBean2.oglas}" value="#{oglas}"/>
-                                    <f:setPropertyActionListener target="#{oglasBean2.redirectlink}" value="/admin/list.xhtml"/>
+                                    <f:setPropertyActionListener target="#{oglasBean2.redirectlink}" value="/admin/listOglasi.xhtml"/>
                                 </h:commandButton><br/>
                                 <h:outputText class="cena" value="#{oglas.cena} €"/><br/>
                                 <div class="datum">

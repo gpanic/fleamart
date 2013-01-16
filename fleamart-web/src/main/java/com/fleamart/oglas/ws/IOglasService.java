@@ -143,6 +143,23 @@ public interface IOglasService {
 
     /**
      * 
+     * @param status
+     * @param statusNakupa
+     * @return
+     *     returns com.fleamart.oglas.ws.ArrayOfOglas
+     */
+    @WebMethod(operationName = "ListOglasiAdmin", action = "http://tempuri.org/IOglasService/ListOglasiAdmin")
+    @WebResult(name = "ListOglasiAdminResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "ListOglasiAdmin", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ListOglasiAdmin")
+    @ResponseWrapper(localName = "ListOglasiAdminResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ListOglasiAdminResponse")
+    public ArrayOfOglas listOglasiAdmin(
+        @WebParam(name = "status", targetNamespace = "http://tempuri.org/")
+        Integer status,
+        @WebParam(name = "statusNakupa", targetNamespace = "http://tempuri.org/")
+        Integer statusNakupa);
+
+    /**
+     * 
      * @param param
      * @param kategorija
      * @return
@@ -230,5 +247,19 @@ public interface IOglasService {
     public Double izracunajPovprecje(
         @WebParam(name = "uporabnikId", targetNamespace = "http://tempuri.org/")
         Integer uporabnikId);
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns java.lang.Boolean
+     */
+    @WebMethod(operationName = "DeleteKomentar", action = "http://tempuri.org/IOglasService/DeleteKomentar")
+    @WebResult(name = "DeleteKomentarResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "DeleteKomentar", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.DeleteKomentar")
+    @ResponseWrapper(localName = "DeleteKomentarResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.DeleteKomentarResponse")
+    public Boolean deleteKomentar(
+        @WebParam(name = "id", targetNamespace = "http://tempuri.org/")
+        Integer id);
 
 }

@@ -36,6 +36,9 @@ namespace Fleamart.Contracts.Service
         List<Oglas> ListOglasiKupec(int idKupec, int statusNakupa);
 
         [OperationContract]
+        List<Oglas> ListOglasiAdmin(int? status, int? statusNakupa);
+
+        [OperationContract]
         List<Oglas> SearchOglasi(String kategorija, String param);
 
         //za seznam zelja
@@ -53,6 +56,8 @@ namespace Fleamart.Contracts.Service
 
         [OperationContract]
         double izracunajPovprecje(int uporabnikId);
-        
+
+        [OperationContract]
+        bool DeleteKomentar(int id);
     }
 }
