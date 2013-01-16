@@ -2,48 +2,51 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
-<h:body>
-	<ui:composition template="/shared/layout.xhtml">
-		<ui:param name="title" value="Fleamart" />
-		<ui:define name="content">
-			<h1>Kategorije</h1>
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Ime</th>
-							<c:if test="#{loginBean.idUser != 0}">
-								<th>Naročen</th>
-							</c:if>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<ui:repeat var="kategorija" value="#{kat.kategorijaObjList}">
-							<tr>
-								<td><h:outputText value="#{kategorija.id}"/></td>
-								<td><h:outputText value="#{kategorija.naziv.getValue()}"/></td>
-								<h:form rendered="#{loginBean.idUser != 0}">
-									<td>
-										<h:outputText value="#{kat.subscriptionStatusOutput(kategorija.id)}" />&nbsp;
-										<h:commandLink rendered="#{!kat.subscriptionStatus(kategorija.id)}" styleClass="icon-envelope" value="" action="#{kat.subscribe(loginBean.idUser, kategorija.id)}" />
-										<h:commandLink rendered="#{kat.subscriptionStatus(kategorija.id)}" styleClass="icon-remove" value="" action="#{kat.unsubscribe(loginBean.idUser, kategorija.id)}" />
-									</td>
-								</h:form>
-								<h:form>
-									<td>
-										<h:commandLink styleClass="icon-remove" value="" action="#{kat.removeKategorija(kategorija.id)}" />
-									</td>
-								</h:form>
-							</tr>
-						</ui:repeat>
-					</tbody>
-				</table>
-		</ui:define>
-	</ui:composition>
-</h:body>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:body>
+        <ui:composition template="/shared/layout.xhtml">
+            <ui:param name="title" value="Fleamart" />
+            <ui:define name="content">
+                <h1>Kategorije</h1>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Ime</th>
+                            <c:if test="#{loginBean.idUser != 0}">
+                                <th>Naročen</th>
+                            </c:if>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ui:repeat var="kategorija" value="#{kat.kategorijaObjList}">
+                            <tr>
+                                <td><h:outputText value="#{kategorija.id}"/></td>
+                                <td><h:outputText value="#{kategorija.naziv.getValue()}"/></td>
+                                <h:form rendered="#{loginBean.idUser != 0}">
+                                    <td>
+                                        <h:outputText value="#{kat.subscriptionStatusOutput(kategorija.id)}" />&nbsp;
+                                        <h:commandLink rendered="#{!kat.subscriptionStatus(kategorija.id)}" styleClass="icon-envelope" value="" action="#{kat.subscribe(loginBean.idUser, kategorija.id)}" />
+                                        <h:commandLink rendered="#{kat.subscriptionStatus(kategorija.id)}" styleClass="icon-remove" value="" action="#{kat.unsubscribe(loginBean.idUser, kategorija.id)}" />
+                                    </td>
+                                </h:form>
+                                <h:form>
+                                    <td>
+                                        <h:commandLink styleClass="icon-remove" value="" action="#{kat.removeKategorija(kategorija.id)}" />
+                                    </td>
+                                </h:form>
+                            </tr>
+                        </ui:repeat>
+                    </tbody>
+                </table>
+                <h:outputLink value="/fleamart-web/kategorija/create.xhtml">
+                    Ustvari kategorijo
+                </h:outputLink>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>
