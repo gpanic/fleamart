@@ -49,6 +49,16 @@
                             $("#linkOglas").parent().parent().addClass("active");
                     });
                 </script>
+                <script type="text/javascript" src="/fleamart-web/js/galleria/galleria-1.2.8.min.js"></script>
+                <ui:fragment rendered="#{oglasBean2.oglas.slike.get(0) != ''}">
+                    <script type="text/javascript">
+                        // Load the classic theme
+                        Galleria.loadTheme('/fleamart-web/js/galleria/galleria.classic.min.js');
+                        //
+                        // Initialize Galleria
+                        Galleria.run('#galleria');
+                    </script>	  	
+                </ui:fragment>
             </ui:define>
         </ui:composition>
     </h:body>
