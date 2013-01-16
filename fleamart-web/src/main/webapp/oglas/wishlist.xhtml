@@ -14,37 +14,45 @@
 					listener="#{seznamZeljaBean.prikaziSeznamZelja(loginBean.idUser)}" />
 			</f:metadata>
 			<h1>Moj seznam želja</h1>
-			<h:panelGroup styleClass="oglasi" layout="block">
-				<h:outputText value="#{seznamZeljaBean.txt}" />
-				<h:form id="ksjdcbnkl">
-					<ui:repeat var="oglas" value="#{seznamZeljaBean.oglasi}">
-						<h:panelGroup styleClass="oglas" layout="block">
-							<h:panelGroup styleClass="oglas slika" layout="block">
-								<h:graphicImage alt="image" url="#{oglas.slike[0]}"></h:graphicImage>
-							</h:panelGroup>
-							<h:panelGroup styleClass="oglas naslov" layout="block">
-								<h:link outcome="/oglas/read.xhtml?id=#{oglas.id}"
-									value="#{oglas.naslov}"></h:link>
-							</h:panelGroup>
-							<h:panelGroup styleClass="oglas cena" layout="block">
-								<h:outputText value="#{oglas.cena} €"></h:outputText>
-								<h:commandLink id="odstraniZeljo" style="margin-bottom: 5px;"
-									class="btn btn-primary" value="Odstrani"
-									action="#{seznamZeljaBean.izbrisiZeljo(oglas.id)}">
-								</h:commandLink>
-							</h:panelGroup>
-							<h:panelGroup styleClass="oglas opis" layout="block">
-								<h:outputText value="#{oglas.opis}" />
-							</h:panelGroup>
-							<h:panelGroup styleClass="oglas datum" layout="block">
+			<h:form id="formaZaSeznamZelja">
+				<ui:repeat var="oglas" value="#{seznamZeljaBean.oglasi}">
+					<div class="oglasitem">
+						<div class="slika">
+							<h:graphicImage rendered="#{oglas.slike.size()>0}"
+								url="#{oglas.slike[0]}"></h:graphicImage>
+						</div>
+						<div class="naslovopis">
+							<h:link value="#{oglas.naslov}" class="naslov"
+								outcome="/oglas/read.xhtml?id=#{oglas.id}" />
+							<br />
+							<h:outputText class="opis" value="#{oglas.opis}" />
+						</div>
+						<div class="cenaostalo">
+							<h:outputText class="cena" value="#{oglas.cena} €" />
+							<br />
+							<h:form>
+							<!--
+							<h:commandButton
+								action="#{seznamZeljaBean.izbrisiZeljo(oglas.id)}"
+								style="margin-bottom: 5px;" class="btn btn-mini btn-primary"
+								value="Odstrani željo">
+							</h:commandButton>
+							-->
+							
+							<h:commandLink action="#{seznamZeljaBean.izbrisiZeljo(oglas.id)}" value="Izbrisi" />
+							
+							</h:form>
+							<br />
+							<div class="datum">
+								<br />
 								<h:outputText value="#{oglas.casOd.time}">
-									<f:convertDateTime pattern="dd.MM.yyyy" />
+									<f:convertDateTime pattern="d MMM, yyyy HH:mm" />
 								</h:outputText>
-							</h:panelGroup>
-						</h:panelGroup>
-					</ui:repeat>
-					</h:form>
-			</h:panelGroup>
+							</div>
+						</div>
+					</div>
+				</ui:repeat>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </h:body>
