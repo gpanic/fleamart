@@ -43,6 +43,9 @@
 						value="#{profilUporabnikaBean.ocena}" />
 			
 			</p>
+			<p>
+				<h:outputLink value="/fleamart-web/profile/sendpm.xhtml?prejemnik=#{profilUporabnikaBean.prodajalecId}">Pošlji uporabniku zasebno sporočilo</h:outputLink>
+			</p>
 				<ui:repeat var="oglas" value="#{profilUporabnikaBean.oglasi}">
 					<div class="oglasitem">
 						<div class="slika">

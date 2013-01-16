@@ -21,19 +21,21 @@
 					<h:panelGroup styleClass="control-group" layout="block">
 						<h:outputLabel styleClass="control-label" value="Prejemnik"></h:outputLabel>
 						<h:panelGroup layout="block" styleClass="controls">
-							<h:inputText name="prejemnik" value="#{pmBean.prejemnikUpIme}"
+							<h:inputText value="#{pmBean.prejemnikUpIme}"
 								disabled="true" />
 						</h:panelGroup>
 					</h:panelGroup>
 					<h:panelGroup styleClass="control-group" layout="block">
 						<h:outputLabel styleClass="control-label" value="Sporočilo"></h:outputLabel>
 						<h:panelGroup layout="block" styleClass="controls">
-							<h:inputTextarea value="#{pmBean.sporocilo}" rows="10" name="sporocilo"></h:inputTextarea>
+							<h:inputTextarea value="#{pmBean.sporocilo}" rows="10">
+								<f:validateRequired />
+							</h:inputTextarea>
 						</h:panelGroup>
 					</h:panelGroup>
 					<h:panelGroup styleClass="control-group" layout="block">
 						<h:panelGroup layout="block" styleClass="controls">
-							<h:commandButton value="Pošlji" actionListener="#{pmBean.PosljiNovoSporocilo}" name="posljibtn" styleClass="btn"></h:commandButton>
+							<h:commandButton value="Pošlji" actionListener="#{pmBean.PosljiNovoSporocilo}" styleClass="btn"></h:commandButton>
 						</h:panelGroup>
 					</h:panelGroup>
 				</h:form>
