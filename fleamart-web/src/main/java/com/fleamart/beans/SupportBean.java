@@ -264,6 +264,30 @@ public class SupportBean implements Serializable {
         }
     }
     
+    public void prijaviNeprimernoVsebino(int id) {
+        if(loginBean.getIdUser() > 0) {
+            SupportTicketObj st = new SupportTicketObj();
+            UporabnikObj avtor = new UporabnikObj();
+            avtor.setId(loginBean.getIdUser());
+            st.setAvtor(avtor);
+            st.setCasUstvarjen(new GregorianCalendar());
+            SupportTicketKategorijaObj kategorija = new SupportTicketKategorijaObj();
+            kategorija.setId(1);
+            st.setSupportTicketKategorija(kategorija);
+            SupportTicketStatusObj status = new SupportTicketStatusObj();
+            status.setId(1);
+            st.setSupportTicketStatus(status);
+            
+            st.setNaslov("Prijava neprimerne vsebine");
+            st.setVsebina("<a href=\"/fleamart-web/oglas/read.xhtml?id="+id+"\">Oglas</a>");
+            
+            boolean created = service.createSupportTicket(ConverterHelper.supportTicketObjt2Ws(st));
+            if (created) {
+                JSFHelper.redirect("/pomoc/nalog/list.xhtml");
+            }
+        }
+    }
+    
     private void getUporabnikiFromService() {
         uporabniki = new ArrayList<>();
         for(Uporabnik u : service.listUporabnik().getUporabnik()) {

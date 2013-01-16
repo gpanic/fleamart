@@ -33,7 +33,7 @@
                             <tr>
                                 <td><h:outputText value="#{ticket.id}"/></td>
                                 <td><h:outputText value="#{ticket.naslov}"/></td>
-                                <td><h:outputText value="#{ticket.vsebina}"/></td>
+                                <td><h:outputText value="#{ticket.vsebina}" escape="false"/></td>
                                 <td><h:outputText value="#{ticket.casUstvarjen.time}"/></td>
                                 <td><h:outputText value="#{ticket.casZaprt.time}"/></td>
                                 <td><h:outputText value="#{ticket.avtor.upime}"/></td>

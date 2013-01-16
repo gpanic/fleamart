@@ -17,10 +17,18 @@ namespace Fleamart.Service
 
         public bool placeBidOnItem(Ponudba p, bool autoBider)
         {
-           //TODO: ce je cas potekel, return false
-            //if(p.Oglas.CasDo>cas zdaj) return false 
+            
             OglasEFDao odao = new OglasEFDao();
             Oglas oglas = odao.Read(p.Oglas.Id);
+
+            //ce je cas ze potekel
+            if (oglas.CasDo < DateTime.Now)
+            {
+                oglas.Status = 1;
+                odao.Update(oglas);
+                return false;
+            }
+            
             bool vraca = false;
             Ponudba zeObstojeca= pdao.obstajaPonudba(p.Uporabnik.Id, p.Oglas.Id);
             if (zeObstojeca != null)
@@ -42,7 +50,7 @@ namespace Fleamart.Service
             else
             {
                 double korak = 1.0;
-                oglas.Cena += korak;                
+                //oglas.Cena += korak;                
                 //dobim ponudbe, kjer je vnesen znesek vecji od cene
                 List<Ponudba> ponudbe =pdao.PonudbeZaAutobid(oglas.Cena, oglas.Id);
                 bool bidaj = ponudbe.Count>0;
@@ -63,9 +71,13 @@ namespace Fleamart.Service
 
             }
 
-            //TODO: ce je cas potekel - casDo - nastavi status na zaključeno
-            odao.Update(oglas);
+            //ce je zdaj cas ze potekel, nastavimo status oglasa na 1 - torej neaktiven
+            if (oglas.CasDo < DateTime.Now)
+            {
+                oglas.Status = 1;
+            }
 
+            odao.Update(oglas);
             return vraca;
         }
 
