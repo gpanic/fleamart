@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:body>
+        <ui:composition template="/shared/layout.xhtml">
+            <ui:param name="title" value="Fleamart" />
+            <ui:define name="content">
+                <h1>Nalogi</h1>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Naslov</th>
+                            <th>Vsebina</th>
+                            <th>Ustvarjen</th>
+                            <th>Zaport</th>
+                            <th>Avtor</th>
+                            <th>Tehnik</th>
+                            <th>Kategorija</th>
+                            <th>Status</th>
+                            <th>Komentarji</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ui:repeat var="ticket" value="#{supportBean.tickets}">
+                            <tr>
+                                <td><h:outputText value="#{ticket.id}"/></td>
+                                <td><h:outputText value="#{ticket.naslov}"/></td>
+                                <td><h:outputText value="#{ticket.vsebina}" escape="false"/></td>
+                                <td><h:outputText value="#{ticket.casUstvarjen.time}"/></td>
+                                <td><h:outputText value="#{ticket.casZaprt.time}"/></td>
+                                <td><h:outputText value="#{ticket.avtor.upime}"/></td>
+                                <td><h:outputText value="#{ticket.tehnik.upime}"/></td>
+                                <td><h:outputText value="#{ticket.supportTicketKategorija.naziv}"/></td>
+                                <td><h:outputText value="#{ticket.supportTicketStatus.naziv}"/></td>
+                                <td><h:outputText value="#{ticket.komentarji.size()}"/></td>
+                                <td>
+                                    <h:outputLink value="/fleamart-web/pomoc/nalog/read.xhtml?id=#{ticket.id}" styleClass="icon-zoom-in"/>
+                                    &nbsp;
+                                    <h:outputLink value="/fleamart-web/pomoc/nalog/update.xhtml?id=#{ticket.id}" styleClass="icon-edit"/>
+                                    &nbsp;
+                                    <h:form style="display:inline;">
+                                        <h:commandLink styleClass="icon-remove" value="" action="#{supportBean.deleteTicket(ticket.id)}" />
+                                    </h:form>
+                                </td>
+                            </tr>
+                        </ui:repeat>
+                    </tbody>
+                </table>
+                <h:outputLink value="/fleamart-web/pomoc/nalog/create.xhtml">
+                    Ustvari nalog
+                </h:outputLink>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
