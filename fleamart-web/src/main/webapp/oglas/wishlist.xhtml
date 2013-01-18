@@ -4,17 +4,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<!-- #{seznamZeljaBean.prikaziSeznamZelja(loginBean.idUser)}"  -->
 <h:body>
 	<ui:composition template="/shared/layout.xhtml">
 		<ui:param name="title" value="Fleamart" />
 		<ui:define name="content">
-			<f:metadata>
-				<f:event type="preRenderView"
-					listener="#{seznamZeljaBean.prikaziSeznamZelja(loginBean.idUser)}" />
-			</f:metadata>
 			<h1>Moj seznam želja</h1>
 			<h:form id="formaZaSeznamZelja">
+
+				<h:outputText value="#{seznamZeljaBean.txt}"></h:outputText>
 				<ui:repeat var="oglas" value="#{seznamZeljaBean.oglasi}">
 					<div class="oglasitem">
 						<div class="slika">
@@ -30,10 +30,13 @@
 						<div class="cenaostalo">
 							<h:outputText class="cena" value="#{oglas.cena} €" />
 							<br />
-							<h:form>
-							<h:commandLink action="#{seznamZeljaBean.izbrisiZeljo(oglas.id)}" value="Izbrisi" />
-							
-							</h:form>
+							<h:commandButton
+								action="#{seznamZeljaBean.proba}"
+								style="margin-bottom: 5px;" class="btn btn-mini btn-primary"
+								value="Odstrani željo">
+							</h:commandButton>
+							<h:commandLink action="#{seznamZeljaBean.proba}"
+								value="Izbrisi" />
 							<br />
 							<div class="datum">
 								<br />

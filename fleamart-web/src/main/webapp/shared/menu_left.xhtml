@@ -18,6 +18,11 @@
 						<li><h:outputLink value="#">Menu item 1</h:outputLink></li>
 						<li><h:outputLink value="#">Menu item 2</h:outputLink></li>
 						<li><h:outputLink value="#">Menu item 3</h:outputLink></li>
+						<h:form>
+						<li>
+						<h:commandLink action="#{seznamZeljaBean.prikaziSeznamZelja}" value="Želje"></h:commandLink>
+						</li>
+						</h:form>
 					</ul>
 				</h:panelGroup>
 				<h:panelGroup rendered="#{!kosaricaBean.isEmpty() and kosaricaBean.nakupView()}" styleClass="well" layout="block" style="max-width: 340px; padding: 8px 0;">

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import com.fleamart.helpers.ConverterHelper;
 import com.fleamart.obj.OglasObj;
@@ -84,14 +85,17 @@ public class SeznamZeljaBean
 		oglasi = new ArrayList<OglasObj>();
 	}
 
-	public void proba(){
-		System.out.println("___________*****************______________");
+	public String proba(){
+		txt = "Oglas odstranjen iz seznama želja!";
+		System.out.println("*************______________________************");
+		return "#";
+		
 		
 	}
 	
 	public String izbrisiZeljo(int id)
 	{ 
-		
+		System.out.println("*************______________________************");
 		try
 		{
 			OglasService client = new OglasService();
@@ -114,8 +118,10 @@ public class SeznamZeljaBean
 		}
 	}
 		
-	public void prikaziSeznamZelja(int idUporabnik)
+	public String prikaziSeznamZelja()
 	{
+		LoginBean loginb = (LoginBean)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
+		int idUporabnik = loginb.getIdUser();
 		OglasService client = new OglasService();
 		List<com.fleamart.oglas.ws.Oglas> seznam = client
 				.getBasicHttpBindingIOglasService()
@@ -125,6 +131,7 @@ public class SeznamZeljaBean
 		{
 			oglasi.add(ConverterHelper.oglasWs2Obj(s));
 		}
+		return "/oglas/wishlist.xhtml";
 
 	}
 
