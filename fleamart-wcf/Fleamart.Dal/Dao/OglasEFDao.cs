@@ -148,9 +148,39 @@ namespace Fleamart.Dal.Dao
         {
             using (FleamartContext db = new FleamartContext())
             {
-                List<OglasEF> oglasi_ef = db.Oglasi.ToList();
+                List<OglasEF> oglasi_ef = db.Oglasi.Where(x => x.Status == 1 && x.StatusNakupa == null).ToList();
                 List<Oglas> oglasi = (oglasi_ef != null) ? Mapper.Map<List<OglasEF>, List<Oglas>>(oglasi_ef) : null;
                 return oglasi;
+            }
+        }
+
+        public List<Oglas> ListAdmin(int? status, int? statusNakupa)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                var query = from x in db.Oglasi
+                            select x;
+
+                if (status != null)
+                    query = query.Where(a => a.Status == status);
+
+
+                if (statusNakupa >= 0) //drugače ne dela lol
+                    query = query.Where(a => a.StatusNakupa == statusNakupa);
+                else
+                    query = query.Where(a => a.StatusNakupa == null);
+
+                query = query.OrderByDescending(x => x.CasOd);
+
+                List<Oglas> list = new List<Oglas>();
+                if (query.Count() != 0)
+                {
+                    foreach (var item in query.ToList())
+                    {
+                        list.Add(Mapper.Map<OglasEF, Oglas>(item));
+                    }
+                }
+                return list;
             }
         }
 
@@ -161,15 +191,15 @@ namespace Fleamart.Dal.Dao
                 List<OglasEF> oglasi_ef = null;
                 if (param == null)
                 {
-                    oglasi_ef = db.Oglasi.Where(x => x.Kategorija.Naziv.Equals(kategorija)).ToList();
+                    oglasi_ef = db.Oglasi.Where(x => x.Kategorija.Naziv.Equals(kategorija)).Where(x => x.Status == 1 && x.StatusNakupa == null).ToList();
                 }
                 else if (kategorija != null && param != null)
                 {
-                    oglasi_ef = db.Oglasi.Where(x => x.Kategorija.Naziv == kategorija).Where(x => x.Naslov.Contains(param)).ToList();
+                    oglasi_ef = db.Oglasi.Where(x => x.Kategorija.Naziv == kategorija).Where(x => x.Naslov.Contains(param)).Where(x => x.Status == 1 && x.StatusNakupa == null).ToList();
                 }
                 else if (kategorija == null && param != null)
                 {
-                    oglasi_ef = db.Oglasi.Where(x => x.Naslov.Contains(param)).ToList();
+                    oglasi_ef = db.Oglasi.Where(x => x.Naslov.Contains(param)).Where(x => x.Status == 1 && x.StatusNakupa == null).ToList();
                 }
 
                 List<Oglas> oglasi = (oglasi_ef != null) ? Mapper.Map<List<OglasEF>, List<Oglas>>(oglasi_ef) : null;

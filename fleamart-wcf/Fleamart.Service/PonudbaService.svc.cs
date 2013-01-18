@@ -21,13 +21,13 @@ namespace Fleamart.Service
             OglasEFDao odao = new OglasEFDao();
             Oglas oglas = odao.Read(p.Oglas.Id);
 
-            //ce je cas ze potekel
-            if (oglas.CasDo < DateTime.Now)
-            {
-                oglas.Status = 1;
-                odao.Update(oglas);
-                return false;
-            }
+            ////ce je cas ze potekel
+            //if (oglas.CasDo < DateTime.Now)
+            //{
+            //    oglas.Status = 1;
+            //    odao.Update(oglas);
+            //    return false;
+            //}
             
             bool vraca = false;
             Ponudba zeObstojeca= pdao.obstajaPonudba(p.Uporabnik.Id, p.Oglas.Id);

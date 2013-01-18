@@ -2,40 +2,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
-<h:body>
-	<ui:composition template="/shared/layout.xhtml">
-		<ui:param name="title" value="Fleamart" />
-		<ui:define name="content">
-			<h1>Statusi nalogov</h1>
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Ime</th>
-							<th>Opis</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<ui:repeat var="status" value="#{supportBean.statusi}">
-							<tr>
-								<td><h:outputText value="#{status.id}"/></td>
-								<td><h:outputText value="#{status.naziv}"/></td>
-								<td><h:outputText value="#{status.opis}"/></td>
-								<h:form>
-									<td>
-										<h:commandLink styleClass="icon-remove" value="" action="#{supportBean.deleteStatus(status.id)}" />
-									</td>
-								</h:form>
-							</tr>
-						</ui:repeat>
-					</tbody>
-				</table>
-		</ui:define>
-	</ui:composition>
-</h:body>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:body>
+        <ui:composition template="/shared/layout.xhtml">
+            <ui:param name="title" value="Fleamart" />
+            <ui:define name="content">
+                <h1>Statusi nalogov</h1>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Ime</th>
+                            <th>Opis</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ui:repeat var="status" value="#{supportBean.statusi}">
+                            <tr>
+                                <td><h:outputText value="#{status.id}"/></td>
+                                <td><h:outputText value="#{status.naziv}"/></td>
+                                <td><h:outputText value="#{status.opis}"/></td>
+                                <h:form>
+                                    <td>
+                                        <h:commandLink styleClass="icon-remove" value="" action="#{supportBean.deleteStatus(status.id)}" />
+                                    </td>
+                                </h:form>
+                            </tr>
+                        </ui:repeat>
+                    </tbody>
+                </table>
+            <h:outputLink value="/fleamart-web/pomoc/nalog/status/create.xhtml">
+                Ustvari kategorijo
+            </h:outputLink>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>

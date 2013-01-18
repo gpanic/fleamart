@@ -1,5 +1,5 @@
 
-package com.fleamart.uporabnik.ws;
+package com.fleamart.oglas.ws;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="loginCheckResult" type="{http//www.fleamart.com/}Uporabnik" minOccurs="0"/>
+ *         &lt;element name="ListOglasiAdminResult" type="{http//www.fleamart.com/}ArrayOfOglas" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "loginCheckResult"
+    "listOglasiAdminResult"
 })
-@XmlRootElement(name = "loginCheckResponse", namespace = "http://tempuri.org/")
-public class LoginCheckResponse {
+@XmlRootElement(name = "ListOglasiAdminResponse")
+public class ListOglasiAdminResponse {
 
-    @XmlElementRef(name = "loginCheckResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
-    protected JAXBElement<Uporabnik> loginCheckResult;
+    @XmlElementRef(name = "ListOglasiAdminResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    protected JAXBElement<ArrayOfOglas> listOglasiAdminResult;
 
     /**
-     * Gets the value of the loginCheckResult property.
+     * Gets the value of the listOglasiAdminResult property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ArrayOfOglas }{@code >}
      *     
      */
-    public JAXBElement<Uporabnik> getLoginCheckResult() {
-        return loginCheckResult;
+    public JAXBElement<ArrayOfOglas> getListOglasiAdminResult() {
+        return listOglasiAdminResult;
     }
 
     /**
-     * Sets the value of the loginCheckResult property.
+     * Sets the value of the listOglasiAdminResult property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Uporabnik }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ArrayOfOglas }{@code >}
      *     
      */
-    public void setLoginCheckResult(JAXBElement<Uporabnik> value) {
-        this.loginCheckResult = value;
+    public void setListOglasiAdminResult(JAXBElement<ArrayOfOglas> value) {
+        this.listOglasiAdminResult = value;
     }
 
 }

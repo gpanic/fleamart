@@ -25,12 +25,13 @@
 			<blockquote>
 				<p>
 					Cena: <b>#{oglasBean2.oglas.cena} €</b>
+					#{oglasBean2.textProdan}"
 				</p>
 				<h:commandButton
 					rendered="#{oglasBean2.oglas.kupec.id == loginBean.idUser and oglasBean2.oglas.avkcija == false}"
 					value="Kupljeno" class="btn btn-primary disabled" />
 				<h:form id="readform"
-					rendered="#{oglasBean2.oglas.avtor.id != loginBean.idUser and loginBean.idUser != 0 and oglasBean2.oglas.statusNakupa == null and oglasBean2.oglas.avkcija==false}"
+					rendered="#{oglasBean2.oglas.avtor.id != loginBean.idUser and loginBean.idUser != 0 and oglasBean2.oglas.statusNakupa == null}"
 					style="display:inline;">
 					<h:commandButton id="kupi" class="btn btn-primary"
 						action="#{kosaricaBean.schnellkauf(oglasBean2.oglas.id, oglasBean2.oglas.naslov, oglasBean2.oglas.cena)}"
@@ -54,39 +55,41 @@
 			<ui:fragment
 				rendered="#{oglasBean2.oglas.avkcija and loginBean.idUser != 0 and oglasBean2.oglas.status != 1}">
 				<p>
-					<h:form id="poonudbaa" style="display:inline;">
-						<strong><h:outputText value="#{ponudbaBean.txt}" /></strong>
-						<br />
-						<h:outputText value="Vpišite ponudbo:" />
-						<h:inputText id="ponudbaCena" styleClass="span3"
-							value="#{ponudbaBean.znesek}" required="true"
-							validatorMessage="Niz mora biti številka"
-							requiredMessage="Obvezno polje">
-							<f:validateRegex pattern="(\d*.\d*|\d*)" />
-						</h:inputText>	&nbsp;				
-						<h:commandButton id="ponudi" style="margin-bottom: 10px;"
-							class="btn btn-primary" value="Ponudi"
-							action="#{ponudbaBean.posljiPonudbo(oglasBean2.oglas, loginBean.idUser, false)}">
-						</h:commandButton>
-						<div class="span7 offset5">
-							<h:commandButton id="autoPonudba" style="margin-bottom: 50px;"
-								class="btn btn-primary" value="Avtomatski ponudnik"
-								action="#{ponudbaBean.posljiPonudbo(oglasBean2.oglas, loginBean.idUser, true)}">
-							</h:commandButton>
-						</div>
-					</h:form>
-				</p>
-			</ui:fragment>
-			<ui:fragment rendered="#{loginBean.idUser != 0}">
-				<h:form id="jdnsjkcv">
-					<i class="icon-heart"></i>
-					<h:commandButton id="dodajNaSeznamZelja"
-						style="margin-bottom: 1px;" class="btn btn-mini btn-link"
-						value="Dodaj na seznam želja"
-						action="#{seznamZeljaBean.dodajZeljo(oglasBean2.oglas, loginBean.idUser)}">
+					<h:outputText value="Vpišite ponudbo:" />
+
+					<h:inputText id="ponudbaCena" styleClass="span3"
+						value="#{ponudbaBean.znesek}" required="true"
+						validatorMessage="Niz mora biti številka"
+						requiredMessage="Obvezno polje">
+						<f:validateRegex pattern="(\d*.\d*|\d*)" />
+					</h:inputText>
+					&nbsp;
+					<h:commandButton id="ponudi" style="margin-bottom: 10px;"
+						class="btn btn-primary" value="Ponudi"
+						action="#{ponudbaBean.posljiPonudbo(oglasBean2.oglas, loginBean.idUser, false)}">
 					</h:commandButton>
 					<br />
-					<h:outputText value="#{seznamZeljaBean.txt}" />
+					<h:outputText value="#{ponudbaBean.txt}" />
+					<h:commandButton id="autoPonudba" style="margin-bottom: 5px;"
+						class="btn btn-primary" value="Avtomatski ponudnik"
+						action="#{ponudbaBean.posljiPonudbo(oglasBean2.oglas, loginBean.idUser, true)}">
+					</h:commandButton>
+					<h:outputText value="#{avtomatskiPonudnikBean.txt}" />
+
+				</p>
+			</ui:fragment>
+
+			<ui:fragment rendered="#{loginBean.idUser != 0 and oglasBean2.oglas.status != 1}">
+				<h:form id="jdnsjkcv">
+					<p>
+						<h:commandButton id="dodajNaSeznamZelja"
+							style="margin-bottom: 10px;" class="btn btn-mini btn-primary"
+							value="Dodaj na seznam želja"
+							action="#{seznamZeljaBean.dodajZeljo(oglasBean2.oglas, loginBean.idUser)}">
+						</h:commandButton>
+						<br />
+						<h:outputText value="#{seznamZeljaBean.txt}" />
+					</p>
 				</h:form>
 			</ui:fragment>
 		</div>
@@ -113,13 +116,14 @@
 			<br /> <br />
 			<form>
 				<legend>
-					Prodajalec
+					<h:link
+						outcome="/sellerProfile.xhtml?prodajalecId=#{oglasBean2.oglas.avtor.id}"
+						value="Prodajalec"></h:link>
 				</legend>
 			</form>
 			<p>
-				Uporabnik<br /> <strong><h:link
-						outcome="/sellerProfile.xhtml?prodajalecId=#{oglasBean2.oglas.avtor.id}"
-						value="#{oglasBean2.oglas.avtor.upime}"></h:link></strong>
+				Uporabnik<br /> <strong><h:outputText
+						value="#{oglasBean2.oglas.avtor.upime}" /></strong>
 			</p>
 			<p>
 				Občina<br /> <strong><h:outputText
@@ -152,7 +156,19 @@
 					</a>
 				</ui:repeat>
 			</div>
+
+			<script type="text/javascript"
+				src="/fleamart-web/js/galleria/galleria-1.2.8.min.js"></script>
+			<script type="text/javascript">
+				// Load the classic theme
+				Galleria
+						.loadTheme('/fleamart-web/js/galleria/galleria.classic.min.js');
+				//
+				// Initialize Galleria
+				Galleria.run('#galleria');
+			</script>
 		</ui:fragment>
+
 	</div>
 </h:body>
 </html>

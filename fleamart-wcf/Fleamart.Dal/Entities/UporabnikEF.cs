@@ -9,7 +9,7 @@ namespace Fleamart.Dal.Entities
 {
     public class UporabnikEF
     {
-        public int Id { get; set; }
+        public int Id { get; set; } // 1 == navaden uporabnik, 2 == admin
         public int Vloga { get; set; }
         public string Ime { get; set; }
         public string Priimek { get; set; }

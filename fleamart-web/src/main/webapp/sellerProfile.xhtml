@@ -28,7 +28,6 @@
 					<strong><h:outputText
 							value="#{profilUporabnikaBean.uporabnik.naslov.obcina}" /></strong>, <strong><h:outputText
 							value="#{profilUporabnikaBean.uporabnik.naslov.drzava}" /></strong>
-
 				</p>
 
 				<p>
@@ -47,6 +46,7 @@
 						<i class="icon-star"></i>
 					</ui:fragment>
 				</p>
+				<p><h:outputLink value="/fleamart-web/profile/sendpm.xhtml?prejemnik=#{profilUporabnikaBean.prodajalecId}">Pošlji uporabniku zasebno sporočilo</h:outputLink></p>
 				<br />
 				<ui:fragment rendered="#{profilUporabnikaBean.oglasi.size() != 0}">
 					<p>

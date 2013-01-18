@@ -13,6 +13,7 @@ import com.fleamart.obj.KategorijaObj;
 import com.fleamart.obj.KomentarObj;
 import com.fleamart.obj.OglasObj;
 import com.fleamart.obj.UporabnikObj;
+import com.fleamart.oglas.ws.ArrayOfOglas;
 import com.fleamart.oglas.ws.Komentar;
 import com.fleamart.oglas.ws.ObjectFactory;
 import com.fleamart.oglas.ws.Oglas;
@@ -46,7 +47,7 @@ public class OglasBean2 implements Serializable {
     private OglasObj oglas;
     private List<KategorijaObj> kategorije;
     private KategorijaObj kategorija;
-    private int aktivni = 0; //v oglas/list.xhtml, oglas/read.xhtml, oglas/listProdano.xhtml, kot statusNakupa v oglas/listNakupi.xhtml
+    private int aktivni = 0; //v oglas/list.xhtml, oglas/read.xhtml, oglas/listProdano.xhtml, kot statusNakupa v oglas/listNakupi.xhtml, admin/listOglasi.xhtml
     private double zasluzek;
     @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
@@ -55,7 +56,9 @@ public class OglasBean2 implements Serializable {
     @ManagedProperty(value = "#{kosaricaBean}")
     private KosaricaBean kosaricaBean;
     private ArrayList<KomentarObj> komentarjidesc;
-
+    private String redirectlink;
+    private int komentarId;
+    private String textProdan;
     @PostConstruct
     public void init() {
         String view = FacesContext.getCurrentInstance().getViewRoot().getViewId();
@@ -70,6 +73,14 @@ public class OglasBean2 implements Serializable {
             case "/oglas/listNakupi.xhtml":
                 initOglasListKupljeno();
                 break;
+            case "/admin/listOglasi.xhtml":
+                initOglasAdmin();
+                break;
+            case "/oglas/read.xhtml":
+            	if(readTab==1){
+            		probavamPreverjanje();
+            	}
+                	
         }
     }
 
@@ -80,6 +91,14 @@ public class OglasBean2 implements Serializable {
 
     public List<OglasObj> getOglasi() {
         return oglasi;
+    }
+
+    public String getRedirectlink() {
+        return redirectlink;
+    }
+
+    public void setRedirectlink(String redirectlink) {
+        this.redirectlink = redirectlink;
     }
 
     public void setOglasi(List<OglasObj> oglasi) {
@@ -134,6 +153,14 @@ public class OglasBean2 implements Serializable {
         return readTab;
     }
 
+    public int getKomentarId() {
+        return komentarId;
+    }
+
+    public void setKomentarId(int komentarId) {
+        this.komentarId = komentarId;
+    }
+
     public void setReadTab(int readTab) {
         this.readTab = readTab;
     }
@@ -161,8 +188,19 @@ public class OglasBean2 implements Serializable {
     public void setAktivni(int aktivni) {
         this.aktivni = aktivni;
     }
+    
 
-    public void listKategorije() {
+    public String getTextProdan()
+	{
+		return textProdan;
+	}
+
+	public void setTextProdan(String textProdan)
+	{
+		this.textProdan = textProdan;
+	}
+
+	public void listKategorije() {
         kategorije = new ArrayList<KategorijaObj>();
         KategorijeService client = new KategorijeService();
         ArrayOfKategorija kat = client.getBasicHttpBindingIKategorijaService()
@@ -253,6 +291,27 @@ public class OglasBean2 implements Serializable {
         }
     }
 
+    public void initOglasAdmin() {
+        if (loginBean.getVloga() == 2) {
+            switch (aktivni) {
+                case 0:
+                    listOglasiAdmin(0, null);
+                    break;
+                case 1:
+                    listOglasiAdmin(1, null);
+                    break;
+                case 2:
+                    listOglasiAdmin(0, 1);
+                    break;
+                case 3:
+                    listOglasiAdmin(0, 0);
+                    break;
+            }
+
+        } else
+            redirect("/browse.xhtml");
+    }
+
     public void initOglasListKupljeno() {
         listOglasiKupec(aktivni);
         zasluzek = 0;
@@ -263,9 +322,15 @@ public class OglasBean2 implements Serializable {
     public void deleteOglas() {
         OglasService client = new OglasService();
         client.getBasicHttpBindingIOglasService().deleteOglas(oglas.getId());
-        redirect("/oglas/list.xhtml");
+        redirect(redirectlink);
     }
 
+    public void deleteKomentar(){
+        OglasService client = new OglasService();
+        client.getBasicHttpBindingIOglasService().deleteKomentar(komentarId);
+        redirect("/oglas/read.xhtml?id="+oglas.getId()+"&tab=2");
+    }
+    
     public void redirect(String path) {
         try {
             ExternalContext ec = FacesContext.getCurrentInstance()
@@ -274,6 +339,15 @@ public class OglasBean2 implements Serializable {
         } catch (IOException ex) {
             Logger.getLogger(OglasBean.class.getName()).log(
                     Level.SEVERE, null, ex);
+        }
+    }
+
+    public void listOglasiAdmin(Integer status, Integer statusNakupa) {
+        OglasService client = new OglasService();
+        List<Oglas> oglasiws = client.getBasicHttpBindingIOglasService().listOglasiAdmin(status, statusNakupa).getOglas();
+        oglasi.clear();
+        for (Oglas o : oglasiws) {
+            oglasi.add(ConverterHelper.oglasWs2Obj(o));
         }
     }
 
@@ -331,7 +405,6 @@ public class OglasBean2 implements Serializable {
             Uporabnik u = new Uporabnik();
             u.setId(loginBean.getIdUser());
             o.setKupec(new ObjectFactory().createOglasKupec(u));
-
             Boolean uspelo = client.getBasicHttpBindingIOglasService().updateOglas(o);
         }
     }
@@ -363,5 +436,22 @@ public class OglasBean2 implements Serializable {
         boolean rezultat = client.getBasicHttpBindingIOglasService().updateOglas(o);
         String out = (rezultat) ? "/oglas/read.xhtml?id=" + oglas.getId() + "&tab=2" : "fail";
         redirect(out);
+    }
+    
+    public void probavamPreverjanje(){    	
+    	textProdan = "cas:" + oglas.getCasDo() + ", id:" + oglas.getId();
+    	
+    	
+    	/*
+    	//ce je oglas aktiven, torej ce je 0    	
+    	if(oglas.getStatus()==0){
+    		GregorianCalendar gregCal = new GregorianCalendar();
+    		//ce je oglas poteko
+    		if(gregCal.after(oglas.getCasDo())){
+    			
+        		textProdan = "potem";    		
+        	}
+    	}
+    	*/
     }
 }

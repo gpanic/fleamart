@@ -17,6 +17,12 @@
             <ui:repeat var="komentar" value="#{oglasBean2.komentarjidesc}">
                 <li>
                     <div class="komentar">
+                        
+                        <h:form id="deletekomentar" style="float: left;" rendered="#{loginBean.idUser == komentar.avtor.id or loginBean.vloga == 2}">
+                            <h:commandButton action="#{oglasBean2.deleteKomentar}" class="btn btn-mini btn-primary deletebtn" value="x">
+                                <f:setPropertyActionListener target="#{oglasBean2.komentarId}" value="#{komentar.id}"/>
+                            </h:commandButton>
+                        </h:form>
                         <h:outputLink class="uporabnik" value="/fleamart-web/sellerProfile.xhtml">
                             <f:param name="id" value="#{komentar.avtor.id}"/>
                             <h:outputText value="#{komentar.avtor.upime}"/>

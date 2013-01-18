@@ -15,7 +15,7 @@ namespace Fleamart.Service
     public class OglasService : IOglasService
     {
         private OglasEFDao odao = new OglasEFDao();
-
+        
         public bool CreateOglas(Oglas o)
         {
             return odao.Create(o);
@@ -97,5 +97,16 @@ namespace Fleamart.Service
             return odao.VrniPovprecjeOcen(uporabnikId);
         }
 
+        public List<Oglas> ListOglasiAdmin(int? status, int? statusNakupa)
+        {
+            return odao.ListAdmin(status, statusNakupa);
+        }
+
+
+        public bool DeleteKomentar(int id)
+        {
+            KomentarEFDao kdao = new KomentarEFDao();
+            return kdao.Delete(id);
+        }
     }
 }

@@ -294,6 +294,13 @@ public class SupportBean implements Serializable {
             uporabniki.add(ConverterHelper.supportTicketUporabnikWs2Obj(u));
         }
     }
+    
+    public void deleteTicket(int id) {
+        if(loginBean.getIdUser() > 0) {
+            service.deleteSupportTicket(id);
+            getTicketsFromService();
+        }
+    }
 
     //GETTERS AND SETTERS
     public LoginBean getLoginBean() {
