@@ -64,6 +64,23 @@ namespace Fleamart.Service
         {
             return udao.Read2(Id);
         }
-      
+
+
+
+        public bool UpdateUporabnik(Uporabnik u)
+        {
+            return udao.Update(u);
+        }
+
+        public List<Uporabnik> ListUporabnik()
+        {
+            return udao.List();
+        }
+
+
+        public bool DeleteUporabnik(int id)
+        {
+            return udao.Delete(id);
+        }
     }
 }

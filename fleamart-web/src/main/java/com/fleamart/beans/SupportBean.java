@@ -26,17 +26,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
 @ManagedBean(name = "supportBean")
-@RequestScoped
+@ViewScoped
 public class SupportBean implements Serializable {
 
     @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
-    
-    private ISupportTicketService service;
     
     private List<SupportTicketKategorijaObj> kategorije;
     private SupportTicketKategorijaObj kategorijaCreate;
@@ -58,9 +57,7 @@ public class SupportBean implements Serializable {
     private List<UporabnikObj> uporabniki;
     private int selectedTehnik;
 
-
     public SupportBean() {
-        service = new SupportTicketService().getBasicHttpBindingISupportTicketService();
         ticketUpdate = new SupportTicketObj();
         ticketUpdateOld = new SupportTicketObj();
         
@@ -118,7 +115,7 @@ public class SupportBean implements Serializable {
     
     public void initTicketUpdate() {
         if(ticketUpdate.getId() > 0) {
-            ticketUpdate = ConverterHelper.supportTicketWs2Obj(service.readSupportTicket(ticketUpdate.getId()));
+            ticketUpdate = ConverterHelper.supportTicketWs2Obj(new SupportTicketService().getBasicHttpBindingISupportTicketService().readSupportTicket(ticketUpdate.getId()));
             if(ticketUpdate.getTehnik() != null) {
                 selectedTehnik = ticketUpdate.getTehnik().getId();
             }
@@ -132,42 +129,42 @@ public class SupportBean implements Serializable {
     }
 
     public void createKategorija() {
-        boolean created = service.createSupportTicketKategorija(ConverterHelper.supportTicketKategorijaObj2Ws(kategorijaCreate));
+        boolean created = new SupportTicketService().getBasicHttpBindingISupportTicketService().createSupportTicketKategorija(ConverterHelper.supportTicketKategorijaObj2Ws(kategorijaCreate));
         if (created) {
             JSFHelper.redirect("/pomoc/nalog/kategorija/list.xhtml");
         }
     }
 
     public boolean deleteKategorija(int id) {
-        boolean deleted = service.deleteSupportTicketKategorija(id);
+        boolean deleted = new SupportTicketService().getBasicHttpBindingISupportTicketService().deleteSupportTicketKategorija(id);
         getKategorijeFromService();
         return deleted;
     }
 
     private void getKategorijeFromService() {
         kategorije = new ArrayList<>();
-        List<SupportTicketKategorija> wsList = service.listSupportTicketKategorija().getSupportTicketKategorija();
+        List<SupportTicketKategorija> wsList = new SupportTicketService().getBasicHttpBindingISupportTicketService().listSupportTicketKategorija().getSupportTicketKategorija();
         for (SupportTicketKategorija k : wsList) {
             kategorije.add(ConverterHelper.supportTicketKategorijaWs2Obj(k));
         }
     }
 
     public void createStatus() {
-        boolean created = service.createSupportTicketStatus(ConverterHelper.supportTicketStatusObj2Ws(statusCreate));
+        boolean created = new SupportTicketService().getBasicHttpBindingISupportTicketService().createSupportTicketStatus(ConverterHelper.supportTicketStatusObj2Ws(statusCreate));
         if (created) {
             JSFHelper.redirect("/pomoc/nalog/status/list.xhtml");
         }
     }
 
     public boolean deleteStatus(int id) {
-        boolean deleted = service.deleteSupportTicketStatus(id);
+        boolean deleted = new SupportTicketService().getBasicHttpBindingISupportTicketService().deleteSupportTicketStatus(id);
         getStatusiFromService();
         return deleted;
     }
 
     private void getStatusiFromService() {
         statusi = new ArrayList<>();
-        List<SupportTicketStatus> wsList = service.listSupportTicketStatus().getSupportTicketStatus();
+        List<SupportTicketStatus> wsList = new SupportTicketService().getBasicHttpBindingISupportTicketService().listSupportTicketStatus().getSupportTicketStatus();
         for (SupportTicketStatus s : wsList) {
             statusi.add(ConverterHelper.supportTicketStatusWs2Obj(s));
         }
@@ -180,7 +177,7 @@ public class SupportBean implements Serializable {
 
     private void getTicketsFromService() {
         tickets = new ArrayList<>();
-        List<SupportTicket> wsList = service.listSupportTicket().getSupportTicket();
+        List<SupportTicket> wsList = new SupportTicketService().getBasicHttpBindingISupportTicketService().listSupportTicket().getSupportTicket();
         for (SupportTicket t : wsList) {
             getTickets().add(ConverterHelper.supportTicketWs2Obj(t));
         }
@@ -192,13 +189,13 @@ public class SupportBean implements Serializable {
         avtor.setId(loginBean.getIdUser());
         komentarCreate.setAvtor(avtor);
         komentarCreate.setSupportTicketId(getTicketReadId());
-        service.createSupportTicketKomentar(ConverterHelper.supportTicketKomentarObj2Ws(komentarCreate));
+        new SupportTicketService().getBasicHttpBindingISupportTicketService().createSupportTicketKomentar(ConverterHelper.supportTicketKomentarObj2Ws(komentarCreate));
         getTicketFromService();
         komentarCreate = new SupportTicketKomentarObj();
     }
     
     public void deleteTicketKomentar(int id) {
-        service.deleteSupportTicketKomentar(id);
+        new SupportTicketService().getBasicHttpBindingISupportTicketService().deleteSupportTicketKomentar(id);
         getTicketFromService();
     }
     
@@ -215,7 +212,7 @@ public class SupportBean implements Serializable {
     }
 
     private void getTicketFromService() {
-        SupportTicket ticket = service.readSupportTicket(getTicketReadId());
+        SupportTicket ticket = new SupportTicketService().getBasicHttpBindingISupportTicketService().readSupportTicket(getTicketReadId());
         if (ticket != null) {
             ticketRead = ConverterHelper.supportTicketWs2Obj(ticket);
         }
@@ -233,7 +230,7 @@ public class SupportBean implements Serializable {
             SupportTicketStatusObj status = new SupportTicketStatusObj();
             status.setId(selectedStatus);
             ticketCreate.setSupportTicketStatus(status);
-            boolean created = service.createSupportTicket(ConverterHelper.supportTicketObjt2Ws(ticketCreate));
+            boolean created = new SupportTicketService().getBasicHttpBindingISupportTicketService().createSupportTicket(ConverterHelper.supportTicketObjt2Ws(ticketCreate));
             if (created) {
                 JSFHelper.redirect("/pomoc/nalog/list.xhtml");
             }
@@ -241,10 +238,8 @@ public class SupportBean implements Serializable {
     }
     
     public void updateTicket() {
-        System.err.println("UPDATE TICKET");
         int id = ticketUpdate.getId();
-        System.err.println(id);
-        ticketUpdateOld = ConverterHelper.supportTicketWs2Obj(service.readSupportTicket(id));
+        ticketUpdateOld = ConverterHelper.supportTicketWs2Obj(new SupportTicketService().getBasicHttpBindingISupportTicketService().readSupportTicket(id));
         UporabnikObj tehnik = new UporabnikObj();
         tehnik.setId(selectedTehnik);
         ticketUpdateOld.setTehnik(tehnik);
@@ -257,8 +252,8 @@ public class SupportBean implements Serializable {
         ticketUpdateOld.setNaslov(ticketUpdate.getNaslov());
         ticketUpdateOld.setVsebina(ticketUpdate.getVsebina());
         
-        boolean updated = service.updateSupportTicket(ConverterHelper.supportTicketObjt2Ws(ticketUpdateOld));
-        ticketUpdate = ConverterHelper.supportTicketWs2Obj(service.readSupportTicket(ticketUpdate.getId()));
+        boolean updated = new SupportTicketService().getBasicHttpBindingISupportTicketService().updateSupportTicket(ConverterHelper.supportTicketObjt2Ws(ticketUpdateOld));
+        ticketUpdate = ConverterHelper.supportTicketWs2Obj(new SupportTicketService().getBasicHttpBindingISupportTicketService().readSupportTicket(ticketUpdate.getId()));
         if (updated) {
             JSFHelper.redirect("/pomoc/nalog/list.xhtml");
         }
@@ -281,7 +276,7 @@ public class SupportBean implements Serializable {
             st.setNaslov("Prijava neprimerne vsebine");
             st.setVsebina("<a href=\"/fleamart-web/oglas/read.xhtml?id="+id+"\">Oglas</a>");
             
-            boolean created = service.createSupportTicket(ConverterHelper.supportTicketObjt2Ws(st));
+            boolean created = new SupportTicketService().getBasicHttpBindingISupportTicketService().createSupportTicket(ConverterHelper.supportTicketObjt2Ws(st));
             if (created) {
                 JSFHelper.redirect("/pomoc/nalog/list.xhtml");
             }
@@ -290,14 +285,14 @@ public class SupportBean implements Serializable {
     
     private void getUporabnikiFromService() {
         uporabniki = new ArrayList<>();
-        for(Uporabnik u : service.listUporabnik().getUporabnik()) {
+        for(Uporabnik u : new SupportTicketService().getBasicHttpBindingISupportTicketService().listUporabnik().getUporabnik()) {
             uporabniki.add(ConverterHelper.supportTicketUporabnikWs2Obj(u));
         }
     }
     
     public void deleteTicket(int id) {
         if(loginBean.getIdUser() > 0) {
-            service.deleteSupportTicket(id);
+            new SupportTicketService().getBasicHttpBindingISupportTicketService().deleteSupportTicket(id);
             getTicketsFromService();
         }
     }

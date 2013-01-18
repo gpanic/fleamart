@@ -7,72 +7,57 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
     <f:metadata>
-        <f:viewParam name="id" value="#{supportBean.ticketReadId}" />
-        <f:event type="preRenderView" listener="#{supportBean.init}" />
+        <f:viewParam name="id" value="#{uporabnikBean.uporabnik.id}" />
+        <f:event type="preRenderView" listener="#{uporabnikBean.initUporabnikUpdate}" />
     </f:metadata>
     <h:body>
         <ui:composition template="/shared/layout.xhtml">
             <ui:param name="title" value="Fleamart" />
             <ui:define name="content">
-                <ui:param name="ticket" value="#{supportBean.ticketRead}" />
-                <h1>Nalog #<h:outputText value="#{supportBean.ticketRead.id}" /></h1>
+                <ui:param name="uporabnik" value="#{uporabnikBean.uporabnik}" />
+                <h1>Uporabnik #<h:outputText value="#{uporabnik.id}" /></h1>
                 <div class="span6">
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th>Naslov</th>
-                                <td><h:outputText value="#{ticket.naslov}" /></td>
+                                <th>Uporabniško ime</th>
+                                <td><h:outputText value="#{uporabnik.upime}" /></td>
                             </tr>
                             <tr>
-                                <th>Avtor</th>
-                                <td><h:outputText value="#{ticket.avtor.upime}" /></td>
+                                <th>Email</th>
+                                <td><h:outputText value="#{uporabnik.email}" /></td>
                             </tr>
                             <tr>
-                                <th>Vsebina</th>
-                                <td><h:outputText value="#{ticket.vsebina}" escape="false"/></td>
+                                <th>Vloga</th>
+                                <td><h:outputText value="#{uporabnik.vloga}" escape="false"/></td>
                             </tr>
                             <tr>
-                                <th>Ustvarjen</th>
-                                <td><h:outputText value="#{ticket.casUstvarjen.time}" /></td>
+                                <th>Ime</th>
+                                <td><h:outputText value="#{uporabnik.ime}" /></td>
                             </tr>
                             <tr>
-                                <th>Zaprt</th>
-                                <td><h:outputText value="#{ticket.casZaprt.time}" /></td>
+                                <th>Priimek</th>
+                                <td><h:outputText value="#{uporabnik.priimek}" /></td>
                             </tr>
                             <tr>
-                                <th>Kategorija</th>
-                                <td><h:outputText value="#{ticket.supportTicketKategorija.getNaziv()}" /></td>
+                                <th>Ulica</th>
+                                <td><h:outputText value="#{uporabnik.naslov.ulica}" /></td>
                             </tr>
                             <tr>
-                                <th>Status</th>
-                                <td><h:outputText value="#{ticket.supportTicketStatus.getNaziv()}" /></td>
+                                <th>Poštna številka</th>
+                                <td><h:outputText value="#{uporabnik.naslov.postnaStevilka}" /></td>
                             </tr>
                             <tr>
-                                <th>Tehnik</th>
-                                <td><h:outputText value="#{ticket.tehnik.upime}" /></td>
+                                <th>Občina</th>
+                                <td><h:outputText value="#{uporabnik.naslov.obcina}" /></td>
+                            </tr>
+                            <tr>
+                                <th>Država</th>
+                                <td><h:outputText value="#{uporabnik.naslov.drzava}" /></td>
                             </tr>
                         </tbody>
                     </table>
-                    <h2>Komentarji</h2>
-                    <ui:repeat var="komentar" value="#{ticket.komentarji}">
-                        <div class="well">
-                            <strong>
-                                <h:outputText value="#{komentar.avtor.upime}" class=""/>
-                            </strong>&nbsp;
-                            <h:outputText value="#{komentar.cas.time}" style="font-size:11px;"/>
-                            <p>
-                                <h:outputText value="#{komentar.vsebina}" />
-                            </p>
-                        </div>
-                    </ui:repeat>
-                    <c:if test="#{loginBean.idUser != 0}">
-                        <h2>Dodaj komentar</h2>
-                        <h:form id="dodajKomentar">
-                            <h:inputTextarea value="#{supportBean.komentarCreate.vsebina}" rows="5" style="width:500px;" /><br />
-                            <h:commandButton value="Dodaj komentar" action="#{supportBean.createTicketKomentar()}" styleClass="btn btn-primary" />
-                        </h:form>
-
-                    </c:if>
+                    <h:outputLink value="/fleamart-web/uporabnik/list.xhtml">Nazaj</h:outputLink>
                 </div>
             </ui:define>
         </ui:composition>

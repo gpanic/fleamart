@@ -2,39 +2,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:body>
-	<ui:composition template="/shared/layout.xhtml">
-		<ui:param name="title" value="Fleamart" />
-		<ui:define name="content">
-			<h1>Ustvari status naloga</h1>
-			<h:form id="dodajStatus" styleClass="form-horizontal">
-				<table width="100%">
-					<tbody>
-						<tr>
-							<td><h:outputLabel value="Naziv statusa" for="naziv"/></td>
-							<td><h:inputText styleClass="span8" id="naziv" value="#{supportBean.statusCreate.naziv}" requiredMessage="Obvezno polje" required="true"/></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><h:message for="naziv"/>&nbsp;</td>
-						</tr>
-						<tr>
-							<td><h:outputLabel value="Opis statusa" for="status"/></td>
-							<td><h:inputTextarea styleClass="span8" id="status" value="#{supportBean.statusCreate.opis}" requiredMessage="Obvezno polje" required="true"/></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><h:message for="naziv"/>&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-				<br />
-				<h:commandButton class="btn btn-primary" action="#{supportBean.createStatus}" value="Dodaj status"/>
-			</h:form>
-		</ui:define>
-	</ui:composition>
-</h:body>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <ui:composition template="/shared/layout.xhtml">
+            <ui:param name="title" value="Fleamart" />
+            <ui:define name="content">
+                <h1>Ustvari status naloga</h1>
+                <h:form id="dodajStatus" styleClass="form-horizontal">
+                    <table width="100%">
+                        <tbody>
+                            <tr>
+                                <td><h:outputLabel value="Naziv statusa" for="naziv"/></td>
+                                <td><h:inputText styleClass="span8" id="naziv" value="#{supportBean.statusCreate.naziv}" requiredMessage="Obvezno polje" required="true"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><h:message for="naziv"/>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Opis statusa" for="status"/></td>
+                                <td><h:inputTextarea styleClass="span8" id="status" value="#{supportBean.statusCreate.opis}" requiredMessage="Obvezno polje" required="true"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><h:message for="naziv"/>&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <h:commandButton class="btn btn-primary" action="#{supportBean.createStatus}" value="Dodaj status"/>
+                    &nbsp;
+                    <h:outputLink value="/fleamart-web/pomoc/nalog/status/list.xhtml" styleClass="btn btn-primary">Nazaj</h:outputLink>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>

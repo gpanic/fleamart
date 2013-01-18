@@ -22,5 +22,14 @@ namespace Fleamart.Contracts.Service
 
         [OperationContract]
         Uporabnik ProfilUporabnika(int Id);
+
+        [OperationContract]
+        bool UpdateUporabnik(Uporabnik u);
+
+        [OperationContract]
+        List<Uporabnik> ListUporabnik();
+
+        [OperationContract]
+        bool DeleteUporabnik(int id);
     }
 }

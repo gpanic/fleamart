@@ -82,4 +82,43 @@ public interface IUporabnikService {
         @WebParam(name = "Id", targetNamespace = "http://tempuri.org/")
         Integer id);
 
+    /**
+     * 
+     * @param u
+     * @return
+     *     returns java.lang.Boolean
+     */
+    @WebMethod(operationName = "UpdateUporabnik", action = "http://tempuri.org/IUporabnikService/UpdateUporabnik")
+    @WebResult(name = "UpdateUporabnikResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "UpdateUporabnik", targetNamespace = "http://tempuri.org/", className = "com.fleamart.uporabnik.ws.UpdateUporabnik")
+    @ResponseWrapper(localName = "UpdateUporabnikResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.uporabnik.ws.UpdateUporabnikResponse")
+    public Boolean updateUporabnik(
+        @WebParam(name = "u", targetNamespace = "http://tempuri.org/")
+        Uporabnik u);
+
+    /**
+     * 
+     * @return
+     *     returns com.fleamart.uporabnik.ws.ArrayOfUporabnik
+     */
+    @WebMethod(operationName = "ListUporabnik", action = "http://tempuri.org/IUporabnikService/ListUporabnik")
+    @WebResult(name = "ListUporabnikResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "ListUporabnik", targetNamespace = "http://tempuri.org/", className = "com.fleamart.uporabnik.ws.ListUporabnik")
+    @ResponseWrapper(localName = "ListUporabnikResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.uporabnik.ws.ListUporabnikResponse")
+    public ArrayOfUporabnik listUporabnik();
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns java.lang.Boolean
+     */
+    @WebMethod(operationName = "DeleteUporabnik", action = "http://tempuri.org/IUporabnikService/DeleteUporabnik")
+    @WebResult(name = "DeleteUporabnikResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "DeleteUporabnik", targetNamespace = "http://tempuri.org/", className = "com.fleamart.uporabnik.ws.DeleteUporabnik")
+    @ResponseWrapper(localName = "DeleteUporabnikResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.uporabnik.ws.DeleteUporabnikResponse")
+    public Boolean deleteUporabnik(
+        @WebParam(name = "id", targetNamespace = "http://tempuri.org/")
+        Integer id);
+
 }

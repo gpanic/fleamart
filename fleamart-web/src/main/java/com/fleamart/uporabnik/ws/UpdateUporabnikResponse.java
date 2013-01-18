@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="UpdateUporabnikResult" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,36 +29,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id"
+    "updateUporabnikResult"
 })
-@XmlRootElement(name = "ProfilUporabnika")
-public class ProfilUporabnika {
+@XmlRootElement(name = "UpdateUporabnikResponse")
+public class UpdateUporabnikResponse {
 
-    @XmlElement(name = "Id")
-    protected Integer id;
+    @XmlElement(name = "UpdateUporabnikResult")
+    protected Boolean updateUporabnikResult;
 
     /**
-     * Gets the value of the id property.
+     * Gets the value of the updateUporabnikResult property.
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link Boolean }
      *     
      */
-    public Integer getId() {
-        return id;
+    public Boolean isUpdateUporabnikResult() {
+        return updateUporabnikResult;
     }
 
     /**
-     * Sets the value of the id property.
+     * Sets the value of the updateUporabnikResult property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link Boolean }
      *     
      */
-    public void setId(Integer value) {
-        this.id = value;
+    public void setUpdateUporabnikResult(Boolean value) {
+        this.updateUporabnikResult = value;
     }
 
 }

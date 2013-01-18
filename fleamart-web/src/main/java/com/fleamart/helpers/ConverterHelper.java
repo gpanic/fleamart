@@ -184,6 +184,25 @@ public class ConverterHelper {
         return u;
     }
     
+    public static com.fleamart.uporabnik.ws.Uporabnik uporabnikObj22Ws(UporabnikObj obj) {
+        com.fleamart.uporabnik.ws.Uporabnik  ws = new com.fleamart.uporabnik.ws.Uporabnik();
+        
+        com.fleamart.uporabnik.ws.ObjectFactory of = new com.fleamart.uporabnik.ws.ObjectFactory();
+        
+        ws.setId(obj.getId());
+        ws.setVloga(obj.getVloga());
+        ws.setIme(of.createUporabnikIme(obj.getIme()));
+        ws.setPriimek(of.createUporabnikPriimek(obj.getPriimek()));
+        ws.setEmail(of.createUporabnikEmail(obj.getEmail()));
+        ws.setUpime(of.createUporabnikUpime(obj.getUpime()));
+        ws.setGeslo(of.createUporabnikGeslo(obj.getGeslo()));
+        ws.setTelefon(of.createUporabnikTelefon(obj.getTelefon()));
+        com.fleamart.uporabnik.ws.Naslov n = new com.fleamart.uporabnik.ws.Naslov();
+        n.setId(obj.getNaslov().getId());
+        ws.setNaslov(of.createUporabnikNaslov(n));
+        return ws;
+    }
+    
     public static UporabnikObj uporabnikWs2Obj(Uporabnik uws) {
         UporabnikObj u = new UporabnikObj();
         u.setId(uws.getId());
