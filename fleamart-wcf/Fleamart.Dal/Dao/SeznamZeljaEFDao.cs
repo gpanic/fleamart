@@ -60,6 +60,25 @@ namespace Fleamart.Dal.Dao
             }
         }
 
+        public int ReadByIdOglasAndIdUser(int idOglas, int idUporabnik)
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                var query = from x in db.SeznamZelja
+                            where x.OglasId == idOglas && x.UporabnikId == idUporabnik                      
+                            select x;
+                int idZelje = 0;
+                if (query.Count() != 0)
+                {
+                    foreach (var item in query.ToList())
+                    {
+                        idZelje = item.Id;
+                    }
+                }
+                return idZelje;
+            }
+        }
+
         public bool Update(SeznamZelja entity)
         {
             using (FleamartContext db = new FleamartContext())

@@ -148,7 +148,7 @@ namespace Fleamart.Dal.Dao
         {
             using (FleamartContext db = new FleamartContext())
             {
-                List<OglasEF> oglasi_ef = db.Oglasi.Where(x => x.Status == 1 && x.StatusNakupa == null).ToList();
+                List<OglasEF> oglasi_ef = db.Oglasi.Where(x => x.Status == 0 && x.StatusNakupa == null).ToList();
                 List<Oglas> oglasi = (oglasi_ef != null) ? Mapper.Map<List<OglasEF>, List<Oglas>>(oglasi_ef) : null;
                 return oglasi;
             }

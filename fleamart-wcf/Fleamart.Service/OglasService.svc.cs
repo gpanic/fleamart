@@ -76,9 +76,10 @@ namespace Fleamart.Service
             return szdao.Create(sez);
         }
 
-        public bool izbrisiZeljo(int id)
+        public bool izbrisiZeljo(int idOglasa, int idUporabnika)
         {
-            return szdao.Delete(id);
+            int idZelje = szdao.ReadByIdOglasAndIdUser(idOglasa, idUporabnika);
+            return szdao.Delete(idZelje);
         }
 
         public List<Oglas> pridobiSeznamZelja(int uporabnikId)
@@ -107,6 +108,16 @@ namespace Fleamart.Service
         {
             KomentarEFDao kdao = new KomentarEFDao();
             return kdao.Delete(id);
+        }
+
+        public Oglas OznaciKotKupljeno(int idOglasa)
+        {
+            OglasEFDao odaok = new OglasEFDao();
+            Oglas oglas = odaok.Read(idOglasa);
+            oglas.Status = 1;
+            odao.Update(oglas);
+            return oglas;
+            
         }
     }
 }

@@ -1,21 +1,18 @@
 package com.fleamart.beans;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-
 import com.fleamart.helpers.ConverterHelper;
 import com.fleamart.obj.OglasObj;
 import com.fleamart.obj.SeznamZeljaObj;
 import com.fleamart.obj.UporabnikObj;
 import com.fleamart.oglas.ws.OglasService;
-import com.fleamart.seznamZelja.ws.Oglas;
-import com.fleamart.seznamZelja.ws.SeznamZelja;
-import com.fleamart.seznamZelja.ws.SeznamZeljaService;
-import com.fleamart.uporabnik.ws.Uporabnik;
 
 @ManagedBean(name = "seznamZeljaBean")
 @RequestScoped
@@ -26,6 +23,16 @@ public class SeznamZeljaBean
 	private OglasObj oglas;
 	private List<OglasObj> oglasi;
 	private String txt;
+	private String redirectlink;
+	@PostConstruct
+    public void init() {
+        String view = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+        switch (view) {
+            case "/oglas/wishlist.xhtml":
+            	initOglasListZelje();
+                break;                                   	
+        }
+    }
 
 	public SeznamZeljaObj getSeznamZelja()
 	{
@@ -76,6 +83,16 @@ public class SeznamZeljaBean
 	{
 		this.oglasi = oglasi;
 	}
+	
+	public String getRedirectlink()
+	{
+		return redirectlink;
+	}
+
+	public void setRedirectlink(String redirectlink)
+	{
+		this.redirectlink = redirectlink;
+	}
 
 	public SeznamZeljaBean()
 	{
@@ -84,42 +101,10 @@ public class SeznamZeljaBean
 		oglas = new OglasObj();
 		oglasi = new ArrayList<OglasObj>();
 	}
-
-	public String proba(){
-		txt = "Oglas odstranjen iz seznama želja!";
-		System.out.println("*************______________________************");
-		return "#";
-		
-		
-	}
-	
-	public String izbrisiZeljo(int id)
-	{ 
-		System.out.println("*************______________________************");
-		try
-		{
-			OglasService client = new OglasService();
-			boolean vrne = client.getBasicHttpBindingIOglasService()
-					.izbrisiZeljo(id);
-			if (vrne == true)
-			{
-				txt = "Oglas odstranjen iz seznama želja!";
-				return "#";
-
-			} else
-			{
-				txt = "Neuspešno odstranjen oglas na seznam želja!";
-				return "#";
-			}
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-			return "#";
-		}
-	}
-		
-	public String prikaziSeznamZelja()
-	{
+	public void initOglasListZelje() {
+        listOglasiZelje();
+    }
+	public void listOglasiZelje() {
 		LoginBean loginb = (LoginBean)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
 		int idUporabnik = loginb.getIdUser();
 		OglasService client = new OglasService();
@@ -131,10 +116,40 @@ public class SeznamZeljaBean
 		{
 			oglasi.add(ConverterHelper.oglasWs2Obj(s));
 		}
-		return "/oglas/wishlist.xhtml";
+    }
+	
+	public void izbrisiZeljo()
+	{ 
+		try
+		{
+			LoginBean loginb = (LoginBean)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
+			int idUporabnik = loginb.getIdUser();
+			OglasService client = new OglasService();
+			boolean vrne = client.getBasicHttpBindingIOglasService().izbrisiZeljo(oglas.getId(), idUporabnik);
+			if (vrne == true)
+			{
+				redirect(redirectlink);
 
+			} else
+			{
+				redirect(redirectlink);
+			}
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
+	public void redirect(String path) {
+        try {
+            ExternalContext ec = FacesContext.getCurrentInstance()
+                    .getExternalContext();
+            ec.redirect(ec.getRequestContextPath() + path);
+        } catch (IOException ex) {
+            ex.getStackTrace();
+        }
+    }
+	
 	public String dodajZeljo(OglasObj oglas, int idUpor)
 	{
 		try

@@ -25,7 +25,6 @@
 			<blockquote>
 				<p>
 					Cena: <b>#{oglasBean2.oglas.cena} €</b>
-					#{oglasBean2.textProdan}"
 				</p>
 				<h:commandButton
 					rendered="#{oglasBean2.oglas.kupec.id == loginBean.idUser and oglasBean2.oglas.avkcija == false}"
@@ -55,31 +54,32 @@
 			<ui:fragment
 				rendered="#{oglasBean2.oglas.avkcija and loginBean.idUser != 0 and oglasBean2.oglas.status != 1}">
 				<p>
-					<h:outputText value="Vpišite ponudbo:" />
-
-					<h:inputText id="ponudbaCena" styleClass="span3"
-						value="#{ponudbaBean.znesek}" required="true"
-						validatorMessage="Niz mora biti številka"
-						requiredMessage="Obvezno polje">
-						<f:validateRegex pattern="(\d*.\d*|\d*)" />
-					</h:inputText>
-					&nbsp;
-					<h:commandButton id="ponudi" style="margin-bottom: 10px;"
-						class="btn btn-primary" value="Ponudi"
-						action="#{ponudbaBean.posljiPonudbo(oglasBean2.oglas, loginBean.idUser, false)}">
-					</h:commandButton>
-					<br />
-					<h:outputText value="#{ponudbaBean.txt}" />
-					<h:commandButton id="autoPonudba" style="margin-bottom: 5px;"
-						class="btn btn-primary" value="Avtomatski ponudnik"
-						action="#{ponudbaBean.posljiPonudbo(oglasBean2.oglas, loginBean.idUser, true)}">
-					</h:commandButton>
-					<h:outputText value="#{avtomatskiPonudnikBean.txt}" />
-
+					<h:form id="poonudbaa" style="display:inline;">
+						<strong><h:outputText value="#{ponudbaBean.txt}" /></strong>
+						<br />
+						<h:outputText value="Vpišite ponudbo:" />
+						<h:inputText id="ponudbaCena" styleClass="span3"
+							value="#{ponudbaBean.znesek}" required="true"
+							validatorMessage="Niz mora biti številka"
+							requiredMessage="Obvezno polje">
+							<f:validateRegex pattern="(\d*.\d*|\d*)" />
+						</h:inputText>	&nbsp;				
+						<h:commandButton id="ponudi" style="margin-bottom: 10px;"
+							class="btn btn-primary" value="Ponudi"
+							action="#{ponudbaBean.posljiPonudbo(oglasBean2.oglas, loginBean.idUser, false)}">
+						</h:commandButton>
+						<div class="span7 offset5">
+							<h:commandButton id="autoPonudba" style="margin-bottom: 50px;"
+								class="btn btn-primary" value="Avtomatski ponudnik"
+								action="#{ponudbaBean.posljiPonudbo(oglasBean2.oglas, loginBean.idUser, true)}">
+							</h:commandButton>
+						</div>
+					</h:form>
 				</p>
 			</ui:fragment>
 
-			<ui:fragment rendered="#{loginBean.idUser != 0 and oglasBean2.oglas.status != 1}">
+			<ui:fragment
+				rendered="#{loginBean.idUser != 0 and oglasBean2.oglas.status != 1}">
 				<h:form id="jdnsjkcv">
 					<p>
 						<h:commandButton id="dodajNaSeznamZelja"

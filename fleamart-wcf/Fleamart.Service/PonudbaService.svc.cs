@@ -50,7 +50,7 @@ namespace Fleamart.Service
             else
             {
                 double korak = 1.0;
-                //oglas.Cena += korak;                
+                oglas.Cena += korak;                
                 //dobim ponudbe, kjer je vnesen znesek vecji od cene
                 List<Ponudba> ponudbe =pdao.PonudbeZaAutobid(oglas.Cena, oglas.Id);
                 bool bidaj = ponudbe.Count>0;

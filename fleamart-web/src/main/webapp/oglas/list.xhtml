@@ -36,7 +36,7 @@
                                 </h:outputLink>
                                 <h:commandButton action="#{oglasBean2.deleteOglas}" style="margin-bottom: 5px;" class="btn btn-mini btn-primary" value="Odstrani">
                                     <f:setPropertyActionListener target="#{oglasBean2.oglas}" value="#{oglas}"/>
-                                    <f:setPropertyActionListener target="#{oglasBean2.redirectlink}" value="/admin/list.xhtml"/>
+                                    <f:setPropertyActionListener target="#{oglasBean2.redirectlink}" value="/oglas/list.xhtml"/>
                                 </h:commandButton><br/>
                                 <h:outputText class="cena" value="#{oglas.cena} €"/><br/>
                                 <div class="datum">

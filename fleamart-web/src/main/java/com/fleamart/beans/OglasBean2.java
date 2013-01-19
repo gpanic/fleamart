@@ -58,11 +58,9 @@ public class OglasBean2 implements Serializable {
     private ArrayList<KomentarObj> komentarjidesc;
     private String redirectlink;
     private int komentarId;
-    private String textProdan;
     @PostConstruct
     public void init() {
         String view = FacesContext.getCurrentInstance().getViewRoot().getViewId();
-
         switch (view) {
             case "/oglas/list.xhtml":
                 initOglasListAvtor();
@@ -76,11 +74,7 @@ public class OglasBean2 implements Serializable {
             case "/admin/listOglasi.xhtml":
                 initOglasAdmin();
                 break;
-            case "/oglas/read.xhtml":
-            	if(readTab==1){
-            		probavamPreverjanje();
-            	}
-                	
+                       	
         }
     }
 
@@ -189,17 +183,6 @@ public class OglasBean2 implements Serializable {
         this.aktivni = aktivni;
     }
     
-
-    public String getTextProdan()
-	{
-		return textProdan;
-	}
-
-	public void setTextProdan(String textProdan)
-	{
-		this.textProdan = textProdan;
-	}
-
 	public void listKategorije() {
         kategorije = new ArrayList<KategorijaObj>();
         KategorijeService client = new KategorijeService();
@@ -268,8 +251,10 @@ public class OglasBean2 implements Serializable {
     }
 
     public void initOglasRead() {
+    	
         readOglas(oglas.getId());
-        if (oglas.getKomentarji().size() > 0) {
+        preverjanjeDatuma(oglas.getId(), oglas.getStatus(), oglas.getCasDo());
+    	if (oglas.getKomentarji().size() > 0) {
             komentarjidesc = (ArrayList<KomentarObj>) oglas.getKomentarji();
             Comparator comparator = new Comparator<KomentarObj>() {
                 @Override
@@ -438,20 +423,14 @@ public class OglasBean2 implements Serializable {
         redirect(out);
     }
     
-    public void probavamPreverjanje(){    	
-    	textProdan = "cas:" + oglas.getCasDo() + ", id:" + oglas.getId();
-    	
-    	
-    	/*
-    	//ce je oglas aktiven, torej ce je 0    	
-    	if(oglas.getStatus()==0){
+    public void preverjanjeDatuma(int idOglasa, int status, GregorianCalendar casDo){ 
+    	if(status==0){
     		GregorianCalendar gregCal = new GregorianCalendar();
-    		//ce je oglas poteko
-    		if(gregCal.after(oglas.getCasDo())){
-    			
-        		textProdan = "potem";    		
+    		if(gregCal.after(casDo)){
+    			OglasService client = new OglasService();
+    	        OglasObj oglas = ConverterHelper.oglasWs2Obj(client.getBasicHttpBindingIOglasService().oznaciKotKupljeno(idOglasa));    			    		
         	}
     	}
-    	*/
+    	
     }
 }

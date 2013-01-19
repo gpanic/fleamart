@@ -46,7 +46,7 @@ namespace Fleamart.Contracts.Service
         bool dodajZeljo(Oglas s, Uporabnik u);
 
         [OperationContract]
-        bool izbrisiZeljo(int id);
+        bool izbrisiZeljo(int idOglasa, int idUporabnika);
 
         [OperationContract]
         List<Oglas> pridobiSeznamZelja(int uporabnikId);
@@ -59,5 +59,8 @@ namespace Fleamart.Contracts.Service
 
         [OperationContract]
         bool DeleteKomentar(int id);
+
+        [OperationContract]
+        Oglas OznaciKotKupljeno(int idOglasa);
     }
 }
