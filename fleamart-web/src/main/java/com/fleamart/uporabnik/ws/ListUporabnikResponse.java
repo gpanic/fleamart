@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="registrirajUporabnikaResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="ListUporabnikResult" type="{http//www.fleamart.com/}ArrayOfUporabnik" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "registrirajUporabnikaResult"
+    "listUporabnikResult"
 })
-@XmlRootElement(name = "registrirajUporabnikaResponse")
-public class RegistrirajUporabnikaResponse {
+@XmlRootElement(name = "ListUporabnikResponse")
+public class ListUporabnikResponse {
 
-    @XmlElementRef(name = "registrirajUporabnikaResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> registrirajUporabnikaResult;
+    @XmlElementRef(name = "ListUporabnikResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    protected JAXBElement<ArrayOfUporabnik> listUporabnikResult;
 
     /**
-     * Gets the value of the registrirajUporabnikaResult property.
+     * Gets the value of the listUporabnikResult property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ArrayOfUporabnik }{@code >}
      *     
      */
-    public JAXBElement<String> getRegistrirajUporabnikaResult() {
-        return registrirajUporabnikaResult;
+    public JAXBElement<ArrayOfUporabnik> getListUporabnikResult() {
+        return listUporabnikResult;
     }
 
     /**
-     * Sets the value of the registrirajUporabnikaResult property.
+     * Sets the value of the listUporabnikResult property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ArrayOfUporabnik }{@code >}
      *     
      */
-    public void setRegistrirajUporabnikaResult(JAXBElement<String> value) {
-        this.registrirajUporabnikaResult = value;
+    public void setListUporabnikResult(JAXBElement<ArrayOfUporabnik> value) {
+        this.listUporabnikResult = value;
     }
 
 }

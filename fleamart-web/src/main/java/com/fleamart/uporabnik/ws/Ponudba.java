@@ -35,7 +35,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Ponudba", propOrder = {
+@XmlType(name = "Ponudba", namespace = "http//www.fleamart.com/", propOrder = {
     "cas",
     "id",
     "oglas",

@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="DeleteUporabnikResult" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,36 +29,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id"
+    "deleteUporabnikResult"
 })
-@XmlRootElement(name = "ProfilUporabnika")
-public class ProfilUporabnika {
+@XmlRootElement(name = "DeleteUporabnikResponse")
+public class DeleteUporabnikResponse {
 
-    @XmlElement(name = "Id")
-    protected Integer id;
+    @XmlElement(name = "DeleteUporabnikResult")
+    protected Boolean deleteUporabnikResult;
 
     /**
-     * Gets the value of the id property.
+     * Gets the value of the deleteUporabnikResult property.
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link Boolean }
      *     
      */
-    public Integer getId() {
-        return id;
+    public Boolean isDeleteUporabnikResult() {
+        return deleteUporabnikResult;
     }
 
     /**
-     * Sets the value of the id property.
+     * Sets the value of the deleteUporabnikResult property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link Boolean }
      *     
      */
-    public void setId(Integer value) {
-        this.id = value;
+    public void setDeleteUporabnikResult(Boolean value) {
+        this.deleteUporabnikResult = value;
     }
 
 }

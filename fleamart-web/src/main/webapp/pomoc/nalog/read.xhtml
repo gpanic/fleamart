@@ -54,25 +54,29 @@
                         </tbody>
                     </table>
                     <h2>Komentarji</h2>
-                    <ui:repeat var="komentar" value="#{ticket.komentarji}">
-                        <div class="well">
-                            <strong>
-                                <h:outputText value="#{komentar.avtor.upime}" class=""/>
-                            </strong>&nbsp;
-                            <h:outputText value="#{komentar.cas.time}" style="font-size:11px;"/>
-                            <p>
-                                <h:outputText value="#{komentar.vsebina}" />
-                            </p>
-                        </div>
-                    </ui:repeat>
+                    <h:form id="zbrisiKomentar">
+                        <ui:repeat var="komentar" value="#{ticket.komentarji}">
+                            <div class="well">
+                                <h:commandLink styleClass="icon-remove" value="" action="#{supportBean.deleteTicketKomentar(komentar.id)}" style="float:right;" rendered="#{supportBean.isOwnerOfKomentar(komentar.id)}"/>
+                                <strong>
+                                    <h:outputText value="#{komentar.avtor.upime}" class=""/>
+                                </strong>&nbsp;
+                                <h:outputText value="#{komentar.cas.time}" style="font-size:11px;"/>
+                                <p>
+                                    <h:outputText value="#{komentar.vsebina}" />
+                                </p>
+                            </div>
+                        </ui:repeat>
+                    </h:form>
                     <c:if test="#{loginBean.idUser != 0}">
                         <h2>Dodaj komentar</h2>
-                        <h:form id="dodajKomentar">
+                        <h:form id="dodajKomentar" style="display:inline;">
                             <h:inputTextarea value="#{supportBean.komentarCreate.vsebina}" rows="5" style="width:500px;" /><br />
                             <h:commandButton value="Dodaj komentar" action="#{supportBean.createTicketKomentar()}" styleClass="btn btn-primary" />
                         </h:form>
-
+                        &nbsp;
                     </c:if>
+                    <h:outputLink value="/fleamart-web/pomoc/nalog/list.xhtml" styleClass="btn btn-primary">Nazaj</h:outputLink>
                 </div>
             </ui:define>
         </ui:composition>

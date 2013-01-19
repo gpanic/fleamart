@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:metadata>
+        <f:viewParam name="id" value="#{uporabnikBean.uporabnik.id}" />
+        <f:event type="preRenderView" listener="#{uporabnikBean.initUporabnikUpdate}" />
+    </f:metadata>
+    <h:body>
+        <ui:composition template="/shared/layout.xhtml">
+            <ui:param name="title" value="Fleamart" />
+            <ui:define name="content">
+                <h1>Uredi uporabnika #<h:outputText value="#{uporabnikBean.uporabnik.id}" /></h1>
+                <h:form id="urediUporabnik" styleClass="form-horizontal">
+                    <table width="100%">
+                        <tbody>
+                            <tr>
+                                <td><h:outputLabel value="Uporabniško ime" for="upime"/></td>
+                                <td><h:inputText styleClass="span8" id="upime" value="#{uporabnikBean.uporabnik.upime}" requiredMessage="Obvezno polje" required="false"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><h:message for="upime"/>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Email" for="email"/></td>
+                                <td><h:inputText styleClass="span8" id="email" value="#{uporabnikBean.uporabnik.email}" requiredMessage="Obvezno polje" required="false"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><h:message for="email"/>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Vloga" for="vloga"/></td>
+                                <td><h:inputText styleClass="span8" id="vloga" value="#{uporabnikBean.uporabnik.vloga}" requiredMessage="Obvezno polje" required="false"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><h:message for="vloga"/>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Ime" for="ime"/></td>
+                                <td><h:inputText styleClass="span8" id="ime" value="#{uporabnikBean.uporabnik.ime}" requiredMessage="Obvezno polje" required="false"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><h:message for="ime"/>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Priimek" for="priimek"/></td>
+                                <td><h:inputText styleClass="span8" id="priimek" value="#{uporabnikBean.uporabnik.priimek}" requiredMessage="Obvezno polje" required="false"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><h:message for="priimek"/>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Telefon" for="telefon"/></td>
+                                <td><h:inputText styleClass="span8" id="telefon" value="#{uporabnikBean.uporabnik.telefon}" requiredMessage="Obvezno polje" required="false"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><h:message for="telefon"/>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Ulica" for="ulica"/></td>
+                                <td><h:inputText styleClass="span8" id="ulica" value="#{uporabnikBean.uporabnik.naslov.ulica}" requiredMessage="Obvezno polje" required="false"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><h:message for="ulica"/>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Poštna številka" for="postnaStevilka"/></td>
+                                <td><h:inputText styleClass="span8" id="postnaStevilka" value="#{uporabnikBean.uporabnik.naslov.postnaStevilka}" requiredMessage="Obvezno polje" required="false"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><h:message for="postnaStevilka"/>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Občina" for="obcina"/></td>
+                                <td><h:inputText styleClass="span8" id="obcina" value="#{uporabnikBean.uporabnik.naslov.obcina}" requiredMessage="Obvezno polje" required="false"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><h:message for="obcina"/>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Država" for="drzava"/></td>
+                                <td><h:inputText styleClass="span8" id="drzava" value="#{uporabnikBean.uporabnik.naslov.drzava}" requiredMessage="Obvezno polje" required="false"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><h:message for="drzava"/>&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <h:commandButton class="btn btn-primary" action="#{uporabnikBean.updateUporabnik}" value="Uredi uporabnika"/>
+                    &nbsp;
+                    <h:outputLink value="/fleamart-web/uporabnik/list.xhtml" styleClass="btn btn-primary">Nazaj</h:outputLink>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

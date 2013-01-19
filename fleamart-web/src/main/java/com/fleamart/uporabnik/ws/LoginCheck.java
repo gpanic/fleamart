@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
     "upImeV",
     "passV"
 })
-@XmlRootElement(name = "loginCheck", namespace = "http://tempuri.org/")
+@XmlRootElement(name = "loginCheck")
 public class LoginCheck {
 
     @XmlElementRef(name = "upImeV", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)

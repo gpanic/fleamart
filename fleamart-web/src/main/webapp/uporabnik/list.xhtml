@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:body>
+        <ui:composition template="/shared/layout.xhtml">
+            <ui:param name="title" value="Fleamart" />
+            <ui:define name="content">
+                <h1>Uporabniki</h1>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Uporabniško ime</th>
+                            <th>Email</th>
+                            <th>Vloga</th>
+                            <th>Ime</th>
+                            <th>Priimek</th>
+                            <th>Zasebna sporočila</th>
+                            <th>Seznam želja</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ui:repeat var="uporabnik" value="#{uporabnikBean.uporabniki}">
+                            <tr>
+                                <td><h:outputText value="#{uporabnik.id}"/></td>
+                                <td><h:outputText value="#{uporabnik.upime}"/></td>
+                                <td><h:outputText value="#{uporabnik.email}" escape="false"/></td>
+                                <td><h:outputText value="#{uporabnik.vloga}"/></td>
+                                <td><h:outputText value="#{uporabnik.ime}"/></td>
+                                <td><h:outputText value="#{uporabnik.priimek}"/></td>
+                                <td><h:outputText value="#{uporabnik.privatnaSporocila.size()}"/></td>
+                                <td><h:outputText value="#{uporabnik.seznamZelja.size()}"/></td>
+                                <td>
+                                    <h:outputLink value="/fleamart-web/uporabnik/read.xhtml?id=#{uporabnik.id}" styleClass="icon-zoom-in"/>
+                                    &nbsp;
+                                    <h:outputLink value="/fleamart-web/uporabnik/update.xhtml?id=#{uporabnik.id}" styleClass="icon-edit"/>
+                                    &nbsp;
+                                    <h:form style="display:inline;">
+                                        <h:commandLink styleClass="icon-remove" value="" action="#{uporabnikBean.deleteUporabnik(uporabnik.id)}" />
+                                    </h:form>
+                                </td>
+                            </tr>
+                        </ui:repeat>
+                    </tbody>
+                </table>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
