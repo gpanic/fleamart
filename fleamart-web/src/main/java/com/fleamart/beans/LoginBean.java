@@ -69,8 +69,7 @@ public class LoginBean implements Serializable {
             int idUser = 0;
             IUporabnikService service = new UporabnikService()
                     .getBasicHttpBindingIUporabnikService();
-            String encPass = JSFHelper.encrpyt(pass);
-            Uporabnik uporabnik = service.loginCheck(username, encPass);
+            Uporabnik uporabnik = service.loginCheck(username, JSFHelper.encrpyt(pass));
             idUser = uporabnik.getId();
             if (idUser == 0) {
                 setIdUser(0);
