@@ -174,6 +174,7 @@ public class OglasBean {
 	}
 	
 	public String naslovShort(String line) {
-		return line.substring(0,20).concat("...");
+		if (line.length() > 20) return line.substring(0,20).concat("...");
+		return line;
 	}
 }
