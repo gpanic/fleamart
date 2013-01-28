@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="k" type="{http//www.fleamart.com/}Komentar" minOccurs="0"/>
+ *         &lt;element name="zadnjihPetResult" type="{http//www.fleamart.com/}ArrayOfOglas" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "k"
+    "zadnjihPetResult"
 })
-@XmlRootElement(name = "CreateKomentar")
-public class CreateKomentar {
+@XmlRootElement(name = "zadnjihPetResponse")
+public class ZadnjihPetResponse {
 
-    @XmlElementRef(name = "k", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
-    protected JAXBElement<Komentar> k;
+    @XmlElementRef(name = "zadnjihPetResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    protected JAXBElement<ArrayOfOglas> zadnjihPetResult;
 
     /**
-     * Gets the value of the k property.
+     * Gets the value of the zadnjihPetResult property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Komentar }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ArrayOfOglas }{@code >}
      *     
      */
-    public JAXBElement<Komentar> getK() {
-        return k;
+    public JAXBElement<ArrayOfOglas> getZadnjihPetResult() {
+        return zadnjihPetResult;
     }
 
     /**
-     * Sets the value of the k property.
+     * Sets the value of the zadnjihPetResult property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Komentar }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ArrayOfOglas }{@code >}
      *     
      */
-    public void setK(JAXBElement<Komentar> value) {
-        this.k = value;
+    public void setZadnjihPetResult(JAXBElement<ArrayOfOglas> value) {
+        this.zadnjihPetResult = value;
     }
 
 }

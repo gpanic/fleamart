@@ -3,6 +3,7 @@ package com.fleamart.beans;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import com.fleamart.helpers.JSFHelper;
 import com.fleamart.uporabnik.ws.ObjectFactory;
 import com.fleamart.uporabnik.ws.Naslov;
 import com.fleamart.uporabnik.ws.Uporabnik;
@@ -116,7 +117,7 @@ public class RegistracijaBean {
 		u.setIme(of.createUporabnikIme(this.ime));
 		u.setPriimek(of.createUporabnikPriimek(this.priimek));
 		u.setEmail(of.createUporabnikEmail(this.email));
-		u.setGeslo(of.createUporabnikGeslo(this.geslo));
+		u.setGeslo(of.createUporabnikGeslo(JSFHelper.encrpyt(this.geslo)));
 		u.setTelefon(of.createUporabnikTelefon(this.telefon));
 		u.setVloga(1);
 		Naslov naslov = new Naslov();

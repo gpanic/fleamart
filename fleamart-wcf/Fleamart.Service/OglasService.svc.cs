@@ -119,5 +119,10 @@ namespace Fleamart.Service
             return oglas;
             
         }
+
+        public List<Oglas> zadnjihPet()
+        {
+            return odao.zadnjihPet();
+        }
     }
 }

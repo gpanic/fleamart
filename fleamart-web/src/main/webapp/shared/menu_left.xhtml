@@ -10,14 +10,12 @@
             <h:panelGroup styleClass="span2" layout="block">
                 <h:panelGroup styleClass="well" layout="block" style="max-width: 340px; padding: 8px 0;">
                     <ul class="nav nav-list">
-                        <li class="nav-header">Header 1</li>
-                        <li><h:outputLink value="/fleamart-web/oglas/list.xhtml">Moji oglasi</h:outputLink></li>
-                        <li><h:outputLink value="/fleamart-web/oglas/listProdano.xhtml">Prodano</h:outputLink></li>
-                        <li><h:outputLink value="/fleamart-web/oglas/listNakupi.xhtml">Moji nakupi</h:outputLink></li>
-                        <li class="nav-header">Header 2</li>
-                        <li><h:outputLink value="#">Menu item 1</h:outputLink></li>
-                        <li><h:outputLink value="#">Menu item 2</h:outputLink></li>
-                        <li><h:outputLink value="#">Menu item 3</h:outputLink></li>                       
+                        <li class="nav-header">Zadnji oglasi</li>
+                        <ui:repeat var="zo" value="#{oglasBean.zadnjih5}">
+                        	<li>
+                        		<h:outputLink value="/fleamart-web/oglas/read.xhtml?id=#{zo.id}"><h:outputText value="#{oglasBean.naslovShort(zo.naslov)}"></h:outputText></h:outputLink>
+                        	</li>
+                        </ui:repeat>                   
                     </ul>
                 </h:panelGroup>
                 <h:panelGroup rendered="#{!kosaricaBean.isEmpty() and kosaricaBean.nakupView()}" styleClass="well" layout="block" style="max-width: 340px; padding: 8px 0;">

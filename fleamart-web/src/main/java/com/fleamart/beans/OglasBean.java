@@ -29,6 +29,7 @@ public class OglasBean {
     private String searchParam;
     private String queryKateg;
     private int aktivni = 0; //v oglas/list.xhtml
+    private List<OglasObj> zadnjih5;
 
     @PostConstruct
     public void init() {
@@ -75,6 +76,7 @@ public class OglasBean {
     public OglasBean() {
         oglasi = new ArrayList<OglasObj>();
         oglas = new OglasObj();
+        this.GetZadnjihPetOglasovWS();
     }
 
     public KategorijaObj getKategorija() {
@@ -154,4 +156,24 @@ public class OglasBean {
             queryKateg = this.kategorije.get(0).getNaziv();
         this.queryKateg = queryKateg;
     }
+
+	public List<OglasObj> getZadnjih5() {
+		return zadnjih5;
+	}
+
+	public void setZadnjih5(List<OglasObj> zadnjih5) {
+		this.zadnjih5 = zadnjih5;
+	}
+	
+	public void GetZadnjihPetOglasovWS() {
+		zadnjih5 = new ArrayList<OglasObj>();
+		List<Oglas> og = new OglasService().getBasicHttpBindingIOglasService().zadnjihPet().getOglas();
+		for(Oglas o : og) {
+			this.zadnjih5.add(ConverterHelper.oglasWs2Obj(o));
+		}
+	}
+	
+	public String naslovShort(String line) {
+		return line.substring(0,20).concat("...");
+	}
 }

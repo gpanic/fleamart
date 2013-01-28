@@ -62,5 +62,8 @@ namespace Fleamart.Contracts.Service
 
         [OperationContract]
         Oglas OznaciKotKupljeno(int idOglasa);
+
+        [OperationContract]
+        List<Oglas> zadnjihPet();
     }
 }

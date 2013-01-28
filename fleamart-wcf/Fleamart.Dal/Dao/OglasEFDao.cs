@@ -191,15 +191,15 @@ namespace Fleamart.Dal.Dao
                 List<OglasEF> oglasi_ef = null;
                 if (param == null)
                 {
-                    oglasi_ef = db.Oglasi.Where(x => x.Kategorija.Naziv.Equals(kategorija)).Where(x => x.Status == 1 && x.StatusNakupa == null).ToList();
+                    oglasi_ef = db.Oglasi.Where(x => x.Kategorija.Naziv.Equals(kategorija)).Where(x => x.Status == 0 && x.StatusNakupa == null).ToList();
                 }
                 else if (kategorija != null && param != null)
                 {
-                    oglasi_ef = db.Oglasi.Where(x => x.Kategorija.Naziv == kategorija).Where(x => x.Naslov.Contains(param)).Where(x => x.Status == 1 && x.StatusNakupa == null).ToList();
+                    oglasi_ef = db.Oglasi.Where(x => x.Kategorija.Naziv == kategorija).Where(x => x.Naslov.Contains(param)).Where(x => x.Status == 0 && x.StatusNakupa == null).ToList();
                 }
                 else if (kategorija == null && param != null)
                 {
-                    oglasi_ef = db.Oglasi.Where(x => x.Naslov.Contains(param)).Where(x => x.Status == 1 && x.StatusNakupa == null).ToList();
+                    oglasi_ef = db.Oglasi.Where(x => x.Naslov.Contains(param)).Where(x => x.Status == 0 && x.StatusNakupa == null).ToList();
                 }
 
                 List<Oglas> oglasi = (oglasi_ef != null) ? Mapper.Map<List<OglasEF>, List<Oglas>>(oglasi_ef) : null;
@@ -318,6 +318,16 @@ namespace Fleamart.Dal.Dao
                 }
                 
                 return povprecje;
+            }
+        }
+
+        public List<Oglas> zadnjihPet()
+        {
+            using (FleamartContext db = new FleamartContext())
+            {
+                List<OglasEF> oglasi_ef = db.Oglasi.Where(x => x.Status == 0 && x.StatusNakupa == null).OrderByDescending(x => x.Id).Take(5).ToList();
+                List<Oglas> oglasi = (oglasi_ef != null) ? Mapper.Map<List<OglasEF>, List<Oglas>>(oglasi_ef) : null;
+                return oglasi;
             }
         }
 

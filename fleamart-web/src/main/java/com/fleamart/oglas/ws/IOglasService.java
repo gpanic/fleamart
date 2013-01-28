@@ -279,4 +279,15 @@ public interface IOglasService {
         @WebParam(name = "idOglasa", targetNamespace = "http://tempuri.org/")
         Integer idOglasa);
 
+    /**
+     * 
+     * @return
+     *     returns com.fleamart.oglas.ws.ArrayOfOglas
+     */
+    @WebMethod(action = "http://tempuri.org/IOglasService/zadnjihPet")
+    @WebResult(name = "zadnjihPetResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "zadnjihPet", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ZadnjihPet")
+    @ResponseWrapper(localName = "zadnjihPetResponse", targetNamespace = "http://tempuri.org/", className = "com.fleamart.oglas.ws.ZadnjihPetResponse")
+    public ArrayOfOglas zadnjihPet();
+
 }
