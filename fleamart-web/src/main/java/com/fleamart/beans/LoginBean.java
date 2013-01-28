@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import com.fleamart.helpers.JSFHelper;
 import com.fleamart.uporabnik.ws.IUporabnikService;
 import com.fleamart.uporabnik.ws.Uporabnik;
 import com.fleamart.uporabnik.ws.UporabnikService;
@@ -68,7 +69,8 @@ public class LoginBean implements Serializable {
             int idUser = 0;
             IUporabnikService service = new UporabnikService()
                     .getBasicHttpBindingIUporabnikService();
-            Uporabnik uporabnik = service.loginCheck(username, pass);
+            String encPass = JSFHelper.encrpyt(pass);
+            Uporabnik uporabnik = service.loginCheck(username, encPass);
             idUser = uporabnik.getId();
             if (idUser == 0) {
                 setIdUser(0);
