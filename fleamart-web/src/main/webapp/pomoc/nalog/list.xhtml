@@ -43,11 +43,13 @@
                                 <td>
                                     <h:outputLink value="/fleamart-web/pomoc/nalog/read.xhtml?id=#{ticket.id}" styleClass="icon-zoom-in"/>
                                     &nbsp;
+                                    <c:if test="#{loginBean.vloga == 2}">
                                     <h:outputLink value="/fleamart-web/pomoc/nalog/update.xhtml?id=#{ticket.id}" styleClass="icon-edit"/>
                                     &nbsp;
                                     <h:form style="display:inline;">
                                         <h:commandLink styleClass="icon-remove" value="" action="#{supportBean.deleteTicket(ticket.id)}" />
                                     </h:form>
+                                    </c:if>
                                 </td>
                             </tr>
                         </ui:repeat>

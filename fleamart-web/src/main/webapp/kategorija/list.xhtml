@@ -19,7 +19,9 @@
                             <c:if test="#{loginBean.idUser != 0}">
                                 <th>Naročen</th>
                             </c:if>
-                            <th></th>
+                            <c:if test="#{loginBean.vloga == 2}">
+                                <th></th>
+                            </c:if>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,7 +36,7 @@
                                         <h:commandLink rendered="#{kat.subscriptionStatus(kategorija.id)}" styleClass="icon-remove" value="" action="#{kat.unsubscribe(loginBean.idUser, kategorija.id)}" />
                                     </td>
                                 </h:form>
-                                <h:form>
+                                <h:form rendered="#{loginBean.vloga == 2}">
                                     <td>
                                         <h:commandLink styleClass="icon-remove" value="" action="#{kat.removeKategorija(kategorija.id)}" />
                                     </td>
@@ -43,7 +45,7 @@
                         </ui:repeat>
                     </tbody>
                 </table>
-                <h:outputLink value="/fleamart-web/kategorija/create.xhtml">
+                <h:outputLink value="/fleamart-web/kategorija/create.xhtml" rendered="#{loginBean.vloga == 2}">
                     Ustvari kategorijo
                 </h:outputLink>
             </ui:define>

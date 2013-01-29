@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:body>
         <ui:composition>
             <h:panelGroup styleClass="navbar navbar-inverse navbar-fixed-top"
@@ -16,7 +17,7 @@
                             <ul class="nav">
                                 <li><a href="/fleamart-web/browse.xhtml">Išči</a></li>
                                 <li><a href="/fleamart-web/oglas/create.xhtml">Dodaj oglas</a></li>
-                                <li><a href="/fleamart-web/kategorija/list.xhtml">Ketegorije</a></li>
+                                <li><a href="/fleamart-web/kategorija/list.xhtml">Kategorije</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         Pomoc
@@ -25,8 +26,10 @@
                                     <ul class="dropdown-menu">
                                         <li><a href="/fleamart-web/pomoc/nalog/list.xhtml">Nalogi</a></li>
                                         <li><a href="/fleamart-web/pomoc/nalog/create.xhtml">Ustvari nalog</a></li>
+                                        <c:if test="#{loginBean.vloga == 2}">
                                         <li><a href="/fleamart-web/pomoc/nalog/kategorija/list.xhtml">Kategorije</a></li>
                                         <li><a href="/fleamart-web/pomoc/nalog/status/list.xhtml">Statusi</a></li>
+                                        </c:if>
                                     </ul>
                                 </li>
                                 <ui:fragment rendered="#{loginBean.vloga == 2}">

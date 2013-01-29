@@ -81,7 +81,7 @@ public class LoginBean implements Serializable {
                 setVloga(uporabnik.getVloga());
                 pass = "";
                 // ce je uporabnik uspesno vpisan
-                return "index?faces-redirect=true";
+                return "browse?faces-redirect=true";
             }
 
         } catch (Exception e) {
@@ -103,7 +103,7 @@ public class LoginBean implements Serializable {
             e.printStackTrace();
 
         }
-        return "index?faces-redirect=true";
+        return "browse?faces-redirect=true";
     }
 
     public void checkIfLoggedIn() throws IOException {

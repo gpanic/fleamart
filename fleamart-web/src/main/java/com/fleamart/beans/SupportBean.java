@@ -34,7 +34,6 @@ import javax.servlet.http.HttpServletRequest;
 @ViewScoped
 public class SupportBean implements Serializable {
 
-    @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
     
     private List<SupportTicketKategorijaObj> kategorije;
@@ -60,6 +59,7 @@ public class SupportBean implements Serializable {
     public SupportBean() {
         ticketUpdate = new SupportTicketObj();
         ticketUpdateOld = new SupportTicketObj();
+         this.loginBean = (LoginBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
         
 //        HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 //        String qs = request.getQueryString();
@@ -178,6 +178,15 @@ public class SupportBean implements Serializable {
     private void getTicketsFromService() {
         tickets = new ArrayList<>();
         List<SupportTicket> wsList = new SupportTicketService().getBasicHttpBindingISupportTicketService().listSupportTicket().getSupportTicket();
+        List<SupportTicket> toDel = new ArrayList<>();
+        if(loginBean.getVloga() != 2) {
+            for (SupportTicket s : wsList) {
+                if(s.getAvtor().getValue().getId() != loginBean.getIdUser()) {
+                    toDel.add(s);
+                }
+            }
+            wsList.removeAll(toDel);
+        }
         for (SupportTicket t : wsList) {
             getTickets().add(ConverterHelper.supportTicketWs2Obj(t));
         }
